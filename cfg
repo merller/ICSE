@@ -1,0 +1,4 @@
+// Control Flow Graph
+digraph {
+	node0 [label=Entry]
+}
