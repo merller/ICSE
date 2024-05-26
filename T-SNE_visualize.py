@@ -23,7 +23,7 @@ sentence_encoding1_2d = tsne.fit_transform(sentence_encoding1.numpy())
 
 # 可视化
 plt.figure(figsize=(10, 8))
-plt.scatter(sentence_encoding1_2d[:, 0], sentence_encoding1_2d[:, 1], marker='o')
+plt.scatter(sentence_encoding1_2d[:, 0], sentence_encoding1_2d[:, 1], marker='o',c='red')
 
 # 标注每个单词
 words = sentence1.split()

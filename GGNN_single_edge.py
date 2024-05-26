@@ -1,5 +1,7 @@
 # 示例代码：节点特征维度为词嵌入向量的维度
 import torch
+import json
+import os
 import torch.nn.functional as F
 from torch_geometric.nn import GatedGraphConv
 from torch_geometric.data import Data, Batch
@@ -27,11 +29,28 @@ def one_hot_encode(word, vocab_size):
         one_hot[index] = 1
     return one_hot
 
+# 设置文件路径
+output_dir = 'dataSet/Intermediate_data'
+node_features_path = os.path.join(output_dir, 'node_features_str_1.json')
+edge_index_path = os.path.join(output_dir, 'edge_index_1.pt')
+edge_attr_path = os.path.join(output_dir, 'edge_attr.pt')
 
+# 读取节点信息
+with open(node_features_path, 'r') as f:
+    node_features_str_1 = json.load(f)
+
+# 读取边信息
+edge_index_1 = torch.load(edge_index_path)
+#edge_attr = torch.load(edge_attr_path)
+
+# 输出到控制台
+print("Node Features:")
+print(node_features_str_1)
+
+print("\nEdge Index:")
+print(edge_index_1)
 
 # 示例图1
-node_features_str_1 = ["TVon", "TVoff", "cherry", "date"]
-edge_index_1 = torch.tensor([[0, 1, 2, 3, 0, 1], [1, 2, 3, 0, 2, 3]], dtype=torch.long)#边信息
 node_features_1 = [get_feature_vector(word) for word in node_features_str_1]
 x_1 = torch.tensor(node_features_1, dtype=torch.float)
 
@@ -70,7 +89,7 @@ print(f"Using device: {device}")
 
 # 初始化模型
 in_channels = data_1.num_node_features  # 节点特征维度
-out_channels = 50  # 输出的维度，可以根据需要调整
+out_channels = 55  # 输出的维度，可以根据需要调整
 num_layers = 3  # GGNN层数
 model = GGNN(in_channels, out_channels, num_layers).to(device)
 
@@ -83,11 +102,11 @@ output = model(data_1.x, data_1.edge_index)
 print("输出向量大小：", output.shape)
 print("输出向量：", output)
 
-# 从模型输出中提取第一个向量和第二个向量
-vector1 = output[0].cpu().detach().numpy()
-vector2 = output[1].cpu().detach().numpy()
+# 创建存放数据的文件夹
+output_dir = 'dataSet/Intermediate_data'
+os.makedirs(output_dir, exist_ok=True)
 
-# 计算余弦相似度
-similarity = cosine_similarity(vector1, vector2)
-print("第一个向量和第二个向量的余弦相似度:", similarity)
+# 将节点信息和边信息写入文件
+output_path = os.path.join(output_dir, 'output.pt')
+torch.save(output, output_path)
 
