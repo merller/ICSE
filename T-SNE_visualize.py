@@ -4,7 +4,8 @@ import matplotlib.pyplot as plt
 from sklearn.manifold import TSNE
 
 # 假设有一句话
-sentence1 = "When the light is On and the door is Open, turn on the TV."
+sentence1 = "When the light is on and the door is open, turn on the TV."
+#sentence1 = "When it is Friday, send my friend an email and plus the invite times. If he reply no,plus the reject time and if the reject time equal the invite time, send he another email."
 
 # 定义路径
 output_dir = 'dataSet/Intermediate_data'

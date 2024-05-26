@@ -4,7 +4,7 @@ import numpy as np
 import os
 
 # 假设有一句话
-sentence1 = "When the light is On and the door is Open, turn on the TV."
+sentence1 = "When the light is on and the door is open, turn on the TV."
 #sentence2 = "This is a complex sentence."
 # 构建字符级别的嵌入字典
 char_to_idx = {char: idx + 1 for idx, char in enumerate("abcdefghijklmnopqrstuvwxyz")}
@@ -61,7 +61,7 @@ char_tensor = torch.tensor(padded_char_indices)  # 添加 batch 和 sequence 维
 
 # 定义模型并进行编码
 input_size = len(char_to_idx)
-hidden_size = 10
+hidden_size = 20
 num_layers = 1
 encoder = CharLSTMEncoder(input_size, hidden_size, num_layers)
 with torch.no_grad():

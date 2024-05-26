@@ -6,17 +6,13 @@ import json
 
 # JavaScript代码
 code = '''
-let Invitetimes=0;
-let Rejecttimes=0;
-function sendEmail() {
-  if(event.Date==Friday){
-    event.sendEmail(friend,"How about a drink tonight?");
-    Invitetimes++;
-    if(event.replyNo) Rejecttimes--;
-    else event.sendEmail(friend,"I am glad you are coming");
-    if (Invitetimes==Rejecttimes){
-      event.sendEmail(friend,"shame on u");
-    }
+function backHome() {
+  if(event.lightON&&event.doorOpen){
+  event.CloseDoor;
+  event.OnTV
+  }
+else if(event.doorOpen){
+  event.closeDoor
   }
 }
 '''

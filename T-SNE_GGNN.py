@@ -5,7 +5,7 @@ import os
 
 # 设置文件路径
 output_dir = 'dataSet/Intermediate_data'
-output_path = os.path.join(output_dir, 'output.pt')
+output_path = os.path.join(output_dir, 'tree_lstm_output.pt')
 
 # 读取图编码
 output = torch.load(output_path)
@@ -14,7 +14,7 @@ output = torch.load(output_path)
 output_np = output.cpu().detach().numpy()
 
 # 使用TSNE降维
-tsne = TSNE(n_components=2, random_state=42)
+tsne = TSNE(n_components=2,perplexity=5, random_state=42)
 output_2d = tsne.fit_transform(output_np)
 
 # 可视化
