@@ -1,9 +1,11 @@
 import torch
 import torch.nn as nn
 import numpy as np
+import os
+
 # 假设有一句话
-sentence1 = "This is a sample sentence."
-sentence2 = "This is a complex sentence."
+sentence1 = "When the light is On and the door is Open, turn on the TV."
+#sentence2 = "This is a complex sentence."
 # 构建字符级别的嵌入字典
 char_to_idx = {char: idx + 1 for idx, char in enumerate("abcdefghijklmnopqrstuvwxyz")}
 char_to_idx['<pad>'] = 0  # 用于填充序列
@@ -43,30 +45,37 @@ def cosine_similarity(matrix1, matrix2):
     
     return similarity
 
-
 # 将句子1转换为字符级别的表示
 max_word_length = max(len(word) for word in sentence1.split())
 char_indices = [[char_to_idx.get(char, 0) for char in word] for word in sentence1.split()]
 padded_char_indices = [indices + [0] * (max_word_length - len(indices)) for indices in char_indices]
 
 # 将句子2转换为字符级别的表示
-max_word_length = max(len(word) for word in sentence2.split())
-char_indices2 = [[char_to_idx.get(char, 0) for char in word] for word in sentence2.split()]
-padded_char_indices2 = [indices + [0] * (max_word_length - len(indices)) for indices in char_indices2]
+# max_word_length = max(len(word) for word in sentence2.split())
+# char_indices2 = [[char_to_idx.get(char, 0) for char in word] for word in sentence2.split()]
+# padded_char_indices2 = [indices + [0] * (max_word_length - len(indices)) for indices in char_indices2]
+
 # 调整为 batch_first 格式，即 (batch_size, sequence_length, input_size)
 char_tensor = torch.tensor(padded_char_indices)  # 添加 batch 和 sequence 维度
-char_tensor2 = torch.tensor(padded_char_indices2)  # 添加 batch 和 sequence 维度
+#char_tensor2 = torch.tensor(padded_char_indices2)  # 添加 batch 和 sequence 维度
 
 # 定义模型并进行编码
 input_size = len(char_to_idx)
-hidden_size = 4
+hidden_size = 10
 num_layers = 1
 encoder = CharLSTMEncoder(input_size, hidden_size, num_layers)
 with torch.no_grad():
   sentence_encoding1 = encoder(char_tensor)
-  sentence_encoding2 = encoder(char_tensor2)
+  #sentence_encoding2 = encoder(char_tensor2)
 print("句子编码1:", sentence_encoding1)
-print("句子编码2:", sentence_encoding2)
+#print("句子编码2:", sentence_encoding2)
 
 #print("句子编码:", cosine_similarity(sentence_encoding1,sentence_encoding2))
 
+# 创建存放数据的文件夹
+output_dir = 'dataSet/Intermediate_data'
+os.makedirs(output_dir, exist_ok=True)
+
+# 保存句子编码
+torch.save(sentence_encoding1, os.path.join(output_dir, 'sentence_encoding1.pt'))
+# torch.save(sentence_encoding2, os.path.join(output_dir, 'sentence_encoding2.pt'))

@@ -1,11 +1,10 @@
+# 示例代码：节点特征维度为词嵌入向量的维度
 import torch
 import torch.nn.functional as F
 from torch_geometric.nn import GatedGraphConv
 from torch_geometric.data import Data, Batch
 from gensim.models import KeyedVectors
 import numpy as np
-import matplotlib.pyplot as plt
-from sklearn.manifold import TSNE
 
 # 加载预训练的词嵌入模型 (假设词嵌入模型已准备好)
 glove_path = 'dataSet/glove/glove.6B.50d.txt'  # 修改为实际路径
@@ -18,6 +17,8 @@ def get_feature_vector(word):
     except KeyError:
         return [0] * word_vectors.vector_size  # 返回零向量表示未找到的词
 
+
+
 # 将单词转换为 one-hot 编码
 def one_hot_encode(word, vocab_size):
     one_hot = np.zeros(vocab_size)
@@ -26,32 +27,31 @@ def one_hot_encode(word, vocab_size):
         one_hot[index] = 1
     return one_hot
 
+
+
 # 示例图1
-node_features_str_1 = ["LightOn", "DoorOpen", "OnTV"]
+node_features_str_1 = ["TVon", "TVoff", "cherry", "date"]
+edge_index_1 = torch.tensor([[0, 1, 2, 3, 0, 1], [1, 2, 3, 0, 2, 3]], dtype=torch.long)#边信息
+node_features_1 = [get_feature_vector(word) for word in node_features_str_1]
+x_1 = torch.tensor(node_features_1, dtype=torch.float)
+
 #使用one-hot编码进行编码
 # 生成词汇表索引
 word_to_index = {word: idx for idx, word in enumerate(node_features_str_1)}
 node_features_2 = [one_hot_encode(word,len(node_features_str_1)) for word in node_features_str_1]
 x_2 = torch.tensor(node_features_2, dtype=torch.float)
 
-# 生成边信息，其中有两种类型的边
-edge_index_1 = torch.tensor([[0, 1],
-                              [2, 2]], dtype=torch.long)
-edge_attr = torch.tensor([0, 0], dtype=torch.long)  # 边的类型编码
-
 # 构建图数据对象
-data_1 = Data(x=x_2, edge_index=edge_index_1, edge_attr=edge_attr)
+data_1 = Data(x=x_2, edge_index=edge_index_1)
 
 # 定义GGNN模型
 class GGNN(torch.nn.Module):
-    def __init__(self, in_channels, out_channels, num_layers, edge_types):
+    def __init__(self, in_channels, out_channels, num_layers):
         super(GGNN, self).__init__()
         self.conv = GatedGraphConv(out_channels, num_layers)
-        self.edge_embedding = torch.nn.Embedding(edge_types, out_channels)
         self.linear = torch.nn.Linear(out_channels, out_channels)
-
-    def forward(self, x, edge_index, edge_attr):
-        edge_embeddings = self.edge_embedding(edge_attr)
+        
+    def forward(self, x, edge_index):
         x = self.conv(x, edge_index)
         x = F.relu(x)
         x = self.linear(x)
@@ -69,23 +69,25 @@ device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 print(f"Using device: {device}")
 
 # 初始化模型
-in_channels = data_1.num_node_features  # 节点特征维度 固定长度
-out_channels = 10  # 输出的维度，可以根据需要调整
+in_channels = data_1.num_node_features  # 节点特征维度
+out_channels = 50  # 输出的维度，可以根据需要调整
 num_layers = 3  # GGNN层数
-edge_channels = 2  # 边特征维度
-model = GGNN(in_channels, out_channels, num_layers, edge_channels).to(device)
+model = GGNN(in_channels, out_channels, num_layers).to(device)
 
 # 将数据移动到GPU
 data_1 = data_1.to(device)
 
 # 运行模型
-output = model(data_1.x, data_1.edge_index, data_1.edge_attr)
+output = model(data_1.x, data_1.edge_index)
 
 print("输出向量大小：", output.shape)
 print("输出向量：", output)
 
-# 从模型输出中提取向量
-vectors = output.cpu().detach().numpy()
+# 从模型输出中提取第一个向量和第二个向量
+vector1 = output[0].cpu().detach().numpy()
+vector2 = output[1].cpu().detach().numpy()
 
-
+# 计算余弦相似度
+similarity = cosine_similarity(vector1, vector2)
+print("第一个向量和第二个向量的余弦相似度:", similarity)
 
