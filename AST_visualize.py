@@ -6,14 +6,11 @@ import json
 
 # JavaScript代码
 code = '''
-function backHome() {
-  if(event.lightON&&event.doorOpen){
-  event.CloseDoor;
-  event.OnTV
-  }
-else if(event.doorOpen){
-  event.closeDoor
-  }
+function playMusic(track, duration) {
+  event.playMusic(track);
+  setTimeout(() => {
+      event.stopMusic(track);
+  }, duration * 1000);
 }
 '''
 
