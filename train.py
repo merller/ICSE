@@ -3,9 +3,10 @@ import torch.nn as nn
 import torch.optim as optim
 from torch.utils.data import DataLoader, Dataset
 import json
+import random
+from attention_LSTM import LSTMWithAttention
 
-# 假设数据在 'data.json' 文件中
-data_path = 'data.json'
+data_path = 'dataSet/scene/Scene.json'
 
 class CustomDataset(Dataset):
     def __init__(self, data_path):
@@ -18,8 +19,15 @@ class CustomDataset(Dataset):
     def __getitem__(self, idx):
         item = self.data[idx]
         code = torch.tensor(item['code'], dtype=torch.float32)
-        pos_desc = torch.tensor(item['pos_desc'], dtype=torch.float32)
-        neg_desc = torch.tensor(item['neg_desc'], dtype=torch.float32)
+        pos_desc = torch.tensor(item['docstring'], dtype=torch.float32)
+        
+        # 选择一个随机的负样本
+        neg_idx = random.choice(range(len(self.data)))
+        while neg_idx == idx:
+            neg_idx = random.choice(range(len(self.data)))
+        neg_item = self.data[neg_idx]
+        neg_desc = torch.tensor(neg_item['docstring'], dtype=torch.float32)
+        
         return code, pos_desc, neg_desc
 
 # 定义数据集和数据加载器
@@ -39,18 +47,6 @@ class GGNN(nn.Module):
         attn_output = torch.sum(attn_weights * x, dim=1)
         return attn_output
 
-# 定义LSTM模型
-class LSTMEncoder(nn.Module):
-    def __init__(self, input_size, hidden_size, num_layers=1):
-        super(LSTMEncoder, self).__init__()
-        self.lstm = nn.LSTM(input_size, hidden_size, num_layers=num_layers, batch_first=True)
-        self.attention = nn.Linear(hidden_size, 1)
-    
-    def forward(self, x):
-        lstm_out, _ = self.lstm(x)
-        attn_weights = torch.softmax(self.attention(lstm_out), dim=1)
-        attn_output = torch.sum(attn_weights * lstm_out, dim=1)
-        return attn_output
 
 # 定义余弦相似度函数
 def cosine_similarity_torch(x, y):
@@ -66,7 +62,7 @@ def custom_loss(c, d_pos, d_neg, b):
 # 初始化模型、优化器和超参数
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 ggnn = GGNN(input_size=100, hidden_size=128).to(device)
-lstm = LSTMEncoder(input_size=100, hidden_size=128).to(device)
+lstm = LSTMWithAttention(input_size=100, hidden_size=128).to(device)
 optimizer = optim.Adam(list(ggnn.parameters()) + list(lstm.parameters()), lr=0.001)
 b = 0.1  # 常量 b
 
