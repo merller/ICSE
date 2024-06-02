@@ -14,11 +14,11 @@ model.to(device)
 encoder_model.to(device)
 
 # 输入查询
-query = "Turn your lights on when motion is detected."
+query = "if the light is on, open the TV."
 
 # 读取 JSON 数据集
-data_path = "dataSet/smartAPP/dataset.json"
-#data_path = "dataSet/scene/Scene.json"
+#data_path = "dataSet/smartAPP/dataset.json"
+data_path = "dataSet/scene/Scene.json"
 with open(data_path, 'r', encoding='utf-8') as f:
     data = json.load(f)
 
