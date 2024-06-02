@@ -14,14 +14,13 @@ with open(node_features_path, 'r') as f:
 
 # 读取边信息
 edge_index_1 = torch.load(edge_index_path)
-edge_attr = torch.load(edge_attr_path)
+#edge_attr = torch.load(edge_attr_path)
 
 # 输出到控制台
 print("Node Features:")
 print(node_features_str_1)
 
+
 print("\nEdge Index:")
 print(edge_index_1)
 
-print("\nEdge Attributes:")
-print(edge_attr)

@@ -5,7 +5,7 @@ import os
 
 # 设置文件路径
 output_dir = 'dataSet/Intermediate_data'
-output_path = os.path.join(output_dir, 'tree_lstm_output.pt')
+output_path = os.path.join(output_dir, 'output.pt')
 
 # 读取图编码
 output = torch.load(output_path)

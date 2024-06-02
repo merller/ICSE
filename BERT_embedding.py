@@ -12,7 +12,7 @@ model = BertModel.from_pretrained(model_dir, config=config)
 
 # 将句子转换为BERT模型的输入格式
 sentence1 = "turn on the TV"
-sentence2 = "turnOnLight"
+sentence2 = "turn On Light"
 sentence3 = "turn on the light"
 
 # 将句子大小写转换为小写

@@ -6,12 +6,16 @@ import json
 
 # JavaScript代码
 code = '''
-function playMusic(track, duration) {
-  event.playMusic(track);
-  setTimeout(() => {
-      event.stopMusic(track);
-  }, duration * 1000);
-}
+if (currentHumidity <= notHumidEnough) {
+		log.debug "Checking how long the humidity sensor has been reporting <= ${notHumidEnough}"
+		if (alreadySentSms) {
+			log.debug "Notification already sent within the last ${deltaMinutes} minutes"
+					} else {
+			log.debug "Humidity Fell Below ${notHumidEnough}:  sending SMS and activating ${mySwitch}"
+			send("${humiditySensor1.label} sensed high humidity level of ${evt.value}")
+			switch1?.off()
+		}
+	}
 '''
 
 # 解析JavaScript代码并生成AST
