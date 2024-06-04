@@ -20,7 +20,7 @@ class BiCharLSTMEncoder(nn.Module):
 def cosine_similarity(vec1, vec2):
     vec1 = vec1.detach().cpu().numpy()
     vec2 = vec2.detach().cpu().numpy()
-    dot_product = np.dot(vec1, vec2.T)
+    dot_product = np.dot(vec1, vec2)
     norm_vec1 = np.linalg.norm(vec1)
     norm_vec2 = np.linalg.norm(vec2)
     similarity = dot_product / (norm_vec1 * norm_vec2)
