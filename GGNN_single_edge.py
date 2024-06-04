@@ -1,86 +1,83 @@
 import torch
-import json
-import os
-import torch.nn.functional as F
-from torch_geometric.nn import GatedGraphConv
-from torch_geometric.data import Data, Batch
+import torch.nn as nn
 import numpy as np
+import torch_geometric
+from torch_geometric.data import Data
+from torch_geometric.nn import GatedGraphConv
 
-# 定义字母表
-alphabet = 'abcdefghijklmnopqrstuvwxyz'
-char_to_index = {char: idx for idx, char in enumerate(alphabet)}
+# 定义字符级嵌入和双向LSTM编码器
+class BiCharLSTMEncoder(nn.Module):
+    def __init__(self, vocab_size, embed_dim, hidden_dim, num_layers):
+        super(BiCharLSTMEncoder, self).__init__()
+        self.embedding = nn.Embedding(vocab_size, embed_dim)
+        self.lstm = nn.LSTM(embed_dim, hidden_dim, num_layers, batch_first=True, bidirectional=True)
+    
+    def forward(self, x):
+        embedded = self.embedding(x)
+        lstm_out, (h_n, c_n) = self.lstm(embedded)
+        # 拼接正向和反向最后一层隐状态
+        sentence_rep = torch.cat((h_n[-2], h_n[-1]), dim=1)
+        return sentence_rep
 
-# 将节点标签中的每个字符转换为索引
-def char_to_index_encode(label, max_length):
-    indices = np.zeros(max_length, dtype=int)
-    for i, char in enumerate(label):
-        if char in char_to_index:
-            indices[i] = char_to_index[char]
-    return indices
+# 假设我们有一个简单的字符词汇表
+char2idx = {char: idx for idx, char in enumerate("abcdefghijklmnopqrstuvwxyz ")}
+vocab_size = len(char2idx)
+embed_dim = 50
+hidden_dim = 20
+num_layers = 1
 
-# 设置文件路径
-output_dir = 'dataSet/Intermediate_data'
-node_features_path = os.path.join(output_dir, 'node_features_str_1.json')
-edge_index_path = os.path.join(output_dir, 'edge_index_1.pt')
-edge_attr_path = os.path.join(output_dir, 'edge_attr.pt')
+# 将句子转化为字符索引
+def sentence_to_indices(sentence, char2idx):
+    return torch.tensor([char2idx[char] for char in sentence.lower()], dtype=torch.long).unsqueeze(0)
 
-edge_index_1 = torch.tensor([[0, 1],
-                             [2, 2]], dtype=torch.long)
-node_features_str_1 = ["LightOn", "DoorOpen", "OnTV"]
+# 节点标签
+node_labels = ["doorOPEN", "lightON", "turnOnTV"]
+node_labels = [label.lower() for label in node_labels]
+input_seqs = [sentence_to_indices(label, char2idx) for label in node_labels]
 
-# 输出到控制台
-print("Node Features:")
-print(node_features_str_1)
+# 创建双向LSTM模型并获取节点表示
+lstm_encoder = BiCharLSTMEncoder(vocab_size, embed_dim, hidden_dim, num_layers)
+node_embeddings = torch.stack([lstm_encoder(seq).squeeze(0) for seq in input_seqs])
+print(node_embeddings)
 
-print("\nEdge Index:")
-print(edge_index_1)
+#创建用户query
+query = "the door is open"
+query_seq = sentence_to_indices(query, char2idx)
+query_embedding = lstm_encoder(query_seq).squeeze(0)
+print(query_embedding)
 
-# 确定最大节点标签长度
-max_length = max(len(label) for label in node_features_str_1)
+# 定义图数据
+data = Data()
+data.x = node_embeddings
 
-# 将节点标签编码为索引
-node_features_encoded = [char_to_index_encode(label.lower(), max_length) for label in node_features_str_1]
-x_encoded = torch.tensor(node_features_encoded, dtype=torch.float)
+# 边的连接信息
+edge_index = torch.tensor([[0, 1], 
+                           [1, 2]], dtype=torch.long)
 
-# 构建图数据对象
-data_1 = Data(x=x_encoded, edge_index=edge_index_1)
+data.edge_index = edge_index
 
-# 定义GGNN模型
-class GGNN(torch.nn.Module):
+
+class SimpleGGNN(nn.Module):
     def __init__(self, in_channels, out_channels, num_layers):
-        super(GGNN, self).__init__()
-        self.conv = GatedGraphConv(out_channels, num_layers)
-        self.linear = torch.nn.Linear(out_channels, out_channels)
-        
+        super(SimpleGGNN, self).__init__()
+        self.lin = nn.Linear(in_channels, out_channels)
+        self.convs = nn.ModuleList([
+            GatedGraphConv(out_channels, num_layers) for _ in range(num_layers)
+        ])
+    
     def forward(self, x, edge_index):
-        x = self.conv(x, edge_index)
-        x = F.relu(x)
-        x = self.linear(x)
+        x = self.lin(x)
+        for conv in self.convs:
+            x = conv(x, edge_index)
         return x
 
-# 检查是否有GPU可用
-device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-print(f"Using device: {device}")
+# 创建GGNN模型并进行前向传播
+in_channels = node_embeddings.size(1)
+out_channels = 32
+num_layers = 3
 
-# 初始化模型
-in_channels = data_1.num_node_features  # 节点特征维度
-out_channels = 30  # 输出的维度，可以根据需要调整
-num_layers = 3  # GGNN层数
-model = GGNN(in_channels, out_channels, num_layers).to(device)
+model = SimpleGGNN(in_channels, out_channels, num_layers)
 
-# 将数据移动到GPU
-data_1 = data_1.to(device)
-
-# 运行模型
-output = model(data_1.x, data_1.edge_index)
-
-print("输出向量大小：", output.shape)
-print("输出向量：", output)
-
-# 创建存放数据的文件夹
-output_dir = 'dataSet/Intermediate_data'
-os.makedirs(output_dir, exist_ok=True)
-
-# 将节点信息和边信息写入文件
-output_path = os.path.join(output_dir, 'output.pt')
-torch.save(output, output_path)
+# 获取图的节点表示
+node_representations = model(data.x, data.edge_index)
+print(node_representations)

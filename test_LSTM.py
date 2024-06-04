@@ -4,24 +4,13 @@ import numpy as np
 import os
 from gensim.models import KeyedVectors
 
-# 加载预训练的词嵌入模型 (假设词嵌入模型已准备好)
-glove_path = 'dataSet/glove/glove.6B.50d.txt'  # 修改为实际路径
-word_vectors = KeyedVectors.load_word2vec_format(glove_path, binary=False, no_header=True)
-
-# 将字符串特征转换为glove嵌入向量
-def get_feature_vector(word):
-    try:
-        return word_vectors[word]
-    except KeyError:
-        return [0] * word_vectors.vector_size  # 返回零向量表示未找到的词
-
 
 # 假设有一句话
-sentence1 = "Turn off your lights when one tap on your phone button."
-sentence2 = "turnOnTV"
+sentence1 = "light is on"
+sentence2 = "lightOn"
 #sentence3 = "turn on the light"
 #sentence3 = "set the light to 50%"
-sentence3 = "change the TV channel to 5"
+sentence3 = "change the TV channel to 5ereee"
 # 构建字符级别的嵌入字典
 char_to_idx = {char: idx + 1 for idx, char in enumerate("abcdefghijklmnopqrstuvwxyz")}
 char_to_idx['<pad>'] = 0  # 用于填充序列
@@ -44,28 +33,7 @@ class CharLSTMEncoder(nn.Module):
         output, _ = self.lstm(embedded)
         return output[:, -1, :]  # 返回序列最后一个时间步的输出作为句子的编码
 
-def cosine_similarity_matrix(matrix1, matrix2):
-    """
-    计算两个矩阵的余弦相似度
-    
-    参数：
-    - matrix1: 第一个矩阵，shape (m, n)
-    - matrix2: 第二个矩阵，shape (m, n)
-    
-    返回：
-    - similarity: 余弦相似度
-    """
-    # 计算矩阵的内积
-    dot_product = torch.mm(matrix1, matrix2.t())
-    
-    # 计算矩阵的范数
-    norm_matrix1 = torch.norm(matrix1, dim=1, keepdim=True)
-    norm_matrix2 = torch.norm(matrix2, dim=1, keepdim=True)
-    
-    # 计算余弦相似度
-    similarity = dot_product / (norm_matrix1 * norm_matrix2.t())
-    
-    return similarity
+
 
 def sum_and_average_columns(matrix):
     # 求每列的和
@@ -82,17 +50,8 @@ def sum_and_average_columns(matrix):
     
     return new_matrix
 
+
 def cosine_similarity(vector1, vector2):
-    """
-    计算两个向量的余弦相似度
-    
-    参数：
-     - vector1: 第一个向量，shape (n,)
-    - vector2: 第二个向量，shape (n,)
-        
-    返回：
-    - similarity: 余弦相似度
-    """
     dot_product = torch.dot(vector1, vector2)
     norm_vector1 = torch.norm(vector1)
     norm_vector2 = torch.norm(vector2)
@@ -117,10 +76,11 @@ padded_char_indices3 = [indices + [0] * (max_word_length - len(indices)) for ind
 char_tensor = torch.tensor(padded_char_indices)  # 添加 batch 和 sequence 维度
 char_tensor2 = torch.tensor(padded_char_indices2)  # 添加 batch 和 sequence 维度
 char_tensor3 = torch.tensor(padded_char_indices3)  # 添加 batch 和 sequence 维度
-
+print("char_tensor:", char_tensor2)
 
 # 定义模型并进行编码
 input_size = len(char_to_idx)
+print("input_size:", input_size)
 hidden_size = 20
 num_layers = 2
 encoder = CharLSTMEncoder(input_size, hidden_size, num_layers)
