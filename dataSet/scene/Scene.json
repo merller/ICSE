@@ -36,7 +36,10 @@
         "general_docstring":""
     },
     {
-
+        "code":"\nfunction adjustLighting(lightIds, temperature) {\nlightIds.forEach(id => {\n  event.changelight(id, temperature);\n});\n}\n\nfunction playMusic(track, duration) {\nevent.playMusic(track);\nsetTimeout(() => {\n     event.stopMusic(track);\n}, duration * 1000);\n}\n\nfunction controlGroundLights(duration) {\nevent.turnOnGroundLights();\nsetTimeout(() => {\n     event.turnOffGroundLights();\n}, duration * 1000);\n}\n\nfunction setAirConditionerTemperature(temperature) {\nconsole.log(`Setting air conditioner temperature to ${temperature}℃`);\nevent.setAirConditionerTemperature(temperature);\n}\n\nfunction turnOnFragranceMachine() {\nevent.turnOnFragranceMachine();\n}\n",
+        "accurate_docstring":"If movement is detected at the side door (groom’s entrance), adjust the top lights 1, 2, 3 to 4500K, control the sound system to play the music ‘Love so sweet’ for 10 seconds; if movement is detected at the main door (bride’s entrance), adjust the top lights 4, 5, 6 to 3500K, control the sound system to play the music ‘Ave Maria’ for 10 seconds; whenever the hallway sensor detects movement, turn on the floor lights, and turn them off after 2 seconds; maintain the air conditioning temperature at 23°C; 5) turn on the fragrance diffuser",
+        "docstring":"A romantic Western-style wedding featuring cool-toned lighting. Different music accompanies the entrance of the groom and bride. Lights change with movement, maintaining a comfortable temperature and introducing fragrance.",
+        "general_docstring":"A romantic Western-style scene with the entrance of the groom and bride"
     }
 
 ]
