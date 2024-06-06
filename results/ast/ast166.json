@@ -1,0 +1,549 @@
+[
+    {
+        "functionName": "installed",
+        "arguments": "",
+        "ast": [
+            {
+                "type": "BlockStatement",
+                "statement": "Block statement",
+                "children": [
+                    {
+                        "type": "BlockStatement",
+                        "statement": "Block statement",
+                        "children": [
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "log.debug(Installed with settings: $settings)",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ReturnStatement",
+                                "statement": "return this.initialize()",
+                                "children": [
+                                    
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "docstring": "Connect and Control your Yoics Enabled Devices"
+    },
+    {
+        "functionName": "updated",
+        "arguments": "",
+        "ast": [
+            {
+                "type": "BlockStatement",
+                "statement": "Block statement",
+                "children": [
+                    {
+                        "type": "BlockStatement",
+                        "statement": "Block statement",
+                        "children": [
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "log.debug(Updated with settings: $settings)",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "this.unsubscribe()",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ReturnStatement",
+                                "statement": "return this.initialize()",
+                                "children": [
+                                    
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "docstring": "Connect and Control your Yoics Enabled Devices"
+    },
+    {
+        "functionName": "uninstalled",
+        "arguments": "",
+        "ast": [
+            {
+                "type": "BlockStatement",
+                "statement": "Block statement",
+                "children": [
+                    {
+                        "type": "BlockStatement",
+                        "statement": "Block statement",
+                        "children": [
+                            {
+                                "type": "ReturnStatement",
+                                "statement": "return this.removeChildDevices(this.getChildDevices())",
+                                "children": [
+                                    
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "docstring": "Connect and Control your Yoics Enabled Devices"
+    },
+    {
+        "functionName": "initialize",
+        "arguments": "",
+        "ast": [
+            {
+                "type": "BlockStatement",
+                "statement": "Block statement",
+                "children": [
+                    {
+                        "type": "BlockStatement",
+                        "statement": "Block statement",
+                        "children": [
+                            {
+                                "type": "IfStatement",
+                                "statement": "If statement",
+                                "condition": {
+                                    "type": "BooleanExpression",
+                                    "expression": "state.suppressDelete",
+                                    "children": [
+                                        
+                                    ]
+                                },
+                                "ifBlock": {
+                                    "type": "BlockStatement",
+                                    "statement": "Block statement",
+                                    "children": [
+                                        {
+                                            "type": "ExpressionStatement",
+                                            "statement": "(state.suppressDelete = [:])",
+                                            "children": [
+                                                
+                                            ]
+                                        }
+                                    ]
+                                },
+                                "elseBlock": null,
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "log.debug(settings: $settings)",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def devices = cameras.collect({ java.lang.Object dni -> ... })",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "log.debug(created ${devices.size()} dropcams)",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def delete = this.getChildDevices().findAll({ ... })",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ReturnStatement",
+                                "statement": "return this.removeChildDevices(delete)",
+                                "children": [
+                                    
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "docstring": "Connect and Control your Yoics Enabled Devices"
+    },
+    {
+        "functionName": "removeChildFromSettings",
+        "arguments": "child",
+        "ast": [
+            {
+                "type": "BlockStatement",
+                "statement": "Block statement",
+                "children": [
+                    {
+                        "type": "BlockStatement",
+                        "statement": "Block statement",
+                        "children": [
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def device = child.device",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def dni = device.deviceNetworkId",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "log.debug(removing child device $device with dni $dni)",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "IfStatement",
+                                "statement": "If statement",
+                                "condition": {
+                                    "type": "BooleanExpression",
+                                    "expression": "state?.suppressDelete?.get(dni)",
+                                    "children": [
+                                        
+                                    ]
+                                },
+                                "ifBlock": {
+                                    "type": "BlockStatement",
+                                    "statement": "Block statement",
+                                    "children": [
+                                        {
+                                            "type": "ExpressionStatement",
+                                            "statement": "def newSettings = (settings.cameras?.findAll({ ... })) ? settings.cameras?.findAll({ ... }) : []",
+                                            "children": [
+                                                
+                                            ]
+                                        },
+                                        {
+                                            "type": "ReturnStatement",
+                                            "statement": "return app.updateSetting(cameras, newSettings)",
+                                            "children": [
+                                                
+                                            ]
+                                        }
+                                    ]
+                                },
+                                "elseBlock": null,
+                                "children": [
+                                    
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "docstring": "Connect and Control your Yoics Enabled Devices"
+    },
+    {
+        "functionName": "takePicture",
+        "arguments": "String dni, Integer imgWidth=null",
+        "ast": [
+            {
+                "type": "BlockStatement",
+                "statement": "Block statement",
+                "children": [
+                    {
+                        "type": "BlockStatement",
+                        "statement": "Block statement",
+                        "children": [
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def offLights = switches.findAll({ ... })",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "log.debug(offLights)",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "offLights.collect({ ... })",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "log.debug(parent.takePicture($dni, $imgWidth))",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def uuid = dni?.split(\\.)?.last()",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "log.debug(taking picture for $uuid ($dni))",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def imageBytes = <not implemented yet for class: org.codehaus.groovy.ast.expr.EmptyExpression$1>",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def loginRequired = false",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "TryCatchStatement",
+                                "statement": "<not implemented yet for class: org.codehaus.groovy.ast.stmt.TryCatchStatement>",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "IfStatement",
+                                "statement": "If statement",
+                                "condition": {
+                                    "type": "BooleanExpression",
+                                    "expression": "loginRequired",
+                                    "children": [
+                                        
+                                    ]
+                                },
+                                "ifBlock": {
+                                    "type": "BlockStatement",
+                                    "statement": "Block statement",
+                                    "children": [
+                                        {
+                                            "type": "ExpressionStatement",
+                                            "statement": "def loginResult = this.doLoginToken()",
+                                            "children": [
+                                                
+                                            ]
+                                        },
+                                        {
+                                            "type": "IfStatement",
+                                            "statement": "If statement",
+                                            "condition": {
+                                                "type": "BooleanExpression",
+                                                "expression": "loginResult.success",
+                                                "children": [
+                                                    
+                                                ]
+                                            },
+                                            "ifBlock": {
+                                                "type": "BlockStatement",
+                                                "statement": "Block statement",
+                                                "children": [
+                                                    {
+                                                        "type": "ExpressionStatement",
+                                                        "statement": "(imageBytes = this.doTakePicture(uuid, imgWidth))",
+                                                        "children": [
+                                                            
+                                                        ]
+                                                    }
+                                                ]
+                                            },
+                                            "elseBlock": {
+                                                "type": "BlockStatement",
+                                                "statement": "Block statement",
+                                                "children": [
+                                                    {
+                                                        "type": "ExpressionStatement",
+                                                        "statement": "log.error(tried to login to dropcam after failing to take a picture and failed)",
+                                                        "children": [
+                                                            
+                                                        ]
+                                                    }
+                                                ]
+                                            },
+                                            "children": [
+                                                
+                                            ]
+                                        }
+                                    ]
+                                },
+                                "elseBlock": null,
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "offLights.collect({ ... })",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ReturnStatement",
+                                "statement": "return imageBytes",
+                                "children": [
+                                    
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "docstring": "Connect and Control your Yoics Enabled Devices"
+    },
+    {
+        "functionName": "foauth",
+        "arguments": "",
+        "ast": [
+            {
+                "type": "BlockStatement",
+                "statement": "Block statement",
+                "children": [
+                    {
+                        "type": "BlockStatement",
+                        "statement": "Block statement",
+                        "children": [
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def html = <html>\n<head>\n\t<title>$inputQuery results</title>\n\t<meta name=\"apple-mobile-web-app-capable\" content=\"yes\" />\n\t<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n\t<link rel=\"shortcut icon\" href=\"/static/sT2cZkBCCKJduBLfQ6NfUjZg1AiMhFK9ESNxUjjlvsk.ico\" type=\"image/x-icon\">\n\t<link rel=\"apple-touch-icon\" href=\"/static/7UIUNICQhrzmPRYK3T7j5BhAsvUIbKE8OARNI702Dw9.png\">\n\t<link rel=\"apple-touch-icon\" sizes=\"114x114\" href=\"/static/HkpqhLsUc5flOzvxrpaoyybhcCP1iRd0ogxhWFJ9vKo.png\">\n\n\t<script src=\"/static/1vXORVkZK58St3QjdbzerXZDi9MfZQ8Q3wCyumiNiep.js\" type=\"text/javascript\" ></script>\n\t<link href=\"/static/ZLo6WmGLBQwvykZ4sFgJS1W8IKyGj3TKdKZXyHcBB9l.css\" type=\"text/css\" rel=\"stylesheet\" media=\"screen, projection\" />\n\t<link rel=\"stylesheet\" href=\"/static/sd6ug4HGJyhdTwTONDZK6Yw8VsYbyDa4qUPgLokOkTn.css\" type=\"text/css\">\n\n</head>\n<body>\n\n\t<h1>\n\t\tYoics Login\n\t</h1>\n\n<form name=\"login\" action=\"${this.buildUrl(, authorize)}\" method=\"post\">\nUser:\n<br>\n<input type=\"text\" name=\"user\" style=\"height: 50px;\">\n<br>\n<br>\nPassword:\n<br>\n<input type=\"password\" name=\"password\" style=\"height: 50px;\">\n\n<input type=\"submit\" value=\"Submit\">\n</form>\n\n\n</body>\n</html>",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ReturnStatement",
+                                "statement": "return this.render([status:200, contentType:text/html, data:html])",
+                                "children": [
+                                    
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "docstring": "Connect and Control your Yoics Enabled Devices"
+    },
+    {
+        "functionName": "authorize",
+        "arguments": "",
+        "ast": [
+            {
+                "type": "BlockStatement",
+                "statement": "Block statement",
+                "children": [
+                    {
+                        "type": "BlockStatement",
+                        "statement": "Block statement",
+                        "children": [
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def loginResult = this.doLogin(params.user, params.password)",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def result = <not implemented yet for class: org.codehaus.groovy.ast.expr.EmptyExpression$1>",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "IfStatement",
+                                "statement": "If statement",
+                                "condition": {
+                                    "type": "BooleanExpression",
+                                    "expression": "loginResult.success",
+                                    "children": [
+                                        
+                                    ]
+                                },
+                                "ifBlock": {
+                                    "type": "BlockStatement",
+                                    "statement": "Block statement",
+                                    "children": [
+                                        {
+                                            "type": "ExpressionStatement",
+                                            "statement": "(result = Successful)",
+                                            "children": [
+                                                
+                                            ]
+                                        },
+                                        {
+                                            "type": "ExpressionStatement",
+                                            "statement": "this.updateUserName(params.user)",
+                                            "children": [
+                                                
+                                            ]
+                                        }
+                                    ]
+                                },
+                                "elseBlock": {
+                                    "type": "BlockStatement",
+                                    "statement": "Block statement",
+                                    "children": [
+                                        {
+                                            "type": "ExpressionStatement",
+                                            "statement": "(result = Failed)",
+                                            "children": [
+                                                
+                                            ]
+                                        }
+                                    ]
+                                },
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def html = <html>\n<head>\n\t<title>$inputQuery results</title>\n\t<meta name=\"apple-mobile-web-app-capable\" content=\"yes\" />\n\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n<link rel=\"shortcut icon\" href=\"/static/sT2cZkBCCKJduBLfQ6NfUjZg1AiMhFK9ESNxUjjlvsk.ico\" type=\"image/x-icon\">\n<link rel=\"apple-touch-icon\" href=\"/static/7UIUNICQhrzmPRYK3T7j5BhAsvUIbKE8OARNI702Dw9.png\">\n<link rel=\"apple-touch-icon\" sizes=\"114x114\" href=\"/static/HkpqhLsUc5flOzvxrpaoyybhcCP1iRd0ogxhWFJ9vKo.png\">\n\n\n\n<script src=\"/static/1vXORVkZK58St3QjdbzerXZDi9MfZQ8Q3wCyumiNiep.js\" type=\"text/javascript\" ></script>\n<link href=\"/static/ZLo6WmGLBQwvykZ4sFgJS1W8IKyGj3TKdKZXyHcBB9l.css\" type=\"text/css\" rel=\"stylesheet\" media=\"screen, projection\" />\n<link rel=\"stylesheet\" href=\"/static/sd6ug4HGJyhdTwTONDZK6Yw8VsYbyDa4qUPgLokOkTn.css\" type=\"text/css\">\n<script>\nfunction buildCmd(){\n\n}\n</script>\n</head>\n<body>\n\n\t<h1>\n\t\tYoics Login $result!\n\t</h1>\n\n</body>\n</html>",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ReturnStatement",
+                                "statement": "return this.render([status:200, contentType:text/html, data:html])",
+                                "children": [
+                                    
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "docstring": "Connect and Control your Yoics Enabled Devices"
+    }
+]

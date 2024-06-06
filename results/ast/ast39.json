@@ -1,0 +1,662 @@
+[
+    {
+        "functionName": "installed",
+        "arguments": "",
+        "ast": [
+            {
+                "type": "BlockStatement",
+                "statement": "Block statement",
+                "children": [
+                    {
+                        "type": "BlockStatement",
+                        "statement": "Block statement",
+                        "children": [
+                            {
+                                "type": "ReturnStatement",
+                                "statement": "return this.initialize()",
+                                "children": [
+                                    
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "docstring": "Automatically locks a specific door after X minutes when closed  and unlocks it when open after X seconds."
+    },
+    {
+        "functionName": "updated",
+        "arguments": "",
+        "ast": [
+            {
+                "type": "BlockStatement",
+                "statement": "Block statement",
+                "children": [
+                    {
+                        "type": "BlockStatement",
+                        "statement": "Block statement",
+                        "children": [
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "this.unsubscribe()",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "this.unschedule()",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ReturnStatement",
+                                "statement": "return this.initialize()",
+                                "children": [
+                                    
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "docstring": "Automatically locks a specific door after X minutes when closed  and unlocks it when open after X seconds."
+    },
+    {
+        "functionName": "initialize",
+        "arguments": "",
+        "ast": [
+            {
+                "type": "BlockStatement",
+                "statement": "Block statement",
+                "children": [
+                    {
+                        "type": "BlockStatement",
+                        "statement": "Block statement",
+                        "children": [
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "log.debug(Settings: $settings)",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "this.subscribe(lock1, lock, doorHandler, [filterEvents:false])",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "this.subscribe(lock1, unlock, doorHandler, [filterEvents:false])",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "this.subscribe(contact, contact.open, doorHandler)",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ReturnStatement",
+                                "statement": "return this.subscribe(contact, contact.closed, doorHandler)",
+                                "children": [
+                                    
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "docstring": "Automatically locks a specific door after X minutes when closed  and unlocks it when open after X seconds."
+    },
+    {
+        "functionName": "lockDoor",
+        "arguments": "",
+        "ast": [
+            {
+                "type": "BlockStatement",
+                "statement": "Block statement",
+                "children": [
+                    {
+                        "type": "BlockStatement",
+                        "statement": "Block statement",
+                        "children": [
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "log.debug(Locking the door.)",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "lock1.lock()",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "IfStatement",
+                                "statement": "If statement",
+                                "condition": {
+                                    "type": "BooleanExpression",
+                                    "expression": "location.contactBookEnabled",
+                                    "children": [
+                                        
+                                    ]
+                                },
+                                "ifBlock": {
+                                    "type": "BlockStatement",
+                                    "statement": "Block statement",
+                                    "children": [
+                                        {
+                                            "type": "IfStatement",
+                                            "statement": "If statement",
+                                            "condition": {
+                                                "type": "BooleanExpression",
+                                                "expression": "recipients",
+                                                "children": [
+                                                    
+                                                ]
+                                            },
+                                            "ifBlock": {
+                                                "type": "BlockStatement",
+                                                "statement": "Block statement",
+                                                "children": [
+                                                    {
+                                                        "type": "ExpressionStatement",
+                                                        "statement": "log.debug(Sending Push Notification...)",
+                                                        "children": [
+                                                            
+                                                        ]
+                                                    },
+                                                    {
+                                                        "type": "ExpressionStatement",
+                                                        "statement": "this.sendNotificationToContacts($lock1 locked after $contact was closed for $minutesLater minutes!, recipients)",
+                                                        "children": [
+                                                            
+                                                        ]
+                                                    }
+                                                ]
+                                            },
+                                            "elseBlock": null,
+                                            "children": [
+                                                
+                                            ]
+                                        }
+                                    ]
+                                },
+                                "elseBlock": null,
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "IfStatement",
+                                "statement": "If statement",
+                                "condition": {
+                                    "type": "BooleanExpression",
+                                    "expression": "phoneNumber",
+                                    "children": [
+                                        
+                                    ]
+                                },
+                                "ifBlock": {
+                                    "type": "BlockStatement",
+                                    "statement": "Block statement",
+                                    "children": [
+                                        {
+                                            "type": "ExpressionStatement",
+                                            "statement": "log.debug(Sending text message...)",
+                                            "children": [
+                                                
+                                            ]
+                                        },
+                                        {
+                                            "type": "ReturnStatement",
+                                            "statement": "return this.sendSms(phoneNumber, $lock1 locked after $contact was closed for $minutesLater minutes!)",
+                                            "children": [
+                                                
+                                            ]
+                                        }
+                                    ]
+                                },
+                                "elseBlock": null,
+                                "children": [
+                                    
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "docstring": "Automatically locks a specific door after X minutes when closed  and unlocks it when open after X seconds."
+    },
+    {
+        "functionName": "unlockDoor",
+        "arguments": "",
+        "ast": [
+            {
+                "type": "BlockStatement",
+                "statement": "Block statement",
+                "children": [
+                    {
+                        "type": "BlockStatement",
+                        "statement": "Block statement",
+                        "children": [
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "log.debug(Unlocking the door.)",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "lock1.unlock()",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "IfStatement",
+                                "statement": "If statement",
+                                "condition": {
+                                    "type": "BooleanExpression",
+                                    "expression": "location.contactBookEnabled",
+                                    "children": [
+                                        
+                                    ]
+                                },
+                                "ifBlock": {
+                                    "type": "BlockStatement",
+                                    "statement": "Block statement",
+                                    "children": [
+                                        {
+                                            "type": "IfStatement",
+                                            "statement": "If statement",
+                                            "condition": {
+                                                "type": "BooleanExpression",
+                                                "expression": "recipients",
+                                                "children": [
+                                                    
+                                                ]
+                                            },
+                                            "ifBlock": {
+                                                "type": "BlockStatement",
+                                                "statement": "Block statement",
+                                                "children": [
+                                                    {
+                                                        "type": "ExpressionStatement",
+                                                        "statement": "log.debug(Sending Push Notification...)",
+                                                        "children": [
+                                                            
+                                                        ]
+                                                    },
+                                                    {
+                                                        "type": "ExpressionStatement",
+                                                        "statement": "this.sendNotificationToContacts($lock1 unlocked after $contact was opened for $secondsLater seconds!, recipients)",
+                                                        "children": [
+                                                            
+                                                        ]
+                                                    }
+                                                ]
+                                            },
+                                            "elseBlock": null,
+                                            "children": [
+                                                
+                                            ]
+                                        }
+                                    ]
+                                },
+                                "elseBlock": null,
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "IfStatement",
+                                "statement": "If statement",
+                                "condition": {
+                                    "type": "BooleanExpression",
+                                    "expression": "phoneNumber",
+                                    "children": [
+                                        
+                                    ]
+                                },
+                                "ifBlock": {
+                                    "type": "BlockStatement",
+                                    "statement": "Block statement",
+                                    "children": [
+                                        {
+                                            "type": "ExpressionStatement",
+                                            "statement": "log.debug(Sending text message...)",
+                                            "children": [
+                                                
+                                            ]
+                                        },
+                                        {
+                                            "type": "ReturnStatement",
+                                            "statement": "return this.sendSms(phoneNumber, $lock1 unlocked after $contact was opened for $secondsLater seconds!)",
+                                            "children": [
+                                                
+                                            ]
+                                        }
+                                    ]
+                                },
+                                "elseBlock": null,
+                                "children": [
+                                    
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "docstring": "Automatically locks a specific door after X minutes when closed  and unlocks it when open after X seconds."
+    },
+    {
+        "functionName": "doorHandler",
+        "arguments": "evt",
+        "ast": [
+            {
+                "type": "BlockStatement",
+                "statement": "Block statement",
+                "children": [
+                    {
+                        "type": "BlockStatement",
+                        "statement": "Block statement",
+                        "children": [
+                            {
+                                "type": "IfStatement",
+                                "statement": "If statement",
+                                "condition": {
+                                    "type": "BooleanExpression",
+                                    "expression": "((contact.latestValue(contact) == open) && (evt.value == locked))",
+                                    "children": [
+                                        
+                                    ]
+                                },
+                                "ifBlock": {
+                                    "type": "BlockStatement",
+                                    "statement": "Block statement",
+                                    "children": [
+                                        {
+                                            "type": "ReturnStatement",
+                                            "statement": "return this.runIn(secondsLater, unlockDoor)",
+                                            "children": [
+                                                
+                                            ]
+                                        }
+                                    ]
+                                },
+                                "elseBlock": {
+                                    "type": "IfStatement",
+                                    "statement": "If statement",
+                                    "condition": {
+                                        "type": "BooleanExpression",
+                                        "expression": "((contact.latestValue(contact) == open) && (evt.value == unlocked))",
+                                        "children": [
+                                            
+                                        ]
+                                    },
+                                    "ifBlock": {
+                                        "type": "BlockStatement",
+                                        "statement": "Block statement",
+                                        "children": [
+                                            {
+                                                "type": "ReturnStatement",
+                                                "statement": "return this.unschedule(unlockDoor)",
+                                                "children": [
+                                                    
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    "elseBlock": {
+                                        "type": "IfStatement",
+                                        "statement": "If statement",
+                                        "condition": {
+                                            "type": "BooleanExpression",
+                                            "expression": "((contact.latestValue(contact) == closed) && (evt.value == locked))",
+                                            "children": [
+                                                
+                                            ]
+                                        },
+                                        "ifBlock": {
+                                            "type": "BlockStatement",
+                                            "statement": "Block statement",
+                                            "children": [
+                                                {
+                                                    "type": "ReturnStatement",
+                                                    "statement": "return this.unschedule(lockDoor)",
+                                                    "children": [
+                                                        
+                                                    ]
+                                                }
+                                            ]
+                                        },
+                                        "elseBlock": {
+                                            "type": "IfStatement",
+                                            "statement": "If statement",
+                                            "condition": {
+                                                "type": "BooleanExpression",
+                                                "expression": "((contact.latestValue(contact) == closed) && (evt.value == unlocked))",
+                                                "children": [
+                                                    
+                                                ]
+                                            },
+                                            "ifBlock": {
+                                                "type": "BlockStatement",
+                                                "statement": "Block statement",
+                                                "children": [
+                                                    {
+                                                        "type": "ReturnStatement",
+                                                        "statement": "return this.runIn((minutesLater * 60), lockDoor)",
+                                                        "children": [
+                                                            
+                                                        ]
+                                                    }
+                                                ]
+                                            },
+                                            "elseBlock": {
+                                                "type": "IfStatement",
+                                                "statement": "If statement",
+                                                "condition": {
+                                                    "type": "BooleanExpression",
+                                                    "expression": "((lock1.latestValue(lock) == unlocked) && (evt.value == open))",
+                                                    "children": [
+                                                        
+                                                    ]
+                                                },
+                                                "ifBlock": {
+                                                    "type": "BlockStatement",
+                                                    "statement": "Block statement",
+                                                    "children": [
+                                                        {
+                                                            "type": "ReturnStatement",
+                                                            "statement": "return this.unschedule(lockDoor)",
+                                                            "children": [
+                                                                
+                                                            ]
+                                                        }
+                                                    ]
+                                                },
+                                                "elseBlock": {
+                                                    "type": "IfStatement",
+                                                    "statement": "If statement",
+                                                    "condition": {
+                                                        "type": "BooleanExpression",
+                                                        "expression": "((lock1.latestValue(lock) == unlocked) && (evt.value == closed))",
+                                                        "children": [
+                                                            
+                                                        ]
+                                                    },
+                                                    "ifBlock": {
+                                                        "type": "BlockStatement",
+                                                        "statement": "Block statement",
+                                                        "children": [
+                                                            {
+                                                                "type": "ReturnStatement",
+                                                                "statement": "return this.runIn((minutesLater * 60), lockDoor)",
+                                                                "children": [
+                                                                    
+                                                                ]
+                                                            }
+                                                        ]
+                                                    },
+                                                    "elseBlock": {
+                                                        "type": "BlockStatement",
+                                                        "statement": "Block statement",
+                                                        "children": [
+                                                            {
+                                                                "type": "ExpressionStatement",
+                                                                "statement": "log.debug(Unlocking the door.)",
+                                                                "children": [
+                                                                    
+                                                                ]
+                                                            },
+                                                            {
+                                                                "type": "ExpressionStatement",
+                                                                "statement": "lock1.unlock()",
+                                                                "children": [
+                                                                    
+                                                                ]
+                                                            },
+                                                            {
+                                                                "type": "IfStatement",
+                                                                "statement": "If statement",
+                                                                "condition": {
+                                                                    "type": "BooleanExpression",
+                                                                    "expression": "location.contactBookEnabled",
+                                                                    "children": [
+                                                                        
+                                                                    ]
+                                                                },
+                                                                "ifBlock": {
+                                                                    "type": "BlockStatement",
+                                                                    "statement": "Block statement",
+                                                                    "children": [
+                                                                        {
+                                                                            "type": "IfStatement",
+                                                                            "statement": "If statement",
+                                                                            "condition": {
+                                                                                "type": "BooleanExpression",
+                                                                                "expression": "recipients",
+                                                                                "children": [
+                                                                                    
+                                                                                ]
+                                                                            },
+                                                                            "ifBlock": {
+                                                                                "type": "BlockStatement",
+                                                                                "statement": "Block statement",
+                                                                                "children": [
+                                                                                    {
+                                                                                        "type": "ExpressionStatement",
+                                                                                        "statement": "log.debug(Sending Push Notification...)",
+                                                                                        "children": [
+                                                                                            
+                                                                                        ]
+                                                                                    },
+                                                                                    {
+                                                                                        "type": "ExpressionStatement",
+                                                                                        "statement": "this.sendNotificationToContacts($lock1 unlocked after $contact was opened or closed when $lock1 was locked!, recipients)",
+                                                                                        "children": [
+                                                                                            
+                                                                                        ]
+                                                                                    }
+                                                                                ]
+                                                                            },
+                                                                            "elseBlock": null,
+                                                                            "children": [
+                                                                                
+                                                                            ]
+                                                                        }
+                                                                    ]
+                                                                },
+                                                                "elseBlock": null,
+                                                                "children": [
+                                                                    
+                                                                ]
+                                                            },
+                                                            {
+                                                                "type": "IfStatement",
+                                                                "statement": "If statement",
+                                                                "condition": {
+                                                                    "type": "BooleanExpression",
+                                                                    "expression": "phoneNumber",
+                                                                    "children": [
+                                                                        
+                                                                    ]
+                                                                },
+                                                                "ifBlock": {
+                                                                    "type": "BlockStatement",
+                                                                    "statement": "Block statement",
+                                                                    "children": [
+                                                                        {
+                                                                            "type": "ExpressionStatement",
+                                                                            "statement": "log.debug(Sending text message...)",
+                                                                            "children": [
+                                                                                
+                                                                            ]
+                                                                        },
+                                                                        {
+                                                                            "type": "ReturnStatement",
+                                                                            "statement": "return this.sendSms(phoneNumber, $lock1 unlocked after $contact was opened or closed when $lock1 was locked!)",
+                                                                            "children": [
+                                                                                
+                                                                            ]
+                                                                        }
+                                                                    ]
+                                                                },
+                                                                "elseBlock": null,
+                                                                "children": [
+                                                                    
+                                                                ]
+                                                            }
+                                                        ]
+                                                    },
+                                                    "children": [
+                                                        
+                                                    ]
+                                                },
+                                                "children": [
+                                                    
+                                                ]
+                                            },
+                                            "children": [
+                                                
+                                            ]
+                                        },
+                                        "children": [
+                                            
+                                        ]
+                                    },
+                                    "children": [
+                                        
+                                    ]
+                                },
+                                "children": [
+                                    
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "docstring": "Automatically locks a specific door after X minutes when closed  and unlocks it when open after X seconds."
+    }
+]

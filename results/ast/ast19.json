@@ -1,0 +1,601 @@
+[
+    {
+        "functionName": "installed",
+        "arguments": "",
+        "ast": [
+            {
+                "type": "BlockStatement",
+                "statement": "Block statement",
+                "children": [
+                    {
+                        "type": "BlockStatement",
+                        "statement": "Block statement",
+                        "children": [
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "log.debug(Installed: $settings)",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ReturnStatement",
+                                "statement": "return this.subscribe(inTemp, temperature, temperatureHandler)",
+                                "children": [
+                                    
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "docstring": "Compares two temperatures \u2013 indoor vs outdoor, for example \u2013 then sends an alert if windows are open (or closed!). If you don't use an external temperature device, your location will be used instead."
+    },
+    {
+        "functionName": "updated",
+        "arguments": "",
+        "ast": [
+            {
+                "type": "BlockStatement",
+                "statement": "Block statement",
+                "children": [
+                    {
+                        "type": "BlockStatement",
+                        "statement": "Block statement",
+                        "children": [
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "log.debug(Updated: $settings)",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "this.unsubscribe()",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ReturnStatement",
+                                "statement": "return this.subscribe(inTemp, temperature, temperatureHandler)",
+                                "children": [
+                                    
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "docstring": "Compares two temperatures \u2013 indoor vs outdoor, for example \u2013 then sends an alert if windows are open (or closed!). If you don't use an external temperature device, your location will be used instead."
+    },
+    {
+        "functionName": "temperatureHandler",
+        "arguments": "evt",
+        "ast": [
+            {
+                "type": "BlockStatement",
+                "statement": "Block statement",
+                "children": [
+                    {
+                        "type": "BlockStatement",
+                        "statement": "Block statement",
+                        "children": [
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def currentOutTemp = null",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "IfStatement",
+                                "statement": "If statement",
+                                "condition": {
+                                    "type": "BooleanExpression",
+                                    "expression": "outTemp",
+                                    "children": [
+                                        
+                                    ]
+                                },
+                                "ifBlock": {
+                                    "type": "BlockStatement",
+                                    "statement": "Block statement",
+                                    "children": [
+                                        {
+                                            "type": "ExpressionStatement",
+                                            "statement": "(currentOutTemp = outTemp.latestValue(temperature))",
+                                            "children": [
+                                                
+                                            ]
+                                        }
+                                    ]
+                                },
+                                "elseBlock": {
+                                    "type": "BlockStatement",
+                                    "statement": "Block statement",
+                                    "children": [
+                                        {
+                                            "type": "ExpressionStatement",
+                                            "statement": "log.debug(No external temperature device set. Checking The Weather Company...)",
+                                            "children": [
+                                                
+                                            ]
+                                        },
+                                        {
+                                            "type": "ExpressionStatement",
+                                            "statement": "(currentOutTemp = this.weatherCheck())",
+                                            "children": [
+                                                
+                                            ]
+                                        }
+                                    ]
+                                },
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def currentInTemp = evt.doubleValue",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def openWindows = sensors.findAll({ ... })",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "log.trace(Temp event: $evt)",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "log.info(In: $currentInTemp; Out: $currentOutTemp)",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "IfStatement",
+                                "statement": "If statement",
+                                "condition": {
+                                    "type": "BooleanExpression",
+                                    "expression": "retryPeriod",
+                                    "children": [
+                                        
+                                    ]
+                                },
+                                "ifBlock": {
+                                    "type": "BlockStatement",
+                                    "statement": "Block statement",
+                                    "children": [
+                                        {
+                                            "type": "ExpressionStatement",
+                                            "statement": "def retryPeriod = 30",
+                                            "children": [
+                                                
+                                            ]
+                                        }
+                                    ]
+                                },
+                                "elseBlock": null,
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def timeAgo = new java.util.Date((this.now() - ((1000 * 60) * retryPeriod).toLong()))",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def recentEvents = inTemp.eventsSince(timeAgo)",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "log.trace(Found ${(recentEvents?.size()) ? recentEvents?.size() : 0} events in the last $retryPeriod minutes)",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "IfStatement",
+                                "statement": "If statement",
+                                "condition": {
+                                    "type": "BooleanExpression",
+                                    "expression": "((currentInTemp > minTemp) && (currentInTemp < maxTemp))",
+                                    "children": [
+                                        
+                                    ]
+                                },
+                                "ifBlock": {
+                                    "type": "BlockStatement",
+                                    "statement": "Block statement",
+                                    "children": [
+                                        {
+                                            "type": "ExpressionStatement",
+                                            "statement": "log.info(In comfort zone: $currentInTemp is between $minTemp and $maxTemp.)",
+                                            "children": [
+                                                
+                                            ]
+                                        },
+                                        {
+                                            "type": "ReturnStatement",
+                                            "statement": "return log.debug(No notifications sent.)",
+                                            "children": [
+                                                
+                                            ]
+                                        }
+                                    ]
+                                },
+                                "elseBlock": {
+                                    "type": "IfStatement",
+                                    "statement": "If statement",
+                                    "condition": {
+                                        "type": "BooleanExpression",
+                                        "expression": "(currentInTemp > maxTemp)",
+                                        "children": [
+                                            
+                                        ]
+                                    },
+                                    "ifBlock": {
+                                        "type": "BlockStatement",
+                                        "statement": "Block statement",
+                                        "children": [
+                                            {
+                                                "type": "ExpressionStatement",
+                                                "statement": "def alreadyNotified = (recentEvents.count({ ... }) > 1)",
+                                                "children": [
+                                                    
+                                                ]
+                                            },
+                                            {
+                                                "type": "IfStatement",
+                                                "statement": "If statement",
+                                                "condition": {
+                                                    "type": "BooleanExpression",
+                                                    "expression": "alreadyNotified",
+                                                    "children": [
+                                                        
+                                                    ]
+                                                },
+                                                "ifBlock": {
+                                                    "type": "BlockStatement",
+                                                    "statement": "Block statement",
+                                                    "children": [
+                                                        {
+                                                            "type": "IfStatement",
+                                                            "statement": "If statement",
+                                                            "condition": {
+                                                                "type": "BooleanExpression",
+                                                                "expression": "((currentOutTemp < maxTemp) && openWindows)",
+                                                                "children": [
+                                                                    
+                                                                ]
+                                                            },
+                                                            "ifBlock": {
+                                                                "type": "BlockStatement",
+                                                                "statement": "Block statement",
+                                                                "children": [
+                                                                    {
+                                                                        "type": "ReturnStatement",
+                                                                        "statement": "return this.send(Open some windows to cool down the house! Currently $currentInTemp\u00b0F inside and $currentOutTemp\u00b0F outside.)",
+                                                                        "children": [
+                                                                            
+                                                                        ]
+                                                                    }
+                                                                ]
+                                                            },
+                                                            "elseBlock": {
+                                                                "type": "IfStatement",
+                                                                "statement": "If statement",
+                                                                "condition": {
+                                                                    "type": "BooleanExpression",
+                                                                    "expression": "((currentOutTemp > maxTemp) && openWindows)",
+                                                                    "children": [
+                                                                        
+                                                                    ]
+                                                                },
+                                                                "ifBlock": {
+                                                                    "type": "BlockStatement",
+                                                                    "statement": "Block statement",
+                                                                    "children": [
+                                                                        {
+                                                                            "type": "ReturnStatement",
+                                                                            "statement": "return this.send(It's gotten warmer outside! You should close these windows: ${openWindows.join(, )}. Currently $currentInTemp\u00b0F inside and $currentOutTemp\u00b0F outside.)",
+                                                                            "children": [
+                                                                                
+                                                                            ]
+                                                                        }
+                                                                    ]
+                                                                },
+                                                                "elseBlock": {
+                                                                    "type": "BlockStatement",
+                                                                    "statement": "Block statement",
+                                                                    "children": [
+                                                                        {
+                                                                            "type": "ReturnStatement",
+                                                                            "statement": "return log.debug(No notifications sent. Everything is in the right place.)",
+                                                                            "children": [
+                                                                                
+                                                                            ]
+                                                                        }
+                                                                    ]
+                                                                },
+                                                                "children": [
+                                                                    
+                                                                ]
+                                                            },
+                                                            "children": [
+                                                                
+                                                            ]
+                                                        }
+                                                    ]
+                                                },
+                                                "elseBlock": {
+                                                    "type": "BlockStatement",
+                                                    "statement": "Block statement",
+                                                    "children": [
+                                                        {
+                                                            "type": "ReturnStatement",
+                                                            "statement": "return log.debug(Already notified! No notifications sent.)",
+                                                            "children": [
+                                                                
+                                                            ]
+                                                        }
+                                                    ]
+                                                },
+                                                "children": [
+                                                    
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    "elseBlock": {
+                                        "type": "IfStatement",
+                                        "statement": "If statement",
+                                        "condition": {
+                                            "type": "BooleanExpression",
+                                            "expression": "(currentInTemp < minTemp)",
+                                            "children": [
+                                                
+                                            ]
+                                        },
+                                        "ifBlock": {
+                                            "type": "BlockStatement",
+                                            "statement": "Block statement",
+                                            "children": [
+                                                {
+                                                    "type": "ExpressionStatement",
+                                                    "statement": "def alreadyNotified = (recentEvents.count({ ... }) > 1)",
+                                                    "children": [
+                                                        
+                                                    ]
+                                                },
+                                                {
+                                                    "type": "IfStatement",
+                                                    "statement": "If statement",
+                                                    "condition": {
+                                                        "type": "BooleanExpression",
+                                                        "expression": "alreadyNotified",
+                                                        "children": [
+                                                            
+                                                        ]
+                                                    },
+                                                    "ifBlock": {
+                                                        "type": "BlockStatement",
+                                                        "statement": "Block statement",
+                                                        "children": [
+                                                            {
+                                                                "type": "IfStatement",
+                                                                "statement": "If statement",
+                                                                "condition": {
+                                                                    "type": "BooleanExpression",
+                                                                    "expression": "((currentOutTemp > minTemp) && openWindows)",
+                                                                    "children": [
+                                                                        
+                                                                    ]
+                                                                },
+                                                                "ifBlock": {
+                                                                    "type": "BlockStatement",
+                                                                    "statement": "Block statement",
+                                                                    "children": [
+                                                                        {
+                                                                            "type": "ReturnStatement",
+                                                                            "statement": "return this.send(Open some windows to warm up the house! Currently $currentInTemp\u00b0F inside and $currentOutTemp\u00b0F outside.)",
+                                                                            "children": [
+                                                                                
+                                                                            ]
+                                                                        }
+                                                                    ]
+                                                                },
+                                                                "elseBlock": {
+                                                                    "type": "IfStatement",
+                                                                    "statement": "If statement",
+                                                                    "condition": {
+                                                                        "type": "BooleanExpression",
+                                                                        "expression": "((currentOutTemp < minTemp) && openWindows)",
+                                                                        "children": [
+                                                                            
+                                                                        ]
+                                                                    },
+                                                                    "ifBlock": {
+                                                                        "type": "BlockStatement",
+                                                                        "statement": "Block statement",
+                                                                        "children": [
+                                                                            {
+                                                                                "type": "ReturnStatement",
+                                                                                "statement": "return this.send(It's gotten colder outside! You should close these windows: ${openWindows.join(, )}. Currently $currentInTemp\u00b0F inside and $currentOutTemp\u00b0F outside.)",
+                                                                                "children": [
+                                                                                    
+                                                                                ]
+                                                                            }
+                                                                        ]
+                                                                    },
+                                                                    "elseBlock": {
+                                                                        "type": "BlockStatement",
+                                                                        "statement": "Block statement",
+                                                                        "children": [
+                                                                            {
+                                                                                "type": "ReturnStatement",
+                                                                                "statement": "return log.debug(No notifications sent. Everything is in the right place.)",
+                                                                                "children": [
+                                                                                    
+                                                                                ]
+                                                                            }
+                                                                        ]
+                                                                    },
+                                                                    "children": [
+                                                                        
+                                                                    ]
+                                                                },
+                                                                "children": [
+                                                                    
+                                                                ]
+                                                            }
+                                                        ]
+                                                    },
+                                                    "elseBlock": {
+                                                        "type": "BlockStatement",
+                                                        "statement": "Block statement",
+                                                        "children": [
+                                                            {
+                                                                "type": "ReturnStatement",
+                                                                "statement": "return log.debug(Already notified! No notifications sent.)",
+                                                                "children": [
+                                                                    
+                                                                ]
+                                                            }
+                                                        ]
+                                                    },
+                                                    "children": [
+                                                        
+                                                    ]
+                                                }
+                                            ]
+                                        },
+                                        "elseBlock": null,
+                                        "children": [
+                                            
+                                        ]
+                                    },
+                                    "children": [
+                                        
+                                    ]
+                                },
+                                "children": [
+                                    
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "docstring": "Compares two temperatures \u2013 indoor vs outdoor, for example \u2013 then sends an alert if windows are open (or closed!). If you don't use an external temperature device, your location will be used instead."
+    },
+    {
+        "functionName": "weatherCheck",
+        "arguments": "",
+        "ast": [
+            {
+                "type": "BlockStatement",
+                "statement": "Block statement",
+                "children": [
+                    {
+                        "type": "BlockStatement",
+                        "statement": "Block statement",
+                        "children": [
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def obs = this.getTwcConditions(zipCode)",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def currentTemp = obs.temperature",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "IfStatement",
+                                "statement": "If statement",
+                                "condition": {
+                                    "type": "BooleanExpression",
+                                    "expression": "currentTemp",
+                                    "children": [
+                                        
+                                    ]
+                                },
+                                "ifBlock": {
+                                    "type": "BlockStatement",
+                                    "statement": "Block statement",
+                                    "children": [
+                                        {
+                                            "type": "ExpressionStatement",
+                                            "statement": "log.trace(Temp: $currentTemp (The Weather Company))",
+                                            "children": [
+                                                
+                                            ]
+                                        },
+                                        {
+                                            "type": "ReturnStatement",
+                                            "statement": "return currentTemp",
+                                            "children": [
+                                                
+                                            ]
+                                        }
+                                    ]
+                                },
+                                "elseBlock": {
+                                    "type": "BlockStatement",
+                                    "statement": "Block statement",
+                                    "children": [
+                                        {
+                                            "type": "ExpressionStatement",
+                                            "statement": "log.warn(Did not get a temp: $obs)",
+                                            "children": [
+                                                
+                                            ]
+                                        },
+                                        {
+                                            "type": "ReturnStatement",
+                                            "statement": "return false",
+                                            "children": [
+                                                
+                                            ]
+                                        }
+                                    ]
+                                },
+                                "children": [
+                                    
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "docstring": "Compares two temperatures \u2013 indoor vs outdoor, for example \u2013 then sends an alert if windows are open (or closed!). If you don't use an external temperature device, your location will be used instead."
+    }
+]

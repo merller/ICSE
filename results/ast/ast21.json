@@ -1,0 +1,2471 @@
+[
+    {
+        "functionName": "installed",
+        "arguments": "",
+        "ast": [
+            {
+                "type": "BlockStatement",
+                "statement": "Block statement",
+                "children": [
+                    {
+                        "type": "BlockStatement",
+                        "statement": "Block statement",
+                        "children": [
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "log.debug(Installed with settings: $settings)",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ReturnStatement",
+                                "statement": "return this.initialize()",
+                                "children": [
+                                    
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "docstring": "With visible realtime energy usage status, have good energy habits and enrich your life\\r\\n"
+    },
+    {
+        "functionName": "updated",
+        "arguments": "",
+        "ast": [
+            {
+                "type": "BlockStatement",
+                "statement": "Block statement",
+                "children": [
+                    {
+                        "type": "BlockStatement",
+                        "statement": "Block statement",
+                        "children": [
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "log.debug(Updated with settings: $settings)",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "this.getUUID()",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "IfStatement",
+                                "statement": "If statement",
+                                "condition": {
+                                    "type": "BooleanExpression",
+                                    "expression": "atomicState.notPaired",
+                                    "children": [
+                                        
+                                    ]
+                                },
+                                "ifBlock": {
+                                    "type": "BlockStatement",
+                                    "statement": "Block statement",
+                                    "children": [
+                                        {
+                                            "type": "ExpressionStatement",
+                                            "statement": "def theDay = 1",
+                                            "children": [
+                                                
+                                            ]
+                                        },
+                                        {
+                                            "type": "ForStatement",
+                                            "statement": "<not implemented yet for class: org.codehaus.groovy.ast.stmt.ForStatement>",
+                                            "children": [
+                                                
+                                            ]
+                                        },
+                                        {
+                                            "type": "ExpressionStatement",
+                                            "statement": "def contract = 1",
+                                            "children": [
+                                                
+                                            ]
+                                        },
+                                        {
+                                            "type": "IfStatement",
+                                            "statement": "If statement",
+                                            "condition": {
+                                                "type": "BooleanExpression",
+                                                "expression": "((settings.contractType == High voltage) || (settings.contractType == \uc8fc\ud0dd\uc6a9 \uace0\uc555))",
+                                                "children": [
+                                                    
+                                                ]
+                                            },
+                                            "ifBlock": {
+                                                "type": "BlockStatement",
+                                                "statement": "Block statement",
+                                                "children": [
+                                                    {
+                                                        "type": "ExpressionStatement",
+                                                        "statement": "(contract = 2)",
+                                                        "children": [
+                                                            
+                                                        ]
+                                                    },
+                                                    {
+                                                        "type": "IfStatement",
+                                                        "statement": "If statement",
+                                                        "condition": {
+                                                            "type": "BooleanExpression",
+                                                            "expression": "(settings.energyPlan < 460)",
+                                                            "children": [
+                                                                
+                                                            ]
+                                                        },
+                                                        "ifBlock": {
+                                                            "type": "BlockStatement",
+                                                            "statement": "Block statement",
+                                                            "children": [
+                                                                {
+                                                                    "type": "ExpressionStatement",
+                                                                    "statement": "(settings.energyPlan = 490)",
+                                                                    "children": [
+                                                                        
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        },
+                                                        "elseBlock": null,
+                                                        "children": [
+                                                            
+                                                        ]
+                                                    }
+                                                ]
+                                            },
+                                            "elseBlock": {
+                                                "type": "BlockStatement",
+                                                "statement": "Block statement",
+                                                "children": [
+                                                    {
+                                                        "type": "IfStatement",
+                                                        "statement": "If statement",
+                                                        "condition": {
+                                                            "type": "BooleanExpression",
+                                                            "expression": "(settings.energyPlan < 1130)",
+                                                            "children": [
+                                                                
+                                                            ]
+                                                        },
+                                                        "ifBlock": {
+                                                            "type": "BlockStatement",
+                                                            "statement": "Block statement",
+                                                            "children": [
+                                                                {
+                                                                    "type": "ExpressionStatement",
+                                                                    "statement": "(settings.energyPlan = 1130)",
+                                                                    "children": [
+                                                                        
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        },
+                                                        "elseBlock": null,
+                                                        "children": [
+                                                            
+                                                        ]
+                                                    }
+                                                ]
+                                            },
+                                            "children": [
+                                                
+                                            ]
+                                        },
+                                        {
+                                            "type": "ExpressionStatement",
+                                            "statement": "def changeToUsageParam = this.makeGetParams(${state.domains.${atomicState.env_mode}}/1.2/devices/${atomicState.uuid}/bill/expectedUsage?bill=${settings.energyPlan}, [Authorization:Bearer ${atomicState.encoredAccessToken}, ContentType:application/json])",
+                                            "children": [
+                                                
+                                            ]
+                                        },
+                                        {
+                                            "type": "ExpressionStatement",
+                                            "statement": "def energyPlanUsage = this.getHttpGetJson(changeToUsageParam, CheckEnergyPlanUsage)",
+                                            "children": [
+                                                
+                                            ]
+                                        },
+                                        {
+                                            "type": "ExpressionStatement",
+                                            "statement": "def epUsage = 0",
+                                            "children": [
+                                                
+                                            ]
+                                        },
+                                        {
+                                            "type": "IfStatement",
+                                            "statement": "If statement",
+                                            "condition": {
+                                                "type": "BooleanExpression",
+                                                "expression": "energyPlanUsage",
+                                                "children": [
+                                                    
+                                                ]
+                                            },
+                                            "ifBlock": {
+                                                "type": "BlockStatement",
+                                                "statement": "Block statement",
+                                                "children": [
+                                                    {
+                                                        "type": "ExpressionStatement",
+                                                        "statement": "(epUsage = energyPlanUsage.usage)",
+                                                        "children": [
+                                                            
+                                                        ]
+                                                    }
+                                                ]
+                                            },
+                                            "elseBlock": null,
+                                            "children": [
+                                                
+                                            ]
+                                        },
+                                        {
+                                            "type": "ExpressionStatement",
+                                            "statement": "def configurationParam = this.makePostParams(${state.domains.${atomicState.env_mode}}/1.2/me, [Authorization:Bearer ${atomicState.encoredAccessToken}], [contractType:contract, meteringDay:theDay, maxLimitUsage:epUsage])",
+                                            "children": [
+                                                
+                                            ]
+                                        },
+                                        {
+                                            "type": "ReturnStatement",
+                                            "statement": "return this.getHttpPutJson(configurationParam)",
+                                            "children": [
+                                                
+                                            ]
+                                        }
+                                    ]
+                                },
+                                "elseBlock": null,
+                                "children": [
+                                    
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "docstring": "With visible realtime energy usage status, have good energy habits and enrich your life\\r\\n"
+    },
+    {
+        "functionName": "initialize",
+        "arguments": "",
+        "ast": [
+            {
+                "type": "BlockStatement",
+                "statement": "Block statement",
+                "children": [
+                    {
+                        "type": "BlockStatement",
+                        "statement": "Block statement",
+                        "children": [
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "log.debug(Initializing Application)",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def EATValidation = this.checkEncoreAccessTokenValidation()",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "IfStatement",
+                                "statement": "If statement",
+                                "condition": {
+                                    "type": "BooleanExpression",
+                                    "expression": "EATValidation",
+                                    "children": [
+                                        
+                                    ]
+                                },
+                                "ifBlock": {
+                                    "type": "BlockStatement",
+                                    "statement": "Block statement",
+                                    "children": [
+                                        {
+                                            "type": "ExpressionStatement",
+                                            "statement": "this.getUUID()",
+                                            "children": [
+                                                
+                                            ]
+                                        },
+                                        {
+                                            "type": "IfStatement",
+                                            "statement": "If statement",
+                                            "condition": {
+                                                "type": "BooleanExpression",
+                                                "expression": "atomicState.uuid",
+                                                "children": [
+                                                    
+                                                ]
+                                            },
+                                            "ifBlock": {
+                                                "type": "BlockStatement",
+                                                "statement": "Block statement",
+                                                "children": [
+                                                    {
+                                                        "type": "ExpressionStatement",
+                                                        "statement": "def pushParams = this.makePostParams(${state.domains.${atomicState.env_mode}}/1.2/devices/${atomicState.uuid}/events/push, [Authorization:Bearer ${atomicState.encoredAccessToken}, ContentType:application/json], [type:REST, regId:${state.accessToken}__${app.id}])",
+                                                        "children": [
+                                                            
+                                                        ]
+                                                    },
+                                                    {
+                                                        "type": "ExpressionStatement",
+                                                        "statement": "this.getHttpPostJson(pushParams)",
+                                                        "children": [
+                                                            
+                                                        ]
+                                                    }
+                                                ]
+                                            },
+                                            "elseBlock": null,
+                                            "children": [
+                                                
+                                            ]
+                                        }
+                                    ]
+                                },
+                                "elseBlock": {
+                                    "type": "BlockStatement",
+                                    "statement": "Block statement",
+                                    "children": [
+                                        {
+                                            "type": "ExpressionStatement",
+                                            "statement": "log.warning(Ecored Access Token did not get refreshed!)",
+                                            "children": [
+                                                
+                                            ]
+                                        }
+                                    ]
+                                },
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "(atomicState.dni = EncoredDTH01)",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def d = this.getChildDevice(atomicState.dni)",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "IfStatement",
+                                "statement": "If statement",
+                                "condition": {
+                                    "type": "BooleanExpression",
+                                    "expression": "d",
+                                    "children": [
+                                        
+                                    ]
+                                },
+                                "ifBlock": {
+                                    "type": "BlockStatement",
+                                    "statement": "Block statement",
+                                    "children": [
+                                        {
+                                            "type": "ExpressionStatement",
+                                            "statement": "log.debug(Creating Device Type Handler.)",
+                                            "children": [
+                                                
+                                            ]
+                                        },
+                                        {
+                                            "type": "ExpressionStatement",
+                                            "statement": "(d = this.addChildDevice(Encored Technologies, EnerTalk Energy Meter, atomicState.dni, null, [name:EnerTalk Energy Meter, label:name]))",
+                                            "children": [
+                                                
+                                            ]
+                                        }
+                                    ]
+                                },
+                                "elseBlock": {
+                                    "type": "BlockStatement",
+                                    "statement": "Block statement",
+                                    "children": [
+                                        {
+                                            "type": "ExpressionStatement",
+                                            "statement": "log.debug(Device already created)",
+                                            "children": [
+                                                
+                                            ]
+                                        }
+                                    ]
+                                },
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ReturnStatement",
+                                "statement": "return this.setSummary()",
+                                "children": [
+                                    
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "docstring": "With visible realtime energy usage status, have good energy habits and enrich your life\\r\\n"
+    },
+    {
+        "functionName": "setSummary",
+        "arguments": "",
+        "ast": [
+            {
+                "type": "BlockStatement",
+                "statement": "Block statement",
+                "children": [
+                    {
+                        "type": "BlockStatement",
+                        "statement": "Block statement",
+                        "children": [
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "log.debug(in setSummary)",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def text = Successfully installed.",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ReturnStatement",
+                                "statement": "return this.sendEvent([linkText:count.toString(), descriptionText:app.label, eventType:SOLUTION_SUMMARY, name:summary, value:text, data:[[icon:indicator-dot-gray, iconColor:#878787, value:text]], ... ])",
+                                "children": [
+                                    
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "docstring": "With visible realtime energy usage status, have good energy habits and enrich your life\\r\\n"
+    },
+    {
+        "functionName": "getInitialData",
+        "arguments": "",
+        "ast": [
+            {
+                "type": "BlockStatement",
+                "statement": "Block statement",
+                "children": [
+                    {
+                        "type": "BlockStatement",
+                        "statement": "Block statement",
+                        "children": [
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def lang = clientLocale?.language",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "IfStatement",
+                                "statement": "If statement",
+                                "condition": {
+                                    "type": "BooleanExpression",
+                                    "expression": "($lang == ko)",
+                                    "children": [
+                                        
+                                    ]
+                                },
+                                "ifBlock": {
+                                    "type": "BlockStatement",
+                                    "statement": "Block statement",
+                                    "children": [
+                                        {
+                                            "type": "ExpressionStatement",
+                                            "statement": "(lang = ko)",
+                                            "children": [
+                                                
+                                            ]
+                                        }
+                                    ]
+                                },
+                                "elseBlock": {
+                                    "type": "BlockStatement",
+                                    "statement": "Block statement",
+                                    "children": [
+                                        {
+                                            "type": "ExpressionStatement",
+                                            "statement": "(lang = en)",
+                                            "children": [
+                                                
+                                            ]
+                                        }
+                                    ]
+                                },
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "(atomicState.solutionModuleSettings.language = lang)",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ReturnStatement",
+                                "statement": "return atomicState.solutionModuleSettings",
+                                "children": [
+                                    
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "docstring": "With visible realtime energy usage status, have good energy habits and enrich your life\\r\\n"
+    },
+    {
+        "functionName": "consoleLog",
+        "arguments": "",
+        "ast": [
+            {
+                "type": "BlockStatement",
+                "statement": "Block statement",
+                "children": [
+                    {
+                        "type": "BlockStatement",
+                        "statement": "Block statement",
+                        "children": [
+                            {
+                                "type": "ReturnStatement",
+                                "statement": "return log.debug(console log: ${request.JSON.str})",
+                                "children": [
+                                    
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "docstring": "With visible realtime energy usage status, have good energy habits and enrich your life\\r\\n"
+    },
+    {
+        "functionName": "getHtml",
+        "arguments": "",
+        "ast": [
+            {
+                "type": "BlockStatement",
+                "statement": "Block statement",
+                "children": [
+                    {
+                        "type": "BlockStatement",
+                        "statement": "Block statement",
+                        "children": [
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def deviceStatusData = ",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def standbyData = ",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def meData = ",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def meteringData = ",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def rankingData = ",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def lastMonth = ",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def deviceId = ",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def standby = ",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def plan = ",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def start = ",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def end = ",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def meteringDay = ",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def meteringUsage = ",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def percent = ",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def tier = ",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def meteringPeriodBill = ",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def maxLimitUsageBill = <not implemented yet for class: org.codehaus.groovy.ast.expr.EmptyExpression$1>",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def maxLimitUsage = 0",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def deviceStatus = false",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def displayUnit = watt",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def meteringPeriodBillShow = ",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def meteringPeriodBillFalse = collecting data",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def standbyShow = ",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def standbyFalse = collecting data",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def rankingShow = collecting data",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def tierShow = collecting data",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def lastMonthShow = ",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def lastMonthFalse = no records",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def planShow = ",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def planFalse = set up plan",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def thisMonthUnitOne = ",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def thisMonthUnitTwo = ",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def planUnitOne = ",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def planUnitTwo = ",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def lastMonthUnit = ",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def standbyUnit = ",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def thisMonthTitle = This Month",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def tierTitle = Billing Tier",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def planTitle = Energy Goal",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def lastMonthTitle = Last Month",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def rankingTitle = Ranking",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def standbyTitle = Always on",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def energyMonitorDeviceTitle = EnerTalk Device",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def realtimeTitle = Realtime",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def onOff = OFF",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def rankImage = ",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def tierImage = ",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def htmlBody = ",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def lang = clientLocale?.language",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "IfStatement",
+                                "statement": "If statement",
+                                "condition": {
+                                    "type": "BooleanExpression",
+                                    "expression": "($lang == ko)",
+                                    "children": [
+                                        
+                                    ]
+                                },
+                                "ifBlock": {
+                                    "type": "BlockStatement",
+                                    "statement": "Block statement",
+                                    "children": [
+                                        {
+                                            "type": "ExpressionStatement",
+                                            "statement": "(atomicState.language = ko)",
+                                            "children": [
+                                                
+                                            ]
+                                        }
+                                    ]
+                                },
+                                "elseBlock": {
+                                    "type": "BlockStatement",
+                                    "statement": "Block statement",
+                                    "children": [
+                                        {
+                                            "type": "ExpressionStatement",
+                                            "statement": "(atomicState.language = en)",
+                                            "children": [
+                                                
+                                            ]
+                                        }
+                                    ]
+                                },
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "IfStatement",
+                                "statement": "If statement",
+                                "condition": {
+                                    "type": "BooleanExpression",
+                                    "expression": "(atomicState.language == ko)",
+                                    "children": [
+                                        
+                                    ]
+                                },
+                                "ifBlock": {
+                                    "type": "BlockStatement",
+                                    "statement": "Block statement",
+                                    "children": [
+                                        {
+                                            "type": "ExpressionStatement",
+                                            "statement": "(rankingShow = \ub370\uc774\ud130 \uc218\uc9d1 \uc911)",
+                                            "children": [
+                                                
+                                            ]
+                                        },
+                                        {
+                                            "type": "ExpressionStatement",
+                                            "statement": "(meteringPeriodBillFalse = \ub370\uc774\ud130 \uc218\uc9d1 \uc911)",
+                                            "children": [
+                                                
+                                            ]
+                                        },
+                                        {
+                                            "type": "ExpressionStatement",
+                                            "statement": "(lastMonthFalse = \uc815\ubcf4\uac00 \uc5c6\uc2b5\ub2c8\ub2e4)",
+                                            "children": [
+                                                
+                                            ]
+                                        },
+                                        {
+                                            "type": "ExpressionStatement",
+                                            "statement": "(standbyFalse = \ub370\uc774\ud130 \uc218\uc9d1 \uc911)",
+                                            "children": [
+                                                
+                                            ]
+                                        },
+                                        {
+                                            "type": "ExpressionStatement",
+                                            "statement": "(planFalse = \uacc4\ud68d\uc744 \uc785\ub825\ud558\uc138\uc694)",
+                                            "children": [
+                                                
+                                            ]
+                                        },
+                                        {
+                                            "type": "ExpressionStatement",
+                                            "statement": "(thisMonthTitle = \uc774\ubc88 \ub2ec)",
+                                            "children": [
+                                                
+                                            ]
+                                        },
+                                        {
+                                            "type": "ExpressionStatement",
+                                            "statement": "(tierTitle = \ub204\uc9c4\ub2e8\uacc4)",
+                                            "children": [
+                                                
+                                            ]
+                                        },
+                                        {
+                                            "type": "ExpressionStatement",
+                                            "statement": "(planTitle = \uc0ac\uc6a9 \uacc4\ud68d)",
+                                            "children": [
+                                                
+                                            ]
+                                        },
+                                        {
+                                            "type": "ExpressionStatement",
+                                            "statement": "(lastMonthTitle = \uc9c0\ub09c\ub2ec)",
+                                            "children": [
+                                                
+                                            ]
+                                        },
+                                        {
+                                            "type": "ExpressionStatement",
+                                            "statement": "(rankingTitle = \ub7ad\ud0b9)",
+                                            "children": [
+                                                
+                                            ]
+                                        },
+                                        {
+                                            "type": "ExpressionStatement",
+                                            "statement": "(standbyTitle = \ub300\uae30\uc804\ub825)",
+                                            "children": [
+                                                
+                                            ]
+                                        },
+                                        {
+                                            "type": "ExpressionStatement",
+                                            "statement": "(energyMonitorDeviceTitle = \uc2a4\ub9c8\ud2b8\ubbf8\ud130 \uc0c1\ud0dc)",
+                                            "children": [
+                                                
+                                            ]
+                                        },
+                                        {
+                                            "type": "ExpressionStatement",
+                                            "statement": "(realtimeTitle = \uc2e4\uc2dc\uac04)",
+                                            "children": [
+                                                
+                                            ]
+                                        }
+                                    ]
+                                },
+                                "elseBlock": null,
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def EATValidation = this.checkEncoreAccessTokenValidation()",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "log.debug(EATValidation)",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "IfStatement",
+                                "statement": "If statement",
+                                "condition": {
+                                    "type": "BooleanExpression",
+                                    "expression": "(EATValidation && atomicState.notPaired)",
+                                    "children": [
+                                        
+                                    ]
+                                },
+                                "ifBlock": {
+                                    "type": "BlockStatement",
+                                    "statement": "Block statement",
+                                    "children": [
+                                        {
+                                            "type": "ExpressionStatement",
+                                            "statement": "this.getUUID()",
+                                            "children": [
+                                                
+                                            ]
+                                        }
+                                    ]
+                                },
+                                "elseBlock": null,
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "log.debug(atomicState.notPaired)",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "IfStatement",
+                                "statement": "If statement",
+                                "condition": {
+                                    "type": "BooleanExpression",
+                                    "expression": "atomicState.notPaired",
+                                    "children": [
+                                        
+                                    ]
+                                },
+                                "ifBlock": {
+                                    "type": "BlockStatement",
+                                    "statement": "Block statement",
+                                    "children": [
+                                        {
+                                            "type": "IfStatement",
+                                            "statement": "If statement",
+                                            "condition": {
+                                                "type": "BooleanExpression",
+                                                "expression": "EATValidation",
+                                                "children": [
+                                                    
+                                                ]
+                                            },
+                                            "ifBlock": {
+                                                "type": "BlockStatement",
+                                                "statement": "Block statement",
+                                                "children": [
+                                                    {
+                                                        "type": "ExpressionStatement",
+                                                        "statement": "def deviceStatusParam = this.makeGetParams(${state.domains.${atomicState.env_mode}}/1.2/devices/${atomicState.uuid}/status, [Authorization:Bearer ${atomicState.encoredAccessToken}, ContentType:application/json])",
+                                                        "children": [
+                                                            
+                                                        ]
+                                                    },
+                                                    {
+                                                        "type": "ExpressionStatement",
+                                                        "statement": "(deviceStatusData = this.getHttpGetJson(deviceStatusParam, CheckDeviceStatus))",
+                                                        "children": [
+                                                            
+                                                        ]
+                                                    },
+                                                    {
+                                                        "type": "ExpressionStatement",
+                                                        "statement": "def standbyParam = this.makeGetParams(${state.domains.${atomicState.env_mode}}/1.2/devices/${atomicState.uuid}/standbyPower, [Authorization:Bearer ${atomicState.encoredAccessToken}, ContentType:application/json])",
+                                                        "children": [
+                                                            
+                                                        ]
+                                                    },
+                                                    {
+                                                        "type": "ExpressionStatement",
+                                                        "statement": "(standbyData = this.getHttpGetJson(standbyParam, CheckStandbyPower))",
+                                                        "children": [
+                                                            
+                                                        ]
+                                                    },
+                                                    {
+                                                        "type": "ExpressionStatement",
+                                                        "statement": "def meParam = this.makeGetParams(${state.domains.${atomicState.env_mode}}/1.2/me, [Authorization:Bearer ${atomicState.encoredAccessToken}, ContentType:application/json])",
+                                                        "children": [
+                                                            
+                                                        ]
+                                                    },
+                                                    {
+                                                        "type": "ExpressionStatement",
+                                                        "statement": "(meData = this.getHttpGetJson(meParam, CheckMe))",
+                                                        "children": [
+                                                            
+                                                        ]
+                                                    },
+                                                    {
+                                                        "type": "ExpressionStatement",
+                                                        "statement": "def meteringParam = this.makeGetParams(${state.domains.${atomicState.env_mode}}/1.2/devices/${atomicState.uuid}/meteringUsage, [Authorization:Bearer ${atomicState.encoredAccessToken}, ContentType:application/json])",
+                                                        "children": [
+                                                            
+                                                        ]
+                                                    },
+                                                    {
+                                                        "type": "ExpressionStatement",
+                                                        "statement": "(meteringData = this.getHttpGetJson(meteringParam, CheckMeteringUsage))",
+                                                        "children": [
+                                                            
+                                                        ]
+                                                    },
+                                                    {
+                                                        "type": "ExpressionStatement",
+                                                        "statement": "def rankingParam = this.makeGetParams(${state.domains.${atomicState.env_mode}}/1.2/ranking/usages/${atomicState.uuid}?state=current&period=monthly, [Authorization:Bearer ${atomicState.encoredAccessToken}, ContentType:application/json])",
+                                                        "children": [
+                                                            
+                                                        ]
+                                                    },
+                                                    {
+                                                        "type": "ExpressionStatement",
+                                                        "statement": "(rankingData = this.getHttpGetJson(rankingParam, CheckingRanking))",
+                                                        "children": [
+                                                            
+                                                        ]
+                                                    },
+                                                    {
+                                                        "type": "IfStatement",
+                                                        "statement": "If statement",
+                                                        "condition": {
+                                                            "type": "BooleanExpression",
+                                                            "expression": "deviceStatusData",
+                                                            "children": [
+                                                                
+                                                            ]
+                                                        },
+                                                        "ifBlock": {
+                                                            "type": "BlockStatement",
+                                                            "statement": "Block statement",
+                                                            "children": [
+                                                                {
+                                                                    "type": "IfStatement",
+                                                                    "statement": "If statement",
+                                                                    "condition": {
+                                                                        "type": "BooleanExpression",
+                                                                        "expression": "(deviceStatusData.status == NORMAL)",
+                                                                        "children": [
+                                                                            
+                                                                        ]
+                                                                    },
+                                                                    "ifBlock": {
+                                                                        "type": "BlockStatement",
+                                                                        "statement": "Block statement",
+                                                                        "children": [
+                                                                            {
+                                                                                "type": "ExpressionStatement",
+                                                                                "statement": "(deviceStatus = true)",
+                                                                                "children": [
+                                                                                    
+                                                                                ]
+                                                                            }
+                                                                        ]
+                                                                    },
+                                                                    "elseBlock": null,
+                                                                    "children": [
+                                                                        
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        },
+                                                        "elseBlock": null,
+                                                        "children": [
+                                                            
+                                                        ]
+                                                    },
+                                                    {
+                                                        "type": "ExpressionStatement",
+                                                        "statement": "log.debug(deiceStatusData : $deviceStatus || $deviceStatusData)",
+                                                        "children": [
+                                                            
+                                                        ]
+                                                    },
+                                                    {
+                                                        "type": "IfStatement",
+                                                        "statement": "If statement",
+                                                        "condition": {
+                                                            "type": "BooleanExpression",
+                                                            "expression": "standbyData",
+                                                            "children": [
+                                                                
+                                                            ]
+                                                        },
+                                                        "ifBlock": {
+                                                            "type": "BlockStatement",
+                                                            "statement": "Block statement",
+                                                            "children": [
+                                                                {
+                                                                    "type": "IfStatement",
+                                                                    "statement": "If statement",
+                                                                    "condition": {
+                                                                        "type": "BooleanExpression",
+                                                                        "expression": "standbyData.standbyPower",
+                                                                        "children": [
+                                                                            
+                                                                        ]
+                                                                    },
+                                                                    "ifBlock": {
+                                                                        "type": "BlockStatement",
+                                                                        "statement": "Block statement",
+                                                                        "children": [
+                                                                            {
+                                                                                "type": "ExpressionStatement",
+                                                                                "statement": "(standby = (standbyData.standbyPower / 1000))",
+                                                                                "children": [
+                                                                                    
+                                                                                ]
+                                                                            }
+                                                                        ]
+                                                                    },
+                                                                    "elseBlock": null,
+                                                                    "children": [
+                                                                        
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        },
+                                                        "elseBlock": null,
+                                                        "children": [
+                                                            
+                                                        ]
+                                                    },
+                                                    {
+                                                        "type": "IfStatement",
+                                                        "statement": "If statement",
+                                                        "condition": {
+                                                            "type": "BooleanExpression",
+                                                            "expression": "meData",
+                                                            "children": [
+                                                                
+                                                            ]
+                                                        },
+                                                        "ifBlock": {
+                                                            "type": "BlockStatement",
+                                                            "statement": "Block statement",
+                                                            "children": [
+                                                                {
+                                                                    "type": "IfStatement",
+                                                                    "statement": "If statement",
+                                                                    "condition": {
+                                                                        "type": "BooleanExpression",
+                                                                        "expression": "meData.maxLimitUsageBill",
+                                                                        "children": [
+                                                                            
+                                                                        ]
+                                                                    },
+                                                                    "ifBlock": {
+                                                                        "type": "BlockStatement",
+                                                                        "statement": "Block statement",
+                                                                        "children": [
+                                                                            {
+                                                                                "type": "ExpressionStatement",
+                                                                                "statement": "(maxLimitUsageBill = meData.maxLimitUsageBill)",
+                                                                                "children": [
+                                                                                    
+                                                                                ]
+                                                                            },
+                                                                            {
+                                                                                "type": "ExpressionStatement",
+                                                                                "statement": "(maxLimitUsage = meData.maxLimitUsage)",
+                                                                                "children": [
+                                                                                    
+                                                                                ]
+                                                                            }
+                                                                        ]
+                                                                    },
+                                                                    "elseBlock": null,
+                                                                    "children": [
+                                                                        
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        },
+                                                        "elseBlock": null,
+                                                        "children": [
+                                                            
+                                                        ]
+                                                    },
+                                                    {
+                                                        "type": "IfStatement",
+                                                        "statement": "If statement",
+                                                        "condition": {
+                                                            "type": "BooleanExpression",
+                                                            "expression": "meteringData",
+                                                            "children": [
+                                                                
+                                                            ]
+                                                        },
+                                                        "ifBlock": {
+                                                            "type": "BlockStatement",
+                                                            "statement": "Block statement",
+                                                            "children": [
+                                                                {
+                                                                    "type": "IfStatement",
+                                                                    "statement": "If statement",
+                                                                    "condition": {
+                                                                        "type": "BooleanExpression",
+                                                                        "expression": "meteringData.meteringPeriodBill",
+                                                                        "children": [
+                                                                            
+                                                                        ]
+                                                                    },
+                                                                    "ifBlock": {
+                                                                        "type": "BlockStatement",
+                                                                        "statement": "Block statement",
+                                                                        "children": [
+                                                                            {
+                                                                                "type": "ExpressionStatement",
+                                                                                "statement": "(meteringPeriodBill = meteringData.meteringPeriodBill)",
+                                                                                "children": [
+                                                                                    
+                                                                                ]
+                                                                            },
+                                                                            {
+                                                                                "type": "ExpressionStatement",
+                                                                                "statement": "(plan = (maxLimitUsageBill - meteringData.meteringPeriodBill))",
+                                                                                "children": [
+                                                                                    
+                                                                                ]
+                                                                            },
+                                                                            {
+                                                                                "type": "ExpressionStatement",
+                                                                                "statement": "(start = meteringData.meteringStart)",
+                                                                                "children": [
+                                                                                    
+                                                                                ]
+                                                                            },
+                                                                            {
+                                                                                "type": "ExpressionStatement",
+                                                                                "statement": "(end = meteringData.meteringEnd)",
+                                                                                "children": [
+                                                                                    
+                                                                                ]
+                                                                            },
+                                                                            {
+                                                                                "type": "ExpressionStatement",
+                                                                                "statement": "(meteringDay = meteringData.meteringDay)",
+                                                                                "children": [
+                                                                                    
+                                                                                ]
+                                                                            },
+                                                                            {
+                                                                                "type": "ExpressionStatement",
+                                                                                "statement": "(meteringUsage = meteringData.meteringPeriodUsage)",
+                                                                                "children": [
+                                                                                    
+                                                                                ]
+                                                                            },
+                                                                            {
+                                                                                "type": "ExpressionStatement",
+                                                                                "statement": "(tier = ((int) (meteringData.meteringPeriodUsage / 100000000) + 1))",
+                                                                                "children": [
+                                                                                    
+                                                                                ]
+                                                                            },
+                                                                            {
+                                                                                "type": "IfStatement",
+                                                                                "statement": "If statement",
+                                                                                "condition": {
+                                                                                    "type": "BooleanExpression",
+                                                                                    "expression": "(tier > 6)",
+                                                                                    "children": [
+                                                                                        
+                                                                                    ]
+                                                                                },
+                                                                                "ifBlock": {
+                                                                                    "type": "BlockStatement",
+                                                                                    "statement": "Block statement",
+                                                                                    "children": [
+                                                                                        {
+                                                                                            "type": "ExpressionStatement",
+                                                                                            "statement": "(tier = 6)",
+                                                                                            "children": [
+                                                                                                
+                                                                                            ]
+                                                                                        }
+                                                                                    ]
+                                                                                },
+                                                                                "elseBlock": null,
+                                                                                "children": [
+                                                                                    
+                                                                                ]
+                                                                            }
+                                                                        ]
+                                                                    },
+                                                                    "elseBlock": null,
+                                                                    "children": [
+                                                                        
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        },
+                                                        "elseBlock": null,
+                                                        "children": [
+                                                            
+                                                        ]
+                                                    },
+                                                    {
+                                                        "type": "IfStatement",
+                                                        "statement": "If statement",
+                                                        "condition": {
+                                                            "type": "BooleanExpression",
+                                                            "expression": "rankingData",
+                                                            "children": [
+                                                                
+                                                            ]
+                                                        },
+                                                        "ifBlock": {
+                                                            "type": "BlockStatement",
+                                                            "statement": "Block statement",
+                                                            "children": [
+                                                                {
+                                                                    "type": "IfStatement",
+                                                                    "statement": "If statement",
+                                                                    "condition": {
+                                                                        "type": "BooleanExpression",
+                                                                        "expression": "rankingData.user.ranking",
+                                                                        "children": [
+                                                                            
+                                                                        ]
+                                                                    },
+                                                                    "ifBlock": {
+                                                                        "type": "BlockStatement",
+                                                                        "statement": "Block statement",
+                                                                        "children": [
+                                                                            {
+                                                                                "type": "ExpressionStatement",
+                                                                                "statement": "(percent = (int) ((rankingData.user.ranking / rankingData.user.population) * 10))",
+                                                                                "children": [
+                                                                                    
+                                                                                ]
+                                                                            },
+                                                                            {
+                                                                                "type": "IfStatement",
+                                                                                "statement": "If statement",
+                                                                                "condition": {
+                                                                                    "type": "BooleanExpression",
+                                                                                    "expression": "(percent > 10)",
+                                                                                    "children": [
+                                                                                        
+                                                                                    ]
+                                                                                },
+                                                                                "ifBlock": {
+                                                                                    "type": "BlockStatement",
+                                                                                    "statement": "Block statement",
+                                                                                    "children": [
+                                                                                        {
+                                                                                            "type": "ExpressionStatement",
+                                                                                            "statement": "(percent = 10)",
+                                                                                            "children": [
+                                                                                                
+                                                                                            ]
+                                                                                        }
+                                                                                    ]
+                                                                                },
+                                                                                "elseBlock": null,
+                                                                                "children": [
+                                                                                    
+                                                                                ]
+                                                                            }
+                                                                        ]
+                                                                    },
+                                                                    "elseBlock": null,
+                                                                    "children": [
+                                                                        
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        },
+                                                        "elseBlock": null,
+                                                        "children": [
+                                                            
+                                                        ]
+                                                    },
+                                                    {
+                                                        "type": "IfStatement",
+                                                        "statement": "If statement",
+                                                        "condition": {
+                                                            "type": "BooleanExpression",
+                                                            "expression": "start",
+                                                            "children": [
+                                                                
+                                                            ]
+                                                        },
+                                                        "ifBlock": {
+                                                            "type": "BlockStatement",
+                                                            "statement": "Block statement",
+                                                            "children": [
+                                                                {
+                                                                    "type": "ExpressionStatement",
+                                                                    "statement": "def lastMonthParam = this.makeGetParams(${state.domains.${atomicState.env_mode}}/1.2/devices/${atomicState.uuid}/meteringUsages?period=monthly&start=$start&end=$end, [Authorization:Bearer ${atomicState.encoredAccessToken}, ContentType:application/json])",
+                                                                    "children": [
+                                                                        
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "type": "ExpressionStatement",
+                                                                    "statement": "(lastMonth = this.getHttpGetJson(lastMonthParam, ChecklastMonth))",
+                                                                    "children": [
+                                                                        
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        },
+                                                        "elseBlock": null,
+                                                        "children": [
+                                                            
+                                                        ]
+                                                    },
+                                                    {
+                                                        "type": "ExpressionStatement",
+                                                        "statement": "def d = this.getChildDevice(atomicState.dni)",
+                                                        "children": [
+                                                            
+                                                        ]
+                                                    },
+                                                    {
+                                                        "type": "ExpressionStatement",
+                                                        "statement": "def kWhMonth = (java.lang.Math.round((meteringUsage / 10000)) / 100)",
+                                                        "children": [
+                                                            
+                                                        ]
+                                                    },
+                                                    {
+                                                        "type": "ExpressionStatement",
+                                                        "statement": "def planUsed = 0",
+                                                        "children": [
+                                                            
+                                                        ]
+                                                    },
+                                                    {
+                                                        "type": "IfStatement",
+                                                        "statement": "If statement",
+                                                        "condition": {
+                                                            "type": "BooleanExpression",
+                                                            "expression": "(maxLimitUsage > 0)",
+                                                            "children": [
+                                                                
+                                                            ]
+                                                        },
+                                                        "ifBlock": {
+                                                            "type": "BlockStatement",
+                                                            "statement": "Block statement",
+                                                            "children": [
+                                                                {
+                                                                    "type": "ExpressionStatement",
+                                                                    "statement": "(planUsed = java.lang.Math.round(((meteringUsage / maxLimitUsage) * 100)))",
+                                                                    "children": [
+                                                                        
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        },
+                                                        "elseBlock": {
+                                                            "type": "BlockStatement",
+                                                            "statement": "Block statement",
+                                                            "children": [
+                                                                {
+                                                                    "type": "ExpressionStatement",
+                                                                    "statement": "(planUsed = java.lang.Math.round(((meteringUsage / 1000000) * 100)))",
+                                                                    "children": [
+                                                                        
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        },
+                                                        "children": [
+                                                            
+                                                        ]
+                                                    },
+                                                    {
+                                                        "type": "ExpressionStatement",
+                                                        "statement": "def realTimeParam = this.makeGetParams(${state.domains.${atomicState.env_mode}}/1.2/devices/${atomicState.uuid}/realtimeUsage, [Authorization:Bearer ${atomicState.encoredAccessToken}])",
+                                                        "children": [
+                                                            
+                                                        ]
+                                                    },
+                                                    {
+                                                        "type": "ExpressionStatement",
+                                                        "statement": "def realTimeInfo = this.getHttpGetJson(realTimeParam, CheckRealtimeinfo)",
+                                                        "children": [
+                                                            
+                                                        ]
+                                                    },
+                                                    {
+                                                        "type": "IfStatement",
+                                                        "statement": "If statement",
+                                                        "condition": {
+                                                            "type": "BooleanExpression",
+                                                            "expression": "realTimeInfo",
+                                                            "children": [
+                                                                
+                                                            ]
+                                                        },
+                                                        "ifBlock": {
+                                                            "type": "BlockStatement",
+                                                            "statement": "Block statement",
+                                                            "children": [
+                                                                {
+                                                                    "type": "ExpressionStatement",
+                                                                    "statement": "(realTimeInfo = 0)",
+                                                                    "children": [
+                                                                        
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        },
+                                                        "elseBlock": {
+                                                            "type": "BlockStatement",
+                                                            "statement": "Block statement",
+                                                            "children": [
+                                                                {
+                                                                    "type": "ExpressionStatement",
+                                                                    "statement": "(realTimeInfo = java.lang.Math.round((realTimeInfo.activePower / 1000)))",
+                                                                    "children": [
+                                                                        
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        },
+                                                        "children": [
+                                                            
+                                                        ]
+                                                    },
+                                                    {
+                                                        "type": "ExpressionStatement",
+                                                        "statement": "d?.sendEvent([name:view, value:$kWhMonth])",
+                                                        "children": [
+                                                            
+                                                        ]
+                                                    },
+                                                    {
+                                                        "type": "IfStatement",
+                                                        "statement": "If statement",
+                                                        "condition": {
+                                                            "type": "BooleanExpression",
+                                                            "expression": "deviceStatus",
+                                                            "children": [
+                                                                
+                                                            ]
+                                                        },
+                                                        "ifBlock": {
+                                                            "type": "BlockStatement",
+                                                            "statement": "Block statement",
+                                                            "children": [
+                                                                {
+                                                                    "type": "ExpressionStatement",
+                                                                    "statement": "d?.sendEvent([name:month, value:$thisMonthTitle \n $kWhMonth \n kWh])",
+                                                                    "children": [
+                                                                        
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        },
+                                                        "elseBlock": {
+                                                            "type": "BlockStatement",
+                                                            "statement": "Block statement",
+                                                            "children": [
+                                                                {
+                                                                    "type": "ExpressionStatement",
+                                                                    "statement": "d?.sendEvent([name:month, value:(((\n ${state.languageString.${atomicState.language}.message4.header} \n\n  + ${state.languageString.${atomicState.language}.message4.body1} \n ) + ${state.languageString.${atomicState.language}.message4.body2} \n ) + ${state.languageString.${atomicState.language}.message4.body3})])",
+                                                                    "children": [
+                                                                        
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        },
+                                                        "children": [
+                                                            
+                                                        ]
+                                                    },
+                                                    {
+                                                        "type": "ExpressionStatement",
+                                                        "statement": "d?.sendEvent([name:real, value:$realTimeInfow \n\n $realtimeTitle])",
+                                                        "children": [
+                                                            
+                                                        ]
+                                                    },
+                                                    {
+                                                        "type": "ExpressionStatement",
+                                                        "statement": "d?.sendEvent([name:tier, value:$tier \n\n $tierTitle])",
+                                                        "children": [
+                                                            
+                                                        ]
+                                                    },
+                                                    {
+                                                        "type": "ExpressionStatement",
+                                                        "statement": "d?.sendEvent([name:plan, value:$planUsed% \n\n $planTitle])",
+                                                        "children": [
+                                                            
+                                                        ]
+                                                    },
+                                                    {
+                                                        "type": "ExpressionStatement",
+                                                        "statement": "(deviceId = d.id)",
+                                                        "children": [
+                                                            
+                                                        ]
+                                                    }
+                                                ]
+                                            },
+                                            "elseBlock": {
+                                                "type": "BlockStatement",
+                                                "statement": "Block statement",
+                                                "children": [
+                                                    {
+                                                        "type": "ExpressionStatement",
+                                                        "statement": "log.error(Could not get Encored Access Token. Please try later.)",
+                                                        "children": [
+                                                            
+                                                        ]
+                                                    }
+                                                ]
+                                            },
+                                            "children": [
+                                                
+                                            ]
+                                        },
+                                        {
+                                            "type": "IfStatement",
+                                            "statement": "If statement",
+                                            "condition": {
+                                                "type": "BooleanExpression",
+                                                "expression": "((settings.displayUnit == WON(\u20a9)) || (settings.displayUnit == \uc6d0(\u20a9)))",
+                                                "children": [
+                                                    
+                                                ]
+                                            },
+                                            "ifBlock": {
+                                                "type": "BlockStatement",
+                                                "statement": "Block statement",
+                                                "children": [
+                                                    {
+                                                        "type": "ExpressionStatement",
+                                                        "statement": "(displayUnit = bill)",
+                                                        "children": [
+                                                            
+                                                        ]
+                                                    }
+                                                ]
+                                            },
+                                            "elseBlock": null,
+                                            "children": [
+                                                
+                                            ]
+                                        },
+                                        {
+                                            "type": "IfStatement",
+                                            "statement": "If statement",
+                                            "condition": {
+                                                "type": "BooleanExpression",
+                                                "expression": "meteringPeriodBill",
+                                                "children": [
+                                                    
+                                                ]
+                                            },
+                                            "ifBlock": {
+                                                "type": "BlockStatement",
+                                                "statement": "Block statement",
+                                                "children": [
+                                                    {
+                                                        "type": "ExpressionStatement",
+                                                        "statement": "(meteringPeriodBillShow = this.formatMoney($meteringPeriodBill))",
+                                                        "children": [
+                                                            
+                                                        ]
+                                                    },
+                                                    {
+                                                        "type": "ExpressionStatement",
+                                                        "statement": "(meteringPeriodBillFalse = )",
+                                                        "children": [
+                                                            
+                                                        ]
+                                                    },
+                                                    {
+                                                        "type": "ExpressionStatement",
+                                                        "statement": "(thisMonthUnitOne = &#x20A9;)",
+                                                        "children": [
+                                                            
+                                                        ]
+                                                    },
+                                                    {
+                                                        "type": "ExpressionStatement",
+                                                        "statement": "def dayPassed = this.getDayPassed(start, end, meteringDay)",
+                                                        "children": [
+                                                            
+                                                        ]
+                                                    },
+                                                    {
+                                                        "type": "IfStatement",
+                                                        "statement": "If statement",
+                                                        "condition": {
+                                                            "type": "BooleanExpression",
+                                                            "expression": "(atomicState.language == ko)",
+                                                            "children": [
+                                                                
+                                                            ]
+                                                        },
+                                                        "ifBlock": {
+                                                            "type": "BlockStatement",
+                                                            "statement": "Block statement",
+                                                            "children": [
+                                                                {
+                                                                    "type": "ExpressionStatement",
+                                                                    "statement": "(thisMonthUnitTwo = / $dayPassed\uc77c)",
+                                                                    "children": [
+                                                                        
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        },
+                                                        "elseBlock": {
+                                                            "type": "BlockStatement",
+                                                            "statement": "Block statement",
+                                                            "children": [
+                                                                {
+                                                                    "type": "IfStatement",
+                                                                    "statement": "If statement",
+                                                                    "condition": {
+                                                                        "type": "BooleanExpression",
+                                                                        "expression": "(dayPassed == 1)",
+                                                                        "children": [
+                                                                            
+                                                                        ]
+                                                                    },
+                                                                    "ifBlock": {
+                                                                        "type": "BlockStatement",
+                                                                        "statement": "Block statement",
+                                                                        "children": [
+                                                                            {
+                                                                                "type": "ExpressionStatement",
+                                                                                "statement": "(thisMonthUnitTwo = /$dayPassed day)",
+                                                                                "children": [
+                                                                                    
+                                                                                ]
+                                                                            }
+                                                                        ]
+                                                                    },
+                                                                    "elseBlock": {
+                                                                        "type": "BlockStatement",
+                                                                        "statement": "Block statement",
+                                                                        "children": [
+                                                                            {
+                                                                                "type": "ExpressionStatement",
+                                                                                "statement": "(thisMonthUnitTwo = /$dayPassed days)",
+                                                                                "children": [
+                                                                                    
+                                                                                ]
+                                                                            }
+                                                                        ]
+                                                                    },
+                                                                    "children": [
+                                                                        
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        },
+                                                        "children": [
+                                                            
+                                                        ]
+                                                    }
+                                                ]
+                                            },
+                                            "elseBlock": null,
+                                            "children": [
+                                                
+                                            ]
+                                        },
+                                        {
+                                            "type": "IfStatement",
+                                            "statement": "If statement",
+                                            "condition": {
+                                                "type": "BooleanExpression",
+                                                "expression": "plan",
+                                                "children": [
+                                                    
+                                                ]
+                                            },
+                                            "ifBlock": {
+                                                "type": "BlockStatement",
+                                                "statement": "Block statement",
+                                                "children": [
+                                                    {
+                                                        "type": "ExpressionStatement",
+                                                        "statement": "(planShow = plan)",
+                                                        "children": [
+                                                            
+                                                        ]
+                                                    },
+                                                    {
+                                                        "type": "IfStatement",
+                                                        "statement": "If statement",
+                                                        "condition": {
+                                                            "type": "BooleanExpression",
+                                                            "expression": "(plan >= 1000)",
+                                                            "children": [
+                                                                
+                                                            ]
+                                                        },
+                                                        "ifBlock": {
+                                                            "type": "BlockStatement",
+                                                            "statement": "Block statement",
+                                                            "children": [
+                                                                {
+                                                                    "type": "ExpressionStatement",
+                                                                    "statement": "(planShow = this.formatMoney($plan))",
+                                                                    "children": [
+                                                                        
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        },
+                                                        "elseBlock": null,
+                                                        "children": [
+                                                            
+                                                        ]
+                                                    },
+                                                    {
+                                                        "type": "ExpressionStatement",
+                                                        "statement": "(planFalse = )",
+                                                        "children": [
+                                                            
+                                                        ]
+                                                    },
+                                                    {
+                                                        "type": "ExpressionStatement",
+                                                        "statement": "(planUnitOne = &#x20A9;)",
+                                                        "children": [
+                                                            
+                                                        ]
+                                                    },
+                                                    {
+                                                        "type": "IfStatement",
+                                                        "statement": "If statement",
+                                                        "condition": {
+                                                            "type": "BooleanExpression",
+                                                            "expression": "(atomicState.language == ko)",
+                                                            "children": [
+                                                                
+                                                            ]
+                                                        },
+                                                        "ifBlock": {
+                                                            "type": "BlockStatement",
+                                                            "statement": "Block statement",
+                                                            "children": [
+                                                                {
+                                                                    "type": "ExpressionStatement",
+                                                                    "statement": "(planUnitTwo = \ub0a8\uc74c)",
+                                                                    "children": [
+                                                                        
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        },
+                                                        "elseBlock": {
+                                                            "type": "BlockStatement",
+                                                            "statement": "Block statement",
+                                                            "children": [
+                                                                {
+                                                                    "type": "ExpressionStatement",
+                                                                    "statement": "(planUnitTwo = left)",
+                                                                    "children": [
+                                                                        
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        },
+                                                        "children": [
+                                                            
+                                                        ]
+                                                    }
+                                                ]
+                                            },
+                                            "elseBlock": null,
+                                            "children": [
+                                                
+                                            ]
+                                        },
+                                        {
+                                            "type": "ExpressionStatement",
+                                            "statement": "log.debug(lastMonth)",
+                                            "children": [
+                                                
+                                            ]
+                                        },
+                                        {
+                                            "type": "IfStatement",
+                                            "statement": "If statement",
+                                            "condition": {
+                                                "type": "BooleanExpression",
+                                                "expression": "lastMonth.usages",
+                                                "children": [
+                                                    
+                                                ]
+                                            },
+                                            "ifBlock": {
+                                                "type": "BlockStatement",
+                                                "statement": "Block statement",
+                                                "children": [
+                                                    {
+                                                        "type": "ExpressionStatement",
+                                                        "statement": "(lastMonthShow = this.formatMoney(${lastMonth.usages[0].meteringPeriodBill}))",
+                                                        "children": [
+                                                            
+                                                        ]
+                                                    },
+                                                    {
+                                                        "type": "ExpressionStatement",
+                                                        "statement": "(lastMonthFalse = )",
+                                                        "children": [
+                                                            
+                                                        ]
+                                                    },
+                                                    {
+                                                        "type": "ExpressionStatement",
+                                                        "statement": "(lastMonthUnit = &#x20A9;)",
+                                                        "children": [
+                                                            
+                                                        ]
+                                                    }
+                                                ]
+                                            },
+                                            "elseBlock": null,
+                                            "children": [
+                                                
+                                            ]
+                                        },
+                                        {
+                                            "type": "IfStatement",
+                                            "statement": "If statement",
+                                            "condition": {
+                                                "type": "BooleanExpression",
+                                                "expression": "standby",
+                                                "children": [
+                                                    
+                                                ]
+                                            },
+                                            "ifBlock": {
+                                                "type": "BlockStatement",
+                                                "statement": "Block statement",
+                                                "children": [
+                                                    {
+                                                        "type": "ExpressionStatement",
+                                                        "statement": "(standbyShow = standby)",
+                                                        "children": [
+                                                            
+                                                        ]
+                                                    },
+                                                    {
+                                                        "type": "ExpressionStatement",
+                                                        "statement": "(standbyFalse = )",
+                                                        "children": [
+                                                            
+                                                        ]
+                                                    },
+                                                    {
+                                                        "type": "ExpressionStatement",
+                                                        "statement": "(standbyUnit = W)",
+                                                        "children": [
+                                                            
+                                                        ]
+                                                    }
+                                                ]
+                                            },
+                                            "elseBlock": null,
+                                            "children": [
+                                                
+                                            ]
+                                        },
+                                        {
+                                            "type": "IfStatement",
+                                            "statement": "If statement",
+                                            "condition": {
+                                                "type": "BooleanExpression",
+                                                "expression": "percent",
+                                                "children": [
+                                                    
+                                                ]
+                                            },
+                                            "ifBlock": {
+                                                "type": "BlockStatement",
+                                                "statement": "Block statement",
+                                                "children": [
+                                                    {
+                                                        "type": "ExpressionStatement",
+                                                        "statement": "(rankImage = <img id=\"image-rank\" src=\"https://s3-ap-northeast-1.amazonaws.com/smartthings-images/ranking_$percent.svg\" />)",
+                                                        "children": [
+                                                            
+                                                        ]
+                                                    },
+                                                    {
+                                                        "type": "ExpressionStatement",
+                                                        "statement": "(rankingShow = )",
+                                                        "children": [
+                                                            
+                                                        ]
+                                                    }
+                                                ]
+                                            },
+                                            "elseBlock": null,
+                                            "children": [
+                                                
+                                            ]
+                                        },
+                                        {
+                                            "type": "IfStatement",
+                                            "statement": "If statement",
+                                            "condition": {
+                                                "type": "BooleanExpression",
+                                                "expression": "tier",
+                                                "children": [
+                                                    
+                                                ]
+                                            },
+                                            "ifBlock": {
+                                                "type": "BlockStatement",
+                                                "statement": "Block statement",
+                                                "children": [
+                                                    {
+                                                        "type": "ExpressionStatement",
+                                                        "statement": "(tierImage = <img id=\"image-tier\" src=\"https://s3-ap-northeast-1.amazonaws.com/smartthings-images/tier_$tier.svg\" />)",
+                                                        "children": [
+                                                            
+                                                        ]
+                                                    },
+                                                    {
+                                                        "type": "ExpressionStatement",
+                                                        "statement": "(tierShow = )",
+                                                        "children": [
+                                                            
+                                                        ]
+                                                    }
+                                                ]
+                                            },
+                                            "elseBlock": null,
+                                            "children": [
+                                                
+                                            ]
+                                        },
+                                        {
+                                            "type": "IfStatement",
+                                            "statement": "If statement",
+                                            "condition": {
+                                                "type": "BooleanExpression",
+                                                "expression": "deviceStatus",
+                                                "children": [
+                                                    
+                                                ]
+                                            },
+                                            "ifBlock": {
+                                                "type": "BlockStatement",
+                                                "statement": "Block statement",
+                                                "children": [
+                                                    {
+                                                        "type": "ExpressionStatement",
+                                                        "statement": "(onOff = ON)",
+                                                        "children": [
+                                                            
+                                                        ]
+                                                    }
+                                                ]
+                                            },
+                                            "elseBlock": null,
+                                            "children": [
+                                                
+                                            ]
+                                        },
+                                        {
+                                            "type": "ExpressionStatement",
+                                            "statement": "(atomicState.solutionModuleSettings = [auth:atomicState.encoredAccessToken, deviceState:deviceStatus, percent:percent, displayUnit:displayUnit, language:atomicState.language, ... ])",
+                                            "children": [
+                                                
+                                            ]
+                                        },
+                                        {
+                                            "type": "ExpressionStatement",
+                                            "statement": "(htmlBody = \n         <div id=\"real-time\">\n         \t\n            <!-- real-time card -->\n            <div id=\"my-card\"></div>\n            \n            <!-- this month section -->\n            <div class=\"contents head\" id=\"content1\">\n              <p class=\"key\" id=\"korean-this\">$thisMonthTitle</p>\n              <span class=\"value-block\">\n                <p class=\"unit first\" id=\"unit-first-this\">$thisMonthUnitOne</p>\n                <p class=\"value\" id=\"value-this\">$meteringPeriodBillShow</p>\n                <p class=\"value\" id=\"value-fail\">$meteringPeriodBillFalse</p>\n                <p class=\"unit second\" id=\"unit-second-this\">$thisMonthUnitTwo</p>\n              </span> \n            </div>\n            \n            <!-- Billing Tier section -->\n            <div class=\"contents tail\" id=\"content2\">\n              <p class=\"key\" id=\"korean-tier\">$tierTitle</p>\n              <span class=\"value-block\">\n              \t<div id=\"value-block-tier\">$tierImage</div>\n                <p class=\"value\" id=\"value-fail\">$tierShow</p>\n              </span>\n            </div> \n            \n            <!-- Plan section -->\n            <div class=\"contents tail\" id=\"content3\">\n              <p class=\"key\" id=\"korean-plan\">$planTitle</p>\n              <span class=\"value-block\">\n                <p class=\"unit first\" id=\"unit-first-plan\">$planUnitOne</p>\n                <p class=\"value\" id=\"value-plan\">$planShow</p>\n                <p class=\"value\" id=\"value-fail\">$planFalse</p>\n                <p class=\"unit second\" id=\"unit-second-plan\"> $planUnitTwo</p> \n              </span>\n            </div>\n            \n            <!-- Last Month section -->\n            <div class=\"contents tail\" id=\"content4\">\n              <p class=\"key\" id=\"korean-last\">$lastMonthTitle</p>\n              <span class=\"value-block\">\n                <p class=\"unit first\" id=\"unit-first-last\">$lastMonthUnit</p>\n                <p class=\"value\" id=\"value-last\">$lastMonthShow</p>\n                <p class=\"value\" id=\"value-fail\">$lastMonthFalse</p>\n              </span>\n            </div>\n\n            <!-- Ranking section -->\n            <div class=\"contents tail\" id=\"content5\">\n              <p class=\"key\" id=\"korean-ranking\">$rankingTitle</p>\n              <span class=\"value-block\">\n              <div id=\"value-block-rank\">$rankImage</div>\n              <p class=\"value\" id=\"value-fail\">$rankingShow</p>\n              </span>\n            </div> \n            \n            <!-- Standby section -->\n            <div class=\"contents tail\" id=\"content6\">\n              <p class=\"key\" id=\"korean-standby\">$standbyTitle</p>\n              <span class=\"value-block\">\n                <p class=\"value\" id=\"value-standby\">$standbyShow</p>\n                <p class=\"value\" id=\"value-fail\">$standbyFalse</p>\n                <p class=\"unit third\" id=\"unit-third-standby\">$standbyUnit<p>\n              </span>\n            </div>\n            \n            <!-- Device status section -->\n            <div class=\"contents tail\" id=\"content7\">\n              <p class=\"key\" id=\"korean-device\">$energyMonitorDeviceTitle</p>\n              <span class=\"value-block\">\n                <div class=\"circle\"></div>\n                <p class=\"value last\" id=\"value-ON-OFF\">$onOff</p>\n              </span>\n            </div>\n            \n          </div>\n          \n          <!-- hidden section -->\n          \n\t\t  <div id=\"this-month\">\n            <div class=\"card-header\">\n              <p class=\"st-title\" id=\"korean-title-this\">$thisMonthTitle</p>\n              <button class=\"st-show\" id=\"show\">X</button>\n            </div>\n            <div class=\"cards\" id=\"my-card2\"></div>\n            <div class=\"cards\" id=\"my-card3\"></div>\n          </div>\n          \n          <div id=\"last-month\">\n            <div class=\"card-header\">\n              <p class=\"st-title\" id=\"korean-title-last\">$lastMonthTitle</p>\n              <button class=\"st-show\" id=\"show2\">X</button>\n            </div>\n            <div class=\"cards\" id=\"my-card4\"></div>\n          </div>\n          \n          <div id=\"progressive-step\">\n            <div class=\"card-header\">\n              <p class=\"st-title\" id=\"korean-title-tier\">$tierTitle</p>\n              <button class=\"st-show\" id=\"show3\">X</button>\n            </div>\n            <div class=\"cards\" id=\"my-card5\"></div>\n          </div>\n          \n          <div id=\"ranking\">\n            <div class=\"card-header\">\n              <p class=\"st-title\" id=\"korean-title-ranking\">$rankingTitle</p>\n              <button class=\"st-show\" id=\"show4\">X</button>\n            </div>\n            <div class=\"cards\" id=\"my-card6\"></div>\n          </div>\n          \n          <div id=\"plan\">\n            <div class=\"card-header\">\n              <p class=\"st-title\" id=\"korean-title-plan\">$planTitle</p>\n              <button class=\"st-show\" id=\"show5\">X</button>\n            </div>\n            <div class=\"cards\" id=\"my-card7\"></div>\n          </div>\n          \n          <div id=\"standby\">\n            <div class=\"card-header\">\n              <p class=\"st-title\" id=\"korean-title-standby\">$standbyTitle</p>\n              <button class=\"st-show\" id=\"show6\">X</button>\n            </div>\n            <div class=\"cards\" id=\"my-card8\"></div>\n          </div>\n          <script>\n          \t     $(\"#this-month\").slideUp();\n                $(\"#last-month\").slideUp();\n                $(\"#progressive-step\").slideUp();\n                $(\"#ranking\").slideUp();\n                $(\"#plan\").slideUp();\n                $(\"#standby\").slideUp();\n\n                var UI = new Encored.UI({\n        \n                });\n                UI.renderCard({\n            \t   'cards': [{\n                \t'id': 'ui:h:strealtime:v1', \n                    'params': {\n                                'lang': '${atomicState.language}', \n                                'useDemoLabel': 1, \n                                'displayUnit': '$displayUnit'\n\t\t\t\t\t}\n\t\t\t\t    }], \n                    'accessToken': '${atomicState.encoredAccessToken}', \n                    'target': document.getElementById(\"my-card\")\n\t\t\t     });\n          </script>\n        <script src=\"${this.buildResourceUrl(javascript/app.js)}\"></script>\n        \n        )",
+                                            "children": [
+                                                
+                                            ]
+                                        }
+                                    ]
+                                },
+                                "elseBlock": {
+                                    "type": "BlockStatement",
+                                    "statement": "Block statement",
+                                    "children": [
+                                        {
+                                            "type": "ExpressionStatement",
+                                            "statement": "log.debug(abotu to ask device connection)",
+                                            "children": [
+                                                
+                                            ]
+                                        },
+                                        {
+                                            "type": "ExpressionStatement",
+                                            "statement": "def d = this.getChildDevice(atomicState.dni)",
+                                            "children": [
+                                                
+                                            ]
+                                        },
+                                        {
+                                            "type": "ExpressionStatement",
+                                            "statement": "d?.sendEvent([name:month, value:\n ${state.languageString.${atomicState.language}.message3.header} \n\n ${state.languageString.${atomicState.language}.message3.body1} \n ${state.languageString.${atomicState.language}.message3.body2}])",
+                                            "children": [
+                                                
+                                            ]
+                                        },
+                                        {
+                                            "type": "ExpressionStatement",
+                                            "statement": "(deviceId = d.id)",
+                                            "children": [
+                                                
+                                            ]
+                                        },
+                                        {
+                                            "type": "IfStatement",
+                                            "statement": "If statement",
+                                            "condition": {
+                                                "type": "BooleanExpression",
+                                                "expression": "(state.language == ko)",
+                                                "children": [
+                                                    
+                                                ]
+                                            },
+                                            "ifBlock": {
+                                                "type": "BlockStatement",
+                                                "statement": "Block statement",
+                                                "children": [
+                                                    {
+                                                        "type": "ExpressionStatement",
+                                                        "statement": "(energyMonitorDeviceTitle = \uc2a4\ub9c8\ud2b8\ubbf8\ud130 \uc0c1\ud0dc)",
+                                                        "children": [
+                                                            
+                                                        ]
+                                                    }
+                                                ]
+                                            },
+                                            "elseBlock": null,
+                                            "children": [
+                                                
+                                            ]
+                                        },
+                                        {
+                                            "type": "ExpressionStatement",
+                                            "statement": "(atomicState.solutionModuleSettings = [dId:deviceId, pairing:false])",
+                                            "children": [
+                                                
+                                            ]
+                                        },
+                                        {
+                                            "type": "ExpressionStatement",
+                                            "statement": "(htmlBody = \n        \n         \t<div id=\"real-time\">\n        \n            \t<!-- real-time card -->\n                <div id=\"st-pairing-card\">\n                \t<p class=\"st-pairing-card-header\" align=\"center\">${state.languageString.${atomicState.language}.message3.header}</p>\n                \t<p class=\"st-pairing-card-body\" align=\"center\"> ${state.languageString.${atomicState.language}.message3.body1} <br/> ${state.languageString.${atomicState.language}.message3.body2}</p>\n                \t<div id=\"st-deep-link-container\"></div>\n                </div>\n\n\n\n                <!-- Device status section -->\n                <div class=\"contents tail\" id=\"content7\">\n                  <p class=\"key\">$energyMonitorDeviceTitle</p>\n                  <span class=\"value-block\">\n                    <p class=\"value last\">${state.languageString.${atomicState.language}.message3.button2}</p>\n                  </span>\n                </div>\n            \n          \t</div>\n\t\t  \n          \t<script src=\"https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js\"></script>\n            <script src=\"${this.buildResourceUrl(javascript/app.js)}\"></script>\n            <script>\n                var ua = navigator.userAgent.toLowerCase();\n                var isAndroid = ua.indexOf(\"android\") > -1; //&& ua.indexOf(\"mobile\");\n                if(!isAndroid) { \n                \t$(\"#st-deep-link-container\").html(\"<a id='st-deep-link' href='https://itunes.apple.com/kr/app/enertalk-for-home/id1024660780?mt=8'><p class='st-deep-text'>${state.languageString.${state.language}.message3.button1}</p></a>\");\n\t\t\t\t} else {\n                \t$(\"#st-deep-link-container\").html(\"<a id='st-deep-link' href='market://details?id=com.ionicframework.enertalkhome874425'><p class='st-deep-text'>${state.languageString.${state.language}.message3.button1}</p></a>\");\n                };\n            </script>\n        )",
+                                            "children": [
+                                                
+                                            ]
+                                        }
+                                    ]
+                                },
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ReturnStatement",
+                                "statement": "return this.renderHTML({ ... })",
+                                "children": [
+                                    
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "docstring": "With visible realtime energy usage status, have good energy habits and enrich your life\\r\\n"
+    },
+    {
+        "functionName": "getEncoredPush",
+        "arguments": "",
+        "ast": [
+            {
+                "type": "BlockStatement",
+                "statement": "Block statement",
+                "children": [
+                    {
+                        "type": "BlockStatement",
+                        "statement": "Block statement",
+                        "children": [
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "byte[] decoded = ${params.msg}.decodeBase64()",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def decodedString = new java.lang.String(decoded)",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "IfStatement",
+                                "statement": "If statement",
+                                "condition": {
+                                    "type": "BooleanExpression",
+                                    "expression": "(settings.notification == true)",
+                                    "children": [
+                                        
+                                    ]
+                                },
+                                "ifBlock": {
+                                    "type": "BlockStatement",
+                                    "statement": "Block statement",
+                                    "children": [
+                                        {
+                                            "type": "ReturnStatement",
+                                            "statement": "return this.sendNotification($decodedString, [method:push])",
+                                            "children": [
+                                                
+                                            ]
+                                        }
+                                    ]
+                                },
+                                "elseBlock": {
+                                    "type": "BlockStatement",
+                                    "statement": "Block statement",
+                                    "children": [
+                                        {
+                                            "type": "ReturnStatement",
+                                            "statement": "return this.sendNotificationEvent($decodedString)",
+                                            "children": [
+                                                
+                                            ]
+                                        }
+                                    ]
+                                },
+                                "children": [
+                                    
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "docstring": "With visible realtime energy usage status, have good energy habits and enrich your life\\r\\n"
+    }
+]

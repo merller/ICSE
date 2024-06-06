@@ -1,0 +1,907 @@
+[
+    {
+        "functionName": "installed",
+        "arguments": "",
+        "ast": [
+            {
+                "type": "BlockStatement",
+                "statement": "Block statement",
+                "children": [
+                    {
+                        "type": "BlockStatement",
+                        "statement": "Block statement",
+                        "children": [
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "log.debug(Installed with settings: $settings)",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ReturnStatement",
+                                "statement": "return this.initialize()",
+                                "children": [
+                                    
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "docstring": "This SmartApp connects to myplantlink.com and forwards the device data to it so it can calculate easy to read plant status for your specific plant's needs."
+    },
+    {
+        "functionName": "updated",
+        "arguments": "",
+        "ast": [
+            {
+                "type": "BlockStatement",
+                "statement": "Block statement",
+                "children": [
+                    {
+                        "type": "BlockStatement",
+                        "statement": "Block statement",
+                        "children": [
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "log.debug(Updated with settings: $settings)",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "this.unsubscribe()",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ReturnStatement",
+                                "statement": "return this.initialize()",
+                                "children": [
+                                    
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "docstring": "This SmartApp connects to myplantlink.com and forwards the device data to it so it can calculate easy to read plant status for your specific plant's needs."
+    },
+    {
+        "functionName": "uninstalled",
+        "arguments": "",
+        "ast": [
+            {
+                "type": "BlockStatement",
+                "statement": "Block statement",
+                "children": [
+                    {
+                        "type": "BlockStatement",
+                        "statement": "Block statement",
+                        "children": [
+                            {
+                                "type": "IfStatement",
+                                "statement": "If statement",
+                                "condition": {
+                                    "type": "BooleanExpression",
+                                    "expression": "plantlinksensors",
+                                    "children": [
+                                        
+                                    ]
+                                },
+                                "ifBlock": {
+                                    "type": "BlockStatement",
+                                    "statement": "Block statement",
+                                    "children": [
+                                        {
+                                            "type": "ReturnStatement",
+                                            "statement": "return plantlinksensors.each({ java.lang.Object sensor_device -> ... })",
+                                            "children": [
+                                                
+                                            ]
+                                        }
+                                    ]
+                                },
+                                "elseBlock": null,
+                                "children": [
+                                    
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "docstring": "This SmartApp connects to myplantlink.com and forwards the device data to it so it can calculate easy to read plant status for your specific plant's needs."
+    },
+    {
+        "functionName": "initialize",
+        "arguments": "",
+        "ast": [
+            {
+                "type": "BlockStatement",
+                "statement": "Block statement",
+                "children": [
+                    {
+                        "type": "BlockStatement",
+                        "statement": "Block statement",
+                        "children": [
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "(atomicState.attached_sensors = [:])",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "IfStatement",
+                                "statement": "If statement",
+                                "condition": {
+                                    "type": "BooleanExpression",
+                                    "expression": "plantlinksensors",
+                                    "children": [
+                                        
+                                    ]
+                                },
+                                "ifBlock": {
+                                    "type": "BlockStatement",
+                                    "statement": "Block statement",
+                                    "children": [
+                                        {
+                                            "type": "ExpressionStatement",
+                                            "statement": "this.subscribe(plantlinksensors, moisture_status, moistureHandler)",
+                                            "children": [
+                                                
+                                            ]
+                                        },
+                                        {
+                                            "type": "ExpressionStatement",
+                                            "statement": "this.subscribe(plantlinksensors, battery_status, batteryHandler)",
+                                            "children": [
+                                                
+                                            ]
+                                        },
+                                        {
+                                            "type": "ReturnStatement",
+                                            "statement": "return plantlinksensors.each({ java.lang.Object sensor_device -> ... })",
+                                            "children": [
+                                                
+                                            ]
+                                        }
+                                    ]
+                                },
+                                "elseBlock": null,
+                                "children": [
+                                    
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "docstring": "This SmartApp connects to myplantlink.com and forwards the device data to it so it can calculate easy to read plant status for your specific plant's needs."
+    },
+    {
+        "functionName": "dock_sensor",
+        "arguments": "device_serial, expected_plant_name",
+        "ast": [
+            {
+                "type": "BlockStatement",
+                "statement": "Block statement",
+                "children": [
+                    {
+                        "type": "BlockStatement",
+                        "statement": "Block statement",
+                        "children": [
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def docking_body_json_builder = this.JsonBuilder([version:1c, smartthings_device_id:device_serial])",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def docking_params = [uri:appSettings.https_plantLinkServer, path:/api/v1/smartthings/links, headers:[Content-Type:application/json, Authorization:Bearer ${atomicState.authToken}], ... ]",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def plant_post_body_map = [plant_type_key:999999, soil_type_key:1000004]",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def plant_post_params = [uri:appSettings.https_plantLinkServer, path:/api/v1/plants, headers:[Content-Type:application/json, Authorization:Bearer ${atomicState.authToken}], ... ]",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "log.debug(Creating new plant on myplantlink.com - $expected_plant_name)",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "TryCatchStatement",
+                                "statement": "<not implemented yet for class: org.codehaus.groovy.ast.stmt.TryCatchStatement>",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ReturnStatement",
+                                "statement": "return true",
+                                "children": [
+                                    
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "docstring": "This SmartApp connects to myplantlink.com and forwards the device data to it so it can calculate easy to read plant status for your specific plant's needs."
+    },
+    {
+        "functionName": "checkAndUpdatePlantIfNeeded",
+        "arguments": "plant, expected_plant_name",
+        "ast": [
+            {
+                "type": "BlockStatement",
+                "statement": "Block statement",
+                "children": [
+                    {
+                        "type": "BlockStatement",
+                        "statement": "Block statement",
+                        "children": [
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def plant_put_params = [uri:appSettings.https_plantLinkServer, headers:[Content-Type:application/json, Authorization:Bearer ${atomicState.authToken}], ... ]",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "IfStatement",
+                                "statement": "If statement",
+                                "condition": {
+                                    "type": "BooleanExpression",
+                                    "expression": "(plant.name != expected_plant_name)",
+                                    "children": [
+                                        
+                                    ]
+                                },
+                                "ifBlock": {
+                                    "type": "BlockStatement",
+                                    "statement": "Block statement",
+                                    "children": [
+                                        {
+                                            "type": "ExpressionStatement",
+                                            "statement": "log.debug(updating plant for - $expected_plant_name)",
+                                            "children": [
+                                                
+                                            ]
+                                        },
+                                        {
+                                            "type": "ExpressionStatement",
+                                            "statement": "(plant_put_params[path] = /api/v1/plants/${plant.key})",
+                                            "children": [
+                                                
+                                            ]
+                                        },
+                                        {
+                                            "type": "ExpressionStatement",
+                                            "statement": "def plant_put_body_map = [name:expected_plant_name]",
+                                            "children": [
+                                                
+                                            ]
+                                        },
+                                        {
+                                            "type": "ExpressionStatement",
+                                            "statement": "def plant_put_body_json_builder = this.JsonBuilder(plant_put_body_map)",
+                                            "children": [
+                                                
+                                            ]
+                                        },
+                                        {
+                                            "type": "ExpressionStatement",
+                                            "statement": "(plant_put_params[body] = plant_put_body_json_builder.toString())",
+                                            "children": [
+                                                
+                                            ]
+                                        },
+                                        {
+                                            "type": "TryCatchStatement",
+                                            "statement": "<not implemented yet for class: org.codehaus.groovy.ast.stmt.TryCatchStatement>",
+                                            "children": [
+                                                
+                                            ]
+                                        }
+                                    ]
+                                },
+                                "elseBlock": null,
+                                "children": [
+                                    
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "docstring": "This SmartApp connects to myplantlink.com and forwards the device data to it so it can calculate easy to read plant status for your specific plant's needs."
+    },
+    {
+        "functionName": "moistureHandler",
+        "arguments": "event",
+        "ast": [
+            {
+                "type": "BlockStatement",
+                "statement": "Block statement",
+                "children": [
+                    {
+                        "type": "BlockStatement",
+                        "statement": "Block statement",
+                        "children": [
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def expected_plant_name = SmartThings - ${event.displayName}",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def device_serial = this.getDeviceSerialFromEvent(event)",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "IfStatement",
+                                "statement": "If statement",
+                                "condition": {
+                                    "type": "BooleanExpression",
+                                    "expression": "atomicState.attached_sensors.containsKey(device_serial)",
+                                    "children": [
+                                        
+                                    ]
+                                },
+                                "ifBlock": {
+                                    "type": "BlockStatement",
+                                    "statement": "Block statement",
+                                    "children": [
+                                        {
+                                            "type": "ReturnStatement",
+                                            "statement": "return this.dock_sensor(device_serial, expected_plant_name)",
+                                            "children": [
+                                                
+                                            ]
+                                        }
+                                    ]
+                                },
+                                "elseBlock": {
+                                    "type": "BlockStatement",
+                                    "statement": "Block statement",
+                                    "children": [
+                                        {
+                                            "type": "ExpressionStatement",
+                                            "statement": "def measurement_post_params = [uri:appSettings.https_plantLinkServer, path:/api/v1/smartthings/links/$device_serial/measurements, headers:[Content-Type:application/json, Authorization:Bearer ${atomicState.authToken}], ... ]",
+                                            "children": [
+                                                
+                                            ]
+                                        },
+                                        {
+                                            "type": "TryCatchStatement",
+                                            "statement": "<not implemented yet for class: org.codehaus.groovy.ast.stmt.TryCatchStatement>",
+                                            "children": [
+                                                
+                                            ]
+                                        }
+                                    ]
+                                },
+                                "children": [
+                                    
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "docstring": "This SmartApp connects to myplantlink.com and forwards the device data to it so it can calculate easy to read plant status for your specific plant's needs."
+    },
+    {
+        "functionName": "batteryHandler",
+        "arguments": "event",
+        "ast": [
+            {
+                "type": "BlockStatement",
+                "statement": "Block statement",
+                "children": [
+                    {
+                        "type": "BlockStatement",
+                        "statement": "Block statement",
+                        "children": [
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def expected_plant_name = SmartThings - ${event.displayName}",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def device_serial = this.getDeviceSerialFromEvent(event)",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "IfStatement",
+                                "statement": "If statement",
+                                "condition": {
+                                    "type": "BooleanExpression",
+                                    "expression": "atomicState.attached_sensors.containsKey(device_serial)",
+                                    "children": [
+                                        
+                                    ]
+                                },
+                                "ifBlock": {
+                                    "type": "BlockStatement",
+                                    "statement": "Block statement",
+                                    "children": [
+                                        {
+                                            "type": "ReturnStatement",
+                                            "statement": "return this.dock_sensor(device_serial, expected_plant_name)",
+                                            "children": [
+                                                
+                                            ]
+                                        }
+                                    ]
+                                },
+                                "elseBlock": {
+                                    "type": "BlockStatement",
+                                    "statement": "Block statement",
+                                    "children": [
+                                        {
+                                            "type": "ExpressionStatement",
+                                            "statement": "def measurement_post_params = [uri:appSettings.https_plantLinkServer, path:/api/v1/smartthings/links/$device_serial/measurements, headers:[Content-Type:application/json, Authorization:Bearer ${atomicState.authToken}], ... ]",
+                                            "children": [
+                                                
+                                            ]
+                                        },
+                                        {
+                                            "type": "TryCatchStatement",
+                                            "statement": "<not implemented yet for class: org.codehaus.groovy.ast.stmt.TryCatchStatement>",
+                                            "children": [
+                                                
+                                            ]
+                                        }
+                                    ]
+                                },
+                                "children": [
+                                    
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "docstring": "This SmartApp connects to myplantlink.com and forwards the device data to it so it can calculate easy to read plant status for your specific plant's needs."
+    },
+    {
+        "functionName": "getDeviceSerialFromEvent",
+        "arguments": "event",
+        "ast": [
+            {
+                "type": "BlockStatement",
+                "statement": "Block statement",
+                "children": [
+                    {
+                        "type": "BlockStatement",
+                        "statement": "Block statement",
+                        "children": [
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def pattern = .*\"zigbeedeviceid\"\\s*:\\s*\"(\\w+)\".*",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def match_result = (event.value =~ pattern)",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ReturnStatement",
+                                "statement": "return match_result[0][1]",
+                                "children": [
+                                    
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "docstring": "This SmartApp connects to myplantlink.com and forwards the device data to it so it can calculate easy to read plant status for your specific plant's needs."
+    },
+    {
+        "functionName": "oauthInitUrl",
+        "arguments": "",
+        "ast": [
+            {
+                "type": "BlockStatement",
+                "statement": "Block statement",
+                "children": [
+                    {
+                        "type": "BlockStatement",
+                        "statement": "Block statement",
+                        "children": [
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "(atomicState.oauthInitState = java.util.UUID.randomUUID().toString())",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def oauthParams = [response_type:code, client_id:appSettings.client_id, state:atomicState.oauthInitState, redirect_uri:this.buildRedirectUrl()]",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ReturnStatement",
+                                "statement": "return ((appSettings.https_plantLinkServer + /oauth/oauth2/authorize?) + this.toQueryString(oauthParams))",
+                                "children": [
+                                    
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "docstring": "This SmartApp connects to myplantlink.com and forwards the device data to it so it can calculate easy to read plant status for your specific plant's needs."
+    },
+    {
+        "functionName": "buildRedirectUrl",
+        "arguments": "",
+        "ast": [
+            {
+                "type": "BlockStatement",
+                "statement": "Block statement",
+                "children": [
+                    {
+                        "type": "BlockStatement",
+                        "statement": "Block statement",
+                        "children": [
+                            {
+                                "type": "ReturnStatement",
+                                "statement": "return (this.getServerUrl() + /api/token/${atomicState.accessToken}/smartapps/installations/${app.id}/swapToken)",
+                                "children": [
+                                    
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "docstring": "This SmartApp connects to myplantlink.com and forwards the device data to it so it can calculate easy to read plant status for your specific plant's needs."
+    },
+    {
+        "functionName": "swapToken",
+        "arguments": "",
+        "ast": [
+            {
+                "type": "BlockStatement",
+                "statement": "Block statement",
+                "children": [
+                    {
+                        "type": "BlockStatement",
+                        "statement": "Block statement",
+                        "children": [
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def code = params.code",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def oauthState = params.state",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def stcid = appSettings.client_id",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def postParams = [method:POST, uri:https://oso-tech.appspot.com, path:/api/v1/oauth-token, query:[grant_type:authorization_code, code:params.code, client_id:stcid, client_secret:appSettings.client_secret, redirect_uri:this.buildRedirectUrl()]]",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def jsonMap = <not implemented yet for class: org.codehaus.groovy.ast.expr.EmptyExpression$1>",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "TryCatchStatement",
+                                "statement": "<not implemented yet for class: org.codehaus.groovy.ast.stmt.TryCatchStatement>",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "(atomicState.refreshToken = jsonMap.refresh_token)",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "(atomicState.authToken = jsonMap.access_token)",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def html = \n<html>\n<head>\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n<style>\n    .container {\n        padding:25px;\n    }\n    .flex1 {\n        width:33%;\n        float:left;\n        text-align: center;\n    }\n    p {\n        font-size: 2em;\n        font-family: Verdana, Geneva, sans-serif;\n        text-align: center;\n        color: #777;\n    }\n</style>\n</head>\n<body>\n    <div class=\"container\">\n        <div class=\"flex1\"><img src=\"https://dashboard.myplantlink.com/images/PLlogo.png\" alt=\"PlantLink\" height=\"75\"/></div>\n        <div class=\"flex1\"><img src=\"https://s3.amazonaws.com/smartapp-icons/Partner/support/connected-device-icn%402x.png\" alt=\"connected to\"  height=\"25\" style=\"padding-top:25px;\" /></div>\n        <div class=\"flex1\"><img src=\"https://s3.amazonaws.com/smartapp-icons/Partner/support/st-logo%402x.png\" alt=\"SmartThings\" height=\"75\"/></div>\n        <br clear=\"all\">\n  </div>\n  <div class=\"container\">\n        <p>Your PlantLink Account is now connected to SmartThings!</p>\n        <p style=\"color:green;\">Click <strong>Done</strong> at the top right to finish setup.</p>\n    </div>\n</body>\n</html>\n",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ReturnStatement",
+                                "statement": "return this.render([contentType:text/html, data:html])",
+                                "children": [
+                                    
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "docstring": "This SmartApp connects to myplantlink.com and forwards the device data to it so it can calculate easy to read plant status for your specific plant's needs."
+    },
+    {
+        "functionName": "parse_api_response",
+        "arguments": "resp, message",
+        "ast": [
+            {
+                "type": "BlockStatement",
+                "statement": "Block statement",
+                "children": [
+                    {
+                        "type": "BlockStatement",
+                        "statement": "Block statement",
+                        "children": [
+                            {
+                                "type": "IfStatement",
+                                "statement": "If statement",
+                                "condition": {
+                                    "type": "BooleanExpression",
+                                    "expression": "(resp.status == 200)",
+                                    "children": [
+                                        
+                                    ]
+                                },
+                                "ifBlock": {
+                                    "type": "BlockStatement",
+                                    "statement": "Block statement",
+                                    "children": [
+                                        {
+                                            "type": "ReturnStatement",
+                                            "statement": "return true",
+                                            "children": [
+                                                
+                                            ]
+                                        }
+                                    ]
+                                },
+                                "elseBlock": {
+                                    "type": "BlockStatement",
+                                    "statement": "Block statement",
+                                    "children": [
+                                        {
+                                            "type": "ExpressionStatement",
+                                            "statement": "log.error(sent $message Json & got http status ${resp.status} - ${resp.status.code})",
+                                            "children": [
+                                                
+                                            ]
+                                        },
+                                        {
+                                            "type": "IfStatement",
+                                            "statement": "If statement",
+                                            "condition": {
+                                                "type": "BooleanExpression",
+                                                "expression": "(resp.status == 401)",
+                                                "children": [
+                                                    
+                                                ]
+                                            },
+                                            "ifBlock": {
+                                                "type": "BlockStatement",
+                                                "statement": "Block statement",
+                                                "children": [
+                                                    {
+                                                        "type": "ExpressionStatement",
+                                                        "statement": "this.refreshAuthToken()",
+                                                        "children": [
+                                                            
+                                                        ]
+                                                    },
+                                                    {
+                                                        "type": "ReturnStatement",
+                                                        "statement": "return false",
+                                                        "children": [
+                                                            
+                                                        ]
+                                                    }
+                                                ]
+                                            },
+                                            "elseBlock": {
+                                                "type": "BlockStatement",
+                                                "statement": "Block statement",
+                                                "children": [
+                                                    {
+                                                        "type": "ExpressionStatement",
+                                                        "statement": "this.debugEvent(Authentication error, invalid authentication method, lack of credentials, etc., true)",
+                                                        "children": [
+                                                            
+                                                        ]
+                                                    },
+                                                    {
+                                                        "type": "ReturnStatement",
+                                                        "statement": "return false",
+                                                        "children": [
+                                                            
+                                                        ]
+                                                    }
+                                                ]
+                                            },
+                                            "children": [
+                                                
+                                            ]
+                                        }
+                                    ]
+                                },
+                                "children": [
+                                    
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "docstring": "This SmartApp connects to myplantlink.com and forwards the device data to it so it can calculate easy to read plant status for your specific plant's needs."
+    },
+    {
+        "functionName": "getServerUrl",
+        "arguments": "",
+        "ast": [
+            {
+                "type": "BlockStatement",
+                "statement": "Block statement",
+                "children": [
+                    {
+                        "type": "BlockStatement",
+                        "statement": "Block statement",
+                        "children": [
+                            {
+                                "type": "ReturnStatement",
+                                "statement": "return this.getApiServerUrl()",
+                                "children": [
+                                    
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "docstring": "This SmartApp connects to myplantlink.com and forwards the device data to it so it can calculate easy to read plant status for your specific plant's needs."
+    },
+    {
+        "functionName": "debugEvent",
+        "arguments": "message, displayEvent",
+        "ast": [
+            {
+                "type": "BlockStatement",
+                "statement": "Block statement",
+                "children": [
+                    {
+                        "type": "BlockStatement",
+                        "statement": "Block statement",
+                        "children": [
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def results = [name:appdebug, descriptionText:message, displayed:displayEvent]",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "log.debug(Generating AppDebug Event: $results)",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ReturnStatement",
+                                "statement": "return this.sendEvent(results)",
+                                "children": [
+                                    
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "docstring": "This SmartApp connects to myplantlink.com and forwards the device data to it so it can calculate easy to read plant status for your specific plant's needs."
+    },
+    {
+        "functionName": "toQueryString",
+        "arguments": "Map m",
+        "ast": [
+            {
+                "type": "BlockStatement",
+                "statement": "Block statement",
+                "children": [
+                    {
+                        "type": "BlockStatement",
+                        "statement": "Block statement",
+                        "children": [
+                            {
+                                "type": "ReturnStatement",
+                                "statement": "return m.collect({ java.lang.Object k, java.lang.Object v -> ... }).sort().join(&)",
+                                "children": [
+                                    
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "docstring": "This SmartApp connects to myplantlink.com and forwards the device data to it so it can calculate easy to read plant status for your specific plant's needs."
+    }
+]

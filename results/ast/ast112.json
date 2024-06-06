@@ -1,0 +1,141 @@
+[
+    {
+        "functionName": "installed",
+        "arguments": "",
+        "ast": [
+            {
+                "type": "BlockStatement",
+                "statement": "Block statement",
+                "children": [
+                    {
+                        "type": "BlockStatement",
+                        "statement": "Block statement",
+                        "children": [
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "this.subscribe(location, changedLocationMode)",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "this.subscribe(app, appTouch)",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ReturnStatement",
+                                "statement": "return this.saveState()",
+                                "children": [
+                                    
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "docstring": "Saves the states of a specified set switches and thermostat setpoints and restores them at each mode change. To use 1) Set the mode, 2) Change switches and setpoint to where you want them for that mode, and 3) Install or update the app. Changing to that mode or touching the app will set the devices to the saved state."
+    },
+    {
+        "functionName": "updated",
+        "arguments": "",
+        "ast": [
+            {
+                "type": "BlockStatement",
+                "statement": "Block statement",
+                "children": [
+                    {
+                        "type": "BlockStatement",
+                        "statement": "Block statement",
+                        "children": [
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "this.unsubscribe()",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "this.subscribe(location, changedLocationMode)",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "this.subscribe(app, appTouch)",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ReturnStatement",
+                                "statement": "return this.saveState()",
+                                "children": [
+                                    
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "docstring": "Saves the states of a specified set switches and thermostat setpoints and restores them at each mode change. To use 1) Set the mode, 2) Change switches and setpoint to where you want them for that mode, and 3) Install or update the app. Changing to that mode or touching the app will set the devices to the saved state."
+    },
+    {
+        "functionName": "appTouch",
+        "arguments": "evt",
+        "ast": [
+            {
+                "type": "BlockStatement",
+                "statement": "Block statement",
+                "children": [
+                    {
+                        "type": "BlockStatement",
+                        "statement": "Block statement",
+                        "children": [
+                            {
+                                "type": "ReturnStatement",
+                                "statement": "return this.restoreState(currentMode)",
+                                "children": [
+                                    
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "docstring": "Saves the states of a specified set switches and thermostat setpoints and restores them at each mode change. To use 1) Set the mode, 2) Change switches and setpoint to where you want them for that mode, and 3) Install or update the app. Changing to that mode or touching the app will set the devices to the saved state."
+    },
+    {
+        "functionName": "changedLocationMode",
+        "arguments": "evt",
+        "ast": [
+            {
+                "type": "BlockStatement",
+                "statement": "Block statement",
+                "children": [
+                    {
+                        "type": "BlockStatement",
+                        "statement": "Block statement",
+                        "children": [
+                            {
+                                "type": "ReturnStatement",
+                                "statement": "return this.restoreState(evt.value)",
+                                "children": [
+                                    
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "docstring": "Saves the states of a specified set switches and thermostat setpoints and restores them at each mode change. To use 1) Set the mode, 2) Change switches and setpoint to where you want them for that mode, and 3) Install or update the app. Changing to that mode or touching the app will set the devices to the saved state."
+    }
+]
