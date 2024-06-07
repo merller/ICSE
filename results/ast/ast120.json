@@ -1,0 +1,148 @@
+[
+    {
+        "functionName": "installed",
+        "arguments": "",
+        "ast": [
+            {
+                "type": "BlockStatement",
+                "statement": "Block statement",
+                "children": [
+                    {
+                        "type": "BlockStatement",
+                        "statement": "Block statement",
+                        "children": [
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "log.debug(Installed with settings: $settings)",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "this.schedule(startTime, startTimerCallback)",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ReturnStatement",
+                                "statement": "return this.schedule(stopTime, stopTimerCallback)",
+                                "children": [
+                                    
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "docstring": "Turn on one or more switches at a specified time and turn them off at a later time."
+    },
+    {
+        "functionName": "updated",
+        "arguments": "settings",
+        "ast": [
+            {
+                "type": "BlockStatement",
+                "statement": "Block statement",
+                "children": [
+                    {
+                        "type": "BlockStatement",
+                        "statement": "Block statement",
+                        "children": [
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "this.unschedule()",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "this.schedule(startTime, startTimerCallback)",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ReturnStatement",
+                                "statement": "return this.schedule(stopTime, stopTimerCallback)",
+                                "children": [
+                                    
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "docstring": "Turn on one or more switches at a specified time and turn them off at a later time."
+    },
+    {
+        "functionName": "startTimerCallback",
+        "arguments": "",
+        "ast": [
+            {
+                "type": "BlockStatement",
+                "statement": "Block statement",
+                "children": [
+                    {
+                        "type": "BlockStatement",
+                        "statement": "Block statement",
+                        "children": [
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "log.debug(Turning on switches)",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ReturnStatement",
+                                "statement": "return switches.on()",
+                                "children": [
+                                    
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "docstring": "Turn on one or more switches at a specified time and turn them off at a later time."
+    },
+    {
+        "functionName": "stopTimerCallback",
+        "arguments": "",
+        "ast": [
+            {
+                "type": "BlockStatement",
+                "statement": "Block statement",
+                "children": [
+                    {
+                        "type": "BlockStatement",
+                        "statement": "Block statement",
+                        "children": [
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "log.debug(Turning off switches)",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ReturnStatement",
+                                "statement": "return switches.off()",
+                                "children": [
+                                    
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "docstring": "Turn on one or more switches at a specified time and turn them off at a later time."
+    }
+]

@@ -1,0 +1,587 @@
+[
+    {
+        "functionName": "installed",
+        "arguments": "",
+        "ast": [
+            {
+                "type": "BlockStatement",
+                "statement": "Block statement",
+                "children": [
+                    {
+                        "type": "BlockStatement",
+                        "statement": "Block statement",
+                        "children": [
+                            {
+                                "type": "ReturnStatement",
+                                "statement": "return this.initialize()",
+                                "children": [
+                                    
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "docstring": "Sends a message and (optionally) turns on or blinks a light to indicate that laundry is done."
+    },
+    {
+        "functionName": "updated",
+        "arguments": "",
+        "ast": [
+            {
+                "type": "BlockStatement",
+                "statement": "Block statement",
+                "children": [
+                    {
+                        "type": "BlockStatement",
+                        "statement": "Block statement",
+                        "children": [
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "this.unsubscribe()",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ReturnStatement",
+                                "statement": "return this.initialize()",
+                                "children": [
+                                    
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "docstring": "Sends a message and (optionally) turns on or blinks a light to indicate that laundry is done."
+    },
+    {
+        "functionName": "initialize",
+        "arguments": "",
+        "ast": [
+            {
+                "type": "BlockStatement",
+                "statement": "Block statement",
+                "children": [
+                    {
+                        "type": "BlockStatement",
+                        "statement": "Block statement",
+                        "children": [
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "this.subscribe(sensor1, acceleration.active, accelerationActiveHandler)",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ReturnStatement",
+                                "statement": "return this.subscribe(sensor1, acceleration.inactive, accelerationInactiveHandler)",
+                                "children": [
+                                    
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "docstring": "Sends a message and (optionally) turns on or blinks a light to indicate that laundry is done."
+    },
+    {
+        "functionName": "accelerationActiveHandler",
+        "arguments": "evt",
+        "ast": [
+            {
+                "type": "BlockStatement",
+                "statement": "Block statement",
+                "children": [
+                    {
+                        "type": "BlockStatement",
+                        "statement": "Block statement",
+                        "children": [
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "log.trace(vibration)",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "IfStatement",
+                                "statement": "If statement",
+                                "condition": {
+                                    "type": "BooleanExpression",
+                                    "expression": "state.isRunning",
+                                    "children": [
+                                        
+                                    ]
+                                },
+                                "ifBlock": {
+                                    "type": "BlockStatement",
+                                    "statement": "Block statement",
+                                    "children": [
+                                        {
+                                            "type": "ExpressionStatement",
+                                            "statement": "log.info(Arming detector)",
+                                            "children": [
+                                                
+                                            ]
+                                        },
+                                        {
+                                            "type": "ExpressionStatement",
+                                            "statement": "(state.isRunning = true)",
+                                            "children": [
+                                                
+                                            ]
+                                        },
+                                        {
+                                            "type": "ExpressionStatement",
+                                            "statement": "(state.startedAt = this.now())",
+                                            "children": [
+                                                
+                                            ]
+                                        }
+                                    ]
+                                },
+                                "elseBlock": null,
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ReturnStatement",
+                                "statement": "return (state.stoppedAt = null)",
+                                "children": [
+                                    
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "docstring": "Sends a message and (optionally) turns on or blinks a light to indicate that laundry is done."
+    },
+    {
+        "functionName": "accelerationInactiveHandler",
+        "arguments": "evt",
+        "ast": [
+            {
+                "type": "BlockStatement",
+                "statement": "Block statement",
+                "children": [
+                    {
+                        "type": "BlockStatement",
+                        "statement": "Block statement",
+                        "children": [
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "log.trace(no vibration, isRunning: ${state.isRunning})",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "IfStatement",
+                                "statement": "If statement",
+                                "condition": {
+                                    "type": "BooleanExpression",
+                                    "expression": "state.isRunning",
+                                    "children": [
+                                        
+                                    ]
+                                },
+                                "ifBlock": {
+                                    "type": "BlockStatement",
+                                    "statement": "Block statement",
+                                    "children": [
+                                        {
+                                            "type": "ExpressionStatement",
+                                            "statement": "log.debug(startedAt: ${state.startedAt}, stoppedAt: ${state.stoppedAt})",
+                                            "children": [
+                                                
+                                            ]
+                                        },
+                                        {
+                                            "type": "IfStatement",
+                                            "statement": "If statement",
+                                            "condition": {
+                                                "type": "BooleanExpression",
+                                                "expression": "state.stoppedAt",
+                                                "children": [
+                                                    
+                                                ]
+                                            },
+                                            "ifBlock": {
+                                                "type": "BlockStatement",
+                                                "statement": "Block statement",
+                                                "children": [
+                                                    {
+                                                        "type": "ExpressionStatement",
+                                                        "statement": "(state.stoppedAt = this.now())",
+                                                        "children": [
+                                                            
+                                                        ]
+                                                    },
+                                                    {
+                                                        "type": "ExpressionStatement",
+                                                        "statement": "def delay = java.lang.Math.floor((fillTime * 60)).toInteger()",
+                                                        "children": [
+                                                            
+                                                        ]
+                                                    },
+                                                    {
+                                                        "type": "ReturnStatement",
+                                                        "statement": "return this.runIn(delay, checkRunning, [overwrite:false])",
+                                                        "children": [
+                                                            
+                                                        ]
+                                                    }
+                                                ]
+                                            },
+                                            "elseBlock": null,
+                                            "children": [
+                                                
+                                            ]
+                                        }
+                                    ]
+                                },
+                                "elseBlock": null,
+                                "children": [
+                                    
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "docstring": "Sends a message and (optionally) turns on or blinks a light to indicate that laundry is done."
+    },
+    {
+        "functionName": "checkRunning",
+        "arguments": "",
+        "ast": [
+            {
+                "type": "BlockStatement",
+                "statement": "Block statement",
+                "children": [
+                    {
+                        "type": "BlockStatement",
+                        "statement": "Block statement",
+                        "children": [
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "log.trace(checkRunning())",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "IfStatement",
+                                "statement": "If statement",
+                                "condition": {
+                                    "type": "BooleanExpression",
+                                    "expression": "state.isRunning",
+                                    "children": [
+                                        
+                                    ]
+                                },
+                                "ifBlock": {
+                                    "type": "BlockStatement",
+                                    "statement": "Block statement",
+                                    "children": [
+                                        {
+                                            "type": "ExpressionStatement",
+                                            "statement": "def fillTimeMsec = (fillTime) ? (fillTime * 60000) : 300000",
+                                            "children": [
+                                                
+                                            ]
+                                        },
+                                        {
+                                            "type": "ExpressionStatement",
+                                            "statement": "def sensorStates = sensor1.statesSince(acceleration, new java.util.Date((java.lang.Long) (this.now() - fillTimeMsec)))",
+                                            "children": [
+                                                
+                                            ]
+                                        },
+                                        {
+                                            "type": "IfStatement",
+                                            "statement": "If statement",
+                                            "condition": {
+                                                "type": "BooleanExpression",
+                                                "expression": "sensorStates.find({ ... })",
+                                                "children": [
+                                                    
+                                                ]
+                                            },
+                                            "ifBlock": {
+                                                "type": "BlockStatement",
+                                                "statement": "Block statement",
+                                                "children": [
+                                                    {
+                                                        "type": "ExpressionStatement",
+                                                        "statement": "def cycleTimeMsec = (cycleTime) ? (cycleTime * 60000) : 600000",
+                                                        "children": [
+                                                            
+                                                        ]
+                                                    },
+                                                    {
+                                                        "type": "ExpressionStatement",
+                                                        "statement": "def duration = (this.now() - state.startedAt)",
+                                                        "children": [
+                                                            
+                                                        ]
+                                                    },
+                                                    {
+                                                        "type": "IfStatement",
+                                                        "statement": "If statement",
+                                                        "condition": {
+                                                            "type": "BooleanExpression",
+                                                            "expression": "((duration - fillTimeMsec) > cycleTimeMsec)",
+                                                            "children": [
+                                                                
+                                                            ]
+                                                        },
+                                                        "ifBlock": {
+                                                            "type": "BlockStatement",
+                                                            "statement": "Block statement",
+                                                            "children": [
+                                                                {
+                                                                    "type": "ExpressionStatement",
+                                                                    "statement": "log.debug(Sending notification)",
+                                                                    "children": [
+                                                                        
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "type": "ExpressionStatement",
+                                                                    "statement": "def msg = ${sensor1.displayName} is finished",
+                                                                    "children": [
+                                                                        
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "type": "ExpressionStatement",
+                                                                    "statement": "log.info(msg)",
+                                                                    "children": [
+                                                                        
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "type": "IfStatement",
+                                                                    "statement": "If statement",
+                                                                    "condition": {
+                                                                        "type": "BooleanExpression",
+                                                                        "expression": "location.contactBookEnabled",
+                                                                        "children": [
+                                                                            
+                                                                        ]
+                                                                    },
+                                                                    "ifBlock": {
+                                                                        "type": "BlockStatement",
+                                                                        "statement": "Block statement",
+                                                                        "children": [
+                                                                            {
+                                                                                "type": "ExpressionStatement",
+                                                                                "statement": "this.sendNotificationToContacts(msg, recipients)",
+                                                                                "children": [
+                                                                                    
+                                                                                ]
+                                                                            }
+                                                                        ]
+                                                                    },
+                                                                    "elseBlock": {
+                                                                        "type": "BlockStatement",
+                                                                        "statement": "Block statement",
+                                                                        "children": [
+                                                                            {
+                                                                                "type": "IfStatement",
+                                                                                "statement": "If statement",
+                                                                                "condition": {
+                                                                                    "type": "BooleanExpression",
+                                                                                    "expression": "phone",
+                                                                                    "children": [
+                                                                                        
+                                                                                    ]
+                                                                                },
+                                                                                "ifBlock": {
+                                                                                    "type": "BlockStatement",
+                                                                                    "statement": "Block statement",
+                                                                                    "children": [
+                                                                                        {
+                                                                                            "type": "ExpressionStatement",
+                                                                                            "statement": "this.sendSms(phone, msg)",
+                                                                                            "children": [
+                                                                                                
+                                                                                            ]
+                                                                                        }
+                                                                                    ]
+                                                                                },
+                                                                                "elseBlock": {
+                                                                                    "type": "BlockStatement",
+                                                                                    "statement": "Block statement",
+                                                                                    "children": [
+                                                                                        {
+                                                                                            "type": "ExpressionStatement",
+                                                                                            "statement": "this.sendPush(msg)",
+                                                                                            "children": [
+                                                                                                
+                                                                                            ]
+                                                                                        }
+                                                                                    ]
+                                                                                },
+                                                                                "children": [
+                                                                                    
+                                                                                ]
+                                                                            }
+                                                                        ]
+                                                                    },
+                                                                    "children": [
+                                                                        
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "type": "IfStatement",
+                                                                    "statement": "If statement",
+                                                                    "condition": {
+                                                                        "type": "BooleanExpression",
+                                                                        "expression": "switches",
+                                                                        "children": [
+                                                                            
+                                                                        ]
+                                                                    },
+                                                                    "ifBlock": {
+                                                                        "type": "BlockStatement",
+                                                                        "statement": "Block statement",
+                                                                        "children": [
+                                                                            {
+                                                                                "type": "IfStatement",
+                                                                                "statement": "If statement",
+                                                                                "condition": {
+                                                                                    "type": "BooleanExpression",
+                                                                                    "expression": "lightMode?.equals(Turn On Lights)",
+                                                                                    "children": [
+                                                                                        
+                                                                                    ]
+                                                                                },
+                                                                                "ifBlock": {
+                                                                                    "type": "BlockStatement",
+                                                                                    "statement": "Block statement",
+                                                                                    "children": [
+                                                                                        {
+                                                                                            "type": "ExpressionStatement",
+                                                                                            "statement": "switches.on()",
+                                                                                            "children": [
+                                                                                                
+                                                                                            ]
+                                                                                        }
+                                                                                    ]
+                                                                                },
+                                                                                "elseBlock": {
+                                                                                    "type": "BlockStatement",
+                                                                                    "statement": "Block statement",
+                                                                                    "children": [
+                                                                                        {
+                                                                                            "type": "ExpressionStatement",
+                                                                                            "statement": "this.flashLights()",
+                                                                                            "children": [
+                                                                                                
+                                                                                            ]
+                                                                                        }
+                                                                                    ]
+                                                                                },
+                                                                                "children": [
+                                                                                    
+                                                                                ]
+                                                                            }
+                                                                        ]
+                                                                    },
+                                                                    "elseBlock": null,
+                                                                    "children": [
+                                                                        
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        },
+                                                        "elseBlock": {
+                                                            "type": "BlockStatement",
+                                                            "statement": "Block statement",
+                                                            "children": [
+                                                                {
+                                                                    "type": "ExpressionStatement",
+                                                                    "statement": "log.debug(Not sending notification because machine wasn't running long enough $duration versus $cycleTimeMsec msec)",
+                                                                    "children": [
+                                                                        
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        },
+                                                        "children": [
+                                                            
+                                                        ]
+                                                    },
+                                                    {
+                                                        "type": "ExpressionStatement",
+                                                        "statement": "(state.isRunning = false)",
+                                                        "children": [
+                                                            
+                                                        ]
+                                                    },
+                                                    {
+                                                        "type": "ReturnStatement",
+                                                        "statement": "return log.info(Disarming detector)",
+                                                        "children": [
+                                                            
+                                                        ]
+                                                    }
+                                                ]
+                                            },
+                                            "elseBlock": {
+                                                "type": "BlockStatement",
+                                                "statement": "Block statement",
+                                                "children": [
+                                                    {
+                                                        "type": "ReturnStatement",
+                                                        "statement": "return log.debug(skipping notification because vibration detected again)",
+                                                        "children": [
+                                                            
+                                                        ]
+                                                    }
+                                                ]
+                                            },
+                                            "children": [
+                                                
+                                            ]
+                                        }
+                                    ]
+                                },
+                                "elseBlock": {
+                                    "type": "BlockStatement",
+                                    "statement": "Block statement",
+                                    "children": [
+                                        {
+                                            "type": "ReturnStatement",
+                                            "statement": "return log.debug(machine no longer running)",
+                                            "children": [
+                                                
+                                            ]
+                                        }
+                                    ]
+                                },
+                                "children": [
+                                    
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "docstring": "Sends a message and (optionally) turns on or blinks a light to indicate that laundry is done."
+    }
+]

@@ -1,0 +1,148 @@
+[
+    {
+        "functionName": "installed",
+        "arguments": "",
+        "ast": [
+            {
+                "type": "BlockStatement",
+                "statement": "Block statement",
+                "children": [
+                    {
+                        "type": "BlockStatement",
+                        "statement": "Block statement",
+                        "children": [
+                            {
+                                "type": "ReturnStatement",
+                                "statement": "return this.schedule(time1, scheduleCheck)",
+                                "children": [
+                                    
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "docstring": "Add something you want to be reminded about each day and get a text message to help you form positive habits."
+    },
+    {
+        "functionName": "updated",
+        "arguments": "",
+        "ast": [
+            {
+                "type": "BlockStatement",
+                "statement": "Block statement",
+                "children": [
+                    {
+                        "type": "BlockStatement",
+                        "statement": "Block statement",
+                        "children": [
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "this.unschedule()",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ReturnStatement",
+                                "statement": "return this.schedule(time1, scheduleCheck)",
+                                "children": [
+                                    
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "docstring": "Add something you want to be reminded about each day and get a text message to help you form positive habits."
+    },
+    {
+        "functionName": "scheduleCheck",
+        "arguments": "",
+        "ast": [
+            {
+                "type": "BlockStatement",
+                "statement": "Block statement",
+                "children": [
+                    {
+                        "type": "BlockStatement",
+                        "statement": "Block statement",
+                        "children": [
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "log.trace(scheduledCheck)",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def message = (message1) ? message1 : SmartThings - Habit Helper Reminder!",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "IfStatement",
+                                "statement": "If statement",
+                                "condition": {
+                                    "type": "BooleanExpression",
+                                    "expression": "location.contactBookEnabled",
+                                    "children": [
+                                        
+                                    ]
+                                },
+                                "ifBlock": {
+                                    "type": "BlockStatement",
+                                    "statement": "Block statement",
+                                    "children": [
+                                        {
+                                            "type": "ExpressionStatement",
+                                            "statement": "log.debug(Texting reminder to contacts:${recipients?.size()})",
+                                            "children": [
+                                                
+                                            ]
+                                        },
+                                        {
+                                            "type": "ReturnStatement",
+                                            "statement": "return this.sendNotificationToContacts(message, recipients)",
+                                            "children": [
+                                                
+                                            ]
+                                        }
+                                    ]
+                                },
+                                "elseBlock": {
+                                    "type": "BlockStatement",
+                                    "statement": "Block statement",
+                                    "children": [
+                                        {
+                                            "type": "ExpressionStatement",
+                                            "statement": "log.debug(Texting reminder)",
+                                            "children": [
+                                                
+                                            ]
+                                        },
+                                        {
+                                            "type": "ReturnStatement",
+                                            "statement": "return this.sendSms(phone1, message)",
+                                            "children": [
+                                                
+                                            ]
+                                        }
+                                    ]
+                                },
+                                "children": [
+                                    
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "docstring": "Add something you want to be reminded about each day and get a text message to help you form positive habits."
+    }
+]

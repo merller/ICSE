@@ -1,0 +1,276 @@
+[
+    {
+        "functionName": "installed",
+        "arguments": "",
+        "ast": [
+            {
+                "type": "BlockStatement",
+                "statement": "Block statement",
+                "children": [
+                    {
+                        "type": "BlockStatement",
+                        "statement": "Block statement",
+                        "children": [
+                            {
+                                "type": "ReturnStatement",
+                                "statement": "return this.subscribe(motion1, motion, motionHandler)",
+                                "children": [
+                                    
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "docstring": "Turn your lights on when motion is detected and then off again once the motion stops for a set period of time."
+    },
+    {
+        "functionName": "updated",
+        "arguments": "",
+        "ast": [
+            {
+                "type": "BlockStatement",
+                "statement": "Block statement",
+                "children": [
+                    {
+                        "type": "BlockStatement",
+                        "statement": "Block statement",
+                        "children": [
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "this.unsubscribe()",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ReturnStatement",
+                                "statement": "return this.subscribe(motion1, motion, motionHandler)",
+                                "children": [
+                                    
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "docstring": "Turn your lights on when motion is detected and then off again once the motion stops for a set period of time."
+    },
+    {
+        "functionName": "motionHandler",
+        "arguments": "evt",
+        "ast": [
+            {
+                "type": "BlockStatement",
+                "statement": "Block statement",
+                "children": [
+                    {
+                        "type": "BlockStatement",
+                        "statement": "Block statement",
+                        "children": [
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "log.debug(${evt.name}: ${evt.value})",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "IfStatement",
+                                "statement": "If statement",
+                                "condition": {
+                                    "type": "BooleanExpression",
+                                    "expression": "(evt.value == active)",
+                                    "children": [
+                                        
+                                    ]
+                                },
+                                "ifBlock": {
+                                    "type": "BlockStatement",
+                                    "statement": "Block statement",
+                                    "children": [
+                                        {
+                                            "type": "ExpressionStatement",
+                                            "statement": "log.debug(turning on lights)",
+                                            "children": [
+                                                
+                                            ]
+                                        },
+                                        {
+                                            "type": "ReturnStatement",
+                                            "statement": "return switches.on()",
+                                            "children": [
+                                                
+                                            ]
+                                        }
+                                    ]
+                                },
+                                "elseBlock": {
+                                    "type": "IfStatement",
+                                    "statement": "If statement",
+                                    "condition": {
+                                        "type": "BooleanExpression",
+                                        "expression": "(evt.value == inactive)",
+                                        "children": [
+                                            
+                                        ]
+                                    },
+                                    "ifBlock": {
+                                        "type": "BlockStatement",
+                                        "statement": "Block statement",
+                                        "children": [
+                                            {
+                                                "type": "ReturnStatement",
+                                                "statement": "return this.runIn((minutes1 * 60), scheduleCheck, [overwrite:false])",
+                                                "children": [
+                                                    
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    "elseBlock": null,
+                                    "children": [
+                                        
+                                    ]
+                                },
+                                "children": [
+                                    
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "docstring": "Turn your lights on when motion is detected and then off again once the motion stops for a set period of time."
+    },
+    {
+        "functionName": "scheduleCheck",
+        "arguments": "",
+        "ast": [
+            {
+                "type": "BlockStatement",
+                "statement": "Block statement",
+                "children": [
+                    {
+                        "type": "BlockStatement",
+                        "statement": "Block statement",
+                        "children": [
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "log.debug(schedule check)",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def motionState = motion1.currentState(motion)",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "IfStatement",
+                                "statement": "If statement",
+                                "condition": {
+                                    "type": "BooleanExpression",
+                                    "expression": "(motionState.value == inactive)",
+                                    "children": [
+                                        
+                                    ]
+                                },
+                                "ifBlock": {
+                                    "type": "BlockStatement",
+                                    "statement": "Block statement",
+                                    "children": [
+                                        {
+                                            "type": "ExpressionStatement",
+                                            "statement": "def elapsed = (this.now() - motionState.rawDateCreated.time)",
+                                            "children": [
+                                                
+                                            ]
+                                        },
+                                        {
+                                            "type": "ExpressionStatement",
+                                            "statement": "def threshold = (((1000 * 60) * minutes1) - 1000)",
+                                            "children": [
+                                                
+                                            ]
+                                        },
+                                        {
+                                            "type": "IfStatement",
+                                            "statement": "If statement",
+                                            "condition": {
+                                                "type": "BooleanExpression",
+                                                "expression": "(elapsed >= threshold)",
+                                                "children": [
+                                                    
+                                                ]
+                                            },
+                                            "ifBlock": {
+                                                "type": "BlockStatement",
+                                                "statement": "Block statement",
+                                                "children": [
+                                                    {
+                                                        "type": "ExpressionStatement",
+                                                        "statement": "log.debug(Motion has stayed inactive long enough since last check ($elapsed ms):  turning lights off)",
+                                                        "children": [
+                                                            
+                                                        ]
+                                                    },
+                                                    {
+                                                        "type": "ReturnStatement",
+                                                        "statement": "return switches.off()",
+                                                        "children": [
+                                                            
+                                                        ]
+                                                    }
+                                                ]
+                                            },
+                                            "elseBlock": {
+                                                "type": "BlockStatement",
+                                                "statement": "Block statement",
+                                                "children": [
+                                                    {
+                                                        "type": "ReturnStatement",
+                                                        "statement": "return log.debug(Motion has not stayed inactive long enough since last check ($elapsed ms):  doing nothing)",
+                                                        "children": [
+                                                            
+                                                        ]
+                                                    }
+                                                ]
+                                            },
+                                            "children": [
+                                                
+                                            ]
+                                        }
+                                    ]
+                                },
+                                "elseBlock": {
+                                    "type": "BlockStatement",
+                                    "statement": "Block statement",
+                                    "children": [
+                                        {
+                                            "type": "ReturnStatement",
+                                            "statement": "return log.debug(Motion is active, do nothing and wait for inactive)",
+                                            "children": [
+                                                
+                                            ]
+                                        }
+                                    ]
+                                },
+                                "children": [
+                                    
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "docstring": "Turn your lights on when motion is detected and then off again once the motion stops for a set period of time."
+    }
+]

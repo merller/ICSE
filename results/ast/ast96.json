@@ -1,0 +1,783 @@
+[
+    {
+        "functionName": "installed",
+        "arguments": "",
+        "ast": [
+            {
+                "type": "BlockStatement",
+                "statement": "Block statement",
+                "children": [
+                    {
+                        "type": "ReturnStatement",
+                        "statement": "return null",
+                        "children": [
+                            
+                        ]
+                    }
+                ]
+            }
+        ],
+        "docstring": "Put the internet to work for you."
+    },
+    {
+        "functionName": "updated",
+        "arguments": "",
+        "ast": [
+            {
+                "type": "BlockStatement",
+                "statement": "Block statement",
+                "children": [
+                    {
+                        "type": "BlockStatement",
+                        "statement": "Block statement",
+                        "children": [
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def currentDeviceIds = settings.collect({ java.lang.Object k, java.lang.Object devices -> ... }).flatten().collect({ ... }).unique()",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def subscriptionDevicesToRemove = app.subscriptions*?.device.findAll({ java.lang.Object device -> ... })",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ReturnStatement",
+                                "statement": "return subscriptionDevicesToRemove.each({ java.lang.Object device -> ... })",
+                                "children": [
+                                    
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "docstring": "Put the internet to work for you."
+    },
+    {
+        "functionName": "list",
+        "arguments": "",
+        "ast": [
+            {
+                "type": "BlockStatement",
+                "statement": "Block statement",
+                "children": [
+                    {
+                        "type": "BlockStatement",
+                        "statement": "Block statement",
+                        "children": [
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def type = params.deviceType",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ReturnStatement",
+                                "statement": "return (settings[type]?.collect({ ... })) ? settings[type]?.collect({ ... }) : []",
+                                "children": [
+                                    
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "docstring": "Put the internet to work for you."
+    },
+    {
+        "functionName": "listStates",
+        "arguments": "",
+        "ast": [
+            {
+                "type": "BlockStatement",
+                "statement": "Block statement",
+                "children": [
+                    {
+                        "type": "BlockStatement",
+                        "statement": "Block statement",
+                        "children": [
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "log.debug([PROD] states, params: $params)",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def type = params.deviceType",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def attributeName = this.attributeFor(type)",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ReturnStatement",
+                                "statement": "return (settings[type]?.collect({ ... })) ? settings[type]?.collect({ ... }) : []",
+                                "children": [
+                                    
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "docstring": "Put the internet to work for you."
+    },
+    {
+        "functionName": "listSubscriptions",
+        "arguments": "",
+        "ast": [
+            {
+                "type": "BlockStatement",
+                "statement": "Block statement",
+                "children": [
+                    {
+                        "type": "BlockStatement",
+                        "statement": "Block statement",
+                        "children": [
+                            {
+                                "type": "ReturnStatement",
+                                "statement": "return state",
+                                "children": [
+                                    
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "docstring": "Put the internet to work for you."
+    },
+    {
+        "functionName": "update",
+        "arguments": "",
+        "ast": [
+            {
+                "type": "BlockStatement",
+                "statement": "Block statement",
+                "children": [
+                    {
+                        "type": "BlockStatement",
+                        "statement": "Block statement",
+                        "children": [
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def type = params.deviceType",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def data = request.JSON",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def devices = settings[type]",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def device = settings[type]?.find({ ... })",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def command = data.command",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "IfStatement",
+                                "statement": "If statement",
+                                "condition": {
+                                    "type": "BooleanExpression",
+                                    "expression": "device",
+                                    "children": [
+                                        
+                                    ]
+                                },
+                                "ifBlock": {
+                                    "type": "BlockStatement",
+                                    "statement": "Block statement",
+                                    "children": [
+                                        {
+                                            "type": "ExpressionStatement",
+                                            "statement": "this.httpError(404, Device not found)",
+                                            "children": [
+                                                
+                                            ]
+                                        }
+                                    ]
+                                },
+                                "elseBlock": null,
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "IfStatement",
+                                "statement": "If statement",
+                                "condition": {
+                                    "type": "BooleanExpression",
+                                    "expression": "this.validateCommand(device, type, command)",
+                                    "children": [
+                                        
+                                    ]
+                                },
+                                "ifBlock": {
+                                    "type": "BlockStatement",
+                                    "statement": "Block statement",
+                                    "children": [
+                                        {
+                                            "type": "ReturnStatement",
+                                            "statement": "return device.$command()",
+                                            "children": [
+                                                
+                                            ]
+                                        }
+                                    ]
+                                },
+                                "elseBlock": {
+                                    "type": "BlockStatement",
+                                    "statement": "Block statement",
+                                    "children": [
+                                        {
+                                            "type": "ReturnStatement",
+                                            "statement": "return this.httpError(403, Access denied. This command is not supported by current capability.)",
+                                            "children": [
+                                                
+                                            ]
+                                        }
+                                    ]
+                                },
+                                "children": [
+                                    
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "docstring": "Put the internet to work for you."
+    },
+    {
+        "functionName": "validateCommand",
+        "arguments": "device, deviceType, command",
+        "ast": [
+            {
+                "type": "BlockStatement",
+                "statement": "Block statement",
+                "children": [
+                    {
+                        "type": "BlockStatement",
+                        "statement": "Block statement",
+                        "children": [
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def capabilityCommands = this.getDeviceCapabilityCommands(device.capabilities)",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def currentDeviceCapability = this.getCapabilityName(deviceType)",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "IfStatement",
+                                "statement": "If statement",
+                                "condition": {
+                                    "type": "BooleanExpression",
+                                    "expression": "capabilityCommands[currentDeviceCapability]",
+                                    "children": [
+                                        
+                                    ]
+                                },
+                                "ifBlock": {
+                                    "type": "BlockStatement",
+                                    "statement": "Block statement",
+                                    "children": [
+                                        {
+                                            "type": "ReturnStatement",
+                                            "statement": "return ((command in capabilityCommands[currentDeviceCapability])) ? true : false",
+                                            "children": [
+                                                
+                                            ]
+                                        }
+                                    ]
+                                },
+                                "elseBlock": {
+                                    "type": "BlockStatement",
+                                    "statement": "Block statement",
+                                    "children": [
+                                        {
+                                            "type": "ReturnStatement",
+                                            "statement": "return this.httpError(400, Bad request.)",
+                                            "children": [
+                                                
+                                            ]
+                                        }
+                                    ]
+                                },
+                                "children": [
+                                    
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "docstring": "Put the internet to work for you."
+    },
+    {
+        "functionName": "getCapabilityName",
+        "arguments": "type",
+        "ast": [
+            {
+                "type": "BlockStatement",
+                "statement": "Block statement",
+                "children": [
+                    {
+                        "type": "BlockStatement",
+                        "statement": "Block statement",
+                        "children": [
+                            {
+                                "type": "SwitchStatement",
+                                "statement": "<not implemented yet for class: org.codehaus.groovy.ast.stmt.SwitchStatement>",
+                                "children": [
+                                    
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "docstring": "Put the internet to work for you."
+    },
+    {
+        "functionName": "getDeviceCapabilityCommands",
+        "arguments": "deviceCapabilities",
+        "ast": [
+            {
+                "type": "BlockStatement",
+                "statement": "Block statement",
+                "children": [
+                    {
+                        "type": "BlockStatement",
+                        "statement": "Block statement",
+                        "children": [
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def map = [:]",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "deviceCapabilities.collect({ ... })",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ReturnStatement",
+                                "statement": "return map",
+                                "children": [
+                                    
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "docstring": "Put the internet to work for you."
+    },
+    {
+        "functionName": "show",
+        "arguments": "",
+        "ast": [
+            {
+                "type": "BlockStatement",
+                "statement": "Block statement",
+                "children": [
+                    {
+                        "type": "BlockStatement",
+                        "statement": "Block statement",
+                        "children": [
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def type = params.deviceType",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def devices = settings[type]",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def device = devices.find({ ... })",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "IfStatement",
+                                "statement": "If statement",
+                                "condition": {
+                                    "type": "BooleanExpression",
+                                    "expression": "device",
+                                    "children": [
+                                        
+                                    ]
+                                },
+                                "ifBlock": {
+                                    "type": "BlockStatement",
+                                    "statement": "Block statement",
+                                    "children": [
+                                        {
+                                            "type": "ReturnStatement",
+                                            "statement": "return this.httpError(404, Device not found)",
+                                            "children": [
+                                                
+                                            ]
+                                        }
+                                    ]
+                                },
+                                "elseBlock": {
+                                    "type": "BlockStatement",
+                                    "statement": "Block statement",
+                                    "children": [
+                                        {
+                                            "type": "ExpressionStatement",
+                                            "statement": "def attributeName = this.attributeFor(type)",
+                                            "children": [
+                                                
+                                            ]
+                                        },
+                                        {
+                                            "type": "ExpressionStatement",
+                                            "statement": "def s = device.currentState(attributeName)",
+                                            "children": [
+                                                
+                                            ]
+                                        },
+                                        {
+                                            "type": "ReturnStatement",
+                                            "statement": "return this.deviceState(device, s)",
+                                            "children": [
+                                                
+                                            ]
+                                        }
+                                    ]
+                                },
+                                "children": [
+                                    
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "docstring": "Put the internet to work for you."
+    },
+    {
+        "functionName": "addSubscription",
+        "arguments": "",
+        "ast": [
+            {
+                "type": "BlockStatement",
+                "statement": "Block statement",
+                "children": [
+                    {
+                        "type": "BlockStatement",
+                        "statement": "Block statement",
+                        "children": [
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "log.debug([PROD] addSubscription1)",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def type = params.deviceType",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def data = request.JSON",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def attribute = this.attributeFor(type)",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def devices = settings[type]",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def deviceId = data.deviceId",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def callbackUrl = data.callbackUrl",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def device = devices.find({ ... })",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "IfStatement",
+                                "statement": "If statement",
+                                "condition": {
+                                    "type": "BooleanExpression",
+                                    "expression": "device",
+                                    "children": [
+                                        
+                                    ]
+                                },
+                                "ifBlock": {
+                                    "type": "BlockStatement",
+                                    "statement": "Block statement",
+                                    "children": [
+                                        {
+                                            "type": "ExpressionStatement",
+                                            "statement": "log.debug((Adding switch subscription  + callbackUrl))",
+                                            "children": [
+                                                
+                                            ]
+                                        },
+                                        {
+                                            "type": "ExpressionStatement",
+                                            "statement": "(state[deviceId] = [callbackUrl:callbackUrl])",
+                                            "children": [
+                                                
+                                            ]
+                                        },
+                                        {
+                                            "type": "ReturnStatement",
+                                            "statement": "return this.subscribe(device, attribute, deviceHandler)",
+                                            "children": [
+                                                
+                                            ]
+                                        }
+                                    ]
+                                },
+                                "elseBlock": null,
+                                "children": [
+                                    
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "docstring": "Put the internet to work for you."
+    },
+    {
+        "functionName": "removeSubscription",
+        "arguments": "",
+        "ast": [
+            {
+                "type": "BlockStatement",
+                "statement": "Block statement",
+                "children": [
+                    {
+                        "type": "BlockStatement",
+                        "statement": "Block statement",
+                        "children": [
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def type = params.deviceType",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def devices = settings[type]",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def deviceId = params.id",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def device = devices.find({ ... })",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "IfStatement",
+                                "statement": "If statement",
+                                "condition": {
+                                    "type": "BooleanExpression",
+                                    "expression": "device",
+                                    "children": [
+                                        
+                                    ]
+                                },
+                                "ifBlock": {
+                                    "type": "BlockStatement",
+                                    "statement": "Block statement",
+                                    "children": [
+                                        {
+                                            "type": "ExpressionStatement",
+                                            "statement": "log.debug(Removing ${device.displayName} subscription)",
+                                            "children": [
+                                                
+                                            ]
+                                        },
+                                        {
+                                            "type": "ExpressionStatement",
+                                            "statement": "state.remove(device.id)",
+                                            "children": [
+                                                
+                                            ]
+                                        },
+                                        {
+                                            "type": "ReturnStatement",
+                                            "statement": "return this.unsubscribe(device)",
+                                            "children": [
+                                                
+                                            ]
+                                        }
+                                    ]
+                                },
+                                "elseBlock": null,
+                                "children": [
+                                    
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "docstring": "Put the internet to work for you."
+    },
+    {
+        "functionName": "deviceHandler",
+        "arguments": "evt",
+        "ast": [
+            {
+                "type": "BlockStatement",
+                "statement": "Block statement",
+                "children": [
+                    {
+                        "type": "BlockStatement",
+                        "statement": "Block statement",
+                        "children": [
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def deviceInfo = state[evt.deviceId]",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "IfStatement",
+                                "statement": "If statement",
+                                "condition": {
+                                    "type": "BooleanExpression",
+                                    "expression": "deviceInfo",
+                                    "children": [
+                                        
+                                    ]
+                                },
+                                "ifBlock": {
+                                    "type": "BlockStatement",
+                                    "statement": "Block statement",
+                                    "children": [
+                                        {
+                                            "type": "ReturnStatement",
+                                            "statement": "return log.debug([PROD IFTTT] Event data successfully posted)",
+                                            "children": [
+                                                
+                                            ]
+                                        }
+                                    ]
+                                },
+                                "elseBlock": null,
+                                "children": [
+                                    
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "docstring": "Put the internet to work for you."
+    }
+]

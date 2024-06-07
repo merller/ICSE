@@ -1,0 +1,1987 @@
+[
+    {
+        "functionName": "installed",
+        "arguments": "",
+        "ast": [
+            {
+                "type": "BlockStatement",
+                "statement": "Block statement",
+                "children": [
+                    {
+                        "type": "BlockStatement",
+                        "statement": "Block statement",
+                        "children": [
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "log.debug(Installed with settings: $settings)",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ReturnStatement",
+                                "statement": "return this.initialize()",
+                                "children": [
+                                    
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "docstring": "A SmartApp that notifies you when things are happening around your SmartBlocks"
+    },
+    {
+        "functionName": "updated",
+        "arguments": "",
+        "ast": [
+            {
+                "type": "BlockStatement",
+                "statement": "Block statement",
+                "children": [
+                    {
+                        "type": "BlockStatement",
+                        "statement": "Block statement",
+                        "children": [
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "log.debug(Updated with settings: $settings)",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "this.unsubscribe()",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ReturnStatement",
+                                "statement": "return this.initialize()",
+                                "children": [
+                                    
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "docstring": "A SmartApp that notifies you when things are happening around your SmartBlocks"
+    },
+    {
+        "functionName": "initialize",
+        "arguments": "",
+        "ast": [
+            {
+                "type": "BlockStatement",
+                "statement": "Block statement",
+                "children": [
+                    {
+                        "type": "BlockStatement",
+                        "statement": "Block statement",
+                        "children": [
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "log.debug(initializing)",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "this.subscribe(smartBlock, redstoneSignalStrength, redstoneSignalStrengthHandler)",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "this.subscribe(smartBlock, smartBlockNeighborChanged, smartBlockNeighborChangedHandler, [filterEvents:false])",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "this.subscribe(smartBlock, smartBlockNeighborChanged, smartBlockNeighborChangedHandler, [filterEvents:false])",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ReturnStatement",
+                                "statement": "return this.subscribe(smartBlock, blockDestroyed.true, smartBlockDestroyedHandler, [filterEvents:false])",
+                                "children": [
+                                    
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "docstring": "A SmartApp that notifies you when things are happening around your SmartBlocks"
+    },
+    {
+        "functionName": "smartBlockDestroyedHandler",
+        "arguments": "evt",
+        "ast": [
+            {
+                "type": "BlockStatement",
+                "statement": "Block statement",
+                "children": [
+                    {
+                        "type": "BlockStatement",
+                        "statement": "Block statement",
+                        "children": [
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "log.debug(smartBlockDestroyedHandler evt.value: ${evt.value})",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def pageName = destroyedPage",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def message = this.message(pageName)",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ReturnStatement",
+                                "statement": "return this.notifyUser(pageName, message)",
+                                "children": [
+                                    
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "docstring": "A SmartApp that notifies you when things are happening around your SmartBlocks"
+    },
+    {
+        "functionName": "smartBlockNeighborChangedHandler",
+        "arguments": "evt",
+        "ast": [
+            {
+                "type": "BlockStatement",
+                "statement": "Block statement",
+                "children": [
+                    {
+                        "type": "BlockStatement",
+                        "statement": "Block statement",
+                        "children": [
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "log.debug(smartBlockNeighborChangedHandler evt.value: ${evt.value})",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "log.debug(neighborBlockParsed: $neighborBlockParsed)",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "IfStatement",
+                                "statement": "If statement",
+                                "condition": {
+                                    "type": "BooleanExpression",
+                                    "expression": "neighborBlockParsed?.contains(evt.value)",
+                                    "children": [
+                                        
+                                    ]
+                                },
+                                "ifBlock": {
+                                    "type": "BlockStatement",
+                                    "statement": "Block statement",
+                                    "children": [
+                                        {
+                                            "type": "ReturnStatement",
+                                            "statement": "return this.notifyUserOfNeighborChange(evt.value)",
+                                            "children": [
+                                                
+                                            ]
+                                        }
+                                    ]
+                                },
+                                "elseBlock": null,
+                                "children": [
+                                    
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "docstring": "A SmartApp that notifies you when things are happening around your SmartBlocks"
+    },
+    {
+        "functionName": "redstoneSignalStrengthHandler",
+        "arguments": "evt",
+        "ast": [
+            {
+                "type": "BlockStatement",
+                "statement": "Block statement",
+                "children": [
+                    {
+                        "type": "BlockStatement",
+                        "statement": "Block statement",
+                        "children": [
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "log.debug(redstoneSignalStrengthHandler: ${evt.value})",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "java.lang.Integer newValue = (int) evt.value",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "java.lang.Integer lastValue = (int) smartBlock.latestState(redstoneSignalStrength).value",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "IfStatement",
+                                "statement": "If statement",
+                                "condition": {
+                                    "type": "BooleanExpression",
+                                    "expression": "redstoneGreaterThan",
+                                    "children": [
+                                        
+                                    ]
+                                },
+                                "ifBlock": {
+                                    "type": "BlockStatement",
+                                    "statement": "Block statement",
+                                    "children": [
+                                        {
+                                            "type": "ExpressionStatement",
+                                            "statement": "java.lang.Integer gt = (int) redstoneGreaterThan",
+                                            "children": [
+                                                
+                                            ]
+                                        },
+                                        {
+                                            "type": "IfStatement",
+                                            "statement": "If statement",
+                                            "condition": {
+                                                "type": "BooleanExpression",
+                                                "expression": "(newValue > gt)",
+                                                "children": [
+                                                    
+                                                ]
+                                            },
+                                            "ifBlock": {
+                                                "type": "BlockStatement",
+                                                "statement": "Block statement",
+                                                "children": [
+                                                    {
+                                                        "type": "ExpressionStatement",
+                                                        "statement": "log.debug(greater than $gt. send notification)",
+                                                        "children": [
+                                                            
+                                                        ]
+                                                    },
+                                                    {
+                                                        "type": "ExpressionStatement",
+                                                        "statement": "this.notifyUserOfRedstoneChange(newValue)",
+                                                        "children": [
+                                                            
+                                                        ]
+                                                    }
+                                                ]
+                                            },
+                                            "elseBlock": null,
+                                            "children": [
+                                                
+                                            ]
+                                        }
+                                    ]
+                                },
+                                "elseBlock": null,
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "IfStatement",
+                                "statement": "If statement",
+                                "condition": {
+                                    "type": "BooleanExpression",
+                                    "expression": "redstoneLessThan",
+                                    "children": [
+                                        
+                                    ]
+                                },
+                                "ifBlock": {
+                                    "type": "BlockStatement",
+                                    "statement": "Block statement",
+                                    "children": [
+                                        {
+                                            "type": "ExpressionStatement",
+                                            "statement": "java.lang.Integer lt = (int) redstoneLessThan",
+                                            "children": [
+                                                
+                                            ]
+                                        },
+                                        {
+                                            "type": "IfStatement",
+                                            "statement": "If statement",
+                                            "condition": {
+                                                "type": "BooleanExpression",
+                                                "expression": "(newValue < lt)",
+                                                "children": [
+                                                    
+                                                ]
+                                            },
+                                            "ifBlock": {
+                                                "type": "BlockStatement",
+                                                "statement": "Block statement",
+                                                "children": [
+                                                    {
+                                                        "type": "ExpressionStatement",
+                                                        "statement": "log.debug(less than $lt. send notification)",
+                                                        "children": [
+                                                            
+                                                        ]
+                                                    },
+                                                    {
+                                                        "type": "ExpressionStatement",
+                                                        "statement": "this.notifyUserOfRedstoneChange(newValue)",
+                                                        "children": [
+                                                            
+                                                        ]
+                                                    }
+                                                ]
+                                            },
+                                            "elseBlock": null,
+                                            "children": [
+                                                
+                                            ]
+                                        }
+                                    ]
+                                },
+                                "elseBlock": null,
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "IfStatement",
+                                "statement": "If statement",
+                                "condition": {
+                                    "type": "BooleanExpression",
+                                    "expression": "redstoneEqualTo",
+                                    "children": [
+                                        
+                                    ]
+                                },
+                                "ifBlock": {
+                                    "type": "BlockStatement",
+                                    "statement": "Block statement",
+                                    "children": [
+                                        {
+                                            "type": "ExpressionStatement",
+                                            "statement": "java.lang.Integer et = (int) redstoneEqualTo",
+                                            "children": [
+                                                
+                                            ]
+                                        },
+                                        {
+                                            "type": "IfStatement",
+                                            "statement": "If statement",
+                                            "condition": {
+                                                "type": "BooleanExpression",
+                                                "expression": "(newValue == et)",
+                                                "children": [
+                                                    
+                                                ]
+                                            },
+                                            "ifBlock": {
+                                                "type": "BlockStatement",
+                                                "statement": "Block statement",
+                                                "children": [
+                                                    {
+                                                        "type": "ExpressionStatement",
+                                                        "statement": "log.debug(equal to $et. send notification)",
+                                                        "children": [
+                                                            
+                                                        ]
+                                                    },
+                                                    {
+                                                        "type": "ReturnStatement",
+                                                        "statement": "return this.notifyUserOfRedstoneChange(newValue)",
+                                                        "children": [
+                                                            
+                                                        ]
+                                                    }
+                                                ]
+                                            },
+                                            "elseBlock": null,
+                                            "children": [
+                                                
+                                            ]
+                                        }
+                                    ]
+                                },
+                                "elseBlock": null,
+                                "children": [
+                                    
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "docstring": "A SmartApp that notifies you when things are happening around your SmartBlocks"
+    },
+    {
+        "functionName": "notifyUserOfRedstoneChange",
+        "arguments": "value",
+        "ast": [
+            {
+                "type": "BlockStatement",
+                "statement": "Block statement",
+                "children": [
+                    {
+                        "type": "BlockStatement",
+                        "statement": "Block statement",
+                        "children": [
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def msg = this.message(redstonePage)",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "log.debug(message: $msg)",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def notificationMessage = (msg) ? msg : $smartBlock redstone signal is $value",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ReturnStatement",
+                                "statement": "return this.notifyUser(notificationMessage)",
+                                "children": [
+                                    
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "docstring": "A SmartApp that notifies you when things are happening around your SmartBlocks"
+    },
+    {
+        "functionName": "notifyUserOfNeighborChange",
+        "arguments": "value",
+        "ast": [
+            {
+                "type": "BlockStatement",
+                "statement": "Block statement",
+                "children": [
+                    {
+                        "type": "BlockStatement",
+                        "statement": "Block statement",
+                        "children": [
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def msg = this.message(neighborPage)",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "log.debug(message: $msg)",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def notificationMessage = (msg) ? msg : $smartBlock was updated by $value",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ReturnStatement",
+                                "statement": "return this.notifyUser(notificationMessage)",
+                                "children": [
+                                    
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "docstring": "A SmartApp that notifies you when things are happening around your SmartBlocks"
+    },
+    {
+        "functionName": "notifyUser",
+        "arguments": "pageName, messageToSend",
+        "ast": [
+            {
+                "type": "BlockStatement",
+                "statement": "Block statement",
+                "children": [
+                    {
+                        "type": "BlockStatement",
+                        "statement": "Block statement",
+                        "children": [
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "log.debug(notifyUser pageName: $pageName)",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def closestPlayerMessage = this.message($pageNameClosestPlayer)",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "log.debug(closestPlayerMessage = $closestPlayerMessage)",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def latestClosePlayer = this.getLatestClosePlayer()",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "log.debug(latestClosePlayer = $latestClosePlayer)",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "IfStatement",
+                                "statement": "If statement",
+                                "condition": {
+                                    "type": "BooleanExpression",
+                                    "expression": "(closestPlayerMessage && (latestClosePlayer != unknown))",
+                                    "children": [
+                                        
+                                    ]
+                                },
+                                "ifBlock": {
+                                    "type": "BlockStatement",
+                                    "statement": "Block statement",
+                                    "children": [
+                                        {
+                                            "type": "ExpressionStatement",
+                                            "statement": "log.debug(chatting closestPlayer)",
+                                            "children": [
+                                                
+                                            ]
+                                        },
+                                        {
+                                            "type": "ExpressionStatement",
+                                            "statement": "this.chatMessageToMC(closestPlayerMessage, latestClosePlayer)",
+                                            "children": [
+                                                
+                                            ]
+                                        }
+                                    ]
+                                },
+                                "elseBlock": null,
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def wantsHH = app.$pageNameWantsHH",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "log.debug(wantsHH = $wantsHH)",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "IfStatement",
+                                "statement": "If statement",
+                                "condition": {
+                                    "type": "BooleanExpression",
+                                    "expression": "wantsHH",
+                                    "children": [
+                                        
+                                    ]
+                                },
+                                "ifBlock": {
+                                    "type": "BlockStatement",
+                                    "statement": "Block statement",
+                                    "children": [
+                                        {
+                                            "type": "ExpressionStatement",
+                                            "statement": "log.debug(sending HH)",
+                                            "children": [
+                                                
+                                            ]
+                                        },
+                                        {
+                                            "type": "ExpressionStatement",
+                                            "statement": "this.sendNotificationEvent(messageToSend)",
+                                            "children": [
+                                                
+                                            ]
+                                        }
+                                    ]
+                                },
+                                "elseBlock": {
+                                    "type": "BlockStatement",
+                                    "statement": "Block statement",
+                                    "children": [
+                                        {
+                                            "type": "IfStatement",
+                                            "statement": "If statement",
+                                            "condition": {
+                                                "type": "BooleanExpression",
+                                                "expression": "location.contactBookEnabled",
+                                                "children": [
+                                                    
+                                                ]
+                                            },
+                                            "ifBlock": {
+                                                "type": "BlockStatement",
+                                                "statement": "Block statement",
+                                                "children": [
+                                                    {
+                                                        "type": "ExpressionStatement",
+                                                        "statement": "this.sendNotificationToContacts(messageToSend, recipients)",
+                                                        "children": [
+                                                            
+                                                        ]
+                                                    }
+                                                ]
+                                            },
+                                            "elseBlock": {
+                                                "type": "BlockStatement",
+                                                "statement": "Block statement",
+                                                "children": [
+                                                    {
+                                                        "type": "ExpressionStatement",
+                                                        "statement": "def wantsPush = app.$pageNameWantsPush",
+                                                        "children": [
+                                                            
+                                                        ]
+                                                    },
+                                                    {
+                                                        "type": "ExpressionStatement",
+                                                        "statement": "log.debug(wantsPush = $wantsPush)",
+                                                        "children": [
+                                                            
+                                                        ]
+                                                    },
+                                                    {
+                                                        "type": "IfStatement",
+                                                        "statement": "If statement",
+                                                        "condition": {
+                                                            "type": "BooleanExpression",
+                                                            "expression": "(wantsPush && (wantsPush != false))",
+                                                            "children": [
+                                                                
+                                                            ]
+                                                        },
+                                                        "ifBlock": {
+                                                            "type": "BlockStatement",
+                                                            "statement": "Block statement",
+                                                            "children": [
+                                                                {
+                                                                    "type": "ExpressionStatement",
+                                                                    "statement": "log.debug(sending push)",
+                                                                    "children": [
+                                                                        
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "type": "ExpressionStatement",
+                                                                    "statement": "this.sendPush(messageToSend)",
+                                                                    "children": [
+                                                                        
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        },
+                                                        "elseBlock": null,
+                                                        "children": [
+                                                            
+                                                        ]
+                                                    },
+                                                    {
+                                                        "type": "ExpressionStatement",
+                                                        "statement": "def wantsSms = app.$pageNameWantsSms",
+                                                        "children": [
+                                                            
+                                                        ]
+                                                    },
+                                                    {
+                                                        "type": "ExpressionStatement",
+                                                        "statement": "log.debug(wantsSms = $wantsSms)",
+                                                        "children": [
+                                                            
+                                                        ]
+                                                    },
+                                                    {
+                                                        "type": "IfStatement",
+                                                        "statement": "If statement",
+                                                        "condition": {
+                                                            "type": "BooleanExpression",
+                                                            "expression": "wantsSms",
+                                                            "children": [
+                                                                
+                                                            ]
+                                                        },
+                                                        "ifBlock": {
+                                                            "type": "BlockStatement",
+                                                            "statement": "Block statement",
+                                                            "children": [
+                                                                {
+                                                                    "type": "ExpressionStatement",
+                                                                    "statement": "log.debug(sending sms to: $wantsSms)",
+                                                                    "children": [
+                                                                        
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "type": "ExpressionStatement",
+                                                                    "statement": "this.sendSms(wantsSms, messageToSend)",
+                                                                    "children": [
+                                                                        
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        },
+                                                        "elseBlock": null,
+                                                        "children": [
+                                                            
+                                                        ]
+                                                    }
+                                                ]
+                                            },
+                                            "children": [
+                                                
+                                            ]
+                                        }
+                                    ]
+                                },
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def username = app.$pageNameChatUsername",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def allUsers = app.$pageNameChatAllUsers",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "log.debug(username = $username)",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "log.debug(allUsers = $allUsers)",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "IfStatement",
+                                "statement": "If statement",
+                                "condition": {
+                                    "type": "BooleanExpression",
+                                    "expression": "(username && (username != ))",
+                                    "children": [
+                                        
+                                    ]
+                                },
+                                "ifBlock": {
+                                    "type": "BlockStatement",
+                                    "statement": "Block statement",
+                                    "children": [
+                                        {
+                                            "type": "ExpressionStatement",
+                                            "statement": "log.debug(chatting username: $username)",
+                                            "children": [
+                                                
+                                            ]
+                                        },
+                                        {
+                                            "type": "ReturnStatement",
+                                            "statement": "return this.chatMessageToMC(messageToSend, username)",
+                                            "children": [
+                                                
+                                            ]
+                                        }
+                                    ]
+                                },
+                                "elseBlock": {
+                                    "type": "IfStatement",
+                                    "statement": "If statement",
+                                    "condition": {
+                                        "type": "BooleanExpression",
+                                        "expression": "allUsers",
+                                        "children": [
+                                            
+                                        ]
+                                    },
+                                    "ifBlock": {
+                                        "type": "BlockStatement",
+                                        "statement": "Block statement",
+                                        "children": [
+                                            {
+                                                "type": "ExpressionStatement",
+                                                "statement": "log.debug(chatting all users)",
+                                                "children": [
+                                                    
+                                                ]
+                                            },
+                                            {
+                                                "type": "ReturnStatement",
+                                                "statement": "return this.chatMessageToMC(messageToSend, null)",
+                                                "children": [
+                                                    
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    "elseBlock": null,
+                                    "children": [
+                                        
+                                    ]
+                                },
+                                "children": [
+                                    
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "docstring": "A SmartApp that notifies you when things are happening around your SmartBlocks"
+    },
+    {
+        "functionName": "chatMessageToMC",
+        "arguments": "message, username",
+        "ast": [
+            {
+                "type": "BlockStatement",
+                "statement": "Block statement",
+                "children": [
+                    {
+                        "type": "BlockStatement",
+                        "statement": "Block statement",
+                        "children": [
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "log.debug(chatMessageToMC)",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def url = ${app.getParent().getServerURL()}/chat?message=${message.encodeAsURL()}",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "IfStatement",
+                                "statement": "If statement",
+                                "condition": {
+                                    "type": "BooleanExpression",
+                                    "expression": "username",
+                                    "children": [
+                                        
+                                    ]
+                                },
+                                "ifBlock": {
+                                    "type": "BlockStatement",
+                                    "statement": "Block statement",
+                                    "children": [
+                                        {
+                                            "type": "ExpressionStatement",
+                                            "statement": "(url = $url&username=${username.encodeAsURL()})",
+                                            "children": [
+                                                
+                                            ]
+                                        }
+                                    ]
+                                },
+                                "elseBlock": null,
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "log.debug(POST to $url)",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ReturnStatement",
+                                "statement": "return this.httpPost(url, foo=bar, { ... })",
+                                "children": [
+                                    
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "docstring": "A SmartApp that notifies you when things are happening around your SmartBlocks"
+    },
+    {
+        "functionName": "messageDescriptionPartsForPage",
+        "arguments": "pageName",
+        "ast": [
+            {
+                "type": "BlockStatement",
+                "statement": "Block statement",
+                "children": [
+                    {
+                        "type": "BlockStatement",
+                        "statement": "Block statement",
+                        "children": [
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def size = (this.messageBuilderOptions().size() * 2)",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ReturnStatement",
+                                "statement": "return (0..size).collect({ ... })",
+                                "children": [
+                                    
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "docstring": "A SmartApp that notifies you when things are happening around your SmartBlocks"
+    },
+    {
+        "functionName": "messagePartsSet",
+        "arguments": "pageName",
+        "ast": [
+            {
+                "type": "BlockStatement",
+                "statement": "Block statement",
+                "children": [
+                    {
+                        "type": "BlockStatement",
+                        "statement": "Block statement",
+                        "children": [
+                            {
+                                "type": "ReturnStatement",
+                                "statement": "return this.messageDescriptionPartsForPage(pageName).collect({ ... }).unique().contains(false)",
+                                "children": [
+                                    
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "docstring": "A SmartApp that notifies you when things are happening around your SmartBlocks"
+    },
+    {
+        "functionName": "defaultMessageDescription",
+        "arguments": "pageName",
+        "ast": [
+            {
+                "type": "BlockStatement",
+                "statement": "Block statement",
+                "children": [
+                    {
+                        "type": "BlockStatement",
+                        "statement": "Block statement",
+                        "children": [
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def description = ",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "IfStatement",
+                                "statement": "If statement",
+                                "condition": {
+                                    "type": "BooleanExpression",
+                                    "expression": "(((pageName == destroyedPage) || (pageName == redstonePage)) || (pageName == neighborBlockPage))",
+                                    "children": [
+                                        
+                                    ]
+                                },
+                                "ifBlock": {
+                                    "type": "BlockStatement",
+                                    "statement": "Block statement",
+                                    "children": [
+                                        {
+                                            "type": "ExpressionStatement",
+                                            "statement": "def second = this.messageBuilderOptions()[this.messagePartDefaultValue(pageName, 1)]",
+                                            "children": [
+                                                
+                                            ]
+                                        },
+                                        {
+                                            "type": "IfStatement",
+                                            "statement": "If statement",
+                                            "condition": {
+                                                "type": "BooleanExpression",
+                                                "expression": "second",
+                                                "children": [
+                                                    
+                                                ]
+                                            },
+                                            "ifBlock": {
+                                                "type": "ExpressionStatement",
+                                                "statement": "(description = ${$second})",
+                                                "children": [
+                                                    
+                                                ]
+                                            },
+                                            "elseBlock": null,
+                                            "children": [
+                                                
+                                            ]
+                                        },
+                                        {
+                                            "type": "ExpressionStatement",
+                                            "statement": "def third = this.messagePartDefaultValue(pageName, 2)",
+                                            "children": [
+                                                
+                                            ]
+                                        },
+                                        {
+                                            "type": "IfStatement",
+                                            "statement": "If statement",
+                                            "condition": {
+                                                "type": "BooleanExpression",
+                                                "expression": "third",
+                                                "children": [
+                                                    
+                                                ]
+                                            },
+                                            "ifBlock": {
+                                                "type": "ExpressionStatement",
+                                                "statement": "(description = $description $third)",
+                                                "children": [
+                                                    
+                                                ]
+                                            },
+                                            "elseBlock": null,
+                                            "children": [
+                                                
+                                            ]
+                                        },
+                                        {
+                                            "type": "ExpressionStatement",
+                                            "statement": "def fourth = this.messageBuilderOptions()[this.messagePartDefaultValue(pageName, 3)]",
+                                            "children": [
+                                                
+                                            ]
+                                        },
+                                        {
+                                            "type": "IfStatement",
+                                            "statement": "If statement",
+                                            "condition": {
+                                                "type": "BooleanExpression",
+                                                "expression": "fourth",
+                                                "children": [
+                                                    
+                                                ]
+                                            },
+                                            "ifBlock": {
+                                                "type": "ExpressionStatement",
+                                                "statement": "(description = $description ${$fourth})",
+                                                "children": [
+                                                    
+                                                ]
+                                            },
+                                            "elseBlock": null,
+                                            "children": [
+                                                
+                                            ]
+                                        }
+                                    ]
+                                },
+                                "elseBlock": null,
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ReturnStatement",
+                                "statement": "return description",
+                                "children": [
+                                    
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "docstring": "A SmartApp that notifies you when things are happening around your SmartBlocks"
+    },
+    {
+        "functionName": "messageDescriptionForPage",
+        "arguments": "pageName",
+        "ast": [
+            {
+                "type": "BlockStatement",
+                "statement": "Block statement",
+                "children": [
+                    {
+                        "type": "BlockStatement",
+                        "statement": "Block statement",
+                        "children": [
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def parts = this.messageDescriptionPartsForPage(pageName)",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def messageParts = []",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "parts.eachWithIndex({ java.lang.Object part, java.lang.Object idx -> ... })",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "IfStatement",
+                                "statement": "If statement",
+                                "condition": {
+                                    "type": "BooleanExpression",
+                                    "expression": "messageParts",
+                                    "children": [
+                                        
+                                    ]
+                                },
+                                "ifBlock": {
+                                    "type": "BlockStatement",
+                                    "statement": "Block statement",
+                                    "children": [
+                                        {
+                                            "type": "ReturnStatement",
+                                            "statement": "return messageParts.join( ).trim()",
+                                            "children": [
+                                                
+                                            ]
+                                        }
+                                    ]
+                                },
+                                "elseBlock": {
+                                    "type": "BlockStatement",
+                                    "statement": "Block statement",
+                                    "children": [
+                                        {
+                                            "type": "ReturnStatement",
+                                            "statement": "return this.defaultMessageDescription()",
+                                            "children": [
+                                                
+                                            ]
+                                        }
+                                    ]
+                                },
+                                "children": [
+                                    
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "docstring": "A SmartApp that notifies you when things are happening around your SmartBlocks"
+    },
+    {
+        "functionName": "messagePartDefaultValue",
+        "arguments": "pageName, part",
+        "ast": [
+            {
+                "type": "BlockStatement",
+                "statement": "Block statement",
+                "children": [
+                    {
+                        "type": "BlockStatement",
+                        "statement": "Block statement",
+                        "children": [
+                            {
+                                "type": "IfStatement",
+                                "statement": "If statement",
+                                "condition": {
+                                    "type": "BooleanExpression",
+                                    "expression": "(pageName == destroyedPage)",
+                                    "children": [
+                                        
+                                    ]
+                                },
+                                "ifBlock": {
+                                    "type": "BlockStatement",
+                                    "statement": "Block statement",
+                                    "children": [
+                                        {
+                                            "type": "IfStatement",
+                                            "statement": "If statement",
+                                            "condition": {
+                                                "type": "BooleanExpression",
+                                                "expression": "(part == 1)",
+                                                "children": [
+                                                    
+                                                ]
+                                            },
+                                            "ifBlock": {
+                                                "type": "ReturnStatement",
+                                                "statement": "return name",
+                                                "children": [
+                                                    
+                                                ]
+                                            },
+                                            "elseBlock": null,
+                                            "children": [
+                                                
+                                            ]
+                                        },
+                                        {
+                                            "type": "IfStatement",
+                                            "statement": "If statement",
+                                            "condition": {
+                                                "type": "BooleanExpression",
+                                                "expression": "(part == 2)",
+                                                "children": [
+                                                    
+                                                ]
+                                            },
+                                            "ifBlock": {
+                                                "type": "ReturnStatement",
+                                                "statement": "return was destroyed by",
+                                                "children": [
+                                                    
+                                                ]
+                                            },
+                                            "elseBlock": null,
+                                            "children": [
+                                                
+                                            ]
+                                        },
+                                        {
+                                            "type": "IfStatement",
+                                            "statement": "If statement",
+                                            "condition": {
+                                                "type": "BooleanExpression",
+                                                "expression": "(part == 3)",
+                                                "children": [
+                                                    
+                                                ]
+                                            },
+                                            "ifBlock": {
+                                                "type": "ReturnStatement",
+                                                "statement": "return closestPlayer",
+                                                "children": [
+                                                    
+                                                ]
+                                            },
+                                            "elseBlock": null,
+                                            "children": [
+                                                
+                                            ]
+                                        }
+                                    ]
+                                },
+                                "elseBlock": null,
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "IfStatement",
+                                "statement": "If statement",
+                                "condition": {
+                                    "type": "BooleanExpression",
+                                    "expression": "(pageName == neighborBlockPage)",
+                                    "children": [
+                                        
+                                    ]
+                                },
+                                "ifBlock": {
+                                    "type": "BlockStatement",
+                                    "statement": "Block statement",
+                                    "children": [
+                                        {
+                                            "type": "IfStatement",
+                                            "statement": "If statement",
+                                            "condition": {
+                                                "type": "BooleanExpression",
+                                                "expression": "(part == 1)",
+                                                "children": [
+                                                    
+                                                ]
+                                            },
+                                            "ifBlock": {
+                                                "type": "ReturnStatement",
+                                                "statement": "return name",
+                                                "children": [
+                                                    
+                                                ]
+                                            },
+                                            "elseBlock": null,
+                                            "children": [
+                                                
+                                            ]
+                                        },
+                                        {
+                                            "type": "IfStatement",
+                                            "statement": "If statement",
+                                            "condition": {
+                                                "type": "BooleanExpression",
+                                                "expression": "(part == 2)",
+                                                "children": [
+                                                    
+                                                ]
+                                            },
+                                            "ifBlock": {
+                                                "type": "ReturnStatement",
+                                                "statement": "return has a redstone signal of",
+                                                "children": [
+                                                    
+                                                ]
+                                            },
+                                            "elseBlock": null,
+                                            "children": [
+                                                
+                                            ]
+                                        },
+                                        {
+                                            "type": "IfStatement",
+                                            "statement": "If statement",
+                                            "condition": {
+                                                "type": "BooleanExpression",
+                                                "expression": "(part == 3)",
+                                                "children": [
+                                                    
+                                                ]
+                                            },
+                                            "ifBlock": {
+                                                "type": "ReturnStatement",
+                                                "statement": "return redstoneSignalStrength",
+                                                "children": [
+                                                    
+                                                ]
+                                            },
+                                            "elseBlock": null,
+                                            "children": [
+                                                
+                                            ]
+                                        }
+                                    ]
+                                },
+                                "elseBlock": null,
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "IfStatement",
+                                "statement": "If statement",
+                                "condition": {
+                                    "type": "BooleanExpression",
+                                    "expression": "(pageName == redstonePage)",
+                                    "children": [
+                                        
+                                    ]
+                                },
+                                "ifBlock": {
+                                    "type": "BlockStatement",
+                                    "statement": "Block statement",
+                                    "children": [
+                                        {
+                                            "type": "IfStatement",
+                                            "statement": "If statement",
+                                            "condition": {
+                                                "type": "BooleanExpression",
+                                                "expression": "(part == 1)",
+                                                "children": [
+                                                    
+                                                ]
+                                            },
+                                            "ifBlock": {
+                                                "type": "ReturnStatement",
+                                                "statement": "return name",
+                                                "children": [
+                                                    
+                                                ]
+                                            },
+                                            "elseBlock": null,
+                                            "children": [
+                                                
+                                            ]
+                                        },
+                                        {
+                                            "type": "IfStatement",
+                                            "statement": "If statement",
+                                            "condition": {
+                                                "type": "BooleanExpression",
+                                                "expression": "(part == 2)",
+                                                "children": [
+                                                    
+                                                ]
+                                            },
+                                            "ifBlock": {
+                                                "type": "ReturnStatement",
+                                                "statement": "return was updated by",
+                                                "children": [
+                                                    
+                                                ]
+                                            },
+                                            "elseBlock": null,
+                                            "children": [
+                                                
+                                            ]
+                                        },
+                                        {
+                                            "type": "IfStatement",
+                                            "statement": "If statement",
+                                            "condition": {
+                                                "type": "BooleanExpression",
+                                                "expression": "(part == 3)",
+                                                "children": [
+                                                    
+                                                ]
+                                            },
+                                            "ifBlock": {
+                                                "type": "ReturnStatement",
+                                                "statement": "return closestPlayer",
+                                                "children": [
+                                                    
+                                                ]
+                                            },
+                                            "elseBlock": null,
+                                            "children": [
+                                                
+                                            ]
+                                        }
+                                    ]
+                                },
+                                "elseBlock": null,
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ReturnStatement",
+                                "statement": "return null",
+                                "children": [
+                                    
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "docstring": "A SmartApp that notifies you when things are happening around your SmartBlocks"
+    },
+    {
+        "functionName": "message",
+        "arguments": "pageName",
+        "ast": [
+            {
+                "type": "BlockStatement",
+                "statement": "Block statement",
+                "children": [
+                    {
+                        "type": "BlockStatement",
+                        "statement": "Block statement",
+                        "children": [
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "log.debug(building message)",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def messageParts = []",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "this.messageDescriptionPartsForPage(pageName).eachWithIndex({ java.lang.Object part, java.lang.Object idx -> ... })",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def message = messageParts.join( ).trim()",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "log.debug(message: $message)",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ReturnStatement",
+                                "statement": "return message",
+                                "children": [
+                                    
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "docstring": "A SmartApp that notifies you when things are happening around your SmartBlocks"
+    },
+    {
+        "functionName": "messageBuilderOptions",
+        "arguments": "",
+        "ast": [
+            {
+                "type": "BlockStatement",
+                "statement": "Block statement",
+                "children": [
+                    {
+                        "type": "BlockStatement",
+                        "statement": "Block statement",
+                        "children": [
+                            {
+                                "type": "ReturnStatement",
+                                "statement": "return [name:SmartBlock name, neighborBlockName:Neighbor block name, blockDestroyed:Destroyed State ('destroyed' / 'OK'), redstoneSignalStrength:Redstone signal strength, ... ]",
+                                "children": [
+                                    
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "docstring": "A SmartApp that notifies you when things are happening around your SmartBlocks"
+    },
+    {
+        "functionName": "getMessagePartFromOption",
+        "arguments": "optionKey",
+        "ast": [
+            {
+                "type": "BlockStatement",
+                "statement": "Block statement",
+                "children": [
+                    {
+                        "type": "BlockStatement",
+                        "statement": "Block statement",
+                        "children": [
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "log.debug(optionKey: $optionKey)",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "IfStatement",
+                                "statement": "If statement",
+                                "condition": {
+                                    "type": "BooleanExpression",
+                                    "expression": "(optionKey == name)",
+                                    "children": [
+                                        
+                                    ]
+                                },
+                                "ifBlock": {
+                                    "type": "ReturnStatement",
+                                    "statement": "return (smartBlock.label) ? smartBlock.label : smartBlock.name",
+                                    "children": [
+                                        
+                                    ]
+                                },
+                                "elseBlock": null,
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "IfStatement",
+                                "statement": "If statement",
+                                "condition": {
+                                    "type": "BooleanExpression",
+                                    "expression": "(optionKey == closestPlayer)",
+                                    "children": [
+                                        
+                                    ]
+                                },
+                                "ifBlock": {
+                                    "type": "ReturnStatement",
+                                    "statement": "return this.getLatestClosePlayer()",
+                                    "children": [
+                                        
+                                    ]
+                                },
+                                "elseBlock": null,
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "IfStatement",
+                                "statement": "If statement",
+                                "condition": {
+                                    "type": "BooleanExpression",
+                                    "expression": "(optionKey == blockDestroyed)",
+                                    "children": [
+                                        
+                                    ]
+                                },
+                                "ifBlock": {
+                                    "type": "ReturnStatement",
+                                    "statement": "return (smartBlock.latestValue(blockDestroyed)) ? OK : destroyed",
+                                    "children": [
+                                        
+                                    ]
+                                },
+                                "elseBlock": null,
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ReturnStatement",
+                                "statement": "return smartBlock.latestValue(optionKey)",
+                                "children": [
+                                    
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "docstring": "A SmartApp that notifies you when things are happening around your SmartBlocks"
+    },
+    {
+        "functionName": "getLatestClosePlayer",
+        "arguments": "",
+        "ast": [
+            {
+                "type": "BlockStatement",
+                "statement": "Block statement",
+                "children": [
+                    {
+                        "type": "BlockStatement",
+                        "statement": "Block statement",
+                        "children": [
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def now = new java.util.Date()",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def minusOne = new java.util.Date([minutes:(now.minutes - 1)])",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def latestStates = smartBlock.statesSince(closestPlayer, minusOne)",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "IfStatement",
+                                "statement": "If statement",
+                                "condition": {
+                                    "type": "BooleanExpression",
+                                    "expression": "latestStates.size",
+                                    "children": [
+                                        
+                                    ]
+                                },
+                                "ifBlock": {
+                                    "type": "BlockStatement",
+                                    "statement": "Block statement",
+                                    "children": [
+                                        {
+                                            "type": "ReturnStatement",
+                                            "statement": "return latestStates[0].value",
+                                            "children": [
+                                                
+                                            ]
+                                        }
+                                    ]
+                                },
+                                "elseBlock": null,
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ReturnStatement",
+                                "statement": "return unknown",
+                                "children": [
+                                    
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "docstring": "A SmartApp that notifies you when things are happening around your SmartBlocks"
+    },
+    {
+        "functionName": "settingsAsIds",
+        "arguments": "",
+        "ast": [
+            {
+                "type": "BlockStatement",
+                "statement": "Block statement",
+                "children": [
+                    {
+                        "type": "BlockStatement",
+                        "statement": "Block statement",
+                        "children": [
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "log.debug(settingsAsIds)",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "log.debug(neighborBlockParsed: $neighborBlockParsed)",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def subscribedIds = []",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "neighborBlockParsed.each({ ... })",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ReturnStatement",
+                                "statement": "return subscribedIds",
+                                "children": [
+                                    
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "docstring": "A SmartApp that notifies you when things are happening around your SmartBlocks"
+    },
+    {
+        "functionName": "convertBlockSettingToBlockId",
+        "arguments": "setting",
+        "ast": [
+            {
+                "type": "BlockStatement",
+                "statement": "Block statement",
+                "children": [
+                    {
+                        "type": "BlockStatement",
+                        "statement": "Block statement",
+                        "children": [
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def id = setting.substring(0, setting.indexOf( ))",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def name = this.allBlocks()[id]",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "log.debug(id: $id, name:$name)",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ReturnStatement",
+                                "statement": "return id",
+                                "children": [
+                                    
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "docstring": "A SmartApp that notifies you when things are happening around your SmartBlocks"
+    },
+    {
+        "functionName": "allBlocksParsed",
+        "arguments": "",
+        "ast": [
+            {
+                "type": "BlockStatement",
+                "statement": "Block statement",
+                "children": [
+                    {
+                        "type": "BlockStatement",
+                        "statement": "Block statement",
+                        "children": [
+                            {
+                                "type": "ReturnStatement",
+                                "statement": "return this.allBlocks().collect({ java.lang.Object k, java.lang.Object v -> ... })",
+                                "children": [
+                                    
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "docstring": "A SmartApp that notifies you when things are happening around your SmartBlocks"
+    },
+    {
+        "functionName": "allBlocks",
+        "arguments": "",
+        "ast": [
+            {
+                "type": "BlockStatement",
+                "statement": "Block statement",
+                "children": [
+                    {
+                        "type": "BlockStatement",
+                        "statement": "Block statement",
+                        "children": [
+                            {
+                                "type": "ReturnStatement",
+                                "statement": "return [0:Air, 1:Stone, 2:Grass, 3:Dirt, 4:Cobblestone, 5:Oak Wood Plank, 5:1:Spruce Wood Plank, 5:2:Birch Wood Plank, 5:3:Jungle Wood Plank, ... ]",
+                                "children": [
+                                    
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "docstring": "A SmartApp that notifies you when things are happening around your SmartBlocks"
+    }
+]

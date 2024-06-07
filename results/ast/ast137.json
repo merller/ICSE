@@ -1,0 +1,230 @@
+[
+    {
+        "functionName": "installed",
+        "arguments": "",
+        "ast": [
+            {
+                "type": "BlockStatement",
+                "statement": "Block statement",
+                "children": [
+                    {
+                        "type": "BlockStatement",
+                        "statement": "Block statement",
+                        "children": [
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "log.debug(Installed with settings: $settings)",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ReturnStatement",
+                                "statement": "return this.subscribeToEvents()",
+                                "children": [
+                                    
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "docstring": "Plays a different selected song or station for each mode."
+    },
+    {
+        "functionName": "updated",
+        "arguments": "",
+        "ast": [
+            {
+                "type": "BlockStatement",
+                "statement": "Block statement",
+                "children": [
+                    {
+                        "type": "BlockStatement",
+                        "statement": "Block statement",
+                        "children": [
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "log.debug(Updated with settings: $settings)",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "this.unsubscribe()",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ReturnStatement",
+                                "statement": "return this.subscribeToEvents()",
+                                "children": [
+                                    
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "docstring": "Plays a different selected song or station for each mode."
+    },
+    {
+        "functionName": "subscribeToEvents",
+        "arguments": "",
+        "ast": [
+            {
+                "type": "BlockStatement",
+                "statement": "Block statement",
+                "children": [
+                    {
+                        "type": "BlockStatement",
+                        "statement": "Block statement",
+                        "children": [
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "log.trace(subscribeToEvents())",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "this.saveSelectedSongs()",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ReturnStatement",
+                                "statement": "return this.subscribe(location, modeChangeHandler)",
+                                "children": [
+                                    
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "docstring": "Plays a different selected song or station for each mode."
+    },
+    {
+        "functionName": "modeChangeHandler",
+        "arguments": "evt",
+        "ast": [
+            {
+                "type": "BlockStatement",
+                "statement": "Block statement",
+                "children": [
+                    {
+                        "type": "BlockStatement",
+                        "statement": "Block statement",
+                        "children": [
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "log.trace(modeChangeHandler(${evt.name}: ${evt.value}))",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "IfStatement",
+                                "statement": "If statement",
+                                "condition": {
+                                    "type": "BooleanExpression",
+                                    "expression": "allOk",
+                                    "children": [
+                                        
+                                    ]
+                                },
+                                "ifBlock": {
+                                    "type": "BlockStatement",
+                                    "statement": "Block statement",
+                                    "children": [
+                                        {
+                                            "type": "IfStatement",
+                                            "statement": "If statement",
+                                            "condition": {
+                                                "type": "BooleanExpression",
+                                                "expression": "frequency",
+                                                "children": [
+                                                    
+                                                ]
+                                            },
+                                            "ifBlock": {
+                                                "type": "BlockStatement",
+                                                "statement": "Block statement",
+                                                "children": [
+                                                    {
+                                                        "type": "ExpressionStatement",
+                                                        "statement": "def lastTime = state[this.frequencyKey(evt)]",
+                                                        "children": [
+                                                            
+                                                        ]
+                                                    },
+                                                    {
+                                                        "type": "IfStatement",
+                                                        "statement": "If statement",
+                                                        "condition": {
+                                                            "type": "BooleanExpression",
+                                                            "expression": "((lastTime == null) || ((this.now() - lastTime) >= (frequency * 60000)))",
+                                                            "children": [
+                                                                
+                                                            ]
+                                                        },
+                                                        "ifBlock": {
+                                                            "type": "BlockStatement",
+                                                            "statement": "Block statement",
+                                                            "children": [
+                                                                {
+                                                                    "type": "ReturnStatement",
+                                                                    "statement": "return this.takeAction(evt)",
+                                                                    "children": [
+                                                                        
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        },
+                                                        "elseBlock": null,
+                                                        "children": [
+                                                            
+                                                        ]
+                                                    }
+                                                ]
+                                            },
+                                            "elseBlock": {
+                                                "type": "BlockStatement",
+                                                "statement": "Block statement",
+                                                "children": [
+                                                    {
+                                                        "type": "ReturnStatement",
+                                                        "statement": "return this.takeAction(evt)",
+                                                        "children": [
+                                                            
+                                                        ]
+                                                    }
+                                                ]
+                                            },
+                                            "children": [
+                                                
+                                            ]
+                                        }
+                                    ]
+                                },
+                                "elseBlock": null,
+                                "children": [
+                                    
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "docstring": "Plays a different selected song or station for each mode."
+    }
+]

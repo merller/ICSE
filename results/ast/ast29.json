@@ -1,0 +1,264 @@
+[
+    {
+        "functionName": "installed",
+        "arguments": "",
+        "ast": [
+            {
+                "type": "BlockStatement",
+                "statement": "Block statement",
+                "children": [
+                    {
+                        "type": "BlockStatement",
+                        "statement": "Block statement",
+                        "children": [
+                            {
+                                "type": "ReturnStatement",
+                                "statement": "return this.init()",
+                                "children": [
+                                    
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "docstring": "Warn if doors or windows are open when inclement weather is approaching."
+    },
+    {
+        "functionName": "updated",
+        "arguments": "",
+        "ast": [
+            {
+                "type": "BlockStatement",
+                "statement": "Block statement",
+                "children": [
+                    {
+                        "type": "BlockStatement",
+                        "statement": "Block statement",
+                        "children": [
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "this.unsubscribe()",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "this.unschedule()",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ReturnStatement",
+                                "statement": "return this.init()",
+                                "children": [
+                                    
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "docstring": "Warn if doors or windows are open when inclement weather is approaching."
+    },
+    {
+        "functionName": "init",
+        "arguments": "",
+        "ast": [
+            {
+                "type": "BlockStatement",
+                "statement": "Block statement",
+                "children": [
+                    {
+                        "type": "BlockStatement",
+                        "statement": "Block statement",
+                        "children": [
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "(state.lastMessage = 0)",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "(state.lastCheck = [time:0, result:false])",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "this.schedule(0 0,30 * * * ?, scheduleCheck)",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ReturnStatement",
+                                "statement": "return this.subscribe(sensors, contact.open, scheduleCheck)",
+                                "children": [
+                                    
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "docstring": "Warn if doors or windows are open when inclement weather is approaching."
+    },
+    {
+        "functionName": "scheduleCheck",
+        "arguments": "evt",
+        "ast": [
+            {
+                "type": "BlockStatement",
+                "statement": "Block statement",
+                "children": [
+                    {
+                        "type": "BlockStatement",
+                        "statement": "Block statement",
+                        "children": [
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def open = sensors.findAll({ ... })",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def plural = ((open.size() > 1)) ? are : is",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "IfStatement",
+                                "statement": "If statement",
+                                "condition": {
+                                    "type": "BooleanExpression",
+                                    "expression": "(((this.now() - ((30 * 60) * 1000)) > state.lastCheck[time]) && open)",
+                                    "children": [
+                                        
+                                    ]
+                                },
+                                "ifBlock": {
+                                    "type": "BlockStatement",
+                                    "statement": "Block statement",
+                                    "children": [
+                                        {
+                                            "type": "ExpressionStatement",
+                                            "statement": "log.info(Something's open - let's check the weather.)",
+                                            "children": [
+                                                
+                                            ]
+                                        },
+                                        {
+                                            "type": "ExpressionStatement",
+                                            "statement": "def response = this.getTwcForecast(zipCode)",
+                                            "children": [
+                                                
+                                            ]
+                                        },
+                                        {
+                                            "type": "ExpressionStatement",
+                                            "statement": "def weather = this.isStormy(response)",
+                                            "children": [
+                                                
+                                            ]
+                                        },
+                                        {
+                                            "type": "IfStatement",
+                                            "statement": "If statement",
+                                            "condition": {
+                                                "type": "BooleanExpression",
+                                                "expression": "weather",
+                                                "children": [
+                                                    
+                                                ]
+                                            },
+                                            "ifBlock": {
+                                                "type": "BlockStatement",
+                                                "statement": "Block statement",
+                                                "children": [
+                                                    {
+                                                        "type": "ReturnStatement",
+                                                        "statement": "return this.send(${open.join(, )} $plural open and $weather coming.)",
+                                                        "children": [
+                                                            
+                                                        ]
+                                                    }
+                                                ]
+                                            },
+                                            "elseBlock": null,
+                                            "children": [
+                                                
+                                            ]
+                                        }
+                                    ]
+                                },
+                                "elseBlock": {
+                                    "type": "IfStatement",
+                                    "statement": "If statement",
+                                    "condition": {
+                                        "type": "BooleanExpression",
+                                        "expression": "((((this.now() - ((30 * 60) * 1000)) <= state.lastCheck[time]) && state.lastCheck[result]) && open)",
+                                        "children": [
+                                            
+                                        ]
+                                    },
+                                    "ifBlock": {
+                                        "type": "BlockStatement",
+                                        "statement": "Block statement",
+                                        "children": [
+                                            {
+                                                "type": "ExpressionStatement",
+                                                "statement": "log.info(We have fresh weather data, no need to poll.)",
+                                                "children": [
+                                                    
+                                                ]
+                                            },
+                                            {
+                                                "type": "ReturnStatement",
+                                                "statement": "return this.send(${open.join(, )} $plural open and ${state.lastCheck[result]} coming.)",
+                                                "children": [
+                                                    
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    "elseBlock": {
+                                        "type": "BlockStatement",
+                                        "statement": "Block statement",
+                                        "children": [
+                                            {
+                                                "type": "ReturnStatement",
+                                                "statement": "return log.info(Everything looks closed, no reason to check weather.)",
+                                                "children": [
+                                                    
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    "children": [
+                                        
+                                    ]
+                                },
+                                "children": [
+                                    
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "docstring": "Warn if doors or windows are open when inclement weather is approaching."
+    }
+]

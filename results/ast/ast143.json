@@ -1,0 +1,1001 @@
+[
+    {
+        "functionName": "installed",
+        "arguments": "",
+        "ast": [
+            {
+                "type": "BlockStatement",
+                "statement": "Block statement",
+                "children": [
+                    {
+                        "type": "BlockStatement",
+                        "statement": "Block statement",
+                        "children": [
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "log.debug(Installed with settings: $settings)",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ReturnStatement",
+                                "statement": "return this.initialize()",
+                                "children": [
+                                    
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "docstring": "Use a step tracker device to track daily step goals and trigger various device actions when your goals are met!"
+    },
+    {
+        "functionName": "updated",
+        "arguments": "",
+        "ast": [
+            {
+                "type": "BlockStatement",
+                "statement": "Block statement",
+                "children": [
+                    {
+                        "type": "BlockStatement",
+                        "statement": "Block statement",
+                        "children": [
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "log.debug(Updated with settings: $settings)",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "this.unsubscribe()",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ReturnStatement",
+                                "statement": "return this.initialize()",
+                                "children": [
+                                    
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "docstring": "Use a step tracker device to track daily step goals and trigger various device actions when your goals are met!"
+    },
+    {
+        "functionName": "initialize",
+        "arguments": "",
+        "ast": [
+            {
+                "type": "BlockStatement",
+                "statement": "Block statement",
+                "children": [
+                    {
+                        "type": "BlockStatement",
+                        "statement": "Block statement",
+                        "children": [
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "log.trace(Entering initialize())",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "(state.lastSteps = 0)",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "(state.steps = jawbone.currentValue(steps).toInteger())",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "(state.goal = jawbone.currentValue(goal).toInteger())",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "this.subscribe(jawbone, goal, goalHandler)",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "this.subscribe(jawbone, steps, stepHandler)",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "IfStatement",
+                                "statement": "If statement",
+                                "condition": {
+                                    "type": "BooleanExpression",
+                                    "expression": "song",
+                                    "children": [
+                                        
+                                    ]
+                                },
+                                "ifBlock": {
+                                    "type": "BlockStatement",
+                                    "statement": "Block statement",
+                                    "children": [
+                                        {
+                                            "type": "ExpressionStatement",
+                                            "statement": "this.saveSelectedSong()",
+                                            "children": [
+                                                
+                                            ]
+                                        }
+                                    ]
+                                },
+                                "elseBlock": null,
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ReturnStatement",
+                                "statement": "return log.trace(Exiting initialize())",
+                                "children": [
+                                    
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "docstring": "Use a step tracker device to track daily step goals and trigger various device actions when your goals are met!"
+    },
+    {
+        "functionName": "goalHandler",
+        "arguments": "evt",
+        "ast": [
+            {
+                "type": "BlockStatement",
+                "statement": "Block statement",
+                "children": [
+                    {
+                        "type": "BlockStatement",
+                        "statement": "Block statement",
+                        "children": [
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "log.trace(Entering goalHandler())",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def goal = evt.value.toInteger()",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "(state.goal = goal)",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ReturnStatement",
+                                "statement": "return log.trace(Exiting goalHandler())",
+                                "children": [
+                                    
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "docstring": "Use a step tracker device to track daily step goals and trigger various device actions when your goals are met!"
+    },
+    {
+        "functionName": "stepHandler",
+        "arguments": "evt",
+        "ast": [
+            {
+                "type": "BlockStatement",
+                "statement": "Block statement",
+                "children": [
+                    {
+                        "type": "BlockStatement",
+                        "statement": "Block statement",
+                        "children": [
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "log.trace(Entering stepHandler())",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "log.debug(Event Value ${evt.value})",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "log.debug(state.steps = ${state.steps})",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "log.debug(state.goal = ${state.goal})",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def steps = evt.value.toInteger()",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "(state.lastSteps = state.steps)",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "(state.steps = steps)",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def stepGoal = <not implemented yet for class: org.codehaus.groovy.ast.expr.EmptyExpression$1>",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "IfStatement",
+                                "statement": "If statement",
+                                "condition": {
+                                    "type": "BooleanExpression",
+                                    "expression": "(settings.thresholdType == Goal)",
+                                    "children": [
+                                        
+                                    ]
+                                },
+                                "ifBlock": {
+                                    "type": "ExpressionStatement",
+                                    "statement": "(stepGoal = state.goal)",
+                                    "children": [
+                                        
+                                    ]
+                                },
+                                "elseBlock": {
+                                    "type": "ExpressionStatement",
+                                    "statement": "(stepGoal = settings.threshold)",
+                                    "children": [
+                                        
+                                    ]
+                                },
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "IfStatement",
+                                "statement": "If statement",
+                                "condition": {
+                                    "type": "BooleanExpression",
+                                    "expression": "((state.lastSteps < stepGoal) && (state.steps >= stepGoal))",
+                                    "children": [
+                                        
+                                    ]
+                                },
+                                "ifBlock": {
+                                    "type": "BlockStatement",
+                                    "statement": "Block statement",
+                                    "children": [
+                                        {
+                                            "type": "IfStatement",
+                                            "statement": "If statement",
+                                            "condition": {
+                                                "type": "BooleanExpression",
+                                                "expression": "(settings.notificationType != None)",
+                                                "children": [
+                                                    
+                                                ]
+                                            },
+                                            "ifBlock": {
+                                                "type": "BlockStatement",
+                                                "statement": "Block statement",
+                                                "children": [
+                                                    {
+                                                        "type": "IfStatement",
+                                                        "statement": "If statement",
+                                                        "condition": {
+                                                            "type": "BooleanExpression",
+                                                            "expression": "location.contactBookEnabled",
+                                                            "children": [
+                                                                
+                                                            ]
+                                                        },
+                                                        "ifBlock": {
+                                                            "type": "BlockStatement",
+                                                            "statement": "Block statement",
+                                                            "children": [
+                                                                {
+                                                                    "type": "ExpressionStatement",
+                                                                    "statement": "this.sendNotificationToContacts(stepMessage, recipients)",
+                                                                    "children": [
+                                                                        
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        },
+                                                        "elseBlock": {
+                                                            "type": "BlockStatement",
+                                                            "statement": "Block statement",
+                                                            "children": [
+                                                                {
+                                                                    "type": "ExpressionStatement",
+                                                                    "statement": "def options = [method:settings.notificationType.toLowerCase(), phone:settings.phone]",
+                                                                    "children": [
+                                                                        
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "type": "ExpressionStatement",
+                                                                    "statement": "this.sendNotification(stepMessage, options)",
+                                                                    "children": [
+                                                                        
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        },
+                                                        "children": [
+                                                            
+                                                        ]
+                                                    }
+                                                ]
+                                            },
+                                            "elseBlock": null,
+                                            "children": [
+                                                
+                                            ]
+                                        },
+                                        {
+                                            "type": "IfStatement",
+                                            "statement": "If statement",
+                                            "condition": {
+                                                "type": "BooleanExpression",
+                                                "expression": "settings.sonos",
+                                                "children": [
+                                                    
+                                                ]
+                                            },
+                                            "ifBlock": {
+                                                "type": "BlockStatement",
+                                                "statement": "Block statement",
+                                                "children": [
+                                                    {
+                                                        "type": "ExpressionStatement",
+                                                        "statement": "this.sonosNotification()",
+                                                        "children": [
+                                                            
+                                                        ]
+                                                    }
+                                                ]
+                                            },
+                                            "elseBlock": null,
+                                            "children": [
+                                                
+                                            ]
+                                        },
+                                        {
+                                            "type": "IfStatement",
+                                            "statement": "If statement",
+                                            "condition": {
+                                                "type": "BooleanExpression",
+                                                "expression": "settings.hues",
+                                                "children": [
+                                                    
+                                                ]
+                                            },
+                                            "ifBlock": {
+                                                "type": "BlockStatement",
+                                                "statement": "Block statement",
+                                                "children": [
+                                                    {
+                                                        "type": "ExpressionStatement",
+                                                        "statement": "this.hueNotification()",
+                                                        "children": [
+                                                            
+                                                        ]
+                                                    }
+                                                ]
+                                            },
+                                            "elseBlock": null,
+                                            "children": [
+                                                
+                                            ]
+                                        },
+                                        {
+                                            "type": "IfStatement",
+                                            "statement": "If statement",
+                                            "condition": {
+                                                "type": "BooleanExpression",
+                                                "expression": "settings.lights",
+                                                "children": [
+                                                    
+                                                ]
+                                            },
+                                            "ifBlock": {
+                                                "type": "BlockStatement",
+                                                "statement": "Block statement",
+                                                "children": [
+                                                    {
+                                                        "type": "ExpressionStatement",
+                                                        "statement": "this.lightsNotification()",
+                                                        "children": [
+                                                            
+                                                        ]
+                                                    }
+                                                ]
+                                            },
+                                            "elseBlock": null,
+                                            "children": [
+                                                
+                                            ]
+                                        }
+                                    ]
+                                },
+                                "elseBlock": null,
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ReturnStatement",
+                                "statement": "return log.trace(Exiting stepHandler())",
+                                "children": [
+                                    
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "docstring": "Use a step tracker device to track daily step goals and trigger various device actions when your goals are met!"
+    },
+    {
+        "functionName": "lightsNotification",
+        "arguments": "",
+        "ast": [
+            {
+                "type": "BlockStatement",
+                "statement": "Block statement",
+                "children": [
+                    {
+                        "type": "BlockStatement",
+                        "statement": "Block statement",
+                        "children": [
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "log.trace(Save current state of lights)",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "(state.previousLights = [:])",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "lights.each({ ... })",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "log.trace(Now flash the lights)",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ForStatement",
+                                "statement": "<not implemented yet for class: org.codehaus.groovy.ast.stmt.ForStatement>",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "log.trace(Now restore the original state of lights)",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ReturnStatement",
+                                "statement": "return lights.each({ ... })",
+                                "children": [
+                                    
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "docstring": "Use a step tracker device to track daily step goals and trigger various device actions when your goals are met!"
+    },
+    {
+        "functionName": "hueNotification",
+        "arguments": "",
+        "ast": [
+            {
+                "type": "BlockStatement",
+                "statement": "Block statement",
+                "children": [
+                    {
+                        "type": "BlockStatement",
+                        "statement": "Block statement",
+                        "children": [
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "log.trace(Entering hueNotification())",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def hueColor = 0",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "IfStatement",
+                                "statement": "If statement",
+                                "condition": {
+                                    "type": "BooleanExpression",
+                                    "expression": "(color == Blue)",
+                                    "children": [
+                                        
+                                    ]
+                                },
+                                "ifBlock": {
+                                    "type": "ExpressionStatement",
+                                    "statement": "(hueColor = 70)",
+                                    "children": [
+                                        
+                                    ]
+                                },
+                                "elseBlock": {
+                                    "type": "IfStatement",
+                                    "statement": "If statement",
+                                    "condition": {
+                                        "type": "BooleanExpression",
+                                        "expression": "(color == Green)",
+                                        "children": [
+                                            
+                                        ]
+                                    },
+                                    "ifBlock": {
+                                        "type": "ExpressionStatement",
+                                        "statement": "(hueColor = 39)",
+                                        "children": [
+                                            
+                                        ]
+                                    },
+                                    "elseBlock": {
+                                        "type": "IfStatement",
+                                        "statement": "If statement",
+                                        "condition": {
+                                            "type": "BooleanExpression",
+                                            "expression": "(color == Yellow)",
+                                            "children": [
+                                                
+                                            ]
+                                        },
+                                        "ifBlock": {
+                                            "type": "ExpressionStatement",
+                                            "statement": "(hueColor = 25)",
+                                            "children": [
+                                                
+                                            ]
+                                        },
+                                        "elseBlock": {
+                                            "type": "IfStatement",
+                                            "statement": "If statement",
+                                            "condition": {
+                                                "type": "BooleanExpression",
+                                                "expression": "(color == Orange)",
+                                                "children": [
+                                                    
+                                                ]
+                                            },
+                                            "ifBlock": {
+                                                "type": "ExpressionStatement",
+                                                "statement": "(hueColor = 10)",
+                                                "children": [
+                                                    
+                                                ]
+                                            },
+                                            "elseBlock": {
+                                                "type": "IfStatement",
+                                                "statement": "If statement",
+                                                "condition": {
+                                                    "type": "BooleanExpression",
+                                                    "expression": "(color == Purple)",
+                                                    "children": [
+                                                        
+                                                    ]
+                                                },
+                                                "ifBlock": {
+                                                    "type": "ExpressionStatement",
+                                                    "statement": "(hueColor = 75)",
+                                                    "children": [
+                                                        
+                                                    ]
+                                                },
+                                                "elseBlock": {
+                                                    "type": "IfStatement",
+                                                    "statement": "If statement",
+                                                    "condition": {
+                                                        "type": "BooleanExpression",
+                                                        "expression": "(color == Pink)",
+                                                        "children": [
+                                                            
+                                                        ]
+                                                    },
+                                                    "ifBlock": {
+                                                        "type": "ExpressionStatement",
+                                                        "statement": "(hueColor = 83)",
+                                                        "children": [
+                                                            
+                                                        ]
+                                                    },
+                                                    "elseBlock": null,
+                                                    "children": [
+                                                        
+                                                    ]
+                                                },
+                                                "children": [
+                                                    
+                                                ]
+                                            },
+                                            "children": [
+                                                
+                                            ]
+                                        },
+                                        "children": [
+                                            
+                                        ]
+                                    },
+                                    "children": [
+                                        
+                                    ]
+                                },
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "(state.previousHue = [:])",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "hues.each({ ... })",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "log.debug(current values = ${state.previousHue})",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def newValue = [hue:hueColor, saturation:100, level:((java.lang.Integer) lightLevel) ? (java.lang.Integer) lightLevel : 100]",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "log.debug(new value = $newValue)",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "hues*.setColor(newValue)",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "this.setTimer()",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ReturnStatement",
+                                "statement": "return log.trace(Exiting hueNotification())",
+                                "children": [
+                                    
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "docstring": "Use a step tracker device to track daily step goals and trigger various device actions when your goals are met!"
+    },
+    {
+        "functionName": "setTimer",
+        "arguments": "",
+        "ast": [
+            {
+                "type": "BlockStatement",
+                "statement": "Block statement",
+                "children": [
+                    {
+                        "type": "BlockStatement",
+                        "statement": "Block statement",
+                        "children": [
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "log.debug(runIn $duration, resetHue)",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ReturnStatement",
+                                "statement": "return this.runIn(duration, resetHue, [overwrite:false])",
+                                "children": [
+                                    
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "docstring": "Use a step tracker device to track daily step goals and trigger various device actions when your goals are met!"
+    },
+    {
+        "functionName": "resetHue",
+        "arguments": "",
+        "ast": [
+            {
+                "type": "BlockStatement",
+                "statement": "Block statement",
+                "children": [
+                    {
+                        "type": "BlockStatement",
+                        "statement": "Block statement",
+                        "children": [
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "log.trace(Entering resetHue())",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "settings.hues.each({ ... })",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ReturnStatement",
+                                "statement": "return log.trace(Exiting resetHue())",
+                                "children": [
+                                    
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "docstring": "Use a step tracker device to track daily step goals and trigger various device actions when your goals are met!"
+    },
+    {
+        "functionName": "sonosNotification",
+        "arguments": "",
+        "ast": [
+            {
+                "type": "BlockStatement",
+                "statement": "Block statement",
+                "children": [
+                    {
+                        "type": "BlockStatement",
+                        "statement": "Block statement",
+                        "children": [
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "log.trace(sonosNotification())",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "IfStatement",
+                                "statement": "If statement",
+                                "condition": {
+                                    "type": "BooleanExpression",
+                                    "expression": "settings.song",
+                                    "children": [
+                                        
+                                    ]
+                                },
+                                "ifBlock": {
+                                    "type": "BlockStatement",
+                                    "statement": "Block statement",
+                                    "children": [
+                                        {
+                                            "type": "IfStatement",
+                                            "statement": "If statement",
+                                            "condition": {
+                                                "type": "BooleanExpression",
+                                                "expression": "settings.resumePlaying",
+                                                "children": [
+                                                    
+                                                ]
+                                            },
+                                            "ifBlock": {
+                                                "type": "BlockStatement",
+                                                "statement": "Block statement",
+                                                "children": [
+                                                    {
+                                                        "type": "IfStatement",
+                                                        "statement": "If statement",
+                                                        "condition": {
+                                                            "type": "BooleanExpression",
+                                                            "expression": "settings.volume",
+                                                            "children": [
+                                                                
+                                                            ]
+                                                        },
+                                                        "ifBlock": {
+                                                            "type": "ExpressionStatement",
+                                                            "statement": "sonos.playTrackAndResume(state.selectedSong, settings.songDuration, settings.volume)",
+                                                            "children": [
+                                                                
+                                                            ]
+                                                        },
+                                                        "elseBlock": {
+                                                            "type": "ExpressionStatement",
+                                                            "statement": "sonos.playTrackAndResume(state.selectedSong, settings.songDuration)",
+                                                            "children": [
+                                                                
+                                                            ]
+                                                        },
+                                                        "children": [
+                                                            
+                                                        ]
+                                                    }
+                                                ]
+                                            },
+                                            "elseBlock": {
+                                                "type": "BlockStatement",
+                                                "statement": "Block statement",
+                                                "children": [
+                                                    {
+                                                        "type": "IfStatement",
+                                                        "statement": "If statement",
+                                                        "condition": {
+                                                            "type": "BooleanExpression",
+                                                            "expression": "settings.volume",
+                                                            "children": [
+                                                                
+                                                            ]
+                                                        },
+                                                        "ifBlock": {
+                                                            "type": "ExpressionStatement",
+                                                            "statement": "sonos.playTrackAtVolume(state.selectedSong, settings.volume)",
+                                                            "children": [
+                                                                
+                                                            ]
+                                                        },
+                                                        "elseBlock": {
+                                                            "type": "ExpressionStatement",
+                                                            "statement": "sonos.playTrack(state.selectedSong)",
+                                                            "children": [
+                                                                
+                                                            ]
+                                                        },
+                                                        "children": [
+                                                            
+                                                        ]
+                                                    }
+                                                ]
+                                            },
+                                            "children": [
+                                                
+                                            ]
+                                        },
+                                        {
+                                            "type": "ExpressionStatement",
+                                            "statement": "sonos.on()",
+                                            "children": [
+                                                
+                                            ]
+                                        }
+                                    ]
+                                },
+                                "elseBlock": null,
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ReturnStatement",
+                                "statement": "return log.trace(Exiting sonosNotification())",
+                                "children": [
+                                    
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "docstring": "Use a step tracker device to track daily step goals and trigger various device actions when your goals are met!"
+    }
+]

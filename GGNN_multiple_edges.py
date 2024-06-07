@@ -1,44 +1,11 @@
 import torch
 import torch.nn.functional as F
 from torch_geometric.nn import GatedGraphConv
-from torch_geometric.data import Data, Batch
-from gensim.models import KeyedVectors
+from torch_geometric.data import Data
+from transformers import BertModel, BertTokenizer
 import numpy as np
-
-# 加载预训练的词嵌入模型 (假设词嵌入模型已准备好)
-glove_path = 'dataSet/glove/glove.6B.50d.txt'  # 修改为实际路径
-word_vectors = KeyedVectors.load_word2vec_format(glove_path, binary=False, no_header=True)
-
-# 将字符串特征转换为glove嵌入向量
-def get_feature_vector(word):
-    try:
-        return word_vectors[word]
-    except KeyError:
-        return [0] * word_vectors.vector_size  # 返回零向量表示未找到的词
-
-# 将单词转换为 one-hot 编码
-def one_hot_encode(word, vocab_size):
-    one_hot = np.zeros(vocab_size)
-    index = word_to_index.get(word, -1)
-    if index != -1:
-        one_hot[index] = 1
-    return one_hot
-
-# 示例图1
-node_features_str_1 = ["TVon", "TVoff", "cherry", "date"]
-#使用one-hot编码进行编码
-# 生成词汇表索引
-word_to_index = {word: idx for idx, word in enumerate(node_features_str_1)}
-node_features_2 = [one_hot_encode(word,len(node_features_str_1)) for word in node_features_str_1]
-x_2 = torch.tensor(node_features_2, dtype=torch.float)
-
-# 生成边信息，其中有两种类型的边
-edge_index_1 = torch.tensor([[0, 1, 2, 3, 0, 1, 0, 1, 2, 3, 0, 1],
-                              [1, 2, 3, 0, 2, 3, 2, 3, 0, 1, 0, 1]], dtype=torch.long)
-edge_attr = torch.tensor([0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 0], dtype=torch.long)  # 边的类型编码
-
-# 构建图数据对象
-data_1 = Data(x=x_2, edge_index=edge_index_1, edge_attr=edge_attr)
+import re
+from sklearn.decomposition import PCA
 
 # 定义GGNN模型
 class GGNN(torch.nn.Module):
@@ -55,16 +22,49 @@ class GGNN(torch.nn.Module):
         x = self.linear(x)
         return x
 
-def cosine_similarity(vec1, vec2):
-    dot_product = np.dot(vec1, vec2)
-    norm_vec1 = np.linalg.norm(vec1)
-    norm_vec2 = np.linalg.norm(vec2)
-    similarity = dot_product / (norm_vec1 * norm_vec2)
-    return similarity
-
 # 检查是否有GPU可用
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 print(f"Using device: {device}")
+
+# 加载BERT模型和分词器
+bert_model_name = 'dataSet/bert-base-uncased'
+tokenizer = BertTokenizer.from_pretrained(bert_model_name)
+bert_model = BertModel.from_pretrained(bert_model_name).to(device)
+
+# 示例图1的节点标签
+node_features_str_1 = ["LightOn", "DoorOpen", "OnTV"]
+
+# 将节点标签按照驼峰规则拆分成数个单词
+def split_camel_case(text):
+    return re.sub(r'([a-z])([A-Z])', r'\1 \2', text).split()
+
+# 对节点标签进行embedding
+def get_bert_embedding(text_list):
+    embeddings = []
+    for text in text_list:
+        words = split_camel_case(text)
+        encoded_input = tokenizer(' '.join(words), return_tensors='pt', padding=True, truncation=True).to(device)
+        with torch.no_grad():
+            model_output = bert_model(**encoded_input)
+        embeddings.append(model_output.last_hidden_state.mean(dim=1).squeeze().cpu().numpy())
+    return np.array(embeddings)
+
+# 生成节点特征
+x_1 = get_bert_embedding(node_features_str_1)
+
+# 使用PCA进行降维
+min_dim = min(x_1.shape[0], x_1.shape[1])  # 确保降维的维度不超过输入数据的最小维度
+pca = PCA(n_components=min(min_dim, 50))  # 将维度减少到不超过min_dim
+x_1_reduced = pca.fit_transform(x_1)
+x_1_reduced = torch.tensor(x_1_reduced, dtype=torch.float).to(device)
+
+# 生成边信息，其中有两种类型的边
+edge_index_1 = torch.tensor([[0, 1, 1, 2],
+                             [1, 0, 2, 2]], dtype=torch.long)
+edge_attr = torch.tensor([0, 0, 1, 1], dtype=torch.long)  # 边的类型编码
+
+# 构建图数据对象
+data_1 = Data(x=x_1_reduced, edge_index=edge_index_1, edge_attr=edge_attr)
 
 # 初始化模型
 in_channels = data_1.num_node_features  # 节点特征维度
@@ -82,10 +82,5 @@ output = model(data_1.x, data_1.edge_index, data_1.edge_attr)
 print("输出向量大小：", output.shape)
 print("输出向量：", output)
 
-# 从模型输出中提取第一个向量和第二个向量
-vector1 = output[0].cpu().detach().numpy()
-vector2 = output[1].cpu().detach().numpy()
-
-# 计算余弦相似度
-similarity = cosine_similarity(vector1, vector2)
-print("第一个向量和第二个向量的余弦相似度:", similarity)
+# 从模型输出中提取向量
+vectors = output.cpu().detach().numpy()

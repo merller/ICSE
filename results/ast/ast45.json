@@ -1,0 +1,457 @@
+[
+    {
+        "functionName": "installed",
+        "arguments": "",
+        "ast": [
+            {
+                "type": "BlockStatement",
+                "statement": "Block statement",
+                "children": [
+                    {
+                        "type": "BlockStatement",
+                        "statement": "Block statement",
+                        "children": [
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "log.debug(Installed with settings: $settings)",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ReturnStatement",
+                                "statement": "return this.subscribe(controlSwitch, switch, switchHandler)",
+                                "children": [
+                                    
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "docstring": "Ties a Hello, Home phrase or mode to a switch's state. Perfect for use with IFTTT."
+    },
+    {
+        "functionName": "updated",
+        "arguments": "",
+        "ast": [
+            {
+                "type": "BlockStatement",
+                "statement": "Block statement",
+                "children": [
+                    {
+                        "type": "BlockStatement",
+                        "statement": "Block statement",
+                        "children": [
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "log.debug(Updated with settings: $settings)",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "this.unsubscribe()",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ReturnStatement",
+                                "statement": "return this.subscribe(controlSwitch, switch, switchHandler)",
+                                "children": [
+                                    
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "docstring": "Ties a Hello, Home phrase or mode to a switch's state. Perfect for use with IFTTT."
+    },
+    {
+        "functionName": "switchHandler",
+        "arguments": "evt",
+        "ast": [
+            {
+                "type": "BlockStatement",
+                "statement": "Block statement",
+                "children": [
+                    {
+                        "type": "BlockStatement",
+                        "statement": "Block statement",
+                        "children": [
+                            {
+                                "type": "IfStatement",
+                                "statement": "If statement",
+                                "condition": {
+                                    "type": "BooleanExpression",
+                                    "expression": "((evt.value == on) && (phrase_on || onMode))",
+                                    "children": [
+                                        
+                                    ]
+                                },
+                                "ifBlock": {
+                                    "type": "BlockStatement",
+                                    "statement": "Block statement",
+                                    "children": [
+                                        {
+                                            "type": "IfStatement",
+                                            "statement": "If statement",
+                                            "condition": {
+                                                "type": "BooleanExpression",
+                                                "expression": "phrase_on",
+                                                "children": [
+                                                    
+                                                ]
+                                            },
+                                            "ifBlock": {
+                                                "type": "BlockStatement",
+                                                "statement": "Block statement",
+                                                "children": [
+                                                    {
+                                                        "type": "ExpressionStatement",
+                                                        "statement": "location.helloHome.execute(settings.phrase_on)",
+                                                        "children": [
+                                                            
+                                                        ]
+                                                    }
+                                                ]
+                                            },
+                                            "elseBlock": null,
+                                            "children": [
+                                                
+                                            ]
+                                        },
+                                        {
+                                            "type": "IfStatement",
+                                            "statement": "If statement",
+                                            "condition": {
+                                                "type": "BooleanExpression",
+                                                "expression": "onMode",
+                                                "children": [
+                                                    
+                                                ]
+                                            },
+                                            "ifBlock": {
+                                                "type": "BlockStatement",
+                                                "statement": "Block statement",
+                                                "children": [
+                                                    {
+                                                        "type": "ReturnStatement",
+                                                        "statement": "return this.changeMode(onMode)",
+                                                        "children": [
+                                                            
+                                                        ]
+                                                    }
+                                                ]
+                                            },
+                                            "elseBlock": null,
+                                            "children": [
+                                                
+                                            ]
+                                        }
+                                    ]
+                                },
+                                "elseBlock": {
+                                    "type": "IfStatement",
+                                    "statement": "If statement",
+                                    "condition": {
+                                        "type": "BooleanExpression",
+                                        "expression": "((evt.value == off) && (phrase_off || offMode))",
+                                        "children": [
+                                            
+                                        ]
+                                    },
+                                    "ifBlock": {
+                                        "type": "BlockStatement",
+                                        "statement": "Block statement",
+                                        "children": [
+                                            {
+                                                "type": "IfStatement",
+                                                "statement": "If statement",
+                                                "condition": {
+                                                    "type": "BooleanExpression",
+                                                    "expression": "phrase_off",
+                                                    "children": [
+                                                        
+                                                    ]
+                                                },
+                                                "ifBlock": {
+                                                    "type": "BlockStatement",
+                                                    "statement": "Block statement",
+                                                    "children": [
+                                                        {
+                                                            "type": "ExpressionStatement",
+                                                            "statement": "location.helloHome.execute(settings.phrase_off)",
+                                                            "children": [
+                                                                
+                                                            ]
+                                                        }
+                                                    ]
+                                                },
+                                                "elseBlock": null,
+                                                "children": [
+                                                    
+                                                ]
+                                            },
+                                            {
+                                                "type": "IfStatement",
+                                                "statement": "If statement",
+                                                "condition": {
+                                                    "type": "BooleanExpression",
+                                                    "expression": "offMode",
+                                                    "children": [
+                                                        
+                                                    ]
+                                                },
+                                                "ifBlock": {
+                                                    "type": "BlockStatement",
+                                                    "statement": "Block statement",
+                                                    "children": [
+                                                        {
+                                                            "type": "ReturnStatement",
+                                                            "statement": "return this.changeMode(offMode)",
+                                                            "children": [
+                                                                
+                                                            ]
+                                                        }
+                                                    ]
+                                                },
+                                                "elseBlock": null,
+                                                "children": [
+                                                    
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    "elseBlock": null,
+                                    "children": [
+                                        
+                                    ]
+                                },
+                                "children": [
+                                    
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "docstring": "Ties a Hello, Home phrase or mode to a switch's state. Perfect for use with IFTTT."
+    },
+    {
+        "functionName": "changeMode",
+        "arguments": "newMode",
+        "ast": [
+            {
+                "type": "BlockStatement",
+                "statement": "Block statement",
+                "children": [
+                    {
+                        "type": "BlockStatement",
+                        "statement": "Block statement",
+                        "children": [
+                            {
+                                "type": "IfStatement",
+                                "statement": "If statement",
+                                "condition": {
+                                    "type": "BooleanExpression",
+                                    "expression": "(location.mode != newMode)",
+                                    "children": [
+                                        
+                                    ]
+                                },
+                                "ifBlock": {
+                                    "type": "BlockStatement",
+                                    "statement": "Block statement",
+                                    "children": [
+                                        {
+                                            "type": "IfStatement",
+                                            "statement": "If statement",
+                                            "condition": {
+                                                "type": "BooleanExpression",
+                                                "expression": "location.modes?.find({ ... })",
+                                                "children": [
+                                                    
+                                                ]
+                                            },
+                                            "ifBlock": {
+                                                "type": "BlockStatement",
+                                                "statement": "Block statement",
+                                                "children": [
+                                                    {
+                                                        "type": "ReturnStatement",
+                                                        "statement": "return this.setLocationMode(newMode)",
+                                                        "children": [
+                                                            
+                                                        ]
+                                                    }
+                                                ]
+                                            },
+                                            "elseBlock": {
+                                                "type": "BlockStatement",
+                                                "statement": "Block statement",
+                                                "children": [
+                                                    {
+                                                        "type": "ReturnStatement",
+                                                        "statement": "return log.debug(Unable to change to undefined mode '$newMode')",
+                                                        "children": [
+                                                            
+                                                        ]
+                                                    }
+                                                ]
+                                            },
+                                            "children": [
+                                                
+                                            ]
+                                        }
+                                    ]
+                                },
+                                "elseBlock": null,
+                                "children": [
+                                    
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "docstring": "Ties a Hello, Home phrase or mode to a switch's state. Perfect for use with IFTTT."
+    },
+    {
+        "functionName": "textAppName",
+        "arguments": "",
+        "ast": [
+            {
+                "type": "BlockStatement",
+                "statement": "Block statement",
+                "children": [
+                    {
+                        "type": "BlockStatement",
+                        "statement": "Block statement",
+                        "children": [
+                            {
+                                "type": "ReturnStatement",
+                                "statement": "return def text = Switch Activates Home Phrase or Mode",
+                                "children": [
+                                    
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "docstring": "Ties a Hello, Home phrase or mode to a switch's state. Perfect for use with IFTTT."
+    },
+    {
+        "functionName": "textVersion",
+        "arguments": "",
+        "ast": [
+            {
+                "type": "BlockStatement",
+                "statement": "Block statement",
+                "children": [
+                    {
+                        "type": "BlockStatement",
+                        "statement": "Block statement",
+                        "children": [
+                            {
+                                "type": "ReturnStatement",
+                                "statement": "return def text = Version 1.0.1 (06/20/2015)",
+                                "children": [
+                                    
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "docstring": "Ties a Hello, Home phrase or mode to a switch's state. Perfect for use with IFTTT."
+    },
+    {
+        "functionName": "textCopyright",
+        "arguments": "",
+        "ast": [
+            {
+                "type": "BlockStatement",
+                "statement": "Block statement",
+                "children": [
+                    {
+                        "type": "BlockStatement",
+                        "statement": "Block statement",
+                        "children": [
+                            {
+                                "type": "ReturnStatement",
+                                "statement": "return def text = Copyright \u00a9 2015 Michael Struck",
+                                "children": [
+                                    
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "docstring": "Ties a Hello, Home phrase or mode to a switch's state. Perfect for use with IFTTT."
+    },
+    {
+        "functionName": "textLicense",
+        "arguments": "",
+        "ast": [
+            {
+                "type": "BlockStatement",
+                "statement": "Block statement",
+                "children": [
+                    {
+                        "type": "BlockStatement",
+                        "statement": "Block statement",
+                        "children": [
+                            {
+                                "type": "ReturnStatement",
+                                "statement": "return def text = ((((((((((Licensed under the Apache License, Version 2.0 (the 'License');  + you may not use this file except in compliance with the License. ) + You may obtain a copy of the License at) + \n\n) +     http://www.apache.org/licenses/LICENSE-2.0) + \n\n) + Unless required by applicable law or agreed to in writing, software ) + distributed under the License is distributed on an 'AS IS' BASIS, ) + WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. ) + See the License for the specific language governing permissions and ) + limitations under the License.)",
+                                "children": [
+                                    
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "docstring": "Ties a Hello, Home phrase or mode to a switch's state. Perfect for use with IFTTT."
+    },
+    {
+        "functionName": "textHelp",
+        "arguments": "",
+        "ast": [
+            {
+                "type": "BlockStatement",
+                "statement": "Block statement",
+                "children": [
+                    {
+                        "type": "BlockStatement",
+                        "statement": "Block statement",
+                        "children": [
+                            {
+                                "type": "ReturnStatement",
+                                "statement": "return def text = ((Ties a Hello, Home phrase or mode to a switch's (virtual or real) on/off state. Perfect for use with IFTTT.  + Simple define a switch to be used, then tie the on/off state of the switch to a specific Hello, Home phrases or mode. ) + Connect the switch to an IFTTT action, and the Hello, Home phrase or mode will fire with the switch state change.)",
+                                "children": [
+                                    
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "docstring": "Ties a Hello, Home phrase or mode to a switch's state. Perfect for use with IFTTT."
+    }
+]

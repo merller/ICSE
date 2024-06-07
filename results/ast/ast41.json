@@ -1,0 +1,612 @@
+[
+    {
+        "functionName": "installed",
+        "arguments": "",
+        "ast": [
+            {
+                "type": "BlockStatement",
+                "statement": "Block statement",
+                "children": [
+                    {
+                        "type": "BlockStatement",
+                        "statement": "Block statement",
+                        "children": [
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "log.debug(Installed with settings: $settings)",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ReturnStatement",
+                                "statement": "return this.initialize()",
+                                "children": [
+                                    
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "docstring": "This supports devices with capabilities of ContactSensor and ColorControl (LED). It sends an in-app and ambient light notification if you forget to open the drawer or cabinet where meds are stored. A reminder will be set to a single time per day. If the draw or cabinet isn't opened within 60 minutes of that reminder, an in-app message will be sent. If the draw or cabinet still isn't opened after an additional 10 minutes, then an LED light turns red until the draw or cabinet is opened"
+    },
+    {
+        "functionName": "updated",
+        "arguments": "",
+        "ast": [
+            {
+                "type": "BlockStatement",
+                "statement": "Block statement",
+                "children": [
+                    {
+                        "type": "BlockStatement",
+                        "statement": "Block statement",
+                        "children": [
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "log.debug(Updated with settings: $settings)",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "this.unsubscribe()",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ReturnStatement",
+                                "statement": "return this.initialize()",
+                                "children": [
+                                    
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "docstring": "This supports devices with capabilities of ContactSensor and ColorControl (LED). It sends an in-app and ambient light notification if you forget to open the drawer or cabinet where meds are stored. A reminder will be set to a single time per day. If the draw or cabinet isn't opened within 60 minutes of that reminder, an in-app message will be sent. If the draw or cabinet still isn't opened after an additional 10 minutes, then an LED light turns red until the draw or cabinet is opened"
+    },
+    {
+        "functionName": "initialize",
+        "arguments": "",
+        "ast": [
+            {
+                "type": "BlockStatement",
+                "statement": "Block statement",
+                "children": [
+                    {
+                        "type": "BlockStatement",
+                        "statement": "Block statement",
+                        "children": [
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "this.subscribe(deviceContactSensor, contact, contactHandler)",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "(state.minutesToCheckOpenDraw = 60)",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "(state.ledNotificationTriggered = false)",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ReturnStatement",
+                                "statement": "return this.schedule(reminderTime, checkOpenDrawInPast)",
+                                "children": [
+                                    
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "docstring": "This supports devices with capabilities of ContactSensor and ColorControl (LED). It sends an in-app and ambient light notification if you forget to open the drawer or cabinet where meds are stored. A reminder will be set to a single time per day. If the draw or cabinet isn't opened within 60 minutes of that reminder, an in-app message will be sent. If the draw or cabinet still isn't opened after an additional 10 minutes, then an LED light turns red until the draw or cabinet is opened"
+    },
+    {
+        "functionName": "contactHandler",
+        "arguments": "evt",
+        "ast": [
+            {
+                "type": "BlockStatement",
+                "statement": "Block statement",
+                "children": [
+                    {
+                        "type": "BlockStatement",
+                        "statement": "Block statement",
+                        "children": [
+                            {
+                                "type": "IfStatement",
+                                "statement": "If statement",
+                                "condition": {
+                                    "type": "BooleanExpression",
+                                    "expression": "(evt.value == open)",
+                                    "children": [
+                                        
+                                    ]
+                                },
+                                "ifBlock": {
+                                    "type": "BlockStatement",
+                                    "statement": "Block statement",
+                                    "children": [
+                                        {
+                                            "type": "ExpressionStatement",
+                                            "statement": "log.debug(Cabinet opened)",
+                                            "children": [
+                                                
+                                            ]
+                                        },
+                                        {
+                                            "type": "IfStatement",
+                                            "statement": "If statement",
+                                            "condition": {
+                                                "type": "BooleanExpression",
+                                                "expression": "state.ledNotificationTriggered",
+                                                "children": [
+                                                    
+                                                ]
+                                            },
+                                            "ifBlock": {
+                                                "type": "BlockStatement",
+                                                "statement": "Block statement",
+                                                "children": [
+                                                    {
+                                                        "type": "ReturnStatement",
+                                                        "statement": "return this.resetLEDNotification()",
+                                                        "children": [
+                                                            
+                                                        ]
+                                                    }
+                                                ]
+                                            },
+                                            "elseBlock": null,
+                                            "children": [
+                                                
+                                            ]
+                                        }
+                                    ]
+                                },
+                                "elseBlock": null,
+                                "children": [
+                                    
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "docstring": "This supports devices with capabilities of ContactSensor and ColorControl (LED). It sends an in-app and ambient light notification if you forget to open the drawer or cabinet where meds are stored. A reminder will be set to a single time per day. If the draw or cabinet isn't opened within 60 minutes of that reminder, an in-app message will be sent. If the draw or cabinet still isn't opened after an additional 10 minutes, then an LED light turns red until the draw or cabinet is opened"
+    },
+    {
+        "functionName": "checkOpenDrawInPast",
+        "arguments": "",
+        "ast": [
+            {
+                "type": "BlockStatement",
+                "statement": "Block statement",
+                "children": [
+                    {
+                        "type": "BlockStatement",
+                        "statement": "Block statement",
+                        "children": [
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "log.debug(Checking past 60 minutes of activity from $reminderTime)",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def cabinetOpened = this.isOpened(state.minutesToCheckOpenDraw)",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "log.debug(Cabinet found opened: $cabinetOpened)",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "IfStatement",
+                                "statement": "If statement",
+                                "condition": {
+                                    "type": "BooleanExpression",
+                                    "expression": "cabinetOpened",
+                                    "children": [
+                                        
+                                    ]
+                                },
+                                "ifBlock": {
+                                    "type": "BlockStatement",
+                                    "statement": "Block statement",
+                                    "children": [
+                                        {
+                                            "type": "ExpressionStatement",
+                                            "statement": "this.sendNotification(Hi, please remember to take your meds in the cabinet)",
+                                            "children": [
+                                                
+                                            ]
+                                        },
+                                        {
+                                            "type": "ExpressionStatement",
+                                            "statement": "def reminderTimePlus10 = new java.util.Date((this.now() + (10 * 60000)))",
+                                            "children": [
+                                                
+                                            ]
+                                        },
+                                        {
+                                            "type": "ReturnStatement",
+                                            "statement": "return this.runOnce(reminderTimePlus10, checkOpenDrawAfterReminder)",
+                                            "children": [
+                                                
+                                            ]
+                                        }
+                                    ]
+                                },
+                                "elseBlock": null,
+                                "children": [
+                                    
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "docstring": "This supports devices with capabilities of ContactSensor and ColorControl (LED). It sends an in-app and ambient light notification if you forget to open the drawer or cabinet where meds are stored. A reminder will be set to a single time per day. If the draw or cabinet isn't opened within 60 minutes of that reminder, an in-app message will be sent. If the draw or cabinet still isn't opened after an additional 10 minutes, then an LED light turns red until the draw or cabinet is opened"
+    },
+    {
+        "functionName": "checkOpenDrawAfterReminder",
+        "arguments": "",
+        "ast": [
+            {
+                "type": "BlockStatement",
+                "statement": "Block statement",
+                "children": [
+                    {
+                        "type": "BlockStatement",
+                        "statement": "Block statement",
+                        "children": [
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "log.debug(Checking additional 10 minutes of activity from $reminderTime)",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def cabinetOpened = this.isOpened(10)",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "log.debug(Cabinet found opened: $cabinetOpened)",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "IfStatement",
+                                "statement": "If statement",
+                                "condition": {
+                                    "type": "BooleanExpression",
+                                    "expression": "cabinetOpened",
+                                    "children": [
+                                        
+                                    ]
+                                },
+                                "ifBlock": {
+                                    "type": "BlockStatement",
+                                    "statement": "Block statement",
+                                    "children": [
+                                        {
+                                            "type": "ExpressionStatement",
+                                            "statement": "log.debug(Set LED to Notification color)",
+                                            "children": [
+                                                
+                                            ]
+                                        },
+                                        {
+                                            "type": "ReturnStatement",
+                                            "statement": "return this.setLEDNotification()",
+                                            "children": [
+                                                
+                                            ]
+                                        }
+                                    ]
+                                },
+                                "elseBlock": null,
+                                "children": [
+                                    
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "docstring": "This supports devices with capabilities of ContactSensor and ColorControl (LED). It sends an in-app and ambient light notification if you forget to open the drawer or cabinet where meds are stored. A reminder will be set to a single time per day. If the draw or cabinet isn't opened within 60 minutes of that reminder, an in-app message will be sent. If the draw or cabinet still isn't opened after an additional 10 minutes, then an LED light turns red until the draw or cabinet is opened"
+    },
+    {
+        "functionName": "sendNotification",
+        "arguments": "msg",
+        "ast": [
+            {
+                "type": "BlockStatement",
+                "statement": "Block statement",
+                "children": [
+                    {
+                        "type": "BlockStatement",
+                        "statement": "Block statement",
+                        "children": [
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "log.debug(Message Sent: $msg)",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ReturnStatement",
+                                "statement": "return this.sendPush(msg)",
+                                "children": [
+                                    
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "docstring": "This supports devices with capabilities of ContactSensor and ColorControl (LED). It sends an in-app and ambient light notification if you forget to open the drawer or cabinet where meds are stored. A reminder will be set to a single time per day. If the draw or cabinet isn't opened within 60 minutes of that reminder, an in-app message will be sent. If the draw or cabinet still isn't opened after an additional 10 minutes, then an LED light turns red until the draw or cabinet is opened"
+    },
+    {
+        "functionName": "isOpened",
+        "arguments": "minutes",
+        "ast": [
+            {
+                "type": "BlockStatement",
+                "statement": "Block statement",
+                "children": [
+                    {
+                        "type": "BlockStatement",
+                        "statement": "Block statement",
+                        "children": [
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def previousDateTime = new java.util.Date((this.now() - (minutes * 60000)))",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def evts = deviceContactSensor.eventsSince(previousDateTime)",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def cabinetOpened = false",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "IfStatement",
+                                "statement": "If statement",
+                                "condition": {
+                                    "type": "BooleanExpression",
+                                    "expression": "(evts.size() > 0)",
+                                    "children": [
+                                        
+                                    ]
+                                },
+                                "ifBlock": {
+                                    "type": "BlockStatement",
+                                    "statement": "Block statement",
+                                    "children": [
+                                        {
+                                            "type": "ExpressionStatement",
+                                            "statement": "evts.each({ ... })",
+                                            "children": [
+                                                
+                                            ]
+                                        }
+                                    ]
+                                },
+                                "elseBlock": null,
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ReturnStatement",
+                                "statement": "return cabinetOpened",
+                                "children": [
+                                    
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "docstring": "This supports devices with capabilities of ContactSensor and ColorControl (LED). It sends an in-app and ambient light notification if you forget to open the drawer or cabinet where meds are stored. A reminder will be set to a single time per day. If the draw or cabinet isn't opened within 60 minutes of that reminder, an in-app message will be sent. If the draw or cabinet still isn't opened after an additional 10 minutes, then an LED light turns red until the draw or cabinet is opened"
+    },
+    {
+        "functionName": "setLEDNotification",
+        "arguments": "",
+        "ast": [
+            {
+                "type": "BlockStatement",
+                "statement": "Block statement",
+                "children": [
+                    {
+                        "type": "BlockStatement",
+                        "statement": "Block statement",
+                        "children": [
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "(state.ledNotificationTriggered = true)",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "(state.ledState = deviceLight.currentValue(switch))",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "(state.origColor = deviceLight.currentValue(hue))",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "deviceLight.on()",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "deviceLight.setHue(100)",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ReturnStatement",
+                                "statement": "return log.debug(LED set to RED. Original color stored: ${state.origColor})",
+                                "children": [
+                                    
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "docstring": "This supports devices with capabilities of ContactSensor and ColorControl (LED). It sends an in-app and ambient light notification if you forget to open the drawer or cabinet where meds are stored. A reminder will be set to a single time per day. If the draw or cabinet isn't opened within 60 minutes of that reminder, an in-app message will be sent. If the draw or cabinet still isn't opened after an additional 10 minutes, then an LED light turns red until the draw or cabinet is opened"
+    },
+    {
+        "functionName": "resetLEDNotification",
+        "arguments": "",
+        "ast": [
+            {
+                "type": "BlockStatement",
+                "statement": "Block statement",
+                "children": [
+                    {
+                        "type": "BlockStatement",
+                        "statement": "Block statement",
+                        "children": [
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "(state.ledNotificationTriggered = false)",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "log.debug(Reset LED color to: ${state.origColor})",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "IfStatement",
+                                "statement": "If statement",
+                                "condition": {
+                                    "type": "BooleanExpression",
+                                    "expression": "(state.origColor != null)",
+                                    "children": [
+                                        
+                                    ]
+                                },
+                                "ifBlock": {
+                                    "type": "BlockStatement",
+                                    "statement": "Block statement",
+                                    "children": [
+                                        {
+                                            "type": "ExpressionStatement",
+                                            "statement": "deviceLight.setHue(state.origColor)",
+                                            "children": [
+                                                
+                                            ]
+                                        }
+                                    ]
+                                },
+                                "elseBlock": null,
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "IfStatement",
+                                "statement": "If statement",
+                                "condition": {
+                                    "type": "BooleanExpression",
+                                    "expression": "(state.ledState == off)",
+                                    "children": [
+                                        
+                                    ]
+                                },
+                                "ifBlock": {
+                                    "type": "BlockStatement",
+                                    "statement": "Block statement",
+                                    "children": [
+                                        {
+                                            "type": "ReturnStatement",
+                                            "statement": "return deviceLight.off()",
+                                            "children": [
+                                                
+                                            ]
+                                        }
+                                    ]
+                                },
+                                "elseBlock": null,
+                                "children": [
+                                    
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "docstring": "This supports devices with capabilities of ContactSensor and ColorControl (LED). It sends an in-app and ambient light notification if you forget to open the drawer or cabinet where meds are stored. A reminder will be set to a single time per day. If the draw or cabinet isn't opened within 60 minutes of that reminder, an in-app message will be sent. If the draw or cabinet still isn't opened after an additional 10 minutes, then an LED light turns red until the draw or cabinet is opened"
+    }
+]

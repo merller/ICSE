@@ -1,0 +1,28 @@
+[
+    {
+        "functionName": "clearBeacons",
+        "arguments": "",
+        "ast": [
+            {
+                "type": "BlockStatement",
+                "statement": "Block statement",
+                "children": [
+                    {
+                        "type": "BlockStatement",
+                        "statement": "Block statement",
+                        "children": [
+                            {
+                                "type": "ReturnStatement",
+                                "statement": "return this.removeChildDevices(this.getChildDevices())",
+                                "children": [
+                                    
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "docstring": "SmartApp to interact with the BeaconThings iOS app. Use this app to integrate iBeacons into your smart home."
+    }
+]

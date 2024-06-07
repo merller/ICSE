@@ -1,0 +1,111 @@
+[
+    {
+        "code":"function backHome() {\n\tif(event.lightON && event.doorOpen) {\n\t\tevent.CloseDoor;\n\t\tevent.OnTV;\n\t} else if(event.doorOpen) {\n\t\tevent.closeDoor;\n\t}\n}",
+        "accurate_docstring":"When the light is on and the door is open, turn on the TV and close the door. Or if the door is open, close the door.",
+        "docstring":"",
+        "general_docstring":""
+    },
+    {
+        "code":"\nlet Invitetimes=0;\nlet Rejecttimes=0;\nfunction sendEmail() {\nif(event.Date==Friday){\nevent.sendEmail();\n      Invitetimes++;\nif(event.Noreply) Rejecttimes--;\nif (Invitetimes==Rejecttimes){\n event.sendEmail();\n}\n}\n}\n",
+        "accurate_docstring":"When it is Friday, send my friend an email and plus the invite times. If he doesn't reply, plus the reject time and if the reject time equal the invite time, send he another email.",
+        "docstring":"",
+        "general_docstring":""
+    },
+    {
+        "code":"\nfunction lightsOff() {\n      if(event.buttonPress){\n                event.OffLights;\n              }\n}\n",
+        "accurate_docstring":"Turn off your lights when one tap on your phone button.",
+        "docstring":"",
+        "general_docstring":""
+    },
+    {
+        "code":"\nfunction forecastWeather(id){\n       event.turnOnVoiceAssistant(id);\n       event.broadcast(id,getWeather());\n}\neventBus.on('EntranceMovement',()=>{\n        forecastWeather(1);\n});\nfunction setupForecastScene(){\n  eventBus.emit('EntranceMovement');\n}\nsetupForecastScene();\n",
+        "accurate_docstring":"When there is movement at the entrance, turn on the voice assistant and broadcast the weather.",
+        "docstring":"",
+        "general_docstring":""
+    },
+    {
+        "code":"\nfunction turnOnFragranceMachine() {\n event.turnOnFragranceMachine();\n}\nfunction setAirConditionerTemperature(temperature) {\n  console.log(`Setting air conditioner temperature to ${temperature}℃`);\n    event.setAirConditionerTemperature(temperature);\n}\nfunction adjustLighting(lightIds, temperature) {\n     lightIds.forEach(id => {\n              event.turnOnlight(id);\n                event.changelight(id, temperature);\n       });\n}\nfunction playHappyBirthday(){\n event.playMusic('happy birthday');\n}\nfunction displayPhotos(){\n  event.turnOnScreen();\n getphoto().forEach(photo=>{setTimeout(()=>{event.display(photo)},1000);})                         \n}\neventBus.on('fontDoorMovement',()=>{\n        adjustLighting(getLightId(),1000);\n    playHappyBirthday();\n      displayPhotos();\n})\nfunction  setupBirthdayScene(){\n setAirConditionerTemperature(23);\nturnOnFragranceMachine();\n      setTimeout(()=>eventBus.emit('fontDoorMovement'),1000);\n}\n ",
+        "accurate_docstring":"When there is movement at the front door, adjust the lighting, play happy birthday music and display photos.",
+        "docstring":"",
+        "general_docstring":""
+    },
+    {
+        "code":"\nfunction controlChristmasLights(){\n  while(1){\n             turnOnChristmasLights();\n         setTimeout(() => {\n                     event.turnOffChristmasLights();\n               }, duration * 1000);\n      }\n\n}\nfunction playMerryChristmas(){\n        event.playMusic('Merry Christmas');\n}\nfunction ChangeAmbianceLights(){\n  event.turnOnAmbianceLights();\n lightIds.forEach(id => {\n event.changelight(id, 1000);\n   });\n}\nfunction controlProjectors(){\n event.turnOnProjectors();\nevent.ProjectorsDisplay(\"Santa Claus.jpeg\");\n   getProjects().action=\"rotate\";\n}\n",
+        "accurate_docstring":"Control the Christmas lights, play Merry Christmas music, change the ambiance lights and control the projectors.",
+        "docstring":"",
+        "general_docstring":""
+    },
+    {
+        "code":"\nfunction adjustLighting(lightIds, temperature) {\nlightIds.forEach(id => {\n  event.changelight(id, temperature);\n});\n}\n\nfunction playMusic(track, duration) {\nevent.playMusic(track);\nsetTimeout(() => {\n     event.stopMusic(track);\n}, duration * 1000);\n}\n\nfunction controlGroundLights(duration) {\nevent.turnOnGroundLights();\nsetTimeout(() => {\n     event.turnOffGroundLights();\n}, duration * 1000);\n}\n\nfunction setAirConditionerTemperature(temperature) {\nconsole.log(`Setting air conditioner temperature to ${temperature}℃`);\nevent.setAirConditionerTemperature(temperature);\n}\n\nfunction turnOnFragranceMachine() {\nevent.turnOnFragranceMachine();\n}\n",
+        "accurate_docstring":"If movement is detected at the side door (groom’s entrance), adjust the top lights 1, 2, 3 to 4500K, control the sound system to play the music ‘Love so sweet’ for 10 seconds; if movement is detected at the main door (bride’s entrance), adjust the top lights 4, 5, 6 to 3500K, control the sound system to play the music ‘Ave Maria’ for 10 seconds; whenever the hallway sensor detects movement, turn on the floor lights, and turn them off after 2 seconds; maintain the air conditioning temperature at 23°C; 5) turn on the fragrance diffuser",
+        "docstring":"A romantic Western-style wedding featuring cool-toned lighting. Different music accompanies the entrance of the groom and bride. Lights change with movement, maintaining a comfortable temperature and introducing fragrance.",
+        "general_docstring":"A romantic Western-style scene with the entrance of the groom and bride"
+    },
+    {
+        "code":"\nfunction setAirConditionerTemperature(temperature) {\n        console.log(`Setting air conditioner temperature to ${temperature}℃`);\n  event.setAirConditionerTemperature(temperature);\n}\nfunction controlCurtains(command){\n if(command=='close')\n          event.closeCurtains();\n        else if(command=='open') \nevent.openCurtains();\n}\nfunction controlLights(command){\n     if(command=='open')\n           event.turnOnLights();\n   else if(command=='close')\n             event.turnOffLights();\n}\nfunction playMovie(name){\n    event.playMovie(name);\n}\neventBus.on('movieNightStart', () => {\n     playMusic(\"Cinematic Soundtrack\", 120);\n controlLights('close');\n       controlCurtains('close');\n});\neventBus.on('movieNightEnd', () => {\n    stopMusic(\"Cinematic Soundtrack\");\n    controlLights('open');\n        controlCurtains('open');\n});\nfunction setupMovieScene(){\n      setAirConditionerTemperature(23);\n     eventBus.emit('movieNightStart');\n       playMovie('The Shawshank Redemption');\n        eventBus.emit('movieNightEnd');\n}\nsetupMovieScene();\n",
+        "accurate_docstring":"At the beginning of the home theater scene, play the movie soundtrack ‘Cinematic Soundtrack’ and turn off the lights and curtains. When the home theater scene ends, stop playing the movie soundtrack and turn on the lights and curtains.",
+        "docstring":"In the home theater scene, start by playing the movie soundtrack, turning off the lights and closing the curtains. At the end, stop playing the soundtrack and turn on the lights and open the curtains.",
+        "general_docstring":"In the home theater scene, play the soundtrack and control the lighting and curtains."
+    },
+    {
+        "code":"\nfunction turnOnLight(){\n     event.turnOnLight();\n}\nfunction turnOffLight(){\n     event.turnOffLight();\n}\nfunction controlFans(speed) {\n console.log(`Setting fan speed to ${speed}`);\n event.controlFan(speed);\n}\nfunction turnOnAirCleaner(){\n       event.turnOnAirCleaner();\n}\nfunction turnOnSmartOutlets(){\n    event.turnOnOutlets();\n}\nfunction turnOffSmartOutlets(){\n    event.turnOffOutlets();\n}\nfunction broadcast(text) {\n  event.broadcast(track);\n}\nvar number=0;\neventBus.on('EntranceDoorMovement', () => {\n  if(number==0)\n {\n             turnOnLight();\n                turnOnSmartOutlets();\n         controlFans(1000);\n              number++;\n     }\n     broadcast(\"Welcome\");\n});\neventBus.on('exitDoorMovement', () => {\n     if(number==1)\n {\n             turnOffLight();\n               turnOffSmartOutlets();\n          number--;\n     }\n     broadcast(\"Have a good day\");\n});\nfunction setupWeddingScene() {\n      turnOnAirCleaner()\n    eventBus.emit('EntranceDoorMovement');\n        eventBus.emit('exitDoorMovement');\n}\n",
+        "accurate_docstring":"When the entrance sensor detects someone entering and there is no one in the gym, turn on the lights, activate the smart sockets for the gym equipment, set the fan to 1000 rpm, and broadcast ‘Welcome’. Increase the people counter. When the exit sensor detects someone leaving and there is only one person in the gym, turn off the lights and deactivate the smart sockets for the gym equipment, and broadcast ‘Have a good day’. Decrease the people counter. Turn on the air purifier.",
+        "docstring":"In the gym scenario, upon entry, the lights, smart sockets, and fan are turned on, along with playing a welcome message. When leaving, the lights and smart sockets are turned off, and a farewell message is played. The air purifier remains on.",
+        "general_docstring":"In the gym, an automated system controls the lighting, equipment, and ventilation. It welcomes visitors with voice prompts upon entry and bids them farewell when they leave."
+    },
+    {
+        "code":"\nfunction playMusic(track, duration) {\n       console.log(`Playing music: ${track} for ${duration} seconds`);\n event.playMusic(track);\n       setTimeout(() => {\n            event.stopMusic(track);\n       }, duration * 1000);\n}\n\n\nfunction openCurtains() {\n  console.log(\"Opening curtains\");\n      event.openCurtains();\n}\n\n\nfunction startCoffeeMaker() {\n     console.log(\"Starting coffee maker\");\n event.startCoffeeMaker();\n}\n\n\nfunction adjustLighting(temperature) {\n        console.log(`Adjusting lighting to ${temperature}K`);\n   event.adjustLighting(temperature);\n}\n\n\nfunction turnOnAirCleaner() {\n      console.log(\"Turning on air cleaner\");\n  event.turnOnAirCleaner();\n}\n\n\neventBus.on('AM7:00', () => {\nplayMusic(\"Morning Melody\", 300);\n      openCurtains();\n       startCoffeeMaker();\n   adjustLighting(3000);\n   turnOnAirCleaner();\n});\n\nfunction setupMorningScene() {\n    console.log(\"Setting up morning wake-up scene\");\n        eventBus.emit('morningWakeUp');\n}\n",
+        "accurate_docstring":"Play the gentle music “Morning Melody” for 5 minutes at the specified time.Open the curtains to let natural light in.Start the coffee machine to prepare coffee.Adjust the lighting to a soft color temperature of 3000K.Turn on the air purifier.",
+        "docstring":"In the morning wake-up scene, play gentle music, open the curtains, start the coffee machine, adjust the soft lighting, and turn on the air purifier.",
+        "general_docstring":"The morning wake-up scene in a smart home includes playing music, opening curtains, brewing coffee, adjusting lighting, and activating air purification."
+    },
+    {
+        "code":"\nfunction turnOffLights() {\n  console.log(\"Turning off lights\");\n    event.turnOffLights();\n}\nfunction closeCurtains() {\n   console.log(\"Closing curtains\");\n      event.closeCurtains();\n}\nfunction playSoothingMusic(track, duration) {\n        console.log(`Playing soothing music: ${track} for ${duration} minutes`);\n        event.playMusic(track);\n       setTimeout(() => {\n            event.stopMusic(track);\n}, duration * 60 * 1000);\n}\nfunction setAirConditionerTemperature(temperature) {\n     console.log(`Setting air conditioner temperature to ${temperature}℃`);\n  event.setAirConditionerTemperature(temperature);\n}\nfunction turnOnNightLight() {\n      console.log(\"Turning on night light\");\n        event.turnOnNightLight();\n}\n",
+        "accurate_docstring":"At the specified time, automatically turn off all lights. Close the curtains. Play 30 minutes of soothing music “Soothing Sounds” to aid sleep. Adjust the air conditioning temperature to 22°C for optimal sleep conditions. Turn on the night light.",
+        "docstring":"In night mode, turn off the lights and close the curtains, play soothing music, adjust the air conditioning to 22°C, and turn on the night light.",
+        "general_docstring":"Smart home night mode: Turn off lights, play soothing music, adjust the air conditioning, and activate the night light."
+    },
+    {
+        "code":"function playBackgroundMusic(track, duration) {\n    console.log(`Playing background music: ${track} for ${duration} minutes`);\n    event.playMusic(track);\n    setTimeout(() => {\n        event.stopMusic(track);\n    }, duration * 60 * 1000);\n}\nfunction adjustLighting(temperature) {\n    console.log(`Adjusting lighting to ${temperature}K`);\n    event.adjustLighting(temperature);\n}\n\nfunction preheatOven(temperature) {\n    console.log(`Preheating oven to ${temperature}℃`);\n    event.preheatOven(temperature);\n}\n\nfunction turnOnAirCleaner() {\n    console.log(\"Turning on air cleaner\");\n    event.turnOnAirCleaner();\n}\n\neventBus.on(\'dinnerTime\', () => {\n    playBackgroundMusic(\"Dinner Jazz\", 120);\n    adjustLighting(2700);\n    preheatOven(180);\n    turnOnAirCleaner();\n});\n\nfunction setupDinnerScene() {\n    console.log(\"Setting up dinner scene\");\n    eventBus.emit(\'dinnerTime\');\n}\n\nsetupDinnerScene();",
+        "accurate_docstring":"At the specified time, play 2 hours of background music, \"Dinner Jazz.\"Adjust the lighting to a soft 2700K color temperature to create a dinner atmosphere.Preheat the oven to 180°C.Turn on the air purifier.",
+        "docstring":"Dinner mode scene: play background music, adjust lights to a soft color temperature, preheat the oven, and turn on the air purifier.",
+        "general_docstring":"Smart home dinner mode: background music, soft lighting, preheat oven, air purification."
+    },
+    {
+        "code":"",
+        "accurate_docstring":"",
+        "docstring":"",
+        "general_docstring":""
+    },
+    {
+        "code":"",
+        "accurate_docstring":"",
+        "docstring":"",
+        "general_docstring":""
+    },
+    {
+        "code":"",
+        "accurate_docstring":"",
+        "docstring":"",
+        "general_docstring":""
+    },
+    {
+        "code":"",
+        "accurate_docstring":"",
+        "docstring":"",
+        "general_docstring":""
+    },
+    {
+        "code":"",
+        "accurate_docstring":"",
+        "docstring":"",
+        "general_docstring":""
+    },
+    {
+        "code":"",
+        "accurate_docstring":"",
+        "docstring":"",
+        "general_docstring":""
+    }
+
+]

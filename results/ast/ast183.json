@@ -1,0 +1,338 @@
+[
+    {
+        "functionName": "installed",
+        "arguments": "",
+        "ast": [
+            {
+                "type": "BlockStatement",
+                "statement": "Block statement",
+                "children": [
+                    {
+                        "type": "BlockStatement",
+                        "statement": "Block statement",
+                        "children": [
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "log.debug(Installed with settings: $settings)",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ReturnStatement",
+                                "statement": "return this.initialize()",
+                                "children": [
+                                    
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "docstring": "WeatherBug Home"
+    },
+    {
+        "functionName": "updated",
+        "arguments": "",
+        "ast": [
+            {
+                "type": "BlockStatement",
+                "statement": "Block statement",
+                "children": [
+                    {
+                        "type": "BlockStatement",
+                        "statement": "Block statement",
+                        "children": [
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "log.debug(Updated with settings: $settings)",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "log.debug(Updated with state: $state)",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "log.debug(Updated with location $location ${location.id} ${location.name})",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "this.unsubscribe()",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "this.initialize()",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def postParams = [uri:https://smartthingsrec.api.earthnetworks.com/api/v1/receive/smartapp/update, body:[Devices:devices, Location:[Id:location.id, Latitude:location.latitude, Longitude:location.longitude, ZipCode:location.zipCode, Name:location.name]]]",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ReturnStatement",
+                                "statement": "return this.sendToWeatherBug(postParams)",
+                                "children": [
+                                    
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "docstring": "WeatherBug Home"
+    },
+    {
+        "functionName": "initialize",
+        "arguments": "",
+        "ast": [
+            {
+                "type": "BlockStatement",
+                "statement": "Block statement",
+                "children": [
+                    {
+                        "type": "BlockStatement",
+                        "statement": "Block statement",
+                        "children": [
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "log.trace(initialize enter)",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "this.subscribe(thermostatDevice, heatingSetpoint, pushLatest)",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "this.subscribe(thermostatDevice, coolingSetpoint, pushLatest)",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "this.subscribe(thermostatDevice, thermostatSetpoint, pushLatest)",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "this.subscribe(thermostatDevice, thermostatMode, pushLatest)",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "this.subscribe(thermostatDevice, thermostatFanMode, pushLatest)",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "this.subscribe(thermostatDevice, thermostatOperatingState, pushLatest)",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ReturnStatement",
+                                "statement": "return this.subscribe(thermostatDevice, temperature, pushLatest)",
+                                "children": [
+                                    
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "docstring": "WeatherBug Home"
+    },
+    {
+        "functionName": "uninstalled",
+        "arguments": "",
+        "ast": [
+            {
+                "type": "BlockStatement",
+                "statement": "Block statement",
+                "children": [
+                    {
+                        "type": "BlockStatement",
+                        "statement": "Block statement",
+                        "children": [
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "log.trace(uninstall entered)",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def postParams = [uri:https://smartthingsrec.api.earthnetworks.com/api/v1/receive/smartapp/delete, body:[Devices:devices, Location:[Id:location.id, Latitude:location.latitude, Longitude:location.longitude, ZipCode:location.zipCode, Name:location.name]]]",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ReturnStatement",
+                                "statement": "return this.sendToWeatherBug(postParams)",
+                                "children": [
+                                    
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "docstring": "WeatherBug Home"
+    },
+    {
+        "functionName": "pushLatest",
+        "arguments": "evt",
+        "ast": [
+            {
+                "type": "BlockStatement",
+                "statement": "Block statement",
+                "children": [
+                    {
+                        "type": "BlockStatement",
+                        "statement": "Block statement",
+                        "children": [
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def unixTime = (int) (new java.util.Date().getTime() / 1000)",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def device = thermostatDevice.find({ ... })",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def postParams = [uri:https://smartthingsrec.api.earthnetworks.com/api/v1/receive, body:[DeviceId:evt.deviceId, LocationId:location.id, ReportType:2, ReportList:[[Key:Temperature, Value:this.GetOrDefault(device, temperature)], [Key:ThermostatSetpoint, Value:this.GetOrDefault(device, thermostatSetpoint)], [Key:CoolingSetpoint, Value:this.GetOrDefault(device, coolingSetpoint)], [Key:HeatingSetpoint, Value:this.GetOrDefault(device, heatingSetpoint)], [Key:ThermostatMode, Value:this.GetOrDefault(device, thermostatMode)], [Key:ThermostatFanMode, Value:this.GetOrDefault(device, thermostatFanMode)], [Key:ThermostatOperatingState, Value:this.GetOrDefault(device, thermostatOperatingState)]], ... ]]",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "log.debug(postParams)",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ReturnStatement",
+                                "statement": "return this.sendToWeatherBug(postParams)",
+                                "children": [
+                                    
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "docstring": "WeatherBug Home"
+    },
+    {
+        "functionName": "GetOrDefault",
+        "arguments": "device, attrib",
+        "ast": [
+            {
+                "type": "BlockStatement",
+                "statement": "Block statement",
+                "children": [
+                    {
+                        "type": "BlockStatement",
+                        "statement": "Block statement",
+                        "children": [
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def val = <not implemented yet for class: org.codehaus.groovy.ast.expr.EmptyExpression$1>",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "TryCatchStatement",
+                                "statement": "<not implemented yet for class: org.codehaus.groovy.ast.stmt.TryCatchStatement>",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ReturnStatement",
+                                "statement": "return val",
+                                "children": [
+                                    
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "docstring": "WeatherBug Home"
+    },
+    {
+        "functionName": "sendToWeatherBug",
+        "arguments": "postParams",
+        "ast": [
+            {
+                "type": "BlockStatement",
+                "statement": "Block statement",
+                "children": [
+                    {
+                        "type": "BlockStatement",
+                        "statement": "Block statement",
+                        "children": [
+                            {
+                                "type": "TryCatchStatement",
+                                "statement": "<not implemented yet for class: org.codehaus.groovy.ast.stmt.TryCatchStatement>",
+                                "children": [
+                                    
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "docstring": "WeatherBug Home"
+    }
+]

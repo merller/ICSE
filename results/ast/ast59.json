@@ -1,0 +1,424 @@
+[
+    {
+        "functionName": "installed",
+        "arguments": "",
+        "ast": [
+            {
+                "type": "BlockStatement",
+                "statement": "Block statement",
+                "children": [
+                    {
+                        "type": "BlockStatement",
+                        "statement": "Block statement",
+                        "children": [
+                            {
+                                "type": "ReturnStatement",
+                                "statement": "return this.subscribe(humiditySensor1, humidity, humidityHandler)",
+                                "children": [
+                                    
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "docstring": "Turn on/off humidifier based on relative humidity from a sensor."
+    },
+    {
+        "functionName": "updated",
+        "arguments": "",
+        "ast": [
+            {
+                "type": "BlockStatement",
+                "statement": "Block statement",
+                "children": [
+                    {
+                        "type": "BlockStatement",
+                        "statement": "Block statement",
+                        "children": [
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "this.unsubscribe()",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ReturnStatement",
+                                "statement": "return this.subscribe(humiditySensor1, humidity, humidityHandler)",
+                                "children": [
+                                    
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "docstring": "Turn on/off humidifier based on relative humidity from a sensor."
+    },
+    {
+        "functionName": "humidityHandler",
+        "arguments": "evt",
+        "ast": [
+            {
+                "type": "BlockStatement",
+                "statement": "Block statement",
+                "children": [
+                    {
+                        "type": "BlockStatement",
+                        "statement": "Block statement",
+                        "children": [
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "log.trace(humidity: ${evt.value})",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "log.trace(set high point: $humidityHigh)",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "log.trace(set low point: $humidityLow)",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def currentHumidity = java.lang.Double.parseDouble(evt.value.replace(%, ))",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def humidityHigh1 = humidityHigh",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def humidityLow1 = humidityLow",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def mySwitch = settings.switch1",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "IfStatement",
+                                "statement": "If statement",
+                                "condition": {
+                                    "type": "BooleanExpression",
+                                    "expression": "(currentHumidity >= humidityHigh1)",
+                                    "children": [
+                                        
+                                    ]
+                                },
+                                "ifBlock": {
+                                    "type": "BlockStatement",
+                                    "statement": "Block statement",
+                                    "children": [
+                                        {
+                                            "type": "ExpressionStatement",
+                                            "statement": "log.debug(Checking how long the humidity sensor has been reporting >= $humidityHigh1)",
+                                            "children": [
+                                                
+                                            ]
+                                        },
+                                        {
+                                            "type": "ExpressionStatement",
+                                            "statement": "def deltaMinutes = 10",
+                                            "children": [
+                                                
+                                            ]
+                                        },
+                                        {
+                                            "type": "ExpressionStatement",
+                                            "statement": "def timeAgo = new java.util.Date((this.now() - ((1000 * 60) * deltaMinutes).toLong()))",
+                                            "children": [
+                                                
+                                            ]
+                                        },
+                                        {
+                                            "type": "ExpressionStatement",
+                                            "statement": "def recentEvents = humiditySensor1.eventsSince(timeAgo)",
+                                            "children": [
+                                                
+                                            ]
+                                        },
+                                        {
+                                            "type": "ExpressionStatement",
+                                            "statement": "log.trace(Found ${(recentEvents?.size()) ? recentEvents?.size() : 0} events in the last $deltaMinutes minutes)",
+                                            "children": [
+                                                
+                                            ]
+                                        },
+                                        {
+                                            "type": "ExpressionStatement",
+                                            "statement": "def alreadySentSms1 = (recentEvents.count({ ... }) > 1)",
+                                            "children": [
+                                                
+                                            ]
+                                        },
+                                        {
+                                            "type": "IfStatement",
+                                            "statement": "If statement",
+                                            "condition": {
+                                                "type": "BooleanExpression",
+                                                "expression": "alreadySentSms1",
+                                                "children": [
+                                                    
+                                                ]
+                                            },
+                                            "ifBlock": {
+                                                "type": "BlockStatement",
+                                                "statement": "Block statement",
+                                                "children": [
+                                                    {
+                                                        "type": "ReturnStatement",
+                                                        "statement": "return log.debug(Notification already sent within the last $deltaMinutes minutes)",
+                                                        "children": [
+                                                            
+                                                        ]
+                                                    }
+                                                ]
+                                            },
+                                            "elseBlock": {
+                                                "type": "BlockStatement",
+                                                "statement": "Block statement",
+                                                "children": [
+                                                    {
+                                                        "type": "IfStatement",
+                                                        "statement": "If statement",
+                                                        "condition": {
+                                                            "type": "BooleanExpression",
+                                                            "expression": "(state.lastStatus != off)",
+                                                            "children": [
+                                                                
+                                                            ]
+                                                        },
+                                                        "ifBlock": {
+                                                            "type": "BlockStatement",
+                                                            "statement": "Block statement",
+                                                            "children": [
+                                                                {
+                                                                    "type": "ExpressionStatement",
+                                                                    "statement": "log.debug(Humidity Rose Above $humidityHigh1:  sending SMS and deactivating $mySwitch)",
+                                                                    "children": [
+                                                                        
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "type": "ExpressionStatement",
+                                                                    "statement": "this.send(${humiditySensor1.label} sensed high humidity level of ${evt.value}, turning off ${switch1.label})",
+                                                                    "children": [
+                                                                        
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "type": "ExpressionStatement",
+                                                                    "statement": "switch1?.off()",
+                                                                    "children": [
+                                                                        
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "type": "ReturnStatement",
+                                                                    "statement": "return (state.lastStatus = off)",
+                                                                    "children": [
+                                                                        
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        },
+                                                        "elseBlock": null,
+                                                        "children": [
+                                                            
+                                                        ]
+                                                    }
+                                                ]
+                                            },
+                                            "children": [
+                                                
+                                            ]
+                                        }
+                                    ]
+                                },
+                                "elseBlock": {
+                                    "type": "IfStatement",
+                                    "statement": "If statement",
+                                    "condition": {
+                                        "type": "BooleanExpression",
+                                        "expression": "(currentHumidity <= humidityLow1)",
+                                        "children": [
+                                            
+                                        ]
+                                    },
+                                    "ifBlock": {
+                                        "type": "BlockStatement",
+                                        "statement": "Block statement",
+                                        "children": [
+                                            {
+                                                "type": "ExpressionStatement",
+                                                "statement": "log.debug(Checking how long the humidity sensor has been reporting <= $humidityLow1)",
+                                                "children": [
+                                                    
+                                                ]
+                                            },
+                                            {
+                                                "type": "ExpressionStatement",
+                                                "statement": "def deltaMinutes = 10",
+                                                "children": [
+                                                    
+                                                ]
+                                            },
+                                            {
+                                                "type": "ExpressionStatement",
+                                                "statement": "def timeAgo = new java.util.Date((this.now() - ((1000 * 60) * deltaMinutes).toLong()))",
+                                                "children": [
+                                                    
+                                                ]
+                                            },
+                                            {
+                                                "type": "ExpressionStatement",
+                                                "statement": "def recentEvents = humiditySensor1.eventsSince(timeAgo)",
+                                                "children": [
+                                                    
+                                                ]
+                                            },
+                                            {
+                                                "type": "ExpressionStatement",
+                                                "statement": "log.trace(Found ${(recentEvents?.size()) ? recentEvents?.size() : 0} events in the last $deltaMinutes minutes)",
+                                                "children": [
+                                                    
+                                                ]
+                                            },
+                                            {
+                                                "type": "ExpressionStatement",
+                                                "statement": "def alreadySentSms2 = (recentEvents.count({ ... }) > 1)",
+                                                "children": [
+                                                    
+                                                ]
+                                            },
+                                            {
+                                                "type": "IfStatement",
+                                                "statement": "If statement",
+                                                "condition": {
+                                                    "type": "BooleanExpression",
+                                                    "expression": "alreadySentSms2",
+                                                    "children": [
+                                                        
+                                                    ]
+                                                },
+                                                "ifBlock": {
+                                                    "type": "BlockStatement",
+                                                    "statement": "Block statement",
+                                                    "children": [
+                                                        {
+                                                            "type": "ReturnStatement",
+                                                            "statement": "return log.debug(Notification already sent within the last $deltaMinutes minutes)",
+                                                            "children": [
+                                                                
+                                                            ]
+                                                        }
+                                                    ]
+                                                },
+                                                "elseBlock": {
+                                                    "type": "BlockStatement",
+                                                    "statement": "Block statement",
+                                                    "children": [
+                                                        {
+                                                            "type": "IfStatement",
+                                                            "statement": "If statement",
+                                                            "condition": {
+                                                                "type": "BooleanExpression",
+                                                                "expression": "(state.lastStatus != on)",
+                                                                "children": [
+                                                                    
+                                                                ]
+                                                            },
+                                                            "ifBlock": {
+                                                                "type": "BlockStatement",
+                                                                "statement": "Block statement",
+                                                                "children": [
+                                                                    {
+                                                                        "type": "ExpressionStatement",
+                                                                        "statement": "log.debug(Humidity Dropped Below $humidityLow1:  sending SMS and activating $mySwitch)",
+                                                                        "children": [
+                                                                            
+                                                                        ]
+                                                                    },
+                                                                    {
+                                                                        "type": "ExpressionStatement",
+                                                                        "statement": "this.send(${humiditySensor1.label} sensed low humidity level of ${evt.value}, turning on ${switch1.label})",
+                                                                        "children": [
+                                                                            
+                                                                        ]
+                                                                    },
+                                                                    {
+                                                                        "type": "ExpressionStatement",
+                                                                        "statement": "switch1?.on()",
+                                                                        "children": [
+                                                                            
+                                                                        ]
+                                                                    },
+                                                                    {
+                                                                        "type": "ReturnStatement",
+                                                                        "statement": "return (state.lastStatus = on)",
+                                                                        "children": [
+                                                                            
+                                                                        ]
+                                                                    }
+                                                                ]
+                                                            },
+                                                            "elseBlock": null,
+                                                            "children": [
+                                                                
+                                                            ]
+                                                        }
+                                                    ]
+                                                },
+                                                "children": [
+                                                    
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    "elseBlock": {
+                                        "type": "ReturnStatement",
+                                        "statement": "return null",
+                                        "children": [
+                                            
+                                        ]
+                                    },
+                                    "children": [
+                                        
+                                    ]
+                                },
+                                "children": [
+                                    
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "docstring": "Turn on/off humidifier based on relative humidity from a sensor."
+    }
+]

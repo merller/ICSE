@@ -1,0 +1,589 @@
+[
+    {
+        "functionName": "installed",
+        "arguments": "",
+        "ast": [
+            {
+                "type": "BlockStatement",
+                "statement": "Block statement",
+                "children": [
+                    {
+                        "type": "BlockStatement",
+                        "statement": "Block statement",
+                        "children": [
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "log.debug(Installed with settings: $settings)",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ReturnStatement",
+                                "statement": "return this.initialize()",
+                                "children": [
+                                    
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "docstring": "This only supports devices with capabilities TemperatureMeasurement, AccelerationSensor and ColorControl (LED). Supports two use cases. First, will notifies via in-app if the fridge where meds are stored exceeds a temperature threshold set in degrees. Secondly, sends an in-app and ambient light notification if you forget to take your meds by sensing movement of the medicine box in the fridge. A reminder will be set to a single time per day. If the box isn't moved within 60 minutes of that reminder, an in-app message will be sent. If the box still isn't moved after an additional 10 minutes, then an LED light turns red until the box is moved"
+    },
+    {
+        "functionName": "updated",
+        "arguments": "",
+        "ast": [
+            {
+                "type": "BlockStatement",
+                "statement": "Block statement",
+                "children": [
+                    {
+                        "type": "BlockStatement",
+                        "statement": "Block statement",
+                        "children": [
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "log.debug(Updated with settings: $settings)",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "this.unsubscribe()",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ReturnStatement",
+                                "statement": "return this.initialize()",
+                                "children": [
+                                    
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "docstring": "This only supports devices with capabilities TemperatureMeasurement, AccelerationSensor and ColorControl (LED). Supports two use cases. First, will notifies via in-app if the fridge where meds are stored exceeds a temperature threshold set in degrees. Secondly, sends an in-app and ambient light notification if you forget to take your meds by sensing movement of the medicine box in the fridge. A reminder will be set to a single time per day. If the box isn't moved within 60 minutes of that reminder, an in-app message will be sent. If the box still isn't moved after an additional 10 minutes, then an LED light turns red until the box is moved"
+    },
+    {
+        "functionName": "initialize",
+        "arguments": "",
+        "ast": [
+            {
+                "type": "BlockStatement",
+                "statement": "Block statement",
+                "children": [
+                    {
+                        "type": "BlockStatement",
+                        "statement": "Block statement",
+                        "children": [
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "this.subscribe(deviceTemperatureMeasurement, temperature, tempHandler)",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "this.subscribe(deviceAccelerationSensor, acceleration.active, motionHandler)",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "(state.minutesToCheckPriorToReminder = 60)",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ReturnStatement",
+                                "statement": "return this.schedule(reminderTime, checkMotionInPast)",
+                                "children": [
+                                    
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "docstring": "This only supports devices with capabilities TemperatureMeasurement, AccelerationSensor and ColorControl (LED). Supports two use cases. First, will notifies via in-app if the fridge where meds are stored exceeds a temperature threshold set in degrees. Secondly, sends an in-app and ambient light notification if you forget to take your meds by sensing movement of the medicine box in the fridge. A reminder will be set to a single time per day. If the box isn't moved within 60 minutes of that reminder, an in-app message will be sent. If the box still isn't moved after an additional 10 minutes, then an LED light turns red until the box is moved"
+    },
+    {
+        "functionName": "tempHandler",
+        "arguments": "evt",
+        "ast": [
+            {
+                "type": "BlockStatement",
+                "statement": "Block statement",
+                "children": [
+                    {
+                        "type": "BlockStatement",
+                        "statement": "Block statement",
+                        "children": [
+                            {
+                                "type": "IfStatement",
+                                "statement": "If statement",
+                                "condition": {
+                                    "type": "BooleanExpression",
+                                    "expression": "(evt.doubleValue > tempThreshold)",
+                                    "children": [
+                                        
+                                    ]
+                                },
+                                "ifBlock": {
+                                    "type": "BlockStatement",
+                                    "statement": "Block statement",
+                                    "children": [
+                                        {
+                                            "type": "ExpressionStatement",
+                                            "statement": "log.debug(Fridge temp of ${evt.value} exceeded threshold)",
+                                            "children": [
+                                                
+                                            ]
+                                        },
+                                        {
+                                            "type": "ReturnStatement",
+                                            "statement": "return this.sendNotification(WARNING: Fridge temp is ${evt.value} with threshold of $tempThreshold)",
+                                            "children": [
+                                                
+                                            ]
+                                        }
+                                    ]
+                                },
+                                "elseBlock": null,
+                                "children": [
+                                    
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "docstring": "This only supports devices with capabilities TemperatureMeasurement, AccelerationSensor and ColorControl (LED). Supports two use cases. First, will notifies via in-app if the fridge where meds are stored exceeds a temperature threshold set in degrees. Secondly, sends an in-app and ambient light notification if you forget to take your meds by sensing movement of the medicine box in the fridge. A reminder will be set to a single time per day. If the box isn't moved within 60 minutes of that reminder, an in-app message will be sent. If the box still isn't moved after an additional 10 minutes, then an LED light turns red until the box is moved"
+    },
+    {
+        "functionName": "motionHandler",
+        "arguments": "evt",
+        "ast": [
+            {
+                "type": "BlockStatement",
+                "statement": "Block statement",
+                "children": [
+                    {
+                        "type": "BlockStatement",
+                        "statement": "Block statement",
+                        "children": [
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "log.debug(Medication moved. Send stop LED notification)",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ReturnStatement",
+                                "statement": "return this.resetLEDNotification()",
+                                "children": [
+                                    
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "docstring": "This only supports devices with capabilities TemperatureMeasurement, AccelerationSensor and ColorControl (LED). Supports two use cases. First, will notifies via in-app if the fridge where meds are stored exceeds a temperature threshold set in degrees. Secondly, sends an in-app and ambient light notification if you forget to take your meds by sensing movement of the medicine box in the fridge. A reminder will be set to a single time per day. If the box isn't moved within 60 minutes of that reminder, an in-app message will be sent. If the box still isn't moved after an additional 10 minutes, then an LED light turns red until the box is moved"
+    },
+    {
+        "functionName": "checkMotionInPast",
+        "arguments": "",
+        "ast": [
+            {
+                "type": "BlockStatement",
+                "statement": "Block statement",
+                "children": [
+                    {
+                        "type": "BlockStatement",
+                        "statement": "Block statement",
+                        "children": [
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "log.debug(Checking past 60 minutes of activity from $reminderTime)",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def movement = this.isMoved(state.minutesToCheckPriorToReminder)",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "log.debug(Motion found: $movement)",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "IfStatement",
+                                "statement": "If statement",
+                                "condition": {
+                                    "type": "BooleanExpression",
+                                    "expression": "movement",
+                                    "children": [
+                                        
+                                    ]
+                                },
+                                "ifBlock": {
+                                    "type": "BlockStatement",
+                                    "statement": "Block statement",
+                                    "children": [
+                                        {
+                                            "type": "ExpressionStatement",
+                                            "statement": "this.sendNotification(Hi, please remember to take your meds in the fridge)",
+                                            "children": [
+                                                
+                                            ]
+                                        },
+                                        {
+                                            "type": "ExpressionStatement",
+                                            "statement": "def reminderTimePlus10 = new java.util.Date((this.now() + (10 * 60000)))",
+                                            "children": [
+                                                
+                                            ]
+                                        },
+                                        {
+                                            "type": "ReturnStatement",
+                                            "statement": "return this.runOnce(reminderTimePlus10, checkMotionAfterReminder)",
+                                            "children": [
+                                                
+                                            ]
+                                        }
+                                    ]
+                                },
+                                "elseBlock": null,
+                                "children": [
+                                    
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "docstring": "This only supports devices with capabilities TemperatureMeasurement, AccelerationSensor and ColorControl (LED). Supports two use cases. First, will notifies via in-app if the fridge where meds are stored exceeds a temperature threshold set in degrees. Secondly, sends an in-app and ambient light notification if you forget to take your meds by sensing movement of the medicine box in the fridge. A reminder will be set to a single time per day. If the box isn't moved within 60 minutes of that reminder, an in-app message will be sent. If the box still isn't moved after an additional 10 minutes, then an LED light turns red until the box is moved"
+    },
+    {
+        "functionName": "checkMotionAfterReminder",
+        "arguments": "",
+        "ast": [
+            {
+                "type": "BlockStatement",
+                "statement": "Block statement",
+                "children": [
+                    {
+                        "type": "BlockStatement",
+                        "statement": "Block statement",
+                        "children": [
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "log.debug(Checking additional 10 minutes of activity from $reminderTime)",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def movement = this.isMoved(10)",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "log.debug(Motion found: $movement)",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "IfStatement",
+                                "statement": "If statement",
+                                "condition": {
+                                    "type": "BooleanExpression",
+                                    "expression": "movement",
+                                    "children": [
+                                        
+                                    ]
+                                },
+                                "ifBlock": {
+                                    "type": "BlockStatement",
+                                    "statement": "Block statement",
+                                    "children": [
+                                        {
+                                            "type": "ExpressionStatement",
+                                            "statement": "log.debug(Notify LED API)",
+                                            "children": [
+                                                
+                                            ]
+                                        },
+                                        {
+                                            "type": "ReturnStatement",
+                                            "statement": "return this.setLEDNotification()",
+                                            "children": [
+                                                
+                                            ]
+                                        }
+                                    ]
+                                },
+                                "elseBlock": null,
+                                "children": [
+                                    
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "docstring": "This only supports devices with capabilities TemperatureMeasurement, AccelerationSensor and ColorControl (LED). Supports two use cases. First, will notifies via in-app if the fridge where meds are stored exceeds a temperature threshold set in degrees. Secondly, sends an in-app and ambient light notification if you forget to take your meds by sensing movement of the medicine box in the fridge. A reminder will be set to a single time per day. If the box isn't moved within 60 minutes of that reminder, an in-app message will be sent. If the box still isn't moved after an additional 10 minutes, then an LED light turns red until the box is moved"
+    },
+    {
+        "functionName": "sendNotification",
+        "arguments": "msg",
+        "ast": [
+            {
+                "type": "BlockStatement",
+                "statement": "Block statement",
+                "children": [
+                    {
+                        "type": "BlockStatement",
+                        "statement": "Block statement",
+                        "children": [
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "log.debug(Message Sent: $msg)",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ReturnStatement",
+                                "statement": "return this.sendPush(msg)",
+                                "children": [
+                                    
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "docstring": "This only supports devices with capabilities TemperatureMeasurement, AccelerationSensor and ColorControl (LED). Supports two use cases. First, will notifies via in-app if the fridge where meds are stored exceeds a temperature threshold set in degrees. Secondly, sends an in-app and ambient light notification if you forget to take your meds by sensing movement of the medicine box in the fridge. A reminder will be set to a single time per day. If the box isn't moved within 60 minutes of that reminder, an in-app message will be sent. If the box still isn't moved after an additional 10 minutes, then an LED light turns red until the box is moved"
+    },
+    {
+        "functionName": "isMoved",
+        "arguments": "minutes",
+        "ast": [
+            {
+                "type": "BlockStatement",
+                "statement": "Block statement",
+                "children": [
+                    {
+                        "type": "BlockStatement",
+                        "statement": "Block statement",
+                        "children": [
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def previousDateTime = new java.util.Date((this.now() - (minutes * 60000)))",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def evts = deviceAccelerationSensor.eventsSince(previousDateTime)",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "def motion = false",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "IfStatement",
+                                "statement": "If statement",
+                                "condition": {
+                                    "type": "BooleanExpression",
+                                    "expression": "(evts.size() > 0)",
+                                    "children": [
+                                        
+                                    ]
+                                },
+                                "ifBlock": {
+                                    "type": "BlockStatement",
+                                    "statement": "Block statement",
+                                    "children": [
+                                        {
+                                            "type": "ExpressionStatement",
+                                            "statement": "evts.each({ ... })",
+                                            "children": [
+                                                
+                                            ]
+                                        }
+                                    ]
+                                },
+                                "elseBlock": null,
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ReturnStatement",
+                                "statement": "return motion",
+                                "children": [
+                                    
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "docstring": "This only supports devices with capabilities TemperatureMeasurement, AccelerationSensor and ColorControl (LED). Supports two use cases. First, will notifies via in-app if the fridge where meds are stored exceeds a temperature threshold set in degrees. Secondly, sends an in-app and ambient light notification if you forget to take your meds by sensing movement of the medicine box in the fridge. A reminder will be set to a single time per day. If the box isn't moved within 60 minutes of that reminder, an in-app message will be sent. If the box still isn't moved after an additional 10 minutes, then an LED light turns red until the box is moved"
+    },
+    {
+        "functionName": "setLEDNotification",
+        "arguments": "",
+        "ast": [
+            {
+                "type": "BlockStatement",
+                "statement": "Block statement",
+                "children": [
+                    {
+                        "type": "BlockStatement",
+                        "statement": "Block statement",
+                        "children": [
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "(state.ledState = deviceLight.currentValue(switch))",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "(state.origColor = deviceLight.currentValue(hue))",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "deviceLight.on()",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "deviceLight.setHue(100)",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ReturnStatement",
+                                "statement": "return log.debug(LED set to RED. Original color stored: ${state.origColor})",
+                                "children": [
+                                    
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "docstring": "This only supports devices with capabilities TemperatureMeasurement, AccelerationSensor and ColorControl (LED). Supports two use cases. First, will notifies via in-app if the fridge where meds are stored exceeds a temperature threshold set in degrees. Secondly, sends an in-app and ambient light notification if you forget to take your meds by sensing movement of the medicine box in the fridge. A reminder will be set to a single time per day. If the box isn't moved within 60 minutes of that reminder, an in-app message will be sent. If the box still isn't moved after an additional 10 minutes, then an LED light turns red until the box is moved"
+    },
+    {
+        "functionName": "resetLEDNotification",
+        "arguments": "",
+        "ast": [
+            {
+                "type": "BlockStatement",
+                "statement": "Block statement",
+                "children": [
+                    {
+                        "type": "BlockStatement",
+                        "statement": "Block statement",
+                        "children": [
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "log.debug(Reset LED color to: ${state.origColor})",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "ExpressionStatement",
+                                "statement": "deviceLight.setHue(state.origColor)",
+                                "children": [
+                                    
+                                ]
+                            },
+                            {
+                                "type": "IfStatement",
+                                "statement": "If statement",
+                                "condition": {
+                                    "type": "BooleanExpression",
+                                    "expression": "(state.ledState == off)",
+                                    "children": [
+                                        
+                                    ]
+                                },
+                                "ifBlock": {
+                                    "type": "BlockStatement",
+                                    "statement": "Block statement",
+                                    "children": [
+                                        {
+                                            "type": "ReturnStatement",
+                                            "statement": "return deviceLight.off()",
+                                            "children": [
+                                                
+                                            ]
+                                        }
+                                    ]
+                                },
+                                "elseBlock": null,
+                                "children": [
+                                    
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "docstring": "This only supports devices with capabilities TemperatureMeasurement, AccelerationSensor and ColorControl (LED). Supports two use cases. First, will notifies via in-app if the fridge where meds are stored exceeds a temperature threshold set in degrees. Secondly, sends an in-app and ambient light notification if you forget to take your meds by sensing movement of the medicine box in the fridge. A reminder will be set to a single time per day. If the box isn't moved within 60 minutes of that reminder, an in-app message will be sent. If the box still isn't moved after an additional 10 minutes, then an LED light turns red until the box is moved"
+    }
+]
