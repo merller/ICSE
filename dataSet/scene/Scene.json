@@ -66,10 +66,10 @@
         "general_docstring":"Smart home night mode: Turn off lights, play soothing music, adjust the air conditioning, and activate the night light."
     },
     {
-        "code":"",
-        "accurate_docstring":"",
-        "docstring":"",
-        "general_docstring":""
+        "code":"function playBackgroundMusic(track, duration) {\n    console.log(`Playing background music: ${track} for ${duration} minutes`);\n    event.playMusic(track);\n    setTimeout(() => {\n        event.stopMusic(track);\n    }, duration * 60 * 1000);\n}\nfunction adjustLighting(temperature) {\n    console.log(`Adjusting lighting to ${temperature}K`);\n    event.adjustLighting(temperature);\n}\n\nfunction preheatOven(temperature) {\n    console.log(`Preheating oven to ${temperature}℃`);\n    event.preheatOven(temperature);\n}\n\nfunction turnOnAirCleaner() {\n    console.log(\"Turning on air cleaner\");\n    event.turnOnAirCleaner();\n}\n\neventBus.on(\'dinnerTime\', () => {\n    playBackgroundMusic(\"Dinner Jazz\", 120);\n    adjustLighting(2700);\n    preheatOven(180);\n    turnOnAirCleaner();\n});\n\nfunction setupDinnerScene() {\n    console.log(\"Setting up dinner scene\");\n    eventBus.emit(\'dinnerTime\');\n}\n\nsetupDinnerScene();",
+        "accurate_docstring":"At the specified time, play 2 hours of background music, \"Dinner Jazz.\"Adjust the lighting to a soft 2700K color temperature to create a dinner atmosphere.Preheat the oven to 180°C.Turn on the air purifier.",
+        "docstring":"Dinner mode scene: play background music, adjust lights to a soft color temperature, preheat the oven, and turn on the air purifier.",
+        "general_docstring":"Smart home dinner mode: background music, soft lighting, preheat oven, air purification."
     },
     {
         "code":"",
