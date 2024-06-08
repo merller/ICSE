@@ -3,7 +3,7 @@ import torch
 from transformers import RobertaTokenizer, T5ForConditionalGeneration, T5EncoderModel
 
 # 加载本地 CodeT5 模型和分词器
-model_dir = "dataSet/fine-tuned-codeT5"
+model_dir = "dataSet/local_codet5_base"
 tokenizer = RobertaTokenizer.from_pretrained(model_dir)
 model = T5ForConditionalGeneration.from_pretrained(model_dir)
 encoder_model = T5EncoderModel.from_pretrained(model_dir)
@@ -14,7 +14,7 @@ model.to(device)
 encoder_model.to(device)
 
 # 输入查询
-query = "if the light is on, open the TV."
+query = "Monitor soil moisture, and if the soil is too dry, start the watering system; if the soil is too wet, stop the watering.Environmental monitoring: Periodically monitor light intensity, temperature, and humidity, and display the data on an electronic screen.Play nature sounds: When there is movement at the garden gate, play nature sounds like bird chirping and flowing water.Plant growth tracking: Every 24 hours, capture images of plants using a smart camera and send the images to a mobile phone.Smart control: Turn on the supplementary lights at night and activate lights when there is movement at the garden gate."
 
 # 读取 JSON 数据集
 #data_path = "dataSet/smartAPP/dataset.json"
@@ -46,5 +46,5 @@ top_k_values, top_k_indices = torch.topk(cosine_sim, top_k)
 print(f"Query: {query}\n")
 for idx, (index, score) in enumerate(zip(top_k_indices, top_k_values)):
     code_snippet, line_number = code_snippets_with_lines[index]
-    print(f"Code snippet {idx + 1} (line {4*line_number-1}): {code_snippet}")
+    print(f"Code snippet {idx + 1} (line {6*line_number-3}): {code_snippet}")
     print(f"Similarity score: {score.item()}\n")
