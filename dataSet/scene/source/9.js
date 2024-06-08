@@ -38,10 +38,10 @@ function adjustLighting() {
     const lightIntensity = getLightIntensity();
     if (lightIntensity < 300) {
         console.log("Adjusting kitchen lighting to brighter setting");
-        event.adjustLighting("brighter");
+        event.adjustLighting(350);
     } else {
         console.log("Adjusting kitchen lighting to dimmer setting");
-        event.adjustLighting("dimmer");
+        event.adjustLighting(200);
     }
 }
 

@@ -77,34 +77,14 @@
         "general_docstring":"Smart garden: automatic watering, environmental monitoring, nature sounds, plant growth tracking, smart light control."
     },
     {
-        "code":"",
-        "accurate_docstring":"",
-        "docstring":"",
-        "general_docstring":""
+        "code":"function playBackgroundMusic(track, duration) {\n    console.log(`Playing background music: ${track} for ${duration} minutes`);\n    event.playMusic(track);\n    setTimeout(() => {\n        event.stopMusic(track);\n    }, duration * 60 * 1000)"
     },
     {
-        "code":"",
-        "accurate_docstring":"",
-        "docstring":"",
-        "general_docstring":""
+        "code":"\nfunction adjustLighting() {\n const lightIntensity = getLightIntensity();\n   if (lightIntensity < 300) {\n             console.log(\"Adjusting kitchen lighting to brighter setting\");\n                event.adjustLighting(350);\n       } else {\n              console.log(\"Adjusting kitchen lighting to dimmer setting\");\n            event.adjustLighting(250);\n       }\n}\n"
     },
     {
-        "code":"",
-        "accurate_docstring":"",
-        "docstring":"",
-        "general_docstring":""
-    },
-    {
-        "code":"",
-        "accurate_docstring":"",
-        "docstring":"",
-        "general_docstring":""
-    },
-    {
-        "code":"",
-        "accurate_docstring":"",
-        "docstring":"",
-        "general_docstring":""
+        "code":"\nfunction playMerryChristmas(){\n      event.playMusic('Merry Christmas');\n}\n"
     }
+    
 
 ]
