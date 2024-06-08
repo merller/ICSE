@@ -14,11 +14,10 @@ model.to(device)
 encoder_model.to(device)
 
 # 输入查询
-query = "play the Merry Christmas music."
+query = "When the entrance sensor detects someone entering and there is no one in the gym, turn on the lights, activate the smart sockets for the gym equipment, set the fan to 1000 rpm, and broadcast ‘Welcome’. Increase the people counter. When the exit sensor detects someone leaving and there is only one person in the gym, turn off the lights and deactivate the smart sockets for the gym equipment, and broadcast ‘Have a good day’. Decrease the people counter. Turn on the air purifier."
 
 # 分词
 query_inputs = tokenizer(query, return_tensors="pt").to(device)
-
 # 编码查询
 query_embedding = encoder_model(**query_inputs).last_hidden_state.mean(dim=1)
 
@@ -40,9 +39,11 @@ for item in code_data:
     
     similarities.append((cosine_sim.item(), code))
 
+
 # 根据相似度排序，并输出相似度最高的前三个代码片段
 similarities.sort(reverse=True, key=lambda x: x[0])
 
+print("Query:", query)
 top_3_similarities = similarities[:3]
 for i, (sim, code) in enumerate(top_3_similarities, 1):
     print(f"Top {i} Similarity: {sim}")
