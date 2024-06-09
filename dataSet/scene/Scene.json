@@ -209,28 +209,78 @@
         "general_docstring":"The Safe House Scene activates security measures, including surveillance cameras and smoke detectors. Simulated smoke and intrusion events prompt immediate response, including opening doors and windows, activating emergency lights, and notifying emergency services."
     },
      {
-        "code":,
-        "accurate_docstring":"",
-        "docstring":"",
-        "general_docstring":""
+        "code":"function startSmartManufacturingScene() {\n    event.turnOnSecuritySystem(); \n    event.turnOnFactoryLights(); \n    event.startProductionLine(); \n    event.turnOnCoolingSystem(); \n    event.sendNotification('Smart Manufacturing Scene started.'); \n}\neventBus.on('materialLow', () => {\n    event.sendNotification('Material stock is low!'); \n    event.orderMaterials(); \n});\neventBus.on('machineError', (machineId) => {\n    event.stopMachine(machineId); \n    event.sendNotification(`Machine ${machineId} has encountered an error!`); \n    event.callMaintenanceTeam(); \n});\neventBus.on('productCompleted', (productId) => {\n    event.packageProduct(productId); \n    event.sendNotification(`Product ${productId} has been completed and packaged.`); \n});\neventBus.on('highTemperatureDetected', () => {\n    event.turnOnEmergencyCoolingSystem(); \n    event.sendNotification('High temperature detected! Emergency cooling system activated.'); \n});\nstartSmartManufacturingScene();",
+        "accurate_docstring":"The Smart Manufacturing Scene starts by activating the security system, turning on factory lights, starting the production line, and turning on the cooling system. Notifications are sent to staff. When material stock is low, a notification is sent and materials are ordered. If a machine encounters an error, it is stopped, a notification is sent, and the maintenance team is called. When a product is completed, it is packaged, and a notification is sent. If high temperature is detected, the emergency cooling system is activated, and a high temperature warning is sent.",
+        "docstring":"The Smart Manufacturing Scene activates security, lighting, production lines, and cooling systems. Notifications are sent for low material stock, machine errors, product completions, and high temperatures. Actions include ordering materials, stopping faulty machines, calling maintenance, packaging products, and activating emergency cooling.",
+        "general_docstring":"The Smart Manufacturing Scene manages security, lighting, production, and cooling. It responds to low materials, machine errors, product completions, and high temperatures with appropriate actions and notifications."
     },
     {
-        "code":,
-        "accurate_docstring":"",
-        "docstring":"",
-        "general_docstring":""
+        "code":"function startSmartGamingRoomScene() {\n    event.turnOnGamingLights(); \n    event.setTemperature(20); \n    event.turnOnGamingConsole(); \n    event.turnOnSurroundSoundSystem(); \n    event.sendNotification('Smart Gaming Room Scene started.'); \n}\neventBus.on('gameStarted', (gameName) => {\n    event.dimLights(); \n    event.startAmbientMusic(); \n    event.sendNotification(`Game ${gameName} has started! Enjoy your gaming experience.`); \n});\neventBus.on('gameEnded', (gameName) => {\n    event.turnOnNormalLights(); \n    event.stopAmbientMusic(); \n    event.sendNotification(`Game ${gameName} has ended. Hope you had fun!`); \n});\neventBus.on('playerBreak', () => {\n    event.turnOnRelaxationMode(); \n    event.sendNotification('Time for a break! Relax and recharge.'); \n});\nstartSmartGamingRoomScene();",
+        "accurate_docstring":"The Smart Gaming Room Scene starts by turning on the gaming lights, setting the temperature to 20°C, powering on the gaming console, and activating the surround sound system. Notifications are sent to players. When a game starts, the lights dim, ambient music begins, and a notification is sent to enjoy the gaming experience. When the game ends, normal lighting resumes, ambient music stops, and a notification is sent hoping the player had fun. During player breaks, relaxation mode is activated, and a notification is sent to relax and recharge.",
+        "docstring":"The Smart Gaming Room Scene activates gaming lights, temperature control, gaming console, and surround sound. Notifications are sent for game start, game end, and player breaks. Lights dim and ambient music plays during games. Normal lighting and music stop when games end. Relaxation mode is activated during breaks.",
+        "general_docstring":"The Smart Gaming Room Scene manages lights, temperature, console, and sound. It responds to game start, end, and player breaks with appropriate lighting and music adjustments, and sends notifications."
     },
     {
-        "code":,
-        "accurate_docstring":"",
-        "docstring":"",
-        "general_docstring":""
+        "code":"function startSmartInventoryManagementScene() {\n    event.turnOnSecuritySystem(); \n    event.turnOnWarehouseLights(); \n    event.startInventoryTracking(); \n    event.sendNotification('Smart Inventory Management Scene started.'); \n}\neventBus.on('lowInventoryDetected', (itemId) => {\n    event.sendNotification(`Low inventory detected for item ${itemId}.`); \n    event.orderStock(itemId); \n});\neventBus.on('newStockArrived', (itemId) => {\n    event.updateInventory(itemId); \n    event.sendNotification(`New stock for item ${itemId} has arrived and inventory is updated.`); \n});\neventBus.on('inventoryErrorDetected', (itemId) => {\n    event.sendNotification(`Inventory error detected for item ${itemId}.`); \n    event.auditInventory(itemId); \n});\neventBus.on('highTemperatureDetected', () => {\n    event.turnOnCoolingSystem(); \n    event.sendNotification('High temperature detected in the warehouse. Cooling system activated.'); \n});\nstartSmartInventoryManagementScene();",
+        "accurate_docstring":"The Smart Inventory Management Scene starts by activating the security system, turning on warehouse lights, and starting inventory tracking. Notifications are sent to staff. When low inventory is detected for an item, a notification is sent, and stock is ordered. Upon the arrival of new stock, inventory is updated, and a notification is sent. If an inventory error is detected, a notification is sent, and the inventory is audited. If high temperature is detected in the warehouse, the cooling system is activated, and a high-temperature warning is sent.",
+        "docstring":"The Smart Inventory Management Scene activates security, lighting, and inventory tracking. It sends notifications and takes actions for low inventory, new stock arrivals, inventory errors, and high temperatures, such as ordering stock, updating inventory, auditing inventory, and activating the cooling system.",
+        "general_docstring":"The Smart Inventory Management Scene manages security, lighting, and inventory tracking. It responds to low inventory, new stock arrivals, inventory errors, and high temperatures with appropriate actions and notifications."
     },
     {
-        "code":,
-        "accurate_docstring":"",
-        "docstring":"",
-        "general_docstring":""
+        "code":"function startSmartMuseumScene() {\n    event.turnOnSecuritySystem(); \n    event.turnOnExhibitLights(); \n    event.setAmbientTemperature(22); \n    event.startVisitorTracking(); \n    event.sendNotification('Smart Museum Scene started.'); \n}\neventBus.on('visitorEntered', (visitorId) => {\n    event.sendNotification(`Visitor ${visitorId} has entered the exhibit area.`); \n    event.playWelcomeMessage(visitorId); \n    event.adjustLightingForVisitor(visitorId); \n});\neventBus.on('exhibitTouched', (exhibitId) => {\n    event.sendNotification(`Exhibit ${exhibitId} has been touched.`); \n    event.activateExhibitAlarm(exhibitId); \n});\neventBus.on('overcrowdingDetected', () => {\n    event.sendNotification('Overcrowding detected in the exhibit area.'); \n    event.redirectVisitors(); \n});\neventBus.on('fireDetected', () => {\n    event.sendNotification('Fire detected! Evacuate the museum immediately.'); \n    event.activateFireAlarm(); \n    event.openEmergencyExits(); \n});\neventBus.on('visitorExited', (visitorId) => {\n    event.sendNotification(`Visitor ${visitorId} has left the exhibit area.`); \n});\nstartSmartMuseumScene();",
+        "accurate_docstring":"The Smart Museum Scene starts by activating the security system, turning on exhibit lights, setting the ambient temperature to 22°C, and starting the visitor tracking system. Notifications are sent to staff. When a visitor enters the exhibit area, a notification is sent, a welcome message is played, and lighting is adjusted for the visitor. If an exhibit is touched, a notification is sent, and the exhibit alarm is activated. In case of overcrowding, a notification is sent, and visitors are redirected. If a fire is detected, a fire alarm is activated, emergency exits are opened, and an evacuation notification is sent. When a visitor leaves the exhibit area, a notification is sent.",
+        "docstring":"The Smart Museum Scene activates security, lighting, temperature control, and visitor tracking. It sends notifications and takes actions for visitor entry, exhibit touches, overcrowding, and fire detection, such as playing welcome messages, adjusting lighting, activating alarms, redirecting visitors, and opening emergency exits.",
+        "general_docstring":"The Smart Museum Scene manages security, lighting, temperature, and visitor tracking. It responds to visitor entry, exhibit touches, overcrowding, and fires with notifications and appropriate actions."
     },
+    {
+    "code":,
+    "accurate_docstring":"",
+    "docstring":"",
+    "general_docstring":""
+   },
+      {
+    "code":,
+    "accurate_docstring":"",
+    "docstring":"",
+    "general_docstring":""
+  },
+      {
+    "code":,
+    "accurate_docstring":"",
+    "docstring":"",
+    "general_docstring":""
+  },
+      {
+    "code":,
+    "accurate_docstring":"",
+    "docstring":"",
+    "general_docstring":""
+  },
+      {
+    "code":,
+    "accurate_docstring":"",
+    "docstring":"",
+    "general_docstring":""
+  },
+      {
+    "code":,
+    "accurate_docstring":"",
+    "docstring":"",
+    "general_docstring":""
+  },
+      {
+    "code":,
+    "accurate_docstring":"",
+    "docstring":"",
+    "general_docstring":""
+  },
+      {
+    "code":,
+    "accurate_docstring":"",
+    "docstring":"",
+    "general_docstring":""
+  },
+    
+    
     
 ]
