@@ -75,7 +75,7 @@
          "accurate_docstring":"Automatic watering system: Monitor soil moisture, and if the soil is too dry, start the watering system; if the soil is too wet, stop the watering.Environmental monitoring: Periodically monitor light intensity, temperature, and humidity, and display the data on an electronic screen.Play nature sounds: When there is movement at the garden gate, play nature sounds like bird chirping and flowing water.Plant growth tracking: Every 24 hours, capture images of plants using a smart camera and send the images to a mobile phone.Smart control: Turn on the supplementary lights at night and activate lights when there is movement at the garden gate.",
          "docstring":"Smart garden scene: Automatically water based on soil moisture, monitor environment and display data on an electronic screen, play nature sounds, track plant growth, and smartly control supplementary lights and garden lights.",
          "general_docstring":"Smart garden: automatic watering, environmental monitoring, nature sounds, plant growth tracking, smart light control."
-    }
+    },
     {
         "code":"function preheatOven(temperature) {\n    console.log(`Preheating oven to ${temperature}°C`);\n    event.preheatOven(temperature);\n}\n\nfunction playCookingGuide(guide) {\n    console.log(`Playing cooking guide: ${guide}`);\n    event.playCookingGuide(guide);\n}\n\n\nfunction adjustLighting() {\n    const lightIntensity = getLightIntensity();\n    if (lightIntensity < 300) {\n        console.log(\"Adjusting kitchen lighting to brighter setting\");\n        event.adjustLighting(\"brighter\");\n    } else {\n        console.log(\"Adjusting kitchen lighting to dimmer setting\");\n        event.adjustLighting(\"dimmer\");\n    }\n}\n\nfunction controlFan() {\n    const temperature = getKitchenTemperature();\n    if (temperature > 25) {\n        console.log(\"Kitchen is too hot. Turning on fan.\");\n        event.turnOnFan();\n    } else {\n        console.log(\"Kitchen temperature is normal. Turning off fan.\");\n        event.turnOffFan();\n    }\n}\n\nfunction adjustFotile(speed){\n    if(speed!=0)\n    event.adjustfotile(speed);\n    else\n    event.turnOfffotile();\n}\neventBus.on('startCooking', () => {\n    adjustFotile(1000);\n    preheatOven(180);\n    playCookingGuide(\"Step-by-step cooking instructions\");\n    monitorEnvironment();\n    adjustLighting();\n    controlFan();\n});\neventBus.on('endCooking', () => {\n    adjustFotile(0);\n    event.turnOffOven();\n    event.turnOffScreen();\n    adjustLighting();\n    controlFan();\n});\n\nfunction setupKitchenScene() {\n    eventBus.emit('startCooking');\n    eventBus.emit('endCooking');\n}\n\nsetupKitchenScene();",
         "accurate_docstring":"Start the oven: Automatically preheat the oven to 180°C when cooking begins.Play cooking instructions: Play detailed cooking instructions when cooking starts.Smart lighting: Automatically adjust the kitchen lighting brightness based on ambient light intensity.Smart fan: Automatically turn the fan on or off based on the kitchen temperature to maintain a comfortable environment.Control the extractor hood: Turn on the extractor hood when cooking starts and turn it off when cooking ends.End of cooking: Turn off the oven and cooking instructions display, and adjust lighting and fan settings.",
@@ -196,6 +196,41 @@
         "docstring":"Smart caregiving scenario: smart walker activation, medication and activity reminders, health and activity monitoring, environment control, emergency response with panic button and fall detection, remote video assistance.",
         "general_docstring":"Smart care: walker activation, schedule reminders, health/activity monitoring, environment control, emergency response, remote assistance."
     },
-    
+    {
+        "code":"function verifyCustomerIdentity(customerId) {\n    if (customerId === 'valid') {\n        event.openSecurityGate(); \n        event.sendNotification('Welcome to Smart Bank!'); \n    } else {\n        event.sendNotification('Access Denied! Invalid Customer ID.'); \n    }\n}\nfunction processWithdrawal(amount) {\n    if (amount <= event.getAccountBalance()) {\n        event.dispenseCash(amount); \n        event.updateAccountBalance(-amount); \n        event.sendNotification(`Withdrawal of ${amount} CNY processed.`); \n    } else {\n        event.sendNotification('Insufficient funds!'); \n    }\n}\nfunction processDeposit(amount) {\n    event.acceptDeposit(amount); \n    event.updateAccountBalance(amount); \n    event.sendNotification(`Deposit of ${amount} CNY processed.`); \n}\neventBus.on('customerServiceRequest', (customerId, serviceType, amount) => {\n    verifyCustomerIdentity(customerId); \n    if (serviceType === 'withdrawal') {\n        processWithdrawal(amount); \n    } else if (serviceType === 'deposit') {\n        processDeposit(amount); \n    }\n});\neventBus.on('alarmTriggered', () => {\n    event.closeSecurityGate(); \n    event.playAlarm(); \n});\nfunction setupSmartBankScene() {\n    event.turnOnSecuritySystem(); \n    event.turnOnBankLights(); \n    eventBus.emit('customerServiceRequest');\n    eventBus.emit('alarmTriggered');\n}\nsetupSmartBankScene();",
+        "accurate_docstring":"The security system is activated to ensure safety.Bank lights illuminate the area.Customers are welcomed with identity verification at the security gate. Valid customers receive access and a welcome notification, while invalid IDs trigger a denial notification.Service requests from customers trigger actions such as withdrawals or deposits, with notifications sent accordingly.In case of an alarm trigger, the security gate closes, and an alarm sounds.",
+        "docstring":"The bank operates securely with activated security systems and well-lit premises. Customers are verified upon entry, transactions are processed promptly, and in the event of an alarm, security measures are implemented.",
+        "general_docstring":"The bank operates securely with verified access, transaction processing, and alarm response protocols."
+    },
+    {
+        "code":"function startSafeHouseScene() {\n    event.turnOnSecuritySystem(); \n    event.turnOnSurveillanceCameras(); \n    event.turnOnSmokeDetectors(); \n    event.sendNotification('Safe House Scene started.'); \n    event.emit('smokeDetected');\n    event.emit('intrusionDetected');\n}\neventBus.on('smokeDetected', () => {\n    event.activateSmokeAlarm(); \n    event.sendNotification('Smoke detected! Evacuate immediately!'); \n    event.openAllDoors(); \n    event.openWindows();\n    event.turnOnEmergencyLights(); \n    event.callEmergencyServices(); \n});\neventBus.on('intrusionDetected', () => {\n    event.activateIntrusionAlarm(); \n    event.sendNotification('Intrusion detected! Security breach detected!'); \n    event.callSecurityServices(); \n});\nstartSafeHouseScene();",
+        "accurate_docstring":"The Safe House Scene initiates by activating the security system, surveillance cameras, and smoke detectors. Simulated events of smoke detection and intrusion are emitted to simulate emergency situations. Upon smoke detection, the smoke alarm activates, prompting an immediate evacuation notification. All doors and windows are opened, emergency lights are activated, and emergency services are notified. In case of intrusion detection, the intrusion alarm activates, and security services are notified.",
+        "docstring":"The Safe House Scene is activated, triggering the security system, surveillance cameras, and smoke detectors. Smoke and intrusion events are simulated, prompting immediate action. Upon smoke detection, doors and windows are opened, emergency lights are activated, and emergency services are notified. In case of intrusion detection, security services are alerted.",
+        "general_docstring":"The Safe House Scene activates security measures, including surveillance cameras and smoke detectors. Simulated smoke and intrusion events prompt immediate response, including opening doors and windows, activating emergency lights, and notifying emergency services."
+    },
+     {
+        "code":,
+        "accurate_docstring":"",
+        "docstring":"",
+        "general_docstring":""
+    },
+    {
+        "code":,
+        "accurate_docstring":"",
+        "docstring":"",
+        "general_docstring":""
+    },
+    {
+        "code":,
+        "accurate_docstring":"",
+        "docstring":"",
+        "general_docstring":""
+    },
+    {
+        "code":,
+        "accurate_docstring":"",
+        "docstring":"",
+        "general_docstring":""
+    },
     
 ]
