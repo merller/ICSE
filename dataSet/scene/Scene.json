@@ -245,42 +245,40 @@
     "general_docstring":"The Smart Construction Scene manages security, lighting, machine monitoring, and drone surveillance, responding to errors, falls, high temperatures, poor air quality, material arrivals, and task completions with appropriate actions and notifications."
      },
       {
-    "code":,
-    "accurate_docstring":"",
-    "docstring":"",
-    "general_docstring":""
+    "code":"function startSmartClothingScene() {\n    event.turnOnWearableSensors(); \n    event.activateSmartHeating(); \n    event.sendNotification('Smart Clothing Scene started.'); \n}\neventBus.on('healthAnomalyDetected', (anomalyType) => {\n    event.sendNotification(`Health anomaly detected: ${anomalyType}. Taking appropriate actions.`); \n    event.recordHealthData(anomalyType); \n    event.notifyHealthcareProvider(anomalyType); \n});\neventBus.on('temperatureChangeDetected', (temperature) => {\n    event.sendNotification(`Temperature change detected: ${temperature}°C. Adjusting smart heating.`); \n    event.adjustHeating(temperature); \n});\neventBus.on('lowBatteryDetected', () => {\n    event.sendNotification('Low battery detected! Please recharge your smart clothing.'); \n    event.activatePowerSavingMode(); \n});\neventBus.on('firmwareUpdateNeeded', () => {\n    event.sendNotification('Firmware update needed for your smart clothing. Starting update process.'); \n    event.startFirmwareUpdate(); \n});\nstartSmartClothingScene();",
+    "accurate_docstring":"The Smart Clothing Scene starts by turning on wearable sensors and activating the smart heating feature. Notifications are sent to the user. When a health anomaly is detected, a notification is sent, health data is recorded, and the healthcare provider is notified. If a temperature change is detected, a notification is sent, and the smart heating is adjusted accordingly. Low battery detection triggers a notification and activates power-saving mode. If a firmware update is needed, a notification is sent, and the update process is started.",
+    "docstring":"The Smart Clothing Scene activates wearable sensors and smart heating. It sends notifications and responds to health anomalies, temperature changes, low battery, and firmware updates with actions such as recording health data, notifying healthcare providers, adjusting heating, activating power-saving mode, and starting firmware updates.",
+    "general_docstring":"The Smart Clothing Scene manages wearable sensors and smart heating, responding to health anomalies, temperature changes, low battery, and firmware updates with appropriate actions and notifications."
     },
       {
-    "code":,
-    "accurate_docstring":"",
-    "docstring":"",
-    "general_docstring":""
+    "code":"function startSmartAirportScene() {\n    event.turnOnSecuritySystem(); \n    event.activateBaggageHandlingSystem(); \n    event.turnOnSmartSecurityCheck(); \n    event.activatePersonalizedNavigation(); \n    event.sendNotification('Smart Airport Scene started.'); \n}\neventBus.on('baggageScanAnomaly', (baggageId) => {\n    event.sendNotification(`Baggage scan anomaly detected for baggage ID: ${baggageId}. Please check.`); \n    event.holdBaggage(baggageId); \n    event.alertSecurity(baggageId); \n});\neventBus.on('passengerApproachingSecurity', (passengerId) => {\n    event.sendNotification(`Passenger ${passengerId} approaching security check.`); \n    event.prepareSecurityCheck(passengerId); \n});\neventBus.on('passengerClearedSecurity', (passengerId) => {\n    event.sendNotification(`Passenger ${passengerId} cleared security.`); \n    event.provideNavigation(passengerId); \n});\neventBus.on('flightInfoUpdated', (flightId) => {\n    event.sendNotification(`Flight information updated for flight ID: ${flightId}.`); \n    event.updateNavigation(flightId); \n});\neventBus.on('emergencyDetected', () => {\n    event.sendNotification('Emergency detected! Initiating evacuation procedures.'); \n    event.activateEvacuationProtocol(); \n    event.guidePassengersToExits(); \n});\nstartSmartAirportScene();",
+    "accurate_docstring":"The Smart Airport Scene starts by activating the security system, automatic baggage handling system, smart security check, and personalized navigation. Notifications are sent to staff and passengers. When a baggage scan anomaly is detected, a notification is sent, the baggage handling is paused, and security is alerted. When a passenger approaches the security check, a notification is sent, and the security check is prepared. Once a passenger clears security, a notification is sent, and personalized navigation is provided. Flight information updates trigger a notification and update navigation information. In case of an emergency, an evacuation protocol is initiated, and passengers are guided to exits.",
+    "docstring":"The Smart Airport Scene activates security, baggage handling, smart security checks, and personalized navigation. It sends notifications and responds to baggage anomalies, passenger movements, flight updates, and emergencies with actions like pausing baggage handling, preparing security checks, providing navigation, and initiating evacuation protocols.",
+    "general_docstring":"The Smart Airport Scene manages security, baggage, and navigation, responding to anomalies, passenger movements, flight updates, and emergencies with appropriate actions and notifications."
      },
       {
+    "code":"function startSmartHospitalScene() {\n    event.turnOnSecuritySystem(); \n    event.activateBedManagementSystem(); \n    event.turnOnMedicationDispensingRobots(); \n    event.activateSurgicalDevices(); \n    event.sendNotification('Smart Hospital Scene started.'); \n}\neventBus.on('bedAvailable', (bedId) => {\n    event.sendNotification(`Bed ${bedId} is now available.`); \n    event.updateBedStatus(bedId, 'available'); \n});\neventBus.on('medicationNeedsDispensing', (patientId, medication) => {\n    event.sendNotification(`Dispensing medication for patient ${patientId}.`); \n    event.dispenseMedication(patientId, medication); \n    event.updateMedicationRecord(patientId, medication); \n});\neventBus.on('surgeryStarting', (surgeryId) => {\n    event.sendNotification(`Surgery ${surgeryId} is about to start.`); \n    event.prepareSurgicalDevices(surgeryId); \n    event.notifySurgicalTeam(surgeryId); \n});\neventBus.on('surgeryCompleted', (surgeryId) => {\n    event.sendNotification(`Surgery ${surgeryId} has been completed.`); \n    event.updateSurgicalRecord(surgeryId); \n    event.cleanSurgicalDevices(surgeryId); \n});\neventBus.on('emergencyDetected', () => {\n    event.sendNotification('Emergency detected! Initiating emergency protocol.'); \n    event.activateEmergencyProtocol(); \n    event.alertEmergencyResponseTeam(); \n});\nstartSmartHospitalScene();",
+    "accurate_docstring":"The Smart Hospital Scene starts by activating the security system, smart bed management system, medication dispensing robots, and smart surgical devices. Notifications are sent to staff. When a bed becomes available, a notification is sent, and the bed status is updated. When medication needs to be dispensed, a notification is sent, medication is dispensed, and the medication record is updated. When a surgery is about to start, a notification is sent, surgical devices are prepared, and the surgical team is notified. After surgery completion, a notification is sent, the surgical record is updated, and the surgical devices are cleaned. In case of an emergency, an emergency protocol is initiated, and the emergency response team is alerted.",
+    "docstring":"The Smart Hospital Scene activates security, bed management, medication dispensing, and surgical devices. It sends notifications and responds to bed availability, medication dispensing, surgeries, and emergencies with actions like updating statuses, dispensing medication, preparing devices, and initiating emergency protocols.",
+    "general_docstring":"The Smart Hospital Scene manages security, bed management, medication dispensing, and surgical devices, responding to bed availability, medication needs, surgeries, and emergencies with appropriate actions and notifications."
+  },
+  {
+    "code":"function startSmartWaterManagementScene() {\n    event.turnOnSecuritySystem(); \n    event.activateWaterManagementSystem(); \n    event.startIrrigationOptimization(); \n    event.activateFloodPreventionMeasures(); \n    event.sendNotification('Smart Water Management Scene started.'); \n}\neventBus.on('waterLevelChangeDetected', (location, level) => {\n    event.sendNotification(`Water level change detected at ${location}. Current level: ${level}m.`); \n    event.adjustWaterFlow(location, level); \n    if (level > event.getFloodThreshold(location)) {\n        event.activateFloodControl(location); \n        event.sendNotification(`Flood control measures activated at ${location}.`); \n    }\n});\neventBus.on('irrigationNeeded', (fieldId) => {\n    event.sendNotification(`Irrigation needed for field ${fieldId}.`); \n    event.startIrrigation(fieldId); \n    event.updateIrrigationLog(fieldId); \n});\neventBus.on('waterQualityAnomalyDetected', (location) => {\n    event.sendNotification(`Water quality anomaly detected at ${location}. Investigating issue.`); \n    event.investigateWaterQuality(location); \n    event.activateWaterPurification(location); \n});\neventBus.on('weatherAlertReceived', (alert) => {\n    event.sendNotification(`Weather alert received: ${alert}. Preparing flood prevention measures.`); \n    event.prepareFloodPrevention(alert); \n});\neventBus.on('equipmentFailureDetected', (equipmentId) => {\n    event.sendNotification(`Equipment failure detected: ${equipmentId}. Dispatching repair team.`); \n    event.dispatchRepairTeam(equipmentId); \n    event.activateBackupSystems(equipmentId); \n});\nstartSmartWaterManagementScene();",
+    "accurate_docstring":"The Smart Water Management Scene starts by activating the security system, smart water management system, irrigation optimization, and flood prevention measures. Notifications are sent to staff. When a water level change is detected, a notification is sent, water flow is adjusted, and if necessary, flood control measures are activated. When irrigation is needed, a notification is sent, irrigation is started, and the irrigation log is updated. If a water quality anomaly is detected, a notification is sent, the issue is investigated, and water purification is activated. Weather alerts trigger a notification and preparation of flood prevention measures. Equipment failure triggers a notification, dispatch of a repair team, and activation of backup systems.",
+    "docstring":"The Smart Water Management Scene activates security, water management, irrigation, and flood prevention. It sends notifications and responds to water level changes, irrigation needs, water quality anomalies, weather alerts, and equipment failures with actions like adjusting water flow, starting irrigation, investigating issues, preparing flood measures, and activating backup systems.",
+    "general_docstring":"The Smart Water Management Scene manages water resources, irrigation, and flood prevention, responding to changes and alerts with appropriate actions and notifications."
+  },
+     {
     "code":,
     "accurate_docstring":"",
     "docstring":"",
     "general_docstring":""
   },
-      {
+     {
     "code":,
     "accurate_docstring":"",
     "docstring":"",
     "general_docstring":""
-  },
-      {
-    "code":,
-    "accurate_docstring":"",
-    "docstring":"",
-    "general_docstring":""
-  },
-      {
-    "code":,
-    "accurate_docstring":"",
-    "docstring":"",
-    "general_docstring":""
-  },
-    
-    
+  }
     
 ]
