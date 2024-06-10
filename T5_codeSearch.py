@@ -3,7 +3,7 @@ import torch
 from transformers import RobertaTokenizer, T5ForConditionalGeneration, T5EncoderModel
 
 # 加载本地 CodeT5 模型和分词器
-model_dir = "dataSet/local_codet5_base"
+model_dir = "dataSet/local_codet5_large"
 tokenizer = RobertaTokenizer.from_pretrained(model_dir)
 model = T5ForConditionalGeneration.from_pretrained(model_dir)
 encoder_model = T5EncoderModel.from_pretrained(model_dir)
