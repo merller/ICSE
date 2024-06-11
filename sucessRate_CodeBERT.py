@@ -42,7 +42,7 @@ for idx, query_item in enumerate(code_data):
     similarities.sort(reverse=True, key=lambda x: x[0])
 
     # 检查前3名是否有 accurate_docstring 一致的
-    top_3_similarities = similarities[:3]
+    top_3_similarities = similarities[:10]
     for sim, code, docstring in top_3_similarities:
         if docstring == query:
             n += 1

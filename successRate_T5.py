@@ -44,7 +44,7 @@ for idx, query_item in enumerate(code_data):
     similarities.sort(reverse=True, key=lambda x: x[0])
 
     # 设置successRate@K
-    top_3_similarities = similarities[:5]#K
+    top_3_similarities = similarities[:10]#K
     for sim, code, docstring in top_3_similarities:
         if docstring == query:
             n += 1

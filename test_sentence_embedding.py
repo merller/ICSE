@@ -37,7 +37,7 @@ print(query_embedding.last_hidden_state.mean(dim=1).shape)
 # 计算余弦相似度
 cosine_sim = torch.nn.functional.cosine_similarity(query_embedding.last_hidden_state.mean(dim=1), query_embedding1.last_hidden_state.mean(dim=1), dim=-1)
 cosine_sim1 = torch.nn.functional.cosine_similarity(query_embedding.last_hidden_state.mean(dim=1), query_embedding2.last_hidden_state.mean(dim=1), dim=-1)
-
+print(query_embedding.last_hidden_state.mean(dim=1))
 
 print(cosine_sim)
 print(cosine_sim1)

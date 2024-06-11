@@ -11,7 +11,7 @@ config = BertConfig.from_pretrained(model_dir)
 model = BertModel.from_pretrained(model_dir, config=config)
 
 # 将句子转换为BERT模型的输入格式
-sentence1 = "turn on the TV"
+sentence1 = "When the entrance sensor detects someone entering and there is no one in the gym, turn on the lights, activate the smart sockets for the gym equipment, set the fan to 1000 rpm, and broadcast ‘Welcome’. Increase the people counter. When the exit sensor detects someone leaving and there is only one person in the gym, turn off the lights and deactivate the smart sockets for the gym equipment, and broadcast ‘Have a good day’. Decrease the people counter. Turn on the air purifier."
 sentence2 = "turn On Light"
 sentence3 = "turn on the light"
 
@@ -22,7 +22,7 @@ sentence3 = sentence3.lower()
 
 # 定义一个函数来处理输入并生成BERT编码
 def encode_sentence(sentence):
-    inputs = tokenizer(sentence, return_tensors='pt', truncation=True, padding='max_length', max_length=50)
+    inputs = tokenizer(sentence, return_tensors='pt', truncation=True, padding='max_length', max_length=150)
     with torch.no_grad():
         outputs = model(**inputs)
     return outputs.last_hidden_state.mean(dim=1)
@@ -43,7 +43,7 @@ def cosine_similarity(vector1, vector2):
 similarity1_2 = cosine_similarity(sentence_encoding1[0], sentence_encoding2[0])
 similarity2_3 = cosine_similarity(sentence_encoding2[0], sentence_encoding3[0])
 
-# print("句子编码1:", sentence_encoding1)
+print("句子编码1:", sentence_encoding1)
 # print("句子编码2:", sentence_encoding2)
 # print("句子编码3:", sentence_encoding3)
 

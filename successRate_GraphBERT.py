@@ -41,9 +41,9 @@ for idx, query_item in enumerate(code_data):
     # 根据相似度排序
     similarities.sort(reverse=True, key=lambda x: x[0])
 
-    # 检查前3名是否有 accurate_docstring 一致的
-    top_3_similarities = similarities[:5]
-    for sim, code, docstring in top_3_similarities:
+    # 设置successRate@K
+    top_k_similarities = similarities[:10]
+    for sim, code, docstring in top_k_similarities:
         if docstring == query:
             n += 1
             break  # 统计一个就够了，跳出循环

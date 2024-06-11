@@ -20,49 +20,23 @@ def convert_to_single_line(code):
 
 # Example usage
 code = """
-function turnOnLight(){
-    event.turnOnLight();
-}
-function turnOffLight(){
-    event.turnOffLight();
-}
-function controlFans(speed) {
-    console.log(`Setting fan speed to ${speed}`);
-    event.controlFan(speed);
-}
-function turnOnAirCleaner(){
-    event.turnOnAirCleaner();
-}
-function turnOnSmartOutlets(){
-    event.turnOnOutlets();
-}
-function turnOffSmartOutlets(){
-    event.turnOffOutlets();
-}
-function broadcast(text) {
-    event.broadcast(track);
-}
-var number=0;                       
-eventBus.on('EntranceDoorMovement', () => {
-    if(number==0)
-    {
-        turnOnLight();
-        turnOnSmartOutlets();
-        controlFans(1000);
-        number++;
-    }
-    broadcast("Welcome");
-});
-eventBus.on('exitDoorMovement', () => {
-    if(number==1)
-    {
-        turnOffLight();
-        turnOffSmartOutlets();
-        number--;
-    }
-    broadcast("Have a good day");
-});
+appendModelPath", "original_string": "function appendModelPath (modelPath, id, internal) {\n  const addedModelPath = getModelPath(id)\n  if (internal) {\n    if (modelPath === '') {\n      return `properties._internal.${addedModelPath}`\n    }\n    return `${modelPath}.properties._internal.${addedModelPath}`\n  }\n  if (modelPath === '') {\n    return addedModelPath\n  }\n  return `${modelPath}.${addedModelPath}`\n}", "language": "javascript", "code": "function appendModelPath (modelPath, id, internal) {\n  const addedModelPath = getModelPath(id)\n  if (internal) {\n    if (modelPath === '') {\n      return `properties._internal.${addedModelPath}`\n    }\n    return `${modelPath}.properties._internal.${addedModelPath}`\n  }\n  if (modelPath === '') {\n    return addedModelPath\n  }\n  return `${modelPath}.${addedModelPath}`\n}", "code_tokens": ["function", "appendModelPath", "(", "modelPath", ",", "id", ",", "internal", ")", "{", "const", "addedModelPath", "=", "getModelPath", "(", "id", ")", "if", "(", "internal", ")", "{", "if", "(", "modelPath", "===", "''", ")", "{", "return", "`", "${", "addedModelPath", "}", "`", "}", "return", "`", "${", "modelPath", "}", "${", "addedModelPath", "}", "`", "}", "if", "(", "modelPath", "===", "''", ")", "{", "return", "addedModelPath", "}", "return", "`", "${", "modelPath", "}", "${", "addedModelPath", "}", "`", "}"], "docstring": "Create a path to add within a model\n\n@param {String} modelPath Path to current place within the model\n@param {String} id Id specified in the cell\n@param {Boolean} internal True if we want to add an internal model\n@returns {String} Path to add within the model"
 """
+# Split the single line code into lines
+lines = code.split('\\n')
 
+# Process each line
+processed_lines = []
+for line in lines:
+    # Remove leading tabs
+    line = line.lstrip('\t')
+    # Replace \t with 4 spaces
+    line = line.replace('\t', '    ')
+    processed_lines.append(line)
+
+# Join processed lines with \n
+multi_line_code = '\n'.join(processed_lines)
+
+print(multi_line_code)
 single_line_code = convert_to_single_line(code)
 print(single_line_code)
