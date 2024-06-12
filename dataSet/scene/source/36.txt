@@ -1,0 +1,11 @@
+Detailed Description:
+
+The Smart Construction Scene starts by activating the security system, turning on site lights, starting machine monitoring, and activating drone surveillance. Notifications are sent to the control center. When a machine error is detected, a notification is sent, the machine is shut down, and a repair team is dispatched. If a fall is detected, a notification is sent, medical assistance is dispatched, and the incident is recorded. High temperature detection triggers the activation of cooling systems and sending of hydration reminders. Poor air quality detection activates air purification systems. When materials arrive, a notification is sent, materials are logged, and relevant teams are notified. Task completion triggers a notification, task logging, and project status update.
+
+Concise Description:
+
+The Smart Construction Scene activates security, lighting, machine monitoring, and drone surveillance. It sends notifications and responds to machine errors, falls, high temperatures, poor air quality, material arrivals, and task completions with actions such as shutting down machines, dispatching repair teams, sending medical assistance, activating cooling and air purification systems, logging materials, and updating project status.
+
+Ultra-Concise Description:
+
+The Smart Construction Scene manages security, lighting, machine monitoring, and drone surveillance, responding to errors, falls, high temperatures, poor air quality, material arrivals, and task completions with appropriate actions and notifications.

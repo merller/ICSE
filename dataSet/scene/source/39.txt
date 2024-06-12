@@ -1,0 +1,17 @@
+Detailed Description:
+
+The Smart Hospital Scene starts by activating the security system, smart bed management system, medication dispensing robots, and smart surgical devices. Notifications are sent to staff. When a bed becomes available, a notification is sent, and the bed status is updated. When medication needs to be dispensed, a notification is sent, medication is dispensed, and the medication record is updated. When a surgery is about to start, a notification is sent, surgical devices are prepared, and the surgical team is notified. After surgery completion, a notification is sent, the surgical record is updated, and the surgical devices are cleaned. In case of an emergency, an emergency protocol is initiated, and the emergency response team is alerted.
+
+Concise Description:
+
+The Smart Hospital Scene activates security, bed management, medication dispensing, and surgical devices. It sends notifications and responds to bed availability, medication dispensing, surgeries, and emergencies with actions like updating statuses, dispensing medication, preparing devices, and initiating emergency protocols.
+
+Ultra-Concise Description:
+
+The Smart Hospital Scene manages security, bed management, medication dispensing, and surgical devices, responding to bed availability, medication needs, surgeries, and emergencies with appropriate actions and notifications.
+
+
+
+
+
+

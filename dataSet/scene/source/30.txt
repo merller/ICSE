@@ -1,0 +1,11 @@
+Detailed Description:
+
+The Safe House Scene initiates by activating the security system, surveillance cameras, and smoke detectors. Simulated events of smoke detection and intrusion are emitted to simulate emergency situations. Upon smoke detection, the smoke alarm activates, prompting an immediate evacuation notification. All doors and windows are opened, emergency lights are activated, and emergency services are notified. In case of intrusion detection, the intrusion alarm activates, and security services are notified.
+
+Concise Description:
+
+The Safe House Scene is activated, triggering the security system, surveillance cameras, and smoke detectors. Smoke and intrusion events are simulated, prompting immediate action. Upon smoke detection, doors and windows are opened, emergency lights are activated, and emergency services are notified. In case of intrusion detection, security services are alerted.
+
+Ultra-Concise Description:
+
+The Safe House Scene activates security measures, including surveillance cameras and smoke detectors. Simulated smoke and intrusion events prompt immediate response, including opening doors and windows, activating emergency lights, and notifying emergency services.

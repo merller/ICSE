@@ -1,0 +1,11 @@
+Detailed Description:
+
+The Smart Manufacturing Scene starts by activating the security system, turning on factory lights, starting the production line, and turning on the cooling system. Notifications are sent to staff. When material stock is low, a notification is sent and materials are ordered. If a machine encounters an error, it is stopped, a notification is sent, and the maintenance team is called. When a product is completed, it is packaged, and a notification is sent. If high temperature is detected, the emergency cooling system is activated, and a high temperature warning is sent.
+
+Concise Description:
+
+The Smart Manufacturing Scene activates security, lighting, production lines, and cooling systems. Notifications are sent for low material stock, machine errors, product completions, and high temperatures. Actions include ordering materials, stopping faulty machines, calling maintenance, packaging products, and activating emergency cooling.
+
+Ultra-Concise Description:
+
+The Smart Manufacturing Scene manages security, lighting, production, and cooling. It responds to low materials, machine errors, product completions, and high temperatures with appropriate actions and notifications.

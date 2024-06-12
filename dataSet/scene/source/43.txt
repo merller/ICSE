@@ -1,0 +1,11 @@
+Detailed Description:
+
+The Smart Library Scene starts by activating the security system, auto borrow/return system, eBook system, and smart recommendation system. Notifications are sent to staff and users. When a user borrows a book, a notification is sent, inventory status is updated, borrowing history is tracked, and book recommendations are provided. When a user returns a book, a notification is sent, inventory status is updated, and the book is cleaned and sorted. When a user logs into the eBook system, a notification is sent, and eBook recommendations are provided. Low inventory detection triggers a notification and book reordering. In case of an emergency, an evacuation protocol is initiated, and users are guided to exits. Equipment failure triggers a notification, dispatch of a repair team, and activation of backup systems.
+
+Concise Description:
+
+The Smart Library Scene activates security, auto borrow/return, eBook, and recommendation systems. It sends notifications and responds to book borrowing/returning, eBook system logins, low inventory, emergencies, and equipment failures with actions like updating inventory, tracking history, recommending books, initiating evacuation, and dispatching repair teams.
+
+Ultra-Concise Description:
+
+The Smart Library Scene manages security, borrowing, eBooks, and recommendations, responding to users and emergencies with notifications and actions to enhance library efficiency and user experience.
