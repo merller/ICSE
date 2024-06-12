@@ -20,9 +20,10 @@ with open(data_path, 'r', encoding='utf-8') as f:
 n = 0
 Q = len(code_data)
 
+str="accurate_docstring"
 # 对每个 accurate_docstring 进行查询并计算相似度
 for idx, query_item in enumerate(code_data):
-    query = query_item["accurate_docstring"]
+    query = query_item[str]
     query_inputs = tokenizer(query, return_tensors="pt", padding=True, truncation=True).to(device)
     query_embedding = model(**query_inputs).last_hidden_state.mean(dim=1)
     
@@ -36,7 +37,7 @@ for idx, query_item in enumerate(code_data):
         # 计算余弦相似度
         cosine_sim = torch.nn.functional.cosine_similarity(query_embedding, code_embedding, dim=-1)
         
-        similarities.append((cosine_sim.item(), item["code"], item["accurate_docstring"]))
+        similarities.append((cosine_sim.item(), item["code"], item[str]))
 
     # 根据相似度排序
     similarities.sort(reverse=True, key=lambda x: x[0])

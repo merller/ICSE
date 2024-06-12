@@ -20,23 +20,35 @@ def convert_to_single_line(code):
 
 # Example usage
 code = """
-appendModelPath", "original_string": "function appendModelPath (modelPath, id, internal) {\n  const addedModelPath = getModelPath(id)\n  if (internal) {\n    if (modelPath === '') {\n      return `properties._internal.${addedModelPath}`\n    }\n    return `${modelPath}.properties._internal.${addedModelPath}`\n  }\n  if (modelPath === '') {\n    return addedModelPath\n  }\n  return `${modelPath}.${addedModelPath}`\n}", "language": "javascript", "code": "function appendModelPath (modelPath, id, internal) {\n  const addedModelPath = getModelPath(id)\n  if (internal) {\n    if (modelPath === '') {\n      return `properties._internal.${addedModelPath}`\n    }\n    return `${modelPath}.properties._internal.${addedModelPath}`\n  }\n  if (modelPath === '') {\n    return addedModelPath\n  }\n  return `${modelPath}.${addedModelPath}`\n}", "code_tokens": ["function", "appendModelPath", "(", "modelPath", ",", "id", ",", "internal", ")", "{", "const", "addedModelPath", "=", "getModelPath", "(", "id", ")", "if", "(", "internal", ")", "{", "if", "(", "modelPath", "===", "''", ")", "{", "return", "`", "${", "addedModelPath", "}", "`", "}", "return", "`", "${", "modelPath", "}", "${", "addedModelPath", "}", "`", "}", "if", "(", "modelPath", "===", "''", ")", "{", "return", "addedModelPath", "}", "return", "`", "${", "modelPath", "}", "${", "addedModelPath", "}", "`", "}"], "docstring": "Create a path to add within a model\n\n@param {String} modelPath Path to current place within the model\n@param {String} id Id specified in the cell\n@param {Boolean} internal True if we want to add an internal model\n@returns {String} Path to add within the model"
-"""
-# Split the single line code into lines
-lines = code.split('\\n')
-
-# Process each line
-processed_lines = []
-for line in lines:
-    # Remove leading tabs
-    line = line.lstrip('\t')
-    # Replace \t with 4 spaces
-    line = line.replace('\t', '    ')
-    processed_lines.append(line)
-
-# Join processed lines with \n
-multi_line_code = '\n'.join(processed_lines)
-
-print(multi_line_code)
+function turnOnFragranceMachine() {
+    event.turnOnFragranceMachine();
+}
+function setAirConditionerTemperature(temperature) {
+    console.log(`Setting air conditioner temperature to ${temperature}℃`);
+    event.setAirConditionerTemperature(temperature);
+}
+function adjustLighting(lightIds, temperature) {
+    lightIds.forEach(id => {
+        event.turnOnlight(id);
+        event.changelight(id, temperature);
+    });
+}
+function playHappyBirthday(){
+    event.playMusic('happy birthday');
+}
+function displayPhotos(){
+    event.turnOnScreen();                 
+    getphoto().forEach(photo=>{setTimeout(()=>{event.display(photo)},1000);})                          //每张照片轮播一秒
+}
+eventBus.on('fontDoorMovement',()=>{
+    adjustLighting(getLightId(),1000);       
+    playHappyBirthday();
+    displayPhotos();
+})
+function  setupBirthdayScene(){
+    setAirConditionerTemperature(23);
+    turnOnFragranceMachine();
+    setTimeout(()=>eventBus.emit('fontDoorMovement'),1000);
+}"""
 single_line_code = convert_to_single_line(code)
 print(single_line_code)

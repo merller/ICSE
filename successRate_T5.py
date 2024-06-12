@@ -23,8 +23,9 @@ n = 0
 Q = len(code_data)
 
 # 对每个accurate_docstring进行查询并计算相似度
+str="general_docstring"
 for idx, query_item in enumerate(code_data):
-    query = query_item["accurate_docstring"]
+    query = query_item[str]
     query_inputs = tokenizer(query, return_tensors="pt", padding=True, truncation=True).to(device)
     query_embedding = encoder_model(**query_inputs).last_hidden_state.mean(dim=1)
     
@@ -38,13 +39,13 @@ for idx, query_item in enumerate(code_data):
         # 计算余弦相似度
         cosine_sim = torch.nn.functional.cosine_similarity(query_embedding, code_embedding, dim=-1)
         
-        similarities.append((cosine_sim.item(), item["code"], item["accurate_docstring"]))
+        similarities.append((cosine_sim.item(), item["code"], item[str]))
 
     # 根据相似度排序
     similarities.sort(reverse=True, key=lambda x: x[0])
 
     # 设置successRate@K
-    top_3_similarities = similarities[:10]#K
+    top_3_similarities = similarities[:1]#K
     for sim, code, docstring in top_3_similarities:
         if docstring == query:
             n += 1

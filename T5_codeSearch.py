@@ -3,7 +3,7 @@ import torch
 from transformers import RobertaTokenizer, T5ForConditionalGeneration, T5EncoderModel
 
 # 加载本地 CodeT5 模型和分词器
-model_dir = "dataSet/local_codet5_large"
+model_dir = "dataSet/local_codet5_base"
 tokenizer = RobertaTokenizer.from_pretrained(model_dir)
 model = T5ForConditionalGeneration.from_pretrained(model_dir)
 encoder_model = T5EncoderModel.from_pretrained(model_dir)
@@ -14,7 +14,7 @@ model.to(device)
 encoder_model.to(device)
 
 # 输入查询
-query = "When the entrance sensor detects someone entering and there is no one in the gym, turn on the lights, activate the smart sockets for the gym equipment, set the fan to 1000 rpm, and broadcast ‘Welcome’. Increase the people counter. When the exit sensor detects someone leaving and there is only one person in the gym, turn off the lights and deactivate the smart sockets for the gym equipment, and broadcast ‘Have a good day’. Decrease the people counter. Turn on the air purifier."
+query = "In night mode, turn off the lights and close the curtains, play soothing music, adjust the air conditioning temperature, and turn on the night light."
 
 # 分词
 query_inputs = tokenizer(query, return_tensors="pt").to(device)
