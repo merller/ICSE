@@ -14,120 +14,43 @@ model.to(device)
 encoder_model.to(device)
 
 # 输入查询
-query = "When the entrance sensor detects someone entering and there is no one in the gym, turn on the lights, activate the smart sockets for the gym equipment, set the fan to 1000 rpm, and broadcast ‘Welcome’. Increase the people counter. When the exit sensor detects someone leaving and there is only one person in the gym, turn off the lights and deactivate the smart sockets for the gym equipment, and broadcast ‘Have a good day’. Decrease the people counter. Turn on the air purifier."
+query = "Start Date Night:Open the curtains to create an open atmosphere.Turn on the lights and adjust them to a soft illumination.Play romantic music to set a romantic mood.Set the indoor temperature to a comfortable 22°C.Prepare dinner and ensure everything is ready.End Date Night:After 3 hours, automatically close the curtains.Turn off the lights to create a quiet nighttime atmosphere.Stop playing the music."
 code="""
-function startWatering(){
-    console.log("Soil is dry. Starting watering system.");
-    event.startWatering();
+function setTemperature(temp) {
+    console.log(`Setting temperature to ${temp}°C.`);
+    event.setTemperature(temp);
 }
-
-function stopWatering(){
-    console.log("Soil is moist. Stopping watering system.");
-    event.stopWatering();
-}
-function environmentalMonitoring() {
-    setInterval(() => {
-        const lightIntensity = getLightIntensity();
-        const temperature = getTemperature();
-        const humidity = getHumidity();
-        console.log(`Light intensity: ${lightIntensity} Lux, Temperature: ${temperature}°C, Humidity: ${humidity}%`);
-        event.show("Light intensity: "+lightIntensity +"Lux ,Temperature:"+temperature+"°C, Humidity:"+humidity);
-    }, 300000);
-}
-
-function playNatureSounds() {
-    console.log("Playing nature sounds (birds chirping, water flowing, etc.)");
-    event.playMusic("Nature Sounds");
-}
-
-function trackPlantGrowth() {
-    setInterval(() => {
-        var plantGraphics = getPlantGraphics();
-        event.sendGraphics(plantGraphics);
-    }, 86400000);
-}
-
-function adjustThermostat(temperature){
-    event.adjustThermostate(temperature);
-}
-
-function turnOnFillLights(){
-    event.turnOnFillLights();
-}
-
-function turnOnLights(){
-    event.turnOnLights();
-}
-
-eventBus.on("dry", () => {
-    startWatering();
-});
-eventBus.on("moist", () => {
-    stopWatering();
-});
-eventBus.on("night",()=>{
-    turnOnFillLights();
-})
-
-eventBus.on("doorMovement", () => {
-    turnOnLights();
-    playNatureSounds();
-});
-
-function setupGardenScene() {
-    trackPlantGrowth();
-    environmentalMonitoring();
-    adjustThermostat();
-     eventBus.emit("doorMovement");
-
-}
-
-setupGardenScene();
 """
 
 code1="""
-function turnOnLight(){
-    event.turnOnLight();
+function openCurtains() {
+    console.log("Opening curtains.");
+    event.openCurtains();
 }
-function turnOffLight(){
-    event.turnOffLight();
+function closeCurtains() {
+    console.log("Closing curtains.");
+    event.closeCurtains();
 }
-function controlFans(speed) {
-    console.log(`Setting fan speed to ${speed}`);
-    event.controlFan(speed);
+function turnOnLights() {
+    console.log("Turning on lights.");
+    event.turnOnLights();
 }
-function turnOnAirCleaner(){
-    event.turnOnAirCleaner();
+function turnOffLights() {
+    console.log("Turning off lights.");
+    event.turnOffLights();
 }
-function turnOnSmartOutlets(){
-    event.turnOnOutlets();
+function playRomanticMusic() {
+    console.log("Playing romantic music.");
+    event.playMusic("Romantic Playlist");
 }
-function turnOffSmartOutlets(){
-    event.turnOffOutlets();
+function stopMusic() {
+    console.log("Stopping music.");
+    event.stopMusic();
 }
-function broadcast(text) {
-    event.broadcast(track);
+function setTemperature(temp) {
+    console.log(`Setting temperature to ${temp}°C.`);
+    event.setTemperature(temp);
 }
-var number=0;                       
-eventBus.on('EntranceDoorMovement', () => {
-    if(number==0)
-    {
-        turnOnLight();
-        turnOnSmartOutlets();
-        controlFans(1000);
-        number++;
-    }
-    broadcast("Welcome");
-});
-eventBus.on('exitDoorMovement', () => {
-    if(number==1)
-    {
-        turnOffLight();
-        turnOffSmartOutlets();
-        number--;
-    }
-    broadcast("Have a good day");
-});
 """
 
 

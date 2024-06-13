@@ -23,7 +23,7 @@ n = 0
 Q = len(code_data)
 
 # 对每个accurate_docstring进行查询并计算相似度
-str="general_docstring"
+str="accurate_docstring"
 for idx, query_item in enumerate(code_data):
     query = query_item[str]
     query_inputs = tokenizer(query, return_tensors="pt", padding=True, truncation=True).to(device)
@@ -45,7 +45,7 @@ for idx, query_item in enumerate(code_data):
     similarities.sort(reverse=True, key=lambda x: x[0])
 
     # 设置successRate@K
-    top_3_similarities = similarities[:1]#K
+    top_3_similarities = similarities[:5]#K
     for sim, code, docstring in top_3_similarities:
         if docstring == query:
             n += 1
