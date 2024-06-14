@@ -14,42 +14,24 @@ model.to(device)
 encoder_model.to(device)
 
 # 输入查询
-query = "Start Date Night:Open the curtains to create an open atmosphere.Turn on the lights and adjust them to a soft illumination.Play romantic music to set a romantic mood.Set the indoor temperature to a comfortable 22°C.Prepare dinner and ensure everything is ready.End Date Night:After 3 hours, automatically close the curtains.Turn off the lights to create a quiet nighttime atmosphere.Stop playing the music."
+query = "When start sleep, automatically turn off all lights. Close the curtains. Play 30 minutes of soothing music “Soothing Sounds” to aid sleep. Adjust the air conditioning temperature to 22°C for optimal sleep conditions. Turn on the night light."
 code="""
-function setTemperature(temp) {
-    console.log(`Setting temperature to ${temp}°C.`);
-    event.setTemperature(temp);
-}
+eventBus.on('StartSleep', () => {        //
+    turnOffLights();
+    closeCurtains();
+    playSoothingMusic("Soothing Sounds", 30); // 播放30分钟的舒缓音乐
+    setAirConditionerTemperature(22); // 调节空调到22℃
+    turnOnNightLight();
+});
 """
 
 code1="""
-function openCurtains() {
-    console.log("Opening curtains.");
-    event.openCurtains();
-}
-function closeCurtains() {
-    console.log("Closing curtains.");
-    event.closeCurtains();
-}
-function turnOnLights() {
-    console.log("Turning on lights.");
-    event.turnOnLights();
-}
-function turnOffLights() {
-    console.log("Turning off lights.");
-    event.turnOffLights();
-}
-function playRomanticMusic() {
-    console.log("Playing romantic music.");
-    event.playMusic("Romantic Playlist");
-}
-function stopMusic() {
-    console.log("Stopping music.");
-    event.stopMusic();
-}
-function setTemperature(temp) {
-    console.log(`Setting temperature to ${temp}°C.`);
-    event.setTemperature(temp);
+function playSoothingMusic(track, duration) {
+    console.log(`Playing soothing music: ${track} for ${duration} minutes`);
+    event.playMusic(track);
+    setTimeout(() => {
+        event.stopMusic(track);
+    }, duration * 60 * 1000);
 }
 """
 

@@ -17,9 +17,12 @@ data_path = "dataSet/scene/Scene.json"
 with open(data_path, 'r', encoding='utf-8') as f:
     code_data = json.load(f)
 
+# 只处理第3项到第4项
+code_data = code_data[2:4]
+
 # 拆分句子函数（根据英文句号拆分）
 def split_sentences(docstring):
-    sentences = re.split(r'(?<=[.])', docstring)  # 按照句号拆分
+    sentences = re.split(r'(?<=[.;])', docstring)  # 按照句号拆分
     sentences = [s.strip() for s in sentences if s.strip()]
     return sentences
 
@@ -30,38 +33,50 @@ def get_embeddings(text):
         outputs = encoder_model(**inputs)
     return outputs.last_hidden_state.mean(dim=1)
 
+n = 0
+Q = len(code_data)
+K = 1
+
 # 计算相似度并输出结果
-def calculate_similarity_and_output(code_data):
+for idx, query_item in enumerate(code_data):
     results = []
+    sentences = split_sentences(query_item['accurate_docstring'])
 
     for idx, item in enumerate(code_data):
         if 'accurate_docstring' in item and 'code' in item:
-            sentences = split_sentences(item['accurate_docstring'])
-
             # 将代码按函数段进行拆分
             code_snippets = re.findall(r'function\s+\w+\s*\([^)]*\)\s*\{[^}]*\}|\w+\.\w+\s*=\s*\([^)]*\)\s*=>\s*\{[^}]*\}', item['code'])
-            
 
             # 获取每段代码的嵌入向量
             code_embeddings = [get_embeddings(code) for code in code_snippets]
 
+            docstring_similarities = []
+
             for sentence in sentences:
                 sentence_embedding = get_embeddings(sentence)
-                sentence_similarities = []
+                max_similarity = float('-inf')
 
                 for code_embedding in code_embeddings:
                     similarity = torch.nn.functional.cosine_similarity(sentence_embedding, code_embedding, dim=-1)
-                    sentence_similarities.append(similarity.item())
+                    max_similarity = max(max_similarity, similarity.item())
 
-                results.append((sentence, sentence_similarities))
+                docstring_similarities.append(max_similarity)
 
-    return results
+            # 计算平均相似度
+            if docstring_similarities:
+                avg_similarity = sum(docstring_similarities) / len(docstring_similarities)
+                results.append((avg_similarity, item['accurate_docstring']))
+    results.sort(reverse=True, key=lambda x: x[0])
+    # 设置successRate@K
+    top_k_similarities = results[:K]
+    for sim, docstring in top_k_similarities:
+        if docstring == query_item['accurate_docstring']:
+            n += 1
+            break  # 统计一个就够了，跳出循环
+   
 
-# 直接运行主代码
-results = calculate_similarity_and_output(code_data)
+    
 
-for sentence, similarities in results:
-    print(f"Sentence: {sentence}")
-    for idx, similarity in enumerate(similarities):
-        print(f"Code Snippet {idx+1}: Similarity: {similarity:.4f}")
-    print("---")
+# 计算m/Q
+m_over_Q = n / Q
+print(f"m/Q: {m_over_Q}")

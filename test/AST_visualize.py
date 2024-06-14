@@ -6,16 +6,58 @@ import json
 
 # JavaScript代码
 code = '''
-if (currentHumidity <= notHumidEnough) {
-		log.debug "Checking how long the humidity sensor has been reporting <= ${notHumidEnough}"
-		if (alreadySentSms) {
-			log.debug "Notification already sent within the last ${deltaMinutes} minutes"
-					} else {
-			log.debug "Humidity Fell Below ${notHumidEnough}:  sending SMS and activating ${mySwitch}"
-			send("${humiditySensor1.label} sensed high humidity level of ${evt.value}")
-			switch1?.off()
-		}
-	}
+const eventBus = new EventBus();
+function playPartyMusic() {
+    console.log("Playing party music.");
+    event.playMusic("Party Playlist");
+}
+function stopPartyMusic() {
+    console.log("Stopping party music.");
+    event.stopMusic();
+}
+function controlPartyLights(mode) {
+    console.log(`Setting lights to ${mode} mode.`);
+    event.setLights(mode);
+}
+function controlFogMachine(action) {
+    console.log(`${action} fog machine.`);
+    if (action === "Starting") {
+        event.startFogMachine();
+    } else {
+        event.stopFogMachine();
+    }
+}
+
+function controlLaserLights(action) {
+    console.log(`${action} laser lights.`);
+    if (action === "Starting") {
+        event.startLaserLights();
+    } else {
+        event.stopLaserLights();
+    }
+}
+let number=0;
+eventBus.on('entranceDoorMovement', () => {
+    if(number==0){
+        playPartyMusic();
+        controlPartyLights("party");
+        controlFogMachine("Starting");
+        controlLaserLights("Starting");
+        number++;
+    }
+
+});
+
+eventBus.on('exitDoorMovement', () => {
+    if(number==1){
+        stopPartyMusic();
+        controlPartyLights("normal");
+        controlFogMachine("Stopping");
+        controlLaserLights("Stopping");
+        number--;
+    }
+
+});
 '''
 
 # 解析JavaScript代码并生成AST

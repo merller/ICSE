@@ -6,12 +6,6 @@
         "general_docstring": "Invite my friend to a drink"
     },
     {
-        "code": "\nfunction forecastWeather(id){\n       event.turnOnVoiceAssistant(id);\n       event.broadcast(id,getWeather());\n}\neventBus.on('EntranceMovement',()=>{\n        forecastWeather(1);\n});\nfunction setupForecastScene(){\n  eventBus.emit('EntranceMovement');\n}\nsetupForecastScene();\n",
-        "accurate_docstring": "When there is movement at the entrance, turn on the voice assistant and broadcast the weather.",
-        "docstring": "When someone comes in, turn on the voice assistant and broadcast the weather.",
-        "general_docstring": "turn on voice assistant and broadcast weather"
-    },
-    {
         "code": "\nfunction turnOnFragranceMachine() {\n event.turnOnFragranceMachine();\n}\nfunction setAirConditionerTemperature(temperature) {\n  console.log(`Setting air conditioner temperature to ${temperature}℃`);\n    event.setAirConditionerTemperature(temperature);\n}\nfunction adjustLighting(lightIds, temperature) {\n     lightIds.forEach(id => {\n              event.turnOnlight(id);\n                event.changelight(id, temperature);\n       });\n}\nfunction playHappyBirthday(){\n event.playMusic('happy birthday');\n}\nfunction displayPhotos(){\n  event.turnOnScreen();\n getphoto().forEach(photo=>{setTimeout(()=>{event.display(photo)},1000);})                          //每张照片轮播一秒\n}\neventBus.on('fontDoorMovement',()=>{\n        adjustLighting(getLightId(),1000);\n    playHappyBirthday();\n      displayPhotos();\n})\nfunction  setupBirthdayScene(){\n setAirConditionerTemperature(23);\nturnOnFragranceMachine();\n      setTimeout(()=>eventBus.emit('fontDoorMovement'),1000);\n}",
         "accurate_docstring": "The air conditioner maintains a stable temperature of 23°C. Turn on the aroma diffuser. If motion is detected at the front door, turn on all lights and adjust them to a warm light of 1000K, play \"Happy Birthday\" music, and display an electronic album on the screen, with each photo rotating every second.",
         "docstring": "Turn the lights transition to warm hues, play songs, an electronic album rotates on the screen, turn on the airconditioner, and the fragrancemachine.",
@@ -19,7 +13,7 @@
     },
     {
         "code": "\nfunction controlChristmasLights(){\n  while(1){\n             turnOnChristmasLights();\n         setTimeout(() => {\n                     event.turnOffChristmasLights();\n               }, duration * 1000);\n      }\n\n}\nfunction playMerryChristmas(){\n        event.playMusic('Merry Christmas');\n}\nfunction ChangeAmbianceLights(){\n  event.turnOnAmbianceLights();\n lightIds.forEach(id => {\n event.changelight(id, 1000);\n   });\n}\nfunction controlProjectors(){\n event.turnOnProjectors();\nevent.ProjectorsDisplay(\"Santa Claus.jpeg\");\n   getProjects().action=\"rotate\";\n}\n",
-        "accurate_docstring": "Control the Christmas lights, play Merry Christmas music, change the ambiance lights and control the projectors.",
+        "accurate_docstring": "Control the Christmas lights. play Merry Christmas music. change the ambiance lights and control the projectors.",
         "docstring": "Christmas lights flicker, songs play, ambiance lights set to warm tones, and a projector projects images.",
         "general_docstring": "The lights flicker, music plays, warm ambiance, and rotating images projected."
     },

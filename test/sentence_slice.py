@@ -17,6 +17,8 @@ data_path = "dataSet/scene/Scene.json"
 with open(data_path, 'r', encoding='utf-8') as f:
     code_data = json.load(f)
 
+code_data = code_data[7:8]
+
 # 拆分句子函数（根据英文句号拆分）
 def split_sentences(docstring):
     sentences = re.split(r'(?<=[.])', docstring)  # 按照句号拆分
@@ -31,12 +33,13 @@ def get_embeddings(text):
     return outputs.last_hidden_state.mean(dim=1)
 
 # 计算相似度并输出结果
-def calculate_similarity_and_output(code_data):
-    results = []
 
+results = []
+for idx, item in enumerate(code_data):
+    sentences = split_sentences(item['accurate_docstring'])
     for idx, item in enumerate(code_data):
         if 'accurate_docstring' in item and 'code' in item:
-            sentences = split_sentences(item['accurate_docstring'])
+            
 
             # 将代码按函数段进行拆分
             code_snippets = re.findall(r'function\s+\w+\s*\([^)]*\)\s*\{[^}]*\}|\w+\.\w+\s*=\s*\([^)]*\)\s*=>\s*\{[^}]*\}', item['code'])
@@ -55,10 +58,9 @@ def calculate_similarity_and_output(code_data):
 
                 results.append((sentence, sentence_similarities))
 
-    return results
 
 # 直接运行主代码
-results = calculate_similarity_and_output(code_data)
+
 
 for sentence, similarities in results:
     print(f"Sentence: {sentence}")

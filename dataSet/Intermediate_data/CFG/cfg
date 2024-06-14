@@ -1,0 +1,54 @@
+// CFG
+digraph {
+	0 [label="const eventBus = new EventBus();"]
+	1 [label="function playPartyMusic() {"]
+	2 [label="console.log(\"Playing party music.\");"]
+	3 [label="event.playMusic(\"Party Playlist\");"]
+	4 [label="function stopPartyMusic() {"]
+	5 [label="console.log(\"Stopping party music.\");"]
+	6 [label="event.stopMusic();"]
+	7 [label="function controlPartyLights(mode) {"]
+	8 [label="console.log(`Setting lights to ${mode} mode.`);"]
+	9 [label="event.setLights(mode);"]
+	10 [label="function controlFogMachine(action) {"]
+	11 [label="console.log(`${action} fog machine.`);"]
+	12 [label="if (action === \"Starting\") {"]
+	13 [label="event.startFogMachine();"]
+	14 [label="event.stopFogMachine();"]
+	15 [label=""]
+	16 [label="function controlLaserLights(action) {"]
+	17 [label="console.log(`${action} laser lights.`);"]
+	18 [label="if (action === \"Starting\") {"]
+	19 [label="event.startLaserLights();"]
+	20 [label="event.stopLaserLights();"]
+	21 [label="let number=0;"]
+	22 [label="eventBus.on('entranceDoorMovement', () => {"]
+	23 [label="if(number==0){"]
+	24 [label="playPartyMusic();"]
+	25 [label="controlPartyLights(\"party\");"]
+	26 [label="controlFogMachine(\"Starting\");"]
+	27 [label="controlLaserLights(\"Starting\");"]
+	28 [label="number++;"]
+	29 [label=""]
+	30 [label=""]
+	31 [label="eventBus.on('exitDoorMovement', () => {"]
+	32 [label="if(number==1){"]
+	33 [label="stopPartyMusic();"]
+	34 [label="controlPartyLights(\"normal\");"]
+	35 [label="controlFogMachine(\"Stopping\");"]
+	36 [label="controlLaserLights(\"Stopping\");"]
+	37 [label="number--;"]
+	38 [label=""]
+	12 -> 13
+	18 -> 19
+	23 -> 24
+	23 -> 25
+	23 -> 26
+	23 -> 27
+	23 -> 28
+	32 -> 33
+	32 -> 34
+	32 -> 35
+	32 -> 36
+	32 -> 37
+}
