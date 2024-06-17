@@ -1,0 +1,5 @@
+Detailed description: Create a JavaScript program to set an inclusive atmosphere for Zero Discrimination Day on March 1st in a college setting. The program should set smart lights to rainbow and soft purple, adjust the thermostat to a comfortable 22°C, play inspirational content every 30 minutes, display messages promoting diversity and inclusion every 15 minutes, and show images or videos on a smart display every 20 minutes. It should check if today is March 1st before running the routine and simulate a special presentation starting after 1 hour.
+
+Simplified description: Create a scene that includes setting up inclusive lighting, playing inspirational content, displaying messages promoting diversity and inclusion, and managing the thermostat for comfort. Additionally, we can use smart displays to show images or videos related to anti-discrimination and equality.
+
+Minimalist description: Zero Discrimination Day, lighting, messages, thermostat, anti-discrimination and equality.

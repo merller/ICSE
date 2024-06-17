@@ -1,0 +1,5 @@
+Detailed description: Create a JavaScript program to set an inclusive atmosphere for World Day for Social Justice on February 20th in an office setting. The program should set smart lights to soft purple and gentle blue, adjust the thermostat to a comfortable 22°C, play motivational or educational content every 30 minutes, display messages related to social justice every 15 minutes, and show images or videos on a smart display every 20 minutes. It should check if today is February 20th before running the routine and simulate a special presentation starting after 1 hour.
+
+Simplified description: create a scene that includes setting up appropriate lighting, playing motivational or educational content, displaying messages related to social justice, and managing the thermostat for comfort. Additionally, we can use smart displays to show relevant images or videos promoting social justice and equality.
+
+Minimalist description: World Day for Social Justice, educational content, social justice, thermostat, images/videos.

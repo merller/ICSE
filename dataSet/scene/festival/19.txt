@@ -1,0 +1,5 @@
+Detailed description: Create a JavaScript program to set a natural atmosphere for International Day of Forests in a forest. The program should set natural lighting effects to 'Sunlight', play forest sounds of birds chirping, display educational content about forests every 5 minutes, and monitor forest conditions using environmental sensors.
+
+Simplified description: create a scene that includes setting up natural lighting effects, playing forest sounds, displaying educational content about forests, and managing any nearby smart devices for an immersive experience. Additionally, we can use environmental sensors to monitor forest conditions and showcase the beauty and importance of forests.
+
+Minimalist description: International Day of Forests, natural lighting effects, forest sounds, sensors, educational content about forest. 

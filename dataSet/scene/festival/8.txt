@@ -1,0 +1,5 @@
+Detailed description: Write a JavaScript program to create an educational atmosphere for Darwin Day on February 12th in a museum setting. The program should set smart lights to soft white and warm yellow, adjust the thermostat to a comfortable 22°C, play educational audio about Darwin every 30 minutes, display informative messages about Darwin and evolution every 15 minutes, and show relevant slides every 20 minutes. It should check if today is February 12th before running the routine and simulate a special presentation starting after 1 hour.
+
+Simplified description: Create a scene in a museum setting that includes setting up appropriate lighting, playing educational audio about Charles Darwin and his contributions to science, displaying informative messages and slides about Darwin and evolution, and managing the thermostat for comfort.
+
+Minimalist description: Darwin Day, lighting, educational audio, slides about Darwin and evolution, thermostat for comfort.

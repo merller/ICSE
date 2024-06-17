@@ -1,0 +1,5 @@
+Detailed description: Write a JavaScript program to create a respectful atmosphere for International Holocaust Remembrance Day on January 27th in a commemorative museum. The program should set smart lights to dim white and soft blue every 30 minutes, play background speeches or music every hour, display informative messages about the Holocaust every 45 minutes, and show historical photos every 30 minutes. It should also adjust the thermostat to a comfortable 22°C and check if today is January 27th before running the routine.
+
+Simplified description: Create a respectful and solemn atmosphere in a commemorative museum. This scenario will include setting up appropriate lighting, playing background speeches or music, displaying informative messages and historical photos, and adjusting the thermostat for comfort. The goal is to create an environment that honors the memory of the Holocaust victims and educates visitors.
+
+Minimalist description: Holocaust Remembrance Day, lighting, speeches, music, thermostat, messages.
