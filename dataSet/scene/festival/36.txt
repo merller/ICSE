@@ -1,5 +1,5 @@
-Detailed description:
+Detailed description:Develop a JavaScript program that creates an atmosphere for Global Parents Day in a home. This program should include setting warm lighting effects, playing soothing music, displaying messages of gratitude and love for parents, and managing interactive activities to honor parents.
 
-Simplified description:
+Simplified description:create a scene that celebrates and honors parents around the world. The focus should be on creating a warm and appreciative atmosphere, with activities and gestures that show gratitude and love for parents.
 
-Minimalist description:
+Minimalist description:Global Parents Day, home, warm lighting effects, soothing music, gratitude messages, interactive activities, parents celebration.

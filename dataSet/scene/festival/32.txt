@@ -1,5 +1,5 @@
-Detailed description:
+Detailed description: Create a JavaScript program to simulate an atmosphere for International Tea Day in a home. The program should set cozy lighting effects, play soothing tea-themed music, display information about different tea varieties every minute, and manage interactive activities related to tea.
 
-Simplified description:
+Simplified description: create a scene that celebrates the art and culture of tea drinking. The focus should be on creating a cozy and inviting atmosphere for enjoying tea, learning about different tea varieties, and sharing tea-related experiences.
 
-Minimalist description:
+Minimalist description:International Tea Day, set cozy lighting effects, play soothing music, display tea information.

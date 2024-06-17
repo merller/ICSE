@@ -1,5 +1,5 @@
-Detailed description:
+Detailed description:Develop a JavaScript program that creates an atmosphere for World Bicycle Day in a school. This program should include setting bicycle-themed lighting effects, playing energetic cycling music, displaying cycling facts and benefits, and managing interactive activities promoting cycling.
 
-Simplified description:
+Simplified description: create a scene that promotes cycling as a sustainable and healthy mode of transportation. The focus should be on activities and displays that encourage cycling, educate about its benefits, and promote bicycle safety.
 
-Minimalist description:
+Minimalist description:World Bicycle Day, school, bicycle-themed lighting effects, cycling music, cycling facts, interactive activities, bicycle day celebration.

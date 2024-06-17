@@ -1,5 +1,5 @@
-Detailed description:
+Detailed description: Develop a JavaScript program that creates an atmosphere for World No-Smoking Day in a school. This program should include setting anti-smoking lighting effects, playing motivational anti-smoking messages, displaying facts and statistics about smoking, and managing interactive activities promoting a smoke-free environment.
 
-Simplified description:
+Simplified description: create a scene that promotes awareness about the dangers of smoking and encourages a smoke-free environment. The focus should be on educational activities, interactive displays, and motivational messages to support smoking cessation efforts.
 
-Minimalist description:
+Minimalist description: World No-Smoking Day, school, anti-smoking lighting effects, motivational messages, smoking facts, interactive activities.

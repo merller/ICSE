@@ -1,5 +1,5 @@
-Detailed description:
+Detailed description:Create a JavaScript program to simulate an atmosphere for World Blood Donor Day in a school. The program should set red lighting effects, play calming music in a loop every 30 minutes, display messages about blood donation every 15 minutes, and display images or videos on a smart display every 20 minutes. Additionally, the program should include a function to handle the event when a special presentation or talk starts, stopping all music.
 
-Simplified description:
+Simplified description: create a scene that includes setting up red lighting to symbolize blood donation, playing calming music, displaying messages about the importance of blood donation, and managing the thermostat for comfort. Additionally, we can use smart displays to show images or videos related to blood donation and its impact on saving lives.
 
-Minimalist description:
+Minimalist description:World Blood Donor Day, set red lighting effects, play calming music, blood donation.

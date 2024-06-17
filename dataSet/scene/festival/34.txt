@@ -1,5 +1,5 @@
-Detailed description:
+Detailed description: Create a JavaScript program that simulates an atmosphere for World Football Day in a home, including setting football-themed lighting effects, playing football-themed music, displaying football trivia, and managing interactive activities related to football.
 
-Simplified description:
+Simplified description:create a scene that celebrates the passion for football. The focus should be on creating a lively and festive atmosphere, with decorations, lighting, and activities that reflect the excitement of the sport.
 
-Minimalist description:
+Minimalist description:World Football Day, lighting effects, football-themed music, football trivia, interactive activities.

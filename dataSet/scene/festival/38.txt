@@ -1,5 +1,5 @@
-Detailed description:
+Detailed description: Create a JavaScript program to simulate an atmosphere for World Environment Day in a school. The program should set green lighting effects, play nature sounds in a loop every 30 minutes, display messages about environmental conservation every 15 minutes, and display images or videos on a smart display every 20 minutes. Additionally, the program should include a function to handle the event when a special presentation or talk starts, stopping all sounds.
 
-Simplified description:
+Simplified description: create a scene that includes setting up green lighting, playing nature sounds, displaying messages about environmental conservation, and managing the thermostat for energy efficiency. Additionally, we can use smart displays to show images or videos related to environmental protection and sustainability.
 
-Minimalist description:
+Minimalist description: World Environment Day, set green lighting effects, environmental conservation, smart display, images or videos.

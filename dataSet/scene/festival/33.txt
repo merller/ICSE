@@ -1,5 +1,5 @@
-Detailed description:
+Detailed description: Create a JavaScript program that simulates an atmosphere for a Vesak festival in a temple, including setting temple lighting effects, playing traditional Buddhist chants, displaying teachings of Buddha, and managing offerings and rituals.
 
-Simplified description:
+Simplified description: create a scene that celebrates the birth, enlightenment, and passing away of Buddha. The focus should be on creating a serene and spiritual atmosphere, with decorations, lighting, and activities that reflect the significance of the festival.
 
-Minimalist description:
+Minimalist description:Vesak festival, temple, lighting effects, traditional Buddhist chants, teachings of Buddha, offerings, rituals.
