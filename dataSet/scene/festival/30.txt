@@ -1,5 +1,6 @@
-Detailed description:
+Detailed description: Create a JavaScript program to simulate an atmosphere for International Day of Families in a home. The program should set cozy lighting effects, play family-themed music, display family-themed quotes every minute, and manage interactive activities for the family.
 
-Simplified description:
+Simplified description:create a scene that celebrates family bonds and promotes quality time spent together. The focus should be on activities that foster communication, bonding, and fun among family members.
 
-Minimalist description:
+Minimalist description: International Day of Families, set cozy lighting effects, play family-themed music, display family-themed quotes.
+

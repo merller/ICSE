@@ -1,5 +1,5 @@
-Detailed description:
+Detailed description: Create a JavaScript program to simulate an atmosphere for the International Day of Conscience in a museum. The program should set introspective lighting effects, play calming sounds, display educational content about conscience and ethics every 5 minutes, and manage interactive exhibits promoting empathy and ethical decision-making.
 
-Simplified description:
+Simplified description: create a scene that encourages reflection and empathy, using lighting effects, interactive displays, and educational content. The focus should be on promoting values of conscience, compassion, and ethical decision-making.
 
-Minimalist description:
+Minimalist description: International Day of Conscience, set introspective lighting effects, conscience and ethics, ethical decision-making.

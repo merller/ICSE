@@ -1,5 +1,5 @@
-Detailed description:
+Detailed description: Create a JavaScript program to simulate indoor weather conditions for World Meteorological Day in a museum. The program should set dynamic lighting effects for rain simulation, play rain sounds, display educational content about meteorology every 5 minutes, manage interactive exhibits related to weather phenomena, and monitor indoor weather conditions using environmental sensors.
 
-Simplified description:
+Simplified description: create a scene that includes setting up dynamic lighting effects to simulate weather conditions, playing weather-related sounds, displaying educational content about meteorology, and managing interactive exhibits related to weather phenomena. Additionally, we can use environmental sensors to monitor indoor weather conditions and showcase the role of meteorology in understanding and predicting weather patterns.
 
-Minimalist description: World Meteorological Day
+Minimalist description: World Meteorological Day, dynamic lighting effects, rain simulation, rain sounds, weather phenomena, environmental sensors

@@ -1,5 +1,5 @@
-Detailed description:
+Detailed description: Create a JavaScript program to simulate an atmosphere for World Creativity and Innovation Day in a home for children. The program should set colorful and dynamic lighting effects, play playful and inspiring sounds, display educational content about creativity and innovation every 5 minutes, and manage interactive activities promoting creativity and innovation.
 
-Simplified description:
+Simplified description:create a scene that fosters creativity and innovation in children through interactive and educational activities. The focus should be on promoting imaginative play, problem-solving skills, and hands-on learning experiences.
 
-Minimalist description:
+Minimalist description: World Creativity and Innovation Day, set colorful and dynamic lighting effects, display educational content, play playful and inspiring sounds, manage interactive activities.

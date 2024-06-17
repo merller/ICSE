@@ -1,5 +1,5 @@
-Detailed description:
+Detailed description:Create a JavaScript program to simulate an atmosphere for International Zero Waste Day in a museum. The program should set green lighting effects, play environmental sounds, display educational content about zero waste practices every 5 minutes, manage interactive exhibits related to waste reduction, and monitor waste generation using environmental sensors.
 
-Simplified description:
+Simplified description: create a scene that includes setting up green lighting effects, playing environmental sounds, displaying educational content about zero waste practices, and managing interactive exhibits related to waste reduction. Additionally, we can use waste monitoring sensors to showcase the importance of reducing waste and promoting sustainable practices.
 
-Minimalist description:
+Minimalist description: International Zero Waste Day,  green lighting effects, play environmental sounds, waste reduction

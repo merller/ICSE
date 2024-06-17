@@ -1,5 +1,5 @@
-Detailed description:
+Detailed description: Create a JavaScript program to simulate an atmosphere for International Day of Peaceful Coexistence in a school. The program should set peaceful lighting effects, play calming music, display peaceful quotes every minute, and manage interactive activities promoting peaceful coexistence.
 
-Simplified description:
+Simplified description: create a scene that promotes peace, tolerance, and understanding among students and staff. The focus should be on activities that encourage empathy, respect for diversity, and conflict resolution skills.
 
-Minimalist description:
+Minimalist description: International Day of Peaceful Coexistence, set peaceful lighting effects, play calming music, display peaceful quotes, peaceful coexistence.

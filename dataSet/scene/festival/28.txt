@@ -1,5 +1,5 @@
-Detailed description:
+Detailed description:Create a JavaScript program to simulate an atmosphere for World Intellectual Property Day in a museum. The program should set innovative lighting effects, play inspiring sounds, display educational content about intellectual property rights every 5 minutes, and manage interactive exhibits showcasing innovations.
 
-Simplified description:
+Simplified description: create a scene that celebrates innovation, creativity, and the importance of intellectual property rights. The focus should be on showcasing inventions, artworks, and technological advancements while educating visitors about the value of intellectual property.
 
-Minimalist description:
+Minimalist description: World Intellectual Property Day, set innovative lighting effects, play inspiring sounds, display educational content, manage interactive exhibits. 

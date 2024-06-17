@@ -1,5 +1,5 @@
-Detailed description:
+Detailed description: Create a JavaScript program to simulate an atmosphere for World Health Day in a museum. The program should set health-themed lighting effects, play soothing sounds, display educational content about health and well-being every 5 minutes, and manage interactive exhibits promoting healthy lifestyle choices.
 
-Simplified description:
+Simplified description: Create a JavaScript program to simulate an atmosphere for World Health Day in a museum. The program should set health-themed lighting effects, play soothing sounds, display educational content about health and well-being every 5 minutes, and manage interactive exhibits promoting healthy lifestyle choices.
 
-Minimalist description:
+Minimalist description: World Health Day, set health-themed lighting effects, play soothing sounds, display educational content, health and well-being.

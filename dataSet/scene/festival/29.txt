@@ -1,5 +1,5 @@
-Detailed description:
+Detailed description:Create a JavaScript program to simulate an atmosphere for World Day for Safety and Health at Work in an industrial setting. The program should set safety-themed lighting effects, play a safety announcement, display educational content about workplace safety every 5 minutes, and manage interactive activities promoting workplace safety.
 
-Simplified description:
+Simplified description: create a scene that emphasizes the importance of workplace safety and health. The focus should be on promoting safe practices, raising awareness about potential hazards, and encouraging a culture of safety among workers.
 
-Minimalist description:
+Minimalist description:World Day for Safety, set safety-themed lighting effects, play safety announcement, workplace safety.

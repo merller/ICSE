@@ -1,5 +1,5 @@
-Detailed description:
+Detailed description: Create a JavaScript program to simulate an atmosphere for International Mother Earth Day in a home for children. The program should set earth-themed lighting effects, play nature sounds, display educational content about environmental protection every 5 minutes, and manage interactive activities promoting environmental awareness.
 
-Simplified description:
+Simplified description: create a scene that promotes environmental awareness and sustainability among children. The focus should be on activities that teach them about the importance of protecting the planet and taking care of the environment.
 
-Minimalist description:
+Minimalist description: International Mother Earth Day, set earth-themed lighting effects, play nature sounds, display educational content, environmental protection.
