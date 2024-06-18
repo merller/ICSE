@@ -1,0 +1,5 @@
+Detailed description:Create a JavaScript program to simulate an atmosphere for World Cleanliness Day in a home. The program should set clean white lighting effects, play cheerful music, display messages about cleanliness and hygiene every 15 minutes, display images or videos on a smart display every 20 minutes, and control a cleaning robot to clean the house after 30 minutes. Additionally, the program should include a function to handle the event when cleaning is completed, logging a message.
+
+Simplified description: create a scene that includes setting up bright and energizing lighting, playing cheerful and motivating music, displaying messages about the importance of cleanliness and hygiene, and using a cleaning robot to demonstrate cleaning activities. Additionally, we can use smart displays to show educational content about cleanliness and environmental conservation.
+
+Minimalist description:World Cleanliness Day, clean white lighting effects, cheerful music, smart display, cleaning robot.

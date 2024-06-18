@@ -1,5 +1,5 @@
-Detailed description:
+Detailed description:Create a JavaScript program to simulate an atmosphere for International Yoga Day at home. The program should set soft pink lighting effects, play calming music in a loop every 30 minutes, display motivational messages about yoga every 15 minutes, display yoga poses or routines on a smart display every 20 minutes, and adjust the thermostat to keep the floor temperature comfortable. Additionally, the program should include a function to handle the event when the yoga session starts, stopping all music playback.
 
-Simplified description:
+Simplified description: create a scene that includes setting up soothing lighting, playing calming music, displaying motivational messages about yoga, and managing the thermostat to keep the floor at a comfortable temperature. Additionally, we can use smart devices to display yoga poses or routines.
 
-Minimalist description:
+Minimalist description: International Yoga Day, soft pink lighting effects, display yoga poses or routines, floor temperature.

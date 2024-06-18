@@ -1,0 +1,6 @@
+Detailed description:Create a JavaScript program to simulate an atmosphere for International Day of Charity in an industrial setting. The program should set soft orange lighting effects, play calming and reflective music in a loop every 30 minutes, display messages promoting charity and community service every 15 minutes, and display images or videos on a smart display every 20 minutes. Additionally, the program should include a function to handle the event when a special activity or presentation starts, stopping all music playback.
+
+Simplified description: create a scene that emphasizes community and giving back. This can include setting up ambient lighting, playing calming and reflective music, displaying messages about charity and community service, and managing the thermostat for a comfortable environment. Additionally, we can use smart displays to show images or videos related to charity and community projects.
+
+Minimalist description: International Day of Charity, soft orange lighting effects, calming and reflective music, promoting charity, messages, smart display.
+

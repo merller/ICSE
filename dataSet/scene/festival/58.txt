@@ -1,0 +1,5 @@
+Detailed description:Create a JavaScript program to simulate an atmosphere for World Post Day in a post office. The program should set celebratory lighting effects, play postal-themed music at 30-minute intervals, display messages about the importance of mail and communication every 15 minutes, and display images or videos on a smart display every 20 minutes. Additionally, the program should handle the event when a special activity or celebration starts, stopping the music playback.
+
+Simplified description: create a scene that celebrates the postal service and its role in connecting people and communities. This can include setting up special lighting, playing postal-themed music, displaying messages about the importance of mail and communication, and managing the thermostat for comfort. Additionally, we can use smart displays to show images or videos related to the postal service and its history.
+
+Minimalist description:World Post Day, celebratory lighting effects, postal-themed music, mail and communication.

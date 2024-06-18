@@ -1,0 +1,5 @@
+Detailed description:Create a JavaScript program to simulate an atmosphere for International Lunar Day in a planetarium. The program should set silver lighting effects, play space-related sounds or informative content about the moon in a loop every 30 minutes, display messages about lunar exploration and the importance of the moon every 15 minutes, and display images or videos on a smart display every 20 minutes. Additionally, the program should include a function to handle the event when a special presentation or talk starts, stopping all content playback.
+
+Simplified description: create a scene that includes setting up lunar-themed lighting, playing space-related sounds or informative content about the moon, displaying messages about lunar exploration and the importance of the moon, and managing the thermostat for comfort. Additionally, we can use smart displays to show images or videos related to the moon and its significance in space exploration.
+
+Minimalist description:International Lunar Day, silver lighting effects, space-related sounds, lunar exploration, smart display.

@@ -1,0 +1,5 @@
+Detailed description:Create a JavaScript program to simulate an atmosphere for International Youth Day in a school. The program should set vibrant blue lighting effects, play motivational music in a loop every 30 minutes, display messages promoting youth empowerment and participation every 15 minutes, and display images or videos on a smart display every 20 minutes. Additionally, the program should include a function to handle the event when a special activity or presentation starts, stopping all music playback.
+
+Simplified description: create a scene that includes setting up dynamic and engaging lighting, playing upbeat and motivational music, displaying messages promoting youth empowerment and participation, and managing the thermostat for comfort. Additionally, we can use smart displays to show images or videos celebrating youth achievements and initiatives.
+
+Minimalist description:International Youth Day, vibrant blue lighting effects,  motivational music, smart display.

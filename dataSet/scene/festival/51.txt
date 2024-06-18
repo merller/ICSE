@@ -1,0 +1,5 @@
+Detailed description:Create a JavaScript program to simulate an atmosphere for World Humanitarian Day in a school. The program should set warm white lighting effects, play inspiring and educational content about humanitarian efforts in a loop every 30 minutes, display messages promoting humanitarian values and efforts every 15 minutes, and display images or videos on a smart display every 20 minutes. Additionally, the program should include a function to handle the event when a special presentation or talk starts, stopping all content playback.
+
+Simplified description: create a scene that includes setting up warm and compassionate lighting, playing inspiring and educational content, displaying messages promoting humanitarian values and efforts, and managing the thermostat for comfort. Additionally, we can use smart displays to show images or videos highlighting humanitarian work and stories of those impacted.
+
+Minimalist description:Global Humanitarian Day, warm white lighting effects, promoting humanitarian values, smart display.

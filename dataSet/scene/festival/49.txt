@@ -1,0 +1,5 @@
+Detailed description:Create a JavaScript program to simulate an atmosphere for International Friendship Day in a school. The program should set warm yellow lighting effects, play cheerful music in a loop every 30 minutes, display messages promoting friendship and unity every 15 minutes, and display images or videos on a smart display every 20 minutes. Additionally, the program should include a function to handle the event when a special activity or presentation starts, stopping all music playback.
+
+Simplified description: create a scene that includes setting up warm and inviting lighting, playing cheerful music, displaying messages promoting friendship and unity, and managing the thermostat for comfort. Additionally, we can use smart displays to show images or videos highlighting friendship stories and activities.
+
+Minimalist description:International Friendship Day, warm yellow lighting effects, smart display, special activity.

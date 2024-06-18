@@ -1,0 +1,5 @@
+Detailed description:Create a JavaScript program to simulate an atmosphere for the International Day of Interventional Cardiology in a hospital. The program should set soft blue lighting effects, play soothing music in a loop every 30 minutes, display messages about heart health and cardiology every 15 minutes, and display images or videos on a smart display every 20 minutes. Additionally, the program should include a function to handle the event when a special presentation or talk starts, stopping all music playback.
+
+Simplified description:create a scene that includes setting up calming and supportive lighting, playing soothing music, displaying messages about heart health and advancements in cardiology, and managing the thermostat for a comfortable environment. Additionally, we can use smart displays to show educational content about interventional cardiology and heart health.
+
+Minimalist description:International Day of Interventional Cardiology, soft blue lighting effects, soothing music, smart display.
