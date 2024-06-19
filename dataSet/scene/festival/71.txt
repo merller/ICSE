@@ -1,5 +1,5 @@
-Detailed description:
+Detailed description:Create a JavaScript program to simulate an inclusive and supportive atmosphere for the International Day of Persons with Disabilities in a hospital. The program should set smart lights color to blue, green, and white at 20-minute intervals, play educational messages and calming music at 30-minute intervals, display informative messages about disability awareness every 20 minutes, display images related to disability awareness on a smart display every 30 minutes, and adjust the thermostat for comfort. The program should also check if today is December 3rd and run the routine accordingly.
 
-Simplified description:
+Simplified description: create an inclusive and supportive atmosphere in a hospital setting. This scenario will include setting up lighting to create a welcoming environment, playing educational messages and calming music, displaying informative messages and images related to disability awareness and support, and adjusting the thermostat for comfort. The goal is to educate patients and staff about disabilities, promote inclusivity, and support individuals with disabilities.
 
-Minimalist description:
+Minimalist description:International Day of Persons with Disabilities, smart lights color, calming music, display informative messages, disability awareness.

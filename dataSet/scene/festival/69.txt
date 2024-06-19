@@ -1,5 +1,5 @@
-Detailed description:
+Detailed description:Create a JavaScript program to simulate a dynamic and celebratory atmosphere for World Television Day in a television station building. The program should set smart lights color to red, blue, green, and yellow, play iconic TV theme songs and clips at 30-minute intervals, display messages about the history of television every 20 minutes, display images related to television on a smart display every 30 minutes, and adjust the thermostat for comfort. The program should also check if today is November 21st and run the routine accordingly.
 
-Simplified description:
+Simplified description: create a dynamic and celebratory atmosphere in a television station building. This scenario will include setting up vibrant lighting, playing iconic TV theme songs and clips, displaying messages and images related to the history of television, and adjusting the thermostat for comfort. The goal is to celebrate the impact and history of television.
 
-Minimalist description:
+Minimalist description:World Television Day, mart lights color, red, blue, green, yellow, iconic TV theme songs, adjust thermostat.

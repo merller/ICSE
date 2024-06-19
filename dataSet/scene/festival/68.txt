@@ -1,5 +1,5 @@
-Detailed description:
+Detailed description:Create a JavaScript program to simulate an intellectual and reflective atmosphere for World Philosophy Day in a school. The program should set smart lights color to soft white, warm yellow, and cool blue, play philosophical speeches or calming music at 45-minute intervals, display philosophical quotes every 30 minutes, display images of famous philosophers on a smart display every hour, and adjust the thermostat for comfort. The program should also check if today is the third Thursday of November and run the routine accordingly.
 
-Simplified description:
+Simplified description: create an intellectual and reflective atmosphere in a school setting. This scenario will include setting up lighting to create a thoughtful ambiance, playing philosophical speeches or calming music, displaying philosophical quotes and images of famous philosophers, and adjusting the thermostat for comfort. The goal is to create an environment that fosters contemplation and discussion about philosophy.
 
-Minimalist description:
+Minimalist description:World Philosophy Day, smart lights color, soft white, warm yellow, cool blue, philosophical speeches, display philosophical quotes.

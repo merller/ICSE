@@ -1,5 +1,5 @@
-Detailed description:
+Detailed description: Create a JavaScript program to simulate a fun and engaging atmosphere for World Children's Day at home. The program should set smart lights color to red, green, blue, yellow, and purple, play fun children's music at 30-minute intervals, display fun messages for children every 20 minutes, display children's images on a smart display every 30 minutes, and control smart toys or game consoles every hour. Additionally, the program should adjust the thermostat for comfort.
 
-Simplified description:
+Simplified description:  create a fun and engaging atmosphere at home. This scenario will include setting up colorful lighting, playing fun music, displaying messages and images related to children's activities, controlling smart toys or game consoles, and adjusting the thermostat for comfort. The goal is to create a joyous environment that celebrates children.
 
-Minimalist description:
+Minimalist description:World Children's Day, smart lights color, children's music, display fun messages, control smart toys.

@@ -1,5 +1,5 @@
-Detailed description:
+Detailed description:Create a JavaScript program to simulate an informative and supportive atmosphere for World AIDS Day in a hospital. The program should set smart lights color to red and white, play educational messages and calming music at 45-minute intervals, display informative messages about AIDS every 30 minutes, display images related to AIDS awareness on a smart display every 45 minutes, and adjust the thermostat for comfort. The program should also check if today is December 1st and run the routine accordingly.
 
-Simplified description:
+Simplified description:create an informative and supportive atmosphere in a hospital setting. This scenario will include setting up lighting to promote awareness, playing educational messages and calming music, displaying informative messages and images related to AIDS awareness and prevention, and adjusting the thermostat for comfort. The goal is to educate patients and staff about AIDS and promote a supportive environment.
 
-Minimalist description:
+Minimalist description: World AIDS Day, smart lights color, play calming music, display images.

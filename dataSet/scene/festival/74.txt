@@ -1,5 +1,5 @@
-Detailed description:
+Detailed description: Create a JavaScript program to simulate a warm and welcoming atmosphere for International Human Solidarity Day in a school. The program should set smart lights color to blue, green, and yellow, play messages and music emphasizing solidarity and unity at 30-minute intervals, display images related to human solidarity every 20 minutes, and adjust the thermostat for comfort. The program should also check if today is December 20th and run the routine accordingly.
 
-Simplified description:
+Simplified description: create a scene in a school that promotes unity, cooperation, and solidarity among people. This scenario will include setting up lighting to create a warm and welcoming environment, playing messages and music that emphasize solidarity and unity, displaying images and quotes related to human solidarity, and adjusting the thermostat for comfort. The goal is to inspire students and staff to work together for a better and more inclusive world.
 
-Minimalist description:
+Minimalist description: International Human Solidarity Day, smart lights color, display images, human solidarity, smart display, adjust thermostat.

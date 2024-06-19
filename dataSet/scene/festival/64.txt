@@ -1,5 +1,5 @@
-Detailed description:
+Detailed description:Create a JavaScript program to simulate an atmosphere for Global Media and Information Literacy Week in a television station building. The program should set smart lights color to white in studios and soft blue in common areas, play educational background audio or announcements in common areas at 30-minute intervals, display informative messages about media literacy every 15 minutes, and display slides or relevant information on smart displays every 20 minutes. Additionally, the program should handle the event when the main presentation or segment starts, stopping the background audio playback.
 
-Simplified description:
+Simplified description: create a scene in a television station building that includes setting up appropriate lighting in studios and common areas, playing educational background audio or announcements, displaying informative messages about media literacy, and managing the thermostat for comfort. Additionally, we can use smart displays to showcase relevant content and presentations.
 
-Minimalist description:
+Minimalist description:Global Media and Information Literacy Week, smart lights color soft blue, media literacy, smart displays.

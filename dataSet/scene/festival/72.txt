@@ -1,5 +1,5 @@
-Detailed description:
+Detailed description:Create a JavaScript program to simulate an engaging atmosphere for International Volunteer Day in a school. The program should set smart lights color to blue, green, and yellow at 15-minute intervals, play motivational messages and uplifting music at 30-minute intervals, display messages about volunteering every 20 minutes, display images related to volunteering on a smart display every 30 minutes, and adjust the thermostat for comfort. The program should also check if today is December 5th and run the routine accordingly.
 
-Simplified description:
+Simplified description: create an engaging and appreciative atmosphere in a school setting. This scenario will include setting up lighting to create a vibrant environment, playing motivational messages and uplifting music, displaying messages and images related to volunteering and community service, and adjusting the thermostat for comfort. The goal is to celebrate volunteers and inspire others to get involved in community service.
 
-Minimalist description:
+Minimalist description:International Volunteer Day, smart lights color, motivational messages, uplifting music, adjust thermostat.

@@ -1,5 +1,5 @@
-Detailed description:
+Detailed description:Create a JavaScript program to simulate an educational and inclusive atmosphere for International Day of Tolerance in a school. The program should set smart lights color (e.g., blue, green, yellow) for a welcoming environment, play educational messages and peaceful music at 30-minute intervals, display informative messages about tolerance every 45 minutes, and display images related to tolerance and diversity on a smart display every 30 minutes. Additionally, the program should adjust the thermostat for comfort.
 
-Simplified description:
+Simplified description: create an educational and inclusive atmosphere in a school setting. This scenario will include setting up lighting to promote a welcoming environment, playing educational messages and peaceful music, displaying informative messages and images related to tolerance and diversity, and adjusting the thermostat for comfort. The goal is to educate students about the importance of tolerance and promote a culture of respect and understanding.
 
-Minimalist description:
+Minimalist description:International Day of Tolerance, smart lights color, peaceful music, display images.

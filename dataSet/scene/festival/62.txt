@@ -1,5 +1,5 @@
-Detailed description:
+Detailed description:Create a JavaScript program to simulate an atmosphere for United Nations Day in a school setting. The program should set celebratory lighting effects, play uplifting background music at 30-minute intervals before the event starts, display informative messages about the United Nations every 15 minutes, and display slides or relevant information on a smart display every 20 minutes. Additionally, the program should handle the event when the main presentation or celebration starts, stopping the background music playback.
 
-Simplified description:
+Simplified description: create a scene in a school setting that includes setting up appropriate lighting, playing uplifting background music before the event starts, displaying informative messages about the United Nations, and managing the thermostat for comfort. Additionally, we can display slides or relevant information on a smart display.
 
-Minimalist description:
+Minimalist description: United Nations Day, celebratory lighting effects blue and white, uplifting background music, smart display.

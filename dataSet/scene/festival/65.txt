@@ -1,5 +1,5 @@
-Detailed description:
+Detailed description:Create a JavaScript program to simulate an informative and supportive atmosphere for World Diabetes Day in a hospital. The program should set smart lights color to blue and white for diabetes awareness, play educational messages and calming music at 30-minute intervals, display informative messages about diabetes every 45 minutes, and display diabetes-related images on a smart display every 30 minutes. Additionally, the program should adjust the thermostat for comfort.
 
-Simplified description:
+Simplified description: create an informative and supportive atmosphere in a hospital setting. This scenario will include setting up lighting to highlight diabetes awareness, playing educational messages and calming music, displaying informative messages and images related to diabetes, and adjusting the thermostat for comfort. The aim is to educate visitors and patients about diabetes management and prevention while creating a supportive environment.
 
-Minimalist description:
+Minimalist description:World Diabetes Day, smart lights color blue and white, calming music, adjust thermostat.

@@ -1,5 +1,5 @@
-Detailed description:
+Detailed description:Create a JavaScript program to simulate an educational and empowering atmosphere for Human Rights Day in a school. The program should set smart lights color to blue, white, and yellow, play educational messages and inspiring music at 30-minute intervals, display messages about human rights every 20 minutes, display images related to human rights on a smart display every 30 minutes, and adjust the thermostat for comfort. The program should also check if today is December 10th and run the routine accordingly.
 
-Simplified description:
+Simplified description:  create an educational and empowering atmosphere in a school setting. This scenario will include setting up lighting to create a peaceful environment, playing educational messages and inspiring music, displaying messages and images related to human rights, and adjusting the thermostat for comfort. The goal is to educate students about human rights, promote equality and justice, and inspire them to advocate for human rights in their communities.
 
-Minimalist description:
+Minimalist description:Human Rights Day, smart lights color, inspiring music, human rights, display images, adjust thermostat.

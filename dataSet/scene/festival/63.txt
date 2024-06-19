@@ -1,5 +1,5 @@
-Detailed description:
+Detailed description:Create a JavaScript program to simulate an atmosphere for World City Day in a city setting. The program should set celebratory lighting effects on public buildings, play announcements or background music in public areas at 30-minute intervals, adjust the temperature in public spaces, display informative messages about urban development and sustainability on public screens every 15 minutes, and display slides or relevant information on smart displays every 20 minutes. Additionally, the program should handle the event when the main celebration starts, stopping the announcements or music playback.
 
-Simplified description:
+Simplified description: create a scene in a city setting that includes setting up appropriate lighting on public buildings, playing announcements or background music in public areas, displaying informative messages about urban development and sustainability, and managing the temperature in public spaces if applicable. Additionally, we can use smart displays to showcase city improvements and events.
 
-Minimalist description:
+Minimalist description:World City Day, celebratory lighting effects blue and green, announcements or background music, adjust temperature, urban development.
