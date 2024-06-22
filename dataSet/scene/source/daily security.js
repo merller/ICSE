@@ -1,42 +1,42 @@
-// Function to lock or unlock doors
+// Function to lock or unlock doors  1
 function controlDoorLock(door, state) {
     console.log(`${state} the ${door} door.`);
     event.controlDoorLock(door, state);
 }
 
-// Function to check security camera feed
+// Function to check security camera feed  2
 function checkCameraFeed(camera) {
     let feed = event.getCameraFeed(camera);
     console.log(`Security camera feed from ${camera}: ${feed}`);
     return feed;
 }
 
-// Function to detect motion
+// Function to detect motion  3
 function detectMotion(zone) {
     let motion = event.detectMotion(zone);
     console.log(`Motion detected in ${zone}: ${motion}`);
     return motion;
 }
 
-// Function to activate security alarm
+// Function to activate security alarm  4
 function activateAlarm() {
     console.log("Activating security alarm.");
     event.activateAlarm();
 }
 
-// Function to deactivate security alarm
+// Function to deactivate security alarm  5
 function deactivateAlarm() {
     console.log("Deactivating security alarm.");
     event.deactivateAlarm();
 }
 
-// Function to adjust lighting based on security needs
+// Function to adjust lighting based on security needs  6
 function adjustSecurityLighting(zone, state) {
     console.log(`${state} security lighting in ${zone}.`);
     event.adjustSecurityLighting(zone, state);
 }
 
-// Night routine to secure the house
+// Night routine to secure the house  7
 function nightSecurityRoutine() {
     if (event.nightSecurityRoutine) {
         controlDoorLock('front', 'lock');
@@ -46,7 +46,7 @@ function nightSecurityRoutine() {
     }
 }
 
-// Morning routine to prepare for the day
+// Morning routine to prepare for the day  8
 function morningSecurityRoutine() {
     if (event.morningSecurityRoutine) {
         controlDoorLock('front', 'unlock');
@@ -56,7 +56,7 @@ function morningSecurityRoutine() {
     }
 }
 
-// Emergency routine to respond to detected motion
+// Emergency routine to respond to detected motion  9
 function emergencySecurityRoutine() {
     if (event.emergencySecurityRoutine) {
         let motion = detectMotion('living room');

@@ -52,6 +52,6 @@ function eveningCoffeeRoutine() {
         event.cleanMachine();
     }
 }
-//The morningCoffeeRoutine starts by brewing an espresso, checks the coffee bean level, refills the beans if necessary, and sets the brewing schedule to 07:00. The afternoonCoffeeRoutine brews a latte, checks and refills the bean level if needed, and sets the brewing schedule to 15:00. The eveningCoffeeRoutine focuses on cleaning the coffee machine to ensure it is ready for the next day.
-//The morningCoffeeRoutine brews coffee in the morning, refills beans if they are low, and schedules the next brewing time. The afternoonCoffeeRoutine brews coffee in the afternoon, checks and refills beans, and sets the brewing schedule. The eveningCoffeeRoutine cleans the coffee machine to maintain it.
-//Automates coffee brewing routines by setting schedules, maintaining bean levels, and ensuring the machine is clean for use throughout the day.
+//When in morningCoffeeRoutine, brew an espresso coffee, check the coffee bean level, refill beans if the level is below 20%, and set the brewing schedule to 07:00. When in afternoonCoffeeRoutine, brew a latte coffee, check the coffee bean level, refill beans if the level is below 20%, and set the brewing schedule to 15:00. When in eveningCoffeeRoutine, clean the coffee machine.
+//When in morningCoffeeRoutine, brew an espresso coffee, check and refill beans if necessary, and set the brewing schedule. When in afternoonCoffeeRoutine, brew a latte coffee, check and refill beans if necessary, and set the brewing schedule. When in eveningCoffeeRoutine, clean the coffee machine.
+//When in morningCoffeeRoutine, brew coffee, check and refill beans, and set the schedule. When in afternoonCoffeeRoutine, brew coffee, check and refill beans, and set the schedule. When in eveningCoffeeRoutine, clean the machine.

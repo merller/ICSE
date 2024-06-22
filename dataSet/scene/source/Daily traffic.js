@@ -51,6 +51,6 @@ function eveningTrafficRoutine() {
         prioritizeEmergencyVehicle('ambulance', 'main road');
     }
 }
-//These traffic management routines dynamically adjust traffic lights based on real-time congestion levels. The morning routine focuses on optimizing traffic flow in downtown during rush hour. In the afternoon, traffic management shifts to midtown to handle peak hours efficiently. The evening routine ensures smooth traffic flow in uptown while prioritizing emergency vehicles on the main road.
-//Daily traffic routines optimize flow during key times: morning in downtown, afternoon in midtown, and evening in uptown. Traffic lights adjust based on congestion levels to maintain efficient traffic flow. Evening routines include prioritizing emergency vehicles, ensuring effective management throughout the day.
-//Daily traffic routines adapt traffic light settings to manage congestion effectively in downtown, midtown, and uptown areas
+//When in morningTrafficRoutine, monitor traffic congestion in downtown, adjust traffic flow if congestion is above 70% by setting traffic lights to green. When in afternoonTrafficRoutine, monitor traffic congestion in midtown, adjust traffic flow if congestion is above 70% by setting traffic lights to green. When in eveningTrafficRoutine, monitor traffic congestion in uptown, adjust traffic flow if congestion is above 70% by setting traffic lights to green, and prioritize an emergency vehicle (ambulance) on the main road.
+//When in morningTrafficRoutine, monitor traffic congestion in downtown and adjust traffic flow as needed. When in afternoonTrafficRoutine, monitor traffic congestion in midtown and adjust traffic flow as needed. When in eveningTrafficRoutine, monitor traffic congestion in uptown, adjust traffic flow as needed, and prioritize an emergency vehicle.
+//Monitor traffic congestion and adjust traffic flow based on congestion levels. Prioritize emergency vehicles as needed.
