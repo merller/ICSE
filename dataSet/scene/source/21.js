@@ -19,44 +19,37 @@ class EventBus {
 
 // 创建事件总线实例
 const eventBus = new EventBus();
-
-// 自动驾驶模式
 function activateAutonomousDriving() {
     console.log("Activating autonomous driving mode.");
     event.activateAutonomousDriving();
 }
-
-// 停车辅助
 function activateParkingAssistance() {
     console.log("Activating parking assistance.");
     event.activateParkingAssistance();
 }
-
-// 播放交通报告
 function playTrafficReport() {
     console.log("Playing traffic report.");
     event.playTrafficReport();
 }
-
-// 实时天气更新
 function updateWeather() {
     console.log("Updating weather information.");
     event.updateWeather();
 }
-
-// 调节空调
 function adjustCarTemperature(temp) {
     console.log(`Setting car temperature to ${temp}°C.`);
-    event.adjustCarTemperature(temp);
+    event.adjustCarAcTemperature(temp);
 }
 
-// 事件处理
-eventBus.on('startJourney', () => {
-    activateAutonomousDriving();
-    playTrafficReport();
-    updateWeather();
-    adjustCarTemperature(22);
-});
+function startJourney()
+{
+    if(event.startJourney){
+        activateAutonomousDriving();
+        playTrafficReport();
+        updateWeather();
+        adjustCarTemperature(22);
+    }
+}
+
 
 eventBus.on('startParking', () => {
     activateParkingAssistance();
