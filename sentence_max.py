@@ -24,7 +24,7 @@ code_data = code_data[85:]
 def split_sentences(docstring):
     sentences = re.split(r'(?<=[.])', docstring)  # 按照句号拆分
     sentences = [s.strip() for s in sentences if s.strip()]
-    return sentences
+    return sentences#丢弃第一个分句
 
 # 获取嵌入向量函数
 def get_embeddings(text):
@@ -66,13 +66,13 @@ for idx, query_item in enumerate(code_data):
 
             for sentence in sentences:
                 sentence_embedding = get_embeddings(sentence)
-                max_similarity = []
+                max_similarity = float('-inf')
 
                 for code_embedding in code_embeddings:
                     similarity = torch.nn.functional.cosine_similarity(sentence_embedding, code_embedding, dim=-1)
-                    max_similarity.append(similarity) 
-                avg_max_similarity = sum(max_similarity) / len(max_similarity)
-                docstring_similarities.append(avg_max_similarity)
+                    max_similarity = max(max_similarity, similarity.item())
+
+                docstring_similarities.append(max_similarity)
 
             # 计算平均相似度
             if docstring_similarities:

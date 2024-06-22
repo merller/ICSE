@@ -18,7 +18,7 @@ with open(data_path, 'r', encoding='utf-8') as f:
     code_data = json.load(f)
 
 # 只处理第3项到第4项
-code_data = code_data[85:]
+code_data = code_data[85:99]
 
 # 拆分句子函数（根据英文句号拆分）
 def split_sentences(docstring):
@@ -36,14 +36,9 @@ def get_embeddings(text):
 # 函数拆分方法，通过函数间的空白行来拆分函数
 def split_code_by_blank_lines(code):
     code = code.strip()
-    functions = re.split(r'\n\s*\n', code)  # 按照空白行分割函数
-    functions = [remove_single_line_comments(f.strip()) for f in functions if f.strip()]
+    functions = re.split(r'\n\s*\n', code)#有注释
+    functions = [f.strip() for f in functions if f.strip()]
     return functions
-
-def remove_single_line_comments(code):
-    # 移除单行注释
-    code = re.sub(r'//.*', '', code)
-    return code.strip()
 
 n = 0
 Q = len(code_data)

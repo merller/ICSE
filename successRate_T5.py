@@ -18,9 +18,11 @@ data_path = "dataSet/scene/Scene.json"
 with open(data_path, 'r', encoding='utf-8') as f:
     code_data = json.load(f)
 
+code_data = code_data[85:]
 # 统计变量
 n = 0
 Q = len(code_data)
+K=1
 
 # 对每个accurate_docstring进行查询并计算相似度
 str="accurate_docstring"
@@ -45,8 +47,8 @@ for idx, query_item in enumerate(code_data):
     similarities.sort(reverse=True, key=lambda x: x[0])
 
     # 设置successRate@K
-    top_3_similarities = similarities[:5]#K
-    for sim, code, docstring in top_3_similarities:
+    top_K_similarities = similarities[:K]#K
+    for sim, code, docstring in top_K_similarities:
         if docstring == query:
             n += 1
             break  # 统计一个就够了，跳出循环
