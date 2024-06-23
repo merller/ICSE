@@ -14,29 +14,14 @@ model.to(device)
 encoder_model.to(device)
 
 # 输入查询
-query = "The night security routine includes locking both the front and back doors, activating perimeter security lighting, and activating the security alarm system to ensure comprehensive protection."
+query = "When in night security routine."
 
 code="""
-// Night routine to secure the house
-function nightSecurityRoutine() {
-    if (event.nightSecurityRoutine) {
-        controlDoorLock('front', 'lock');
-        controlDoorLock('back', 'lock');
-        adjustSecurityLighting('perimeter', 'on');
-        activateAlarm();
-    }
-}
+nightSecurityRoutine
 """
 
 code1="""
-function nightSecurityRoutine() {
-    if (event.nightSecurityRoutine) {
-        controlDoorLock('front', 'lock');
-        controlDoorLock('back', 'lock');
-        adjustSecurityLighting('perimeter', 'on');
-        activateAlarm();
-    }
-}
+morning garden routine
 """
 
 code2="""
@@ -111,7 +96,7 @@ code_embeddings7 = get_embeddings(code7)
 # 计算余弦相似度
 cosine_sim = torch.nn.functional.cosine_similarity(query_embedding, code_embeddings, dim=-1)
 cosine_sim1 = torch.nn.functional.cosine_similarity(query_embedding, code_embeddings1, dim=-1)
-cosine_sim2 = torch.nn.functional.cosine_similarity(query_embedding, code_embeddings2, dim=-1)
+cosine_sim2 = torch.nn.functional.cosine_similarity(code_embeddings1, code_embeddings, dim=-1)
 cosine_sim3 = torch.nn.functional.cosine_similarity(query_embedding, code_embeddings3, dim=-1)
 cosine_sim4 = torch.nn.functional.cosine_similarity(query_embedding, code_embeddings4, dim=-1)
 cosine_sim5 = torch.nn.functional.cosine_similarity(query_embedding, code_embeddings5, dim=-1)

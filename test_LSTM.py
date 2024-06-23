@@ -92,8 +92,7 @@ with torch.no_grad():
 sentence_encoding1_avg = sum_and_average_columns(sentence_encoding1)
 sentence_encoding3_avg = sum_and_average_columns(sentence_encoding3)
 
-print("句子编码1:", sentence_encoding1)
-print("句子编码2:", sentence_encoding2)
+
 
 print("句子编码:", cosine_similarity(sentence_encoding1_avg[0],sentence_encoding2[0]))
 print("句子编码:", cosine_similarity(sentence_encoding2[0],sentence_encoding3_avg[0]))
