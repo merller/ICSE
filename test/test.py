@@ -1,86 +1,75 @@
-import re
-
-def remove_single_line_comments(code):
-    return re.sub(r'//.*', '', code)
-
-def split_code_by_blank_lines(code):
-    code = code.strip()
-    functions = re.split(r'\n\s*\n', code)  # 按照空白行分割代码
-    # 提取第一行注释作为函数的标识符
-    function_identifiers = []
-    for function in functions:
-        lines = function.split('\n')
-        first_comment = None
-        for line in lines:
-            line = line.strip()
-            if line.startswith('//'):
-                first_comment = line
-                break
-        if first_comment:
-            function_identifiers.append(first_comment)
+# 定义函数来读取并分析JavaScript代码文件
+def analyze_js_code(file_path):
+    with open(file_path, 'r') as file:
+        lines = file.readlines()
+        
+    # 保存函数定义和它们的依赖
+    function_defs = {}
+    current_function = None
     
-    return function_identifiers
+    for line in lines:
+        stripped_line = line.strip()
+        
+        # 发现函数定义
+        if stripped_line.startswith("function"):
+            function_name = stripped_line.split()[1].split('(')[0]
+            current_function = function_name
+            function_defs[current_function] = {"definition": [], "calls": set()}
+        
+        if current_function:
+            function_defs[current_function]["definition"].append(line)
+        
+        # 发现函数调用
+        if current_function and '(' in stripped_line and not stripped_line.startswith("function"):
+            for func in function_defs.keys():
+                if func + '(' in stripped_line:
+                    function_defs[current_function]["calls"].add(func)
+    
+    return function_defs
 
-# 示例代码
-code = """
-// Function to adjust office lighting based on occupancy
-function adjustOfficeLighting(occupancy, brightness) {
-    if (occupancy > 0) {
-        console.log(`Office occupied. Setting lights to ${brightness}%.`);
-        event.setOfficeLighting('on', brightness);
-    } else {
-        console.log("Office empty. Turning lights off.");
-        event.setOfficeLighting('off', 0);
-    }
-}
+# 基于调用关系切割代码
+def partition_code(function_defs):
+    partitions = []
+    
+    def find_all_related(func_name, seen):
+        if func_name in seen:
+            return
+        seen.add(func_name)
+        for called_func in function_defs[func_name]["calls"]:
+            find_all_related(called_func, seen)
+    
+    for func in function_defs.keys():
+        seen = set()
+        find_all_related(func, seen)
+        partitions.append(seen)
+    
+    # 排除重复的集合
+    unique_partitions = []
+    for partition in partitions:
+        if partition not in unique_partitions:
+            unique_partitions.append(partition)
+    
+    return unique_partitions
 
-// Function to set HVAC temperature based on time of day
-function setHVACTemperature(time, temp) {
-    console.log(`Setting HVAC temperature to ${temp}°C at ${time}.`);
-    event.setHVACTemperature(temp);
-}
+# 保存切割后的代码到文件
+def save_partitions(function_defs, partitions, output_dir):
+    for i, partition in enumerate(partitions):
+        file_path = f"{output_dir}/part_{i+1}.js"
+        with open(file_path, 'w') as file:
+            for func in partition:
+                for line in function_defs[func]["definition"]:
+                    file.write(line)
+                file.write("\n")
 
-// Function to check room occupancy
-function checkRoomOccupancy() {
-    let occupancy = event.getRoomOccupancy();
-    console.log(`Room occupancy: ${occupancy}`);
-    return occupancy;
-}
+# 设置路径
+js_file_path = 'dataSet/scene/source/office HVAC.js'  # 输入的JavaScript文件路径
+output_dir = 'results/slice'  # 输出目录
 
-// Function to manage energy usage based on room occupancy and time of day
-function manageEnergyUsage() {
-    let occupancy = checkRoomOccupancy();
-    let time = new Date().toTimeString().split(' ')[0];
-    let brightness = occupancy > 0 ? 70 : 0;
-    adjustOfficeLighting(occupancy, brightness);
-    setHVACTemperature(time, time < '12:00' ? 22 : 24);
-}
+import os
+if not os.path.exists(output_dir):
+    os.makedirs(output_dir)
 
-// Morning routine to prepare the office for the day
-function morningOfficeRoutine() {
-    if (event.morningOfficeRoutine) {
-        manageEnergyUsage();
-    }
-}
-
-// Afternoon routine to optimize energy usage and comfort
-function afternoonOfficeRoutine() {
-    if (event.afternoonOfficeRoutine) {
-        manageEnergyUsage();
-    }
-}
-
-// Evening routine to shut down non-essential systems and save energy
-function eveningOfficeRoutine() {
-    if (event.eveningOfficeRoutine) {
-        adjustOfficeLighting(0, 0); // Assume office is empty
-        setHVACTemperature('18:00', 20);
-        event.shutDownNonEssentialSystems();
-    }
-}
-"""
-
-# 运行函数并打印结果
-identifiers = split_code_by_blank_lines(code)
-for identifier in identifiers:
-    print(identifier)
+# 分析代码，切割并保存
+function_defs = analyze_js_code(js_file_path)
+partitions = partition_code(function_defs)
+save_partitions(function_defs, partitions, output_dir)
