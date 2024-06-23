@@ -8,57 +8,65 @@ def convert_to_single_line(code):
 
 # Example usage
 code = """
-// Function to control traffic lights at an intersection
-function controlTrafficLights(intersection, state) {
-    console.log(`Setting traffic lights at ${intersection} to ${state}.`);
-    event.controlTrafficLights(intersection, state);
+// Function to check fridge inventory
+function checkFridgeInventory(item) {
+    let inventory = event.getFridgeInventory(item);
+    console.log(`Inventory level for ${item}: ${inventory}`);
+    return inventory;
 }
 
-// Function to monitor traffic congestion
-function monitorTrafficCongestion(area) {
-    let congestion = event.getTrafficCongestion(area);
-    console.log(`Traffic congestion in ${area}: ${congestion}`);
-    return congestion;
+// Function to suggest a recipe based on available ingredients
+function suggestRecipe(ingredients) {
+    let recipe = event.getRecipeSuggestion(ingredients);
+    console.log(`Suggested recipe: ${recipe}`);
+    return recipe;
 }
 
-// Function to prioritize emergency vehicles
-function prioritizeEmergencyVehicle(vehicleId, route) {
-    console.log(`Prioritizing emergency vehicle ${vehicleId} on route ${route}.`);
-    event.prioritizeEmergencyVehicle(vehicleId, route);
+// Function to control the oven
+function controlOven(state, temp) {
+    console.log(`${state} the oven at ${temp}°C.`);
+    event.controlOven(state, temp);
 }
 
-// Function to adjust traffic flow based on congestion
-function adjustTrafficFlow(congestion, area) {
-    if (congestion > 70) {
-        console.log(`High congestion detected in ${area}. Adjusting traffic lights.`);
-        controlTrafficLights(area, 'green');
+// Function to control the dishwasher
+function controlDishwasher(state) {
+    console.log(`${state} the dishwasher.`);
+    event.controlDishwasher(state);
+}
+
+// Function to manage meal preparation based on inventory and recipes
+function manageMealPreparation() {
+    let ingredients = ['chicken', 'rice', 'vegetables'];
+    let recipe = suggestRecipe(ingredients);
+    if (recipe) {
+        controlOven('preheat', 180);
+        console.log(`Preparing ingredients for ${recipe}.`);
     } else {
-        console.log(`Normal traffic flow in ${area}. Maintaining current traffic light state.`);
+        console.log("No recipe suggestions available.");
     }
 }
 
-// Morning routine to optimize traffic flow during rush hour
-function morningTrafficRoutine() {
-    if (event.morningTrafficRoutine) {
-        let congestion = monitorTrafficCongestion('downtown');
-        adjustTrafficFlow(congestion, 'downtown');
+// Morning routine to check inventory and plan breakfast
+function morningKitchenRoutine() {
+    if (event.morningKitchenRoutine) {
+        checkFridgeInventory('milk');
+        suggestRecipe(['eggs', 'bacon']);
+        controlOven('preheat', 180);
     }
 }
 
-// Afternoon routine to manage traffic during peak hours
-function afternoonTrafficRoutine() {
-    if (event.afternoonTrafficRoutine) {
-        let congestion = monitorTrafficCongestion('midtown');
-        adjustTrafficFlow(congestion, 'midtown');
+// Lunch routine to prepare a midday meal
+function lunchKitchenRoutine() {
+    if (event.lunchKitchenRoutine) {
+        manageMealPreparation();
     }
 }
 
-// Evening routine to ensure smooth traffic flow and prioritize emergency vehicles
-function eveningTrafficRoutine() {
-    if (event.eveningTrafficRoutine) {
-        let congestion = monitorTrafficCongestion('uptown');
-        adjustTrafficFlow(congestion, 'uptown');
-        prioritizeEmergencyVehicle('ambulance', 'main road');
+// Evening routine to clean up the kitchen
+function eveningKitchenRoutine() {
+    if (event.eveningKitchenRoutine) {
+        controlDishwasher('start');
+        controlOven('off', 0);
     }
 }
 """

@@ -58,3 +58,7 @@ function nightPatientCare(patientId, room) {
         controlRoomTemperature(room, 21);
     }
 }
+
+//When in morningPatientCare, monitor the vitals of patient, remind the patient to take their morning medication, set the lighting in the room to bright, and set the room temperature to 22°C. When in afternoonPatientCare, monitor the vitals of patient, remind the patient to take their afternoon medication, set the lighting in the room to medium, and set the room temperature to 23°C. When in nightPatientCare, monitor the vitals of patient, remind the patient to take their night medication, set the lighting in the room to dim, and set the room temperature to 21°C.
+//When in morningPatientCare, monitor patient vitals, remind patient to take morning medication, set room lighting to bright, and set the room temperature. When in afternoonPatientCare, monitor patient vitals, remind patient to take afternoon medication, set room lighting to medium, and set the room temperature. When in nightPatientCare, monitor patient vitals, remind patient to take night medication, set room lighting to dim, and set the room temperature.
+//When in morningPatientCare, manage patient vitals, medication, lighting, and temperature. When in afternoonPatientCare, manage patient vitals, medication, lighting, and temperature. When in nightPatientCare, manage patient vitals, medication, lighting, and temperature.

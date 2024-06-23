@@ -41,3 +41,7 @@ function eveningRoutine() {
         sendFarmAlert('Farm management systems shutting down for the night.');
     }
 }
+
+//When in morningRoutine, monitor soil moisture in the north field, turn on irrigation in the north field, and track the location of livestock cow1. When in eveningRoutine, monitor soil moisture in the south field, turn off irrigation in the south field, and send a farm alert indicating that farm management systems are shutting down for the night.
+//When in morningRoutine, monitor soil moisture, turn on irrigation, and track livestock. When in eveningRoutine, monitor soil moisture, turn off irrigation, and send a farm alert.
+//When in morningRoutine, manage irrigation, monitor soil, and track livestock. When in eveningRoutine, manage irrigation and send alerts.

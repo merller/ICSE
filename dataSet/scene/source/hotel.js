@@ -39,3 +39,7 @@ function eveningRoutine() {
         sendHousekeepingNotification('101');
     }
 }
+
+//When in morningRoutine, set the temperature in room 101 to 22°C, check in guest John Doe, and send a housekeeping notification for room 102. When in eveningRoutine, set the temperature in room 101 to 20°C, check out guest John Doe, and send a housekeeping notification for room 101.
+//When in morningRoutine, set room temperature, check in a guest, and send a housekeeping notification. When in eveningRoutine, set room temperature, check out a guest, and send a housekeeping notification.
+//When in morningRoutine, manage room temperature, guest check-in, and housekeeping. When in eveningRoutine, manage room temperature, guest check-out, and housekeeping.

@@ -11,14 +11,20 @@ config = BertConfig.from_pretrained(model_dir)
 model = BertModel.from_pretrained(model_dir, config=config)
 
 # 将句子转换为BERT模型的输入格式
-sentence1 = "When the entrance sensor detects someone entering and there is no one in the gym, turn on the lights, activate the smart sockets for the gym equipment, set the fan to 1000 rpm, and broadcast ‘Welcome’. Increase the people counter. When the exit sensor detects someone leaving and there is only one person in the gym, turn off the lights and deactivate the smart sockets for the gym equipment, and broadcast ‘Have a good day’. Decrease the people counter. Turn on the air purifier."
-sentence2 = "turn On Light"
+sentence1 = "The morning routine ensures the greenhouse environment is set up for optimal plant growth by controlling temperature to 25°C, humidity to 60%, turning on the greenhouse lighting, and watering plants in zone 1 where soil moisture is monitored."
+sentence2 = "The night security routine includes locking both the front and back doors, activating perimeter security lighting, and activating the security alarm system to ensure comprehensive protection."
 sentence3 = "turn on the light"
+query = "The night security routine includes locking both the front and back doors, activating perimeter security lighting, and activating the security alarm system to ensure comprehensive protection."
+
+code="eveningGreenhouseRoutine event.eveningGreenhouseRoutine controlTemperature(22) controlHumidity(70) controlLighting('off') waterPlants('zone3')"
+
+code1="nightSecurityRoutine event.nightSecurityRoutine controlDoorLock('front', 'lock') controlDoorLock('back', 'lock') adjustSecurityLighting('perimeter', 'on') activateAlarm()"
+
 
 # 将句子大小写转换为小写
-sentence1 = sentence1.lower()
-sentence2 = sentence2.lower()
-sentence3 = sentence3.lower()
+sentence1 = query.lower()
+sentence2 = code.lower()
+sentence3 = code1.lower()
 
 # 定义一个函数来处理输入并生成BERT编码
 def encode_sentence(sentence):
@@ -32,18 +38,11 @@ sentence_encoding1 = encode_sentence(sentence1)
 sentence_encoding2 = encode_sentence(sentence2)
 sentence_encoding3 = encode_sentence(sentence3)
 
-# 计算余弦相似度
-def cosine_similarity(vector1, vector2):
-    dot_product = torch.dot(vector1, vector2)
-    norm_vector1 = torch.norm(vector1)
-    norm_vector2 = torch.norm(vector2)
-    similarity = dot_product / (norm_vector1 * norm_vector2)
-    return similarity
 
-similarity1_2 = cosine_similarity(sentence_encoding1[0], sentence_encoding2[0])
-similarity2_3 = cosine_similarity(sentence_encoding2[0], sentence_encoding3[0])
+similarity1_2 = torch.nn.functional.cosine_similarity(sentence_encoding1, sentence_encoding2)
+similarity2_3 = torch.nn.functional.cosine_similarity(sentence_encoding1, sentence_encoding3)
 
-print("句子编码1:", sentence_encoding1)
+#print("句子编码1:", sentence_encoding1)
 # print("句子编码2:", sentence_encoding2)
 # print("句子编码3:", sentence_encoding3)
 
