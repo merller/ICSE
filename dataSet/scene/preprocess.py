@@ -8,66 +8,25 @@ def convert_to_single_line(code):
 
 # Example usage
 code = """
-// Function to check fridge inventory
-function checkFridgeInventory(item) {
-    let inventory = event.getFridgeInventory(item);
-    console.log(`Inventory level for ${item}: ${inventory}`);
-    return inventory;
+function eveningOfficeRoutine() {
+    if (event.eveningOfficeRoutine) {
+        adjustOfficeLighting(0, 0);
+        setHVACTemperature('18:00', 20);
+        event.shutDownNonEssentialSystems();
+    }
 }
-
-// Function to suggest a recipe based on available ingredients
-function suggestRecipe(ingredients) {
-    let recipe = event.getRecipeSuggestion(ingredients);
-    console.log(`Suggested recipe: ${recipe}`);
-    return recipe;
-}
-
-// Function to control the oven
-function controlOven(state, temp) {
-    console.log(`${state} the oven at ${temp}°C.`);
-    event.controlOven(state, temp);
-}
-
-// Function to control the dishwasher
-function controlDishwasher(state) {
-    console.log(`${state} the dishwasher.`);
-    event.controlDishwasher(state);
-}
-
-// Function to manage meal preparation based on inventory and recipes
-function manageMealPreparation() {
-    let ingredients = ['chicken', 'rice', 'vegetables'];
-    let recipe = suggestRecipe(ingredients);
-    if (recipe) {
-        controlOven('preheat', 180);
-        console.log(`Preparing ingredients for ${recipe}.`);
+function adjustOfficeLighting(occupancy, brightness) {
+    if (occupancy > 0) {
+        console.log(`Office occupied. Setting lights to ${brightness}%.`);
+        event.setOfficeLighting('on', brightness);
     } else {
-        console.log("No recipe suggestions available.");
+        console.log("Office empty. Turning lights off.");
+        event.setOfficeLighting('off', 0);
     }
 }
-
-// Morning routine to check inventory and plan breakfast
-function morningKitchenRoutine() {
-    if (event.morningKitchenRoutine) {
-        checkFridgeInventory('milk');
-        suggestRecipe(['eggs', 'bacon']);
-        controlOven('preheat', 180);
-    }
-}
-
-// Lunch routine to prepare a midday meal
-function lunchKitchenRoutine() {
-    if (event.lunchKitchenRoutine) {
-        manageMealPreparation();
-    }
-}
-
-// Evening routine to clean up the kitchen
-function eveningKitchenRoutine() {
-    if (event.eveningKitchenRoutine) {
-        controlDishwasher('start');
-        controlOven('off', 0);
-    }
+function setHVACTemperature(time, temp) {
+    console.log(`Setting HVAC temperature to ${temp}°C at ${time}.`);
+    event.setHVACTemperature(temp);
 }
 """
 single_line_code = convert_to_single_line(code)

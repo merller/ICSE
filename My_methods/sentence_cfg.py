@@ -2,6 +2,7 @@ import json
 import torch
 import re
 from transformers import RobertaTokenizer, T5EncoderModel
+from cfg_generate import analyze_and_generate_subgraphs
 
 # 加载本地 CodeT5 模型和分词器
 model_dir = "dataSet/local_codet5_base"
@@ -40,12 +41,6 @@ def split_sentences(docstring):
     sentences = [s.strip() for s in sentences if s.strip()]
     return sentences#丢弃第一个分句
 
-def remove_event_related_code(code):
-    # 使用正则表达式匹配并删除包含'event'的行
-    cleaned_code = re.sub(r'^.*event.*$', '', code, flags=re.MULTILINE)
-    # 移除多余的空行
-    cleaned_code = re.sub(r'\n+', '\n', cleaned_code)
-    return cleaned_code
 
 # 获取嵌入向量函数
 def get_embeddings(text):
@@ -54,17 +49,6 @@ def get_embeddings(text):
         outputs = encoder_model(**inputs)
     return outputs.last_hidden_state.mean(dim=1)
 
-# 函数拆分方法，通过函数间的空白行来拆分函数
-def split_code_by_blank_lines(code):
-    code = code.strip()
-    functions = re.split(r'\n\s*\n', code)  # 按照空白行分割函数
-    functions = [remove_single_line_comments(f.strip()) for f in functions if f.strip()]
-    return functions
-
-def remove_single_line_comments(code):
-    # 移除单行注释
-    code = re.sub(r'//.*', '', code)
-    return code.strip()
 
 n = 0
 Q = len(code_data)
@@ -79,9 +63,8 @@ for idx, query_item in enumerate(code_data):
     for idx, item in enumerate(code_data):
         if 'accurate_docstring' in item and 'code' in item:
             # 将代码按函数段进行拆分
-            code_snippets = split_code_by_blank_lines(item['code'])
+            code_snippets = analyze_and_generate_subgraphs(item['code'])
             # 获取每段代码的嵌入向量
-            #code_snippets = [remove_event_related_code(code) for code in code_snippets]
             code_snippets = [preprocess_code(code) for code in code_snippets]#切割复合单词
             code_embeddings = [get_embeddings(code) for code in code_snippets]
 
