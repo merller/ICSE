@@ -1,0 +1,8 @@
+Most Detailed Level
+When in the setupMovieScene routine, set the air conditioner temperature to 23℃, start movie night by playing "Cinematic Soundtrack" for 120 seconds, closing the lights and curtains, play the movie "The Shawshank Redemption", and then end movie night by stopping the music, opening the lights, and opening the curtains.
+
+Medium Level Description
+When in the setupMovieScene routine, set the air conditioner temperature, start movie night by playing music, closing the lights and curtains, play the movie, and then end movie night by stopping the music, opening the lights, and opening the curtains.
+
+Simplified Level Description
+Adjust the temperature, control the lights and curtains, and play music and movie based on the movie scene setup.

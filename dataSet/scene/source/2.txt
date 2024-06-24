@@ -1,0 +1,8 @@
+Most Detailed Level
+When in the setupChristmasScene routine, continuously turn on and off the Christmas lights with a specified duration, play the "Merry Christmas" song, turn on ambiance lights and adjust each light's color temperature to 1000K, turn on the projectors, display an image of Santa Claus, and set each projector to rotate.
+
+Medium Level Description
+When in the setupChristmasScene routine, control the Christmas lights, play the "Merry Christmas" song, adjust the ambiance lights, and control the projectors by displaying an image and setting them to rotate.
+
+Simplified Level Description
+Control the lights and projectors, and play music based on the Christmas scene setup.

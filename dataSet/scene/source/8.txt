@@ -1,0 +1,8 @@
+Most Detailed Level
+When the soil is dry, start the watering system and log the action. When the soil is moist, stop the watering system and log the action. Monitor environmental conditions (light intensity, temperature, and humidity) every 5 minutes and display them. Play nature sounds when there is door movement. Track plant growth by sending plant graphics every 24 hours. Adjust the thermostat and turn on fill lights when it is night. Turn on the lights and play nature sounds when there is door movement.
+
+Medium Level Description
+When the soil is dry, start the watering system. When the soil is moist, stop the watering system. Monitor and display environmental conditions periodically. Track plant growth by sending graphics daily. Play nature sounds when there is door movement. Adjust the thermostat and turn on fill lights at night. Turn on lights and play nature sounds when there is door movement.
+
+Simplified Level Description
+Control the watering system based on soil moisture, monitor and display environmental conditions, play nature sounds, track plant growth, adjust the thermostat, and control lights based on different conditions.

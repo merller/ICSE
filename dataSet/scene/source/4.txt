@@ -1,0 +1,8 @@
+Most Detailed Level
+When in the setupWeddingScene routine, turn on the air cleaner. When entrance door movement is detected, turn on the light, turn on the smart outlets, set the fan speed to 1000, and broadcast "Welcome". When exit door movement is detected, turn off the light, turn off the smart outlets, and broadcast "Have a good day".
+
+Medium Level Description
+When in the setupWeddingScene routine, turn on the air cleaner. When entrance door movement is detected, turn on the light, turn on the smart outlets, set the fan speed, and broadcast a welcome message. When exit door movement is detected, turn off the light, turn off the smart outlets, and broadcast a farewell message.
+
+Simplified Level Description
+Control the lights, outlets, fans, and broadcast messages based on entrance and exit door movements.

@@ -1,0 +1,14 @@
+Most Detailed Level
+When an intrusion is detected, turn on the lights, play a warning sound, start camera recording, send an alert to the security company, and check if all doors and windows are closed. If any doors or windows are open, send a warning message. When safety is confirmed, turn off the lights, stop camera recording, and stop the warning sound.
+
+Medium Level Description
+When an intrusion is detected, turn on the lights, play a warning sound, start recording, send an alert, and check the doors and windows. When safety is confirmed, turn off the lights, stop recording, and stop the warning sound.
+
+Simplified Level Description
+Respond to an intrusion by turning on lights, playing a warning sound, recording, sending an alert, and checking security. Respond to safety confirmation by turning off lights and stopping alarms and recording.
+
+
+
+
+
+

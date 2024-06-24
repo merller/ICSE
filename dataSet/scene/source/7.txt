@@ -1,0 +1,8 @@
+Most Detailed Level
+When in the setupDinnerScene routine, set up the dinner scene by playing "Dinner Jazz" background music for 120 minutes, adjusting the lighting to 2700K, preheating the oven to 180℃, and turning on the air cleaner.
+
+Medium Level Description
+When in the setupDinnerScene routine, set up the dinner scene by playing background music, adjusting the lighting, preheating the oven, and turning on the air cleaner.
+
+Simplified Level Description
+Set up the dinner scene by adjusting music, lighting, oven, and air cleaner.

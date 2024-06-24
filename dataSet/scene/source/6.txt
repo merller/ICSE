@@ -1,0 +1,8 @@
+Most Detailed Level
+When in the setupNightMode routine, set up sleep mode by turning off the lights, closing the curtains, playing "Soothing Sounds" music for 30 minutes, setting the air conditioner temperature to 22℃, and turning on the night light.
+
+Medium Level Description
+When in the setupNightMode routine, set up sleep mode by turning off the lights, closing the curtains, playing soothing music, adjusting the air conditioner temperature, and turning on the night light.
+
+Simplified Level Description
+Set up sleep mode by adjusting the lights, curtains, music, air conditioner, and night light.

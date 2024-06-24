@@ -1,0 +1,8 @@
+Most Detailed Level
+When in the setupMorningScene routine, set up the morning wake-up scene by playing the "Morning Melody" track for 300 seconds, opening the curtains, starting the coffee maker, adjusting the lighting to 3000K, and turning on the air cleaner.
+
+Medium Level Description
+When in the setupMorningScene routine, play a morning melody, open the curtains, start the coffee maker, adjust the lighting, and turn on the air cleaner.
+
+Simplified Level Description
+Set up the morning wake-up scene by playing music, controlling curtains, coffee maker, lighting, and air cleaner.

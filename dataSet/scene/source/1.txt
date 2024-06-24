@@ -1,0 +1,8 @@
+Most Detailed Level
+When in the setupBirthdayScene routine, set the air conditioner temperature to 23℃, and turn on the fragrance machine. When the front door movement is detected, adjust the lighting by turning on each light and setting its temperature to 1000K, play the "Happy Birthday" song, and display photos in a slideshow format, showing each photo for one second on the screen.
+
+Medium Level Description
+When in the setupBirthdayScene routine, set the air conditioner temperature, and turn on the fragrance machine. When the front door movement is detected, adjust the lighting, play the "Happy Birthday" song, and display photos in a slideshow format.
+
+Simplified Level Description
+Adjust the lighting, play music, and display photos based on the scene setup.

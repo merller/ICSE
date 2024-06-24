@@ -1,0 +1,14 @@
+Most Detailed Level
+When in the startCooking routine, set the Fotile speed to 1000, preheat the oven to 180°C, play a cooking guide with step-by-step instructions, monitor the kitchen environment, adjust the lighting based on the current light intensity, and control the fan based on the kitchen temperature. When in the endCooking routine, turn off the Fotile, turn off the oven and screen, adjust the lighting, and control the fan.
+
+Medium Level Description
+When in the startCooking routine, set the Fotile speed, preheat the oven, play a cooking guide, monitor the environment, adjust the lighting, and control the fan. When in the endCooking routine, turn off the Fotile, oven, and screen, adjust the lighting, and control the fan.
+
+Simplified Level Description
+Control the Fotile, oven, cooking guide, lighting, and fan during the cooking routine. Adjust these settings based on the start and end of the cooking routine.
+
+
+
+
+
+
