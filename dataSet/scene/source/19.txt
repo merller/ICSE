@@ -1,0 +1,8 @@
+Most Detailed Level
+When the race starts, start the race timer, play race background music, and start the live stream. When a score is recorded for team A or team B, update the scoreboard with the respective score and team name. When the race ends, stop the race timer, stop the race background music, and stop the live stream.
+
+Medium Level Description
+When the race starts, start the timer, play music, and start the live stream. When a score is recorded for team A or team B, update the scoreboard. When the race ends, stop the timer, stop the music, and stop the live stream.
+
+Simplified Level Description
+Control the timer, music, live stream, and scoreboard based on the start and end of the race and scoring events.

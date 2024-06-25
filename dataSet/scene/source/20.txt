@@ -1,0 +1,8 @@
+Most Detailed Level
+When starting date night, open the curtains, turn on the lights, play romantic music from the "Romantic Playlist," set the temperature to 22°C, and prepare dinner. When ending date night, close the curtains, turn off the lights, and stop the music.
+
+Medium Level Description
+When starting date night, open the curtains, turn on the lights, play romantic music, set the temperature, and prepare dinner. When ending date night, close the curtains, turn off the lights, and stop the music.
+
+Simplified Level Description
+Control the curtains, lights, music, temperature, and dinner preparation based on the start and end of date night.

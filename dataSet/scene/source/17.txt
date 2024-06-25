@@ -1,0 +1,8 @@
+Most Detailed Level
+When the entrance door movement is detected and the number is 0, start playing party music, set the lights to party mode, start the fog machine, and start the laser lights. When the exit door movement is detected and the number is 1, stop playing party music, set the lights to normal mode, stop the fog machine, and stop the laser lights.
+
+Medium Level Description
+When the entrance door movement is detected and the number is 0, start playing party music, set the lights to party mode, start the fog machine, and start the laser lights. When the exit door movement is detected and the number is 1, stop playing party music, set the lights to normal mode, stop the fog machine, and stop the laser lights.
+
+Simplified Level Description
+Control the party music, lights, fog machine, and laser lights based on the entrance and exit door movements.

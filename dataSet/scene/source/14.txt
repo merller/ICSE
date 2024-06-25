@@ -1,0 +1,8 @@
+Most Detailed Level
+When in the setupReadingScene routine, start the reading session by turning on the reading light, playing soft background music, adjusting the room temperature to 22°C, and monitoring the environment every 5 minutes for light intensity and temperature. End the reading session after 2 hours by turning off the reading light and stopping the soft background music.
+
+Medium Level Description
+When in the setupReadingScene routine, start the reading session by turning on the reading light, playing soft music, adjusting the room temperature, and monitoring the environment. End the reading session after 2 hours by turning off the reading light and stopping the music.
+
+Simplified Level Description
+Set up the reading scene by controlling the reading light, background music, room temperature, and environment monitoring for a 2-hour session.

@@ -1,0 +1,8 @@
+Most Detailed Level
+When in the setupPetCareScene routine, start pet care by monitoring the pet's activity every minute and sending messages about the activity level. If the activity level is low, log that the pet needs more activity. Adjust the environment by turning on air conditioning if the temperature is above 25°C and turning on the humidifier if the humidity is below 40%. Activate remote interaction for remote control. If feeding or watering is needed, activate the automatic feeder or watering system.
+
+Medium Level Description
+When in the setupPetCareScene routine, start pet care by monitoring the pet's activity and sending messages about the activity level. Adjust the environment by controlling the air conditioning and humidifier based on temperature and humidity. Activate remote interaction for remote control. If feeding or watering is needed, activate the automatic feeder or watering system.
+
+Simplified Level Description
+Set up pet care by monitoring activity, adjusting the environment, activating remote interaction, and controlling feeding and watering systems.

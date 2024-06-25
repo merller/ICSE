@@ -1,0 +1,8 @@
+Most Detailed Level
+When in the setupWorkScene routine, start work mode by turning on work lights, starting the computer and monitor, and adjusting the environment (lighting, air conditioner, and air purifier based on light intensity, temperature, and air quality). Play background music, start a Pomodoro timer, and set up health reminders to take breaks every hour. When starting a video conference, adjust the camera and lighting, and stop the music. When ending work mode, turn off the work lights, stop the computer and monitor, adjust the lighting to a comfortable setting, and play relaxing music.
+
+Medium Level Description
+When in the setupWorkScene routine, start work mode by turning on work lights, starting the computer and monitor, and adjusting the environment. Play background music, start a Pomodoro timer, and set up health reminders. When starting a video conference, adjust the camera and lighting, and stop the music. When ending work mode, turn off the work lights, stop the computer and monitor, adjust the lighting, and play relaxing music.
+
+Simplified Level Description
+Set up the work scene by controlling lights, computer, monitor, environment, music, Pomodoro timer, health reminders, and video conference settings based on the start and end of work mode.

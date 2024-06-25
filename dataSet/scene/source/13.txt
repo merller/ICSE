@@ -1,0 +1,8 @@
+Most Detailed Level
+When in the startLearning routine, turn on the lights and desk lamp, play white noise with a "rain" sound, track learning progress by sending graphics every hour, and set up health reminders to take a break and stretch every hour. When in the endLearning routine, turn off the lights and desk lamp, and stop the white noise.
+
+Medium Level Description
+When in the startLearning routine, turn on the lights and desk lamp, play white noise, track learning progress, and set up health reminders. When in the endLearning routine, turn off the lights and desk lamp, and stop the white noise.
+
+Simplified Level Description
+Control lights, desk lamp, white noise, learning tracking, and health reminders based on the start and end of the learning routine.

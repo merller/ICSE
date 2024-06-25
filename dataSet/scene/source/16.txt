@@ -1,0 +1,8 @@
+Most Detailed Level
+When pressure is detected, adjust the lighting to 2700K and 50% brightness for light IDs 1, 2, and 3, play "Relaxing Music" for 1800 seconds, set the air conditioner temperature to 22℃, start the fragrance machine, and close the curtains. When no pressure is detected, stop the "Relaxing Music," stop the fragrance machine, adjust the lighting to 3500K and 100% brightness for light IDs 1, 2, and 3, and open the curtains.
+
+Medium Level Description
+When pressure is detected, adjust the lighting, play relaxing music, set the air conditioner temperature, start the fragrance machine, and close the curtains. When no pressure is detected, stop the music, stop the fragrance machine, adjust the lighting, and open the curtains.
+
+Simplified Level Description
+Adjust the lighting, music, air conditioner, fragrance machine, and curtains based on pressure detection.

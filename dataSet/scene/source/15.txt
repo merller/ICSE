@@ -1,0 +1,14 @@
+Most Detailed Level
+When in the setupYogaScene routine, start the yoga session by adjusting the lighting to 2700K for light IDs 1, 2, and 3, playing a "Yoga Playlist" for 3600 seconds, setting the air conditioner temperature to 22℃, starting the smart mirror with yoga guidance, starting the air purifier, and starting the fitness tracker. Additionally, if a person is detected in front of the mirror, start the smart mirror.
+
+Medium Level Description
+When in the setupYogaScene routine, start the yoga session by adjusting the lighting, playing yoga music, setting the air conditioner temperature, starting the smart mirror, starting the air purifier, and starting the fitness tracker. If a person is detected in front of the mirror, start the smart mirror.
+
+Simplified Level Description
+Set up the yoga scene by controlling lighting, music, air conditioner, smart mirror, air purifier, and fitness tracker. Activate the smart mirror when a person is detected.
+
+
+
+
+
+

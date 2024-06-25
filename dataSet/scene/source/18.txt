@@ -1,0 +1,14 @@
+Most Detailed Level
+When cleaning is needed, start the cleaning robot, turn on the air purifier, and play relaxing music. When cleaning ends, stop the cleaning robot, turn off the air purifier, stop the music, and feed the pet.
+
+Medium Level Description
+When cleaning is needed, start the cleaning robot, turn on the air purifier, and play music. When cleaning ends, stop the cleaning robot, turn off the air purifier, stop the music, and feed the pet.
+
+Simplified Level Description
+Control the cleaning robot, air purifier, music, and pet feeding based on the need for cleaning.
+
+
+
+
+
+
