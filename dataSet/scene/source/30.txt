@@ -1,0 +1,8 @@
+Most Detailed Level
+When starting the Safe House Scene, turn on the security system, surveillance cameras, and smoke detectors, and send a notification that the Safe House Scene has started. If smoke is detected, activate the smoke alarm, send a notification to evacuate immediately, open all doors and windows, turn on emergency lights, and call emergency services. If an intrusion is detected, activate the intrusion alarm, send a notification about the security breach, and call security services.
+
+Medium Level Description
+When starting the Safe House Scene, turn on the security system, surveillance cameras, and smoke detectors, and send a notification. If smoke is detected, activate the smoke alarm, notify to evacuate, open doors and windows, turn on emergency lights, and call emergency services. If an intrusion is detected, activate the intrusion alarm, send a security breach notification, and call security services.
+
+Simplified Level Description
+Control security, surveillance, smoke detection, and send notifications. Respond to smoke detection by activating alarms, opening doors and windows, turning on emergency lights, and calling emergency services. Respond to intrusions by activating alarms and calling security services.

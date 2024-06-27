@@ -1,0 +1,8 @@
+Most Detailed Level
+When a visitor enters, scan their ticket and send them a welcome message. During exhibit interaction, display the exhibit information and start the audio guide for the exhibit. For environment control, adjust the temperature and humidity as well as the lighting level. For visitor comfort services, send a rest area reminder. If a safety alert is needed, send a safety alert to the visitor.
+
+Medium Level Description
+When a visitor enters, scan their ticket and send a welcome message. During exhibit interaction, display exhibit information and start the audio guide. For environment control, adjust the environment settings and lighting. For visitor comfort services, send a rest area reminder. Send a safety alert if needed.
+
+Simplified Level Description
+Manage ticket scanning, welcome messages, exhibit information, audio guides, environment adjustments, lighting control, visitor reminders, and safety alerts based on events.

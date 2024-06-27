@@ -1,0 +1,9 @@
+Most Detailed Level
+When a customer enters, recognize the customer by their ID and show personalized recommendations based on their ID. When a product is queried, retrieve and display the product information. During checkout, calculate the total amount, process the payment, recognize the customer, and send an electronic receipt to the customer. For inventory check, monitor the inventory status and generate a restock order if needed.
+
+Medium Level Description
+When a customer enters, recognize the customer and show personalized recommendations. When a product is queried, display the product information. During checkout, process the payment and send an electronic receipt. For inventory check, monitor inventory status and generate a restock order.
+
+Simplified Level Description
+Handle customer recognition, personalized recommendations, product queries, checkout processing, electronic receipts, inventory monitoring, and restocking based on events.
+

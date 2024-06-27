@@ -1,0 +1,8 @@
+Most Detailed Level
+Every 5 seconds, detect traffic flow and adjust the traffic lights based on the traffic flow data (30 seconds if the flow is above 50, otherwise 60 seconds). If pedestrians are detected, adjust the traffic lights for safe crossing and play the crossing signal. If an emergency vehicle is detected, adjust the traffic lights for priority passage. If a traffic accident is detected, trigger a warning.
+
+Medium Level Description
+Periodically detect traffic flow and adjust traffic lights accordingly. Adjust traffic lights and play crossing signals for pedestrians, prioritize traffic lights for emergency vehicles, and trigger warnings for traffic accidents.
+
+Simplified Level Description
+Control traffic flow, traffic lights, pedestrian signals, emergency vehicle priority, and accident warnings based on detected events and conditions.

@@ -1,0 +1,8 @@
+Most Detailed Level
+When starting the journey, activate autonomous driving mode, play the traffic report, update weather information, and set the car temperature to 22°C. When starting parking, activate parking assistance. When ending the journey, deactivate autonomous driving mode and stop the traffic report.
+
+Medium Level Description
+When starting the journey, activate autonomous driving, play the traffic report, update weather, and set the car temperature. When starting parking, activate parking assistance. When ending the journey, deactivate autonomous driving and stop the traffic report.
+
+Simplified Level Description
+Control the car's autonomous driving, parking assistance, traffic report, weather update, and temperature based on the start and end of the journey.

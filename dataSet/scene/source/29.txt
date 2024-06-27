@@ -1,0 +1,8 @@
+Most Detailed Level
+When a customer service request is made, verify the customer's identity. If the customer ID is valid, open the security gate and send a welcome notification. If the customer ID is invalid, send an access denied notification. For a withdrawal request, if the amount is less than or equal to the account balance, dispense the cash, update the account balance, and send a withdrawal notification. If the amount exceeds the account balance, send an insufficient funds notification. For a deposit request, accept the deposit, update the account balance, and send a deposit notification. If the alarm is triggered, close the security gate and play the alarm sound.
+
+Medium Level Description
+When a customer service request is made, verify the customer's identity. If the ID is valid, open the security gate and send a welcome notification; otherwise, send an access denied notification. For a withdrawal, process the transaction if there are sufficient funds; otherwise, send an insufficient funds notification. For a deposit, accept the deposit and update the account balance. If the alarm is triggered, close the security gate and play the alarm.
+
+Simplified Level Description
+Handle customer service requests by verifying identity, processing withdrawals and deposits, updating the account balance, and sending notifications. Respond to alarm triggers by closing the security gate and playing an alarm.

@@ -1,0 +1,8 @@
+Most Detailed Level
+When flight information is updated, log the new flight information and send a security check reminder and a boarding notification. For baggage handling, send a baggage drop reminder, track the baggage status, and send a baggage arrival notification. Monitor and adjust the environment by logging and updating temperature, humidity, and air quality. For passenger comfort services, play background music and send a reminder for charging stations.
+
+Medium Level Description
+When flight information is updated, log the new flight info and send security check and boarding notifications. For baggage handling, send a baggage drop reminder, track baggage, and send a baggage arrival notification. Monitor and adjust the environment by logging and updating environmental data. For passenger comfort services, play background music and send a charging station reminder.
+
+Simplified Level Description
+Update flight information, handle baggage, monitor and adjust the environment, and provide passenger comfort services by playing music and sending reminders based on detected events.

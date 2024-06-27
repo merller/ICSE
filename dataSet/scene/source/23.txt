@@ -1,0 +1,8 @@
+Most Detailed Level
+When the race starts, log "Race started!" and call event.startRace with the current date and participant IDs. When the race ends, if there is a champion, play the "champion" music, reset the champion flag, and log "Race ended!" with the race end event including the current date and the ID of the ending participant. If a safety car is deployed during the race, log "Safety car deployed!" and call event.deploySafetyCar.
+
+Medium Level Description
+When the race starts, start the race with the current date and participant IDs. When the race ends, if there is a champion, play celebration music and end the race with the current date and participant ID. If a safety car is deployed, deploy the safety car.
+
+Simplified Level Description
+Control the race start, end, celebration music, and safety car deployment based on race events and participant status.

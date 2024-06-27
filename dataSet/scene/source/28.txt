@@ -1,0 +1,8 @@
+Most Detailed Level
+When starting care, activate the smart walker, send a medication reminder, send an activity reminder, monitor vital signs and send a report, monitor activity and send a report, and adjust the environment settings. In case of an emergency, when the panic button is pressed, notify emergency services, detect falls and notify caregivers and emergency services, and provide remote video assistance.
+
+Medium Level Description
+When starting care, activate the smart walker, send reminders for medication and activity, monitor and report vital signs and activity, and adjust the environment settings. In case of an emergency, notify emergency services, detect falls, and provide remote video assistance.
+
+Simplified Level Description
+Manage care by activating devices, sending reminders, monitoring and reporting health data, adjusting the environment, and providing emergency response and assistance.

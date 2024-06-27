@@ -1,0 +1,8 @@
+Most Detailed Level
+When a car is entering, turn on the garage lights, recognize the license plate, and update the parking availability. When a car is exiting, recognize the license plate, process the payment for the recognized license plate, update the parking availability, and turn off the garage lights.
+
+Medium Level Description
+When a car is entering, turn on the garage lights, recognize the license plate, and update parking availability. When a car is exiting, recognize the license plate, process the payment, update the parking availability, and turn off the garage lights.
+
+Simplified Level Description
+Control garage lights, recognize license plates, update parking availability, and process payments based on car entering and exiting events.
